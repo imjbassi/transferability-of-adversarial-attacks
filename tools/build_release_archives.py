@@ -3,6 +3,21 @@
 The generated ZIP files are placed in ``release-assets/`` and intentionally
 ignored by Git. Run this script from the repository root after the paper and
 aggregate study artifacts have been regenerated.
+
+Release invariant
+-----------------
+The manuscript and README cite Zenodo *concept* DOIs only and name the release
+in prose ("the results reported here correspond to release vX.Y.Z"). Never cite
+a version DOI: Zenodo mints it when the tag is archived, so no snapshot can
+contain its own version DOI, and any that cites one permanently points at a
+different snapshot than the one the reader is holding.
+
+The prose version string is therefore a pointer that must be accurate at the
+tagged commit. Any release that changes the paper must bump it in the *same*
+commit that gets tagged -- ``paper/main.tex`` (Section "Evidence status and
+limitations"), ``README.md`` (Citation), and ``version``/``date-released`` in
+``CITATION.cff`` -- then tag that commit. Bumping after tagging reintroduces
+exactly the mismatch this rule exists to prevent.
 """
 
 from __future__ import annotations

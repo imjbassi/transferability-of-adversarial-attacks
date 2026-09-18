@@ -10,7 +10,7 @@ The earlier code evaluated ImageNet classifiers against CIFAR-10 labels and call
 - [Complete editable LaTeX manuscript](paper/main.tex)
 - [Experiment and submission requirements](docs/EXPERIMENTS.md)
 - [Validation record](docs/VALIDATION.md)
-- [Archived release and reproducibility snapshot](https://doi.org/10.5281/zenodo.22737840)
+- [Archived release and reproducibility snapshot](https://doi.org/10.5281/zenodo.22737839)
 
 ## What changed
 
@@ -119,4 +119,6 @@ Software source code is released under the MIT License. The manuscript, document
 
 ## Citation
 
-The stable concept DOI, which resolves to the latest archived release, is [10.5281/zenodo.22737839](https://doi.org/10.5281/zenodo.22737839). The exact `v1.0.0` snapshot is [10.5281/zenodo.22737840](https://doi.org/10.5281/zenodo.22737840). Machine-readable citation metadata is available in [CITATION.cff](CITATION.cff).
+Code, manuscript, and reproducibility snapshot are archived under concept DOI [10.5281/zenodo.22737839](https://doi.org/10.5281/zenodo.22737839), which resolves to the latest archived release; the results reported in the manuscript correspond to release `v1.0.3`. The per-example experiment records are deposited separately under concept DOI [10.5281/zenodo.22756878](https://doi.org/10.5281/zenodo.22756878). Machine-readable citation metadata is available in [CITATION.cff](CITATION.cff).
+
+Version DOIs are deliberately not cited: a snapshot cannot contain the DOI that archiving it mints, so the version is named in prose instead and the concept DOI is left to resolve.
