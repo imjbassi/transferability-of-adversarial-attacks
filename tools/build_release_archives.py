@@ -73,7 +73,8 @@ TMLR_SOURCE_FILES = [
 ANONYMOUS_README = """# Anonymous reproducibility supplement
 
 This package accompanies the double-blind TMLR submission
-"Conditioning and Directionality in Adversarial Transfer on CIFAR-10."
+"What transfer rates do not tell you: conditioning practice in adversarial
+transfer evaluation."
 
 Contents:
 - `source/`: corrected implementation and tests;
@@ -94,8 +95,8 @@ unchanged. See `source/pyproject.toml` for dependencies and run `pytest` from
 
 PUBLIC_README = """# Experiment records
 
-This archive contains the final experiment records for "Conditioning and
-Directionality in Adversarial Transfer on CIFAR-10": aggregate study artifacts,
+This archive contains the final experiment records for "What transfer rates do
+not tell you: conditioning practice in adversarial transfer evaluation": aggregate study artifacts,
 per-example predictions, manifests, training histories, and the eleven model
 checkpoints used for the primary study and matched-learning-rate control.
 
@@ -106,6 +107,9 @@ dirty working tree and retain the executed-source hashes, checkpoint hashes,
 prediction hashes, environment, and exact sample indices needed for audit.
 
 The accompanying source release is archived separately under the project DOI.
+The `survey/` directory contains the preregistered query, raw Semantic Scholar
+response, 80-paper corpus, coding sheets, reliability calculation, and analytic
+bounds.
 """
 
 
@@ -194,6 +198,12 @@ def build_public_record(path: Path) -> None:
             "artifacts/study",
             anonymize_json=False,
         )
+        _write_tree(
+            archive,
+            ROOT / "survey",
+            "survey",
+            anonymize_json=False,
+        )
         for relative in EVALUATION_RUNS:
             _write_tree(
                 archive,
@@ -228,7 +238,7 @@ def _sha256(path: Path) -> str:
 def main() -> None:
     OUTPUT.mkdir(exist_ok=True)
     anonymous = OUTPUT / "tmlr-anonymous-supplement.zip"
-    public = OUTPUT / "adversarial-transfer-experiment-records-v1.0.1.zip"
+    public = OUTPUT / "adversarial-transfer-experiment-records-v1.1.0.zip"
     tmlr_source = OUTPUT / "tmlr-submission-source.zip"
     build_anonymous_supplement(anonymous)
     build_public_record(public)

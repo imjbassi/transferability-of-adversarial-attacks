@@ -1,0 +1,11 @@
+{
+  "papers_qualifying": 1,
+  "rates_bounded": 96,
+  "minimum_percent": 1.2,
+  "median_percent": 34.5,
+  "mean_percent": 35.327083333333334,
+  "maximum_percent": 77.9,
+  "q1_percent": 23.550000000000004,
+  "q3_percent": 45.349999999999994,
+  "interpretation": "Each value is max(0, reported attacked error minus target clean error)."
+}

@@ -119,6 +119,6 @@ Software source code is released under the MIT License. The manuscript, document
 
 ## Citation
 
-Code, manuscript, and reproducibility snapshot are archived under concept DOI [10.5281/zenodo.22737839](https://doi.org/10.5281/zenodo.22737839), which resolves to the latest archived release; the results reported in the manuscript correspond to release `v1.0.3`. The per-example experiment records are deposited separately under concept DOI [10.5281/zenodo.22756878](https://doi.org/10.5281/zenodo.22756878). Machine-readable citation metadata is available in [CITATION.cff](CITATION.cff).
+Code, manuscript, and reproducibility snapshot are archived under concept DOI [10.5281/zenodo.22737839](https://doi.org/10.5281/zenodo.22737839), which resolves to the latest archived release; the results reported in the manuscript correspond to release `v1.1.0`. The per-example experiment records are deposited separately under concept DOI [10.5281/zenodo.22756878](https://doi.org/10.5281/zenodo.22756878). Machine-readable citation metadata is available in [CITATION.cff](CITATION.cff).
 
 Version DOIs are deliberately not cited: a snapshot cannot contain the DOI that archiving it mints, so the version is named in prose instead and the concept DOI is left to resolve.

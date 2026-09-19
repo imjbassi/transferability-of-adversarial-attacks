@@ -1,13 +1,13 @@
 ﻿cff-version: 1.2.0
 message: "If you use this software or its research artifacts, please cite the archived release below."
-title: "Denominator-Complete Adversarial Transfer Study"
+title: "What transfer rates do not tell you: conditioning practice in adversarial transfer evaluation"
 type: software
 authors:
   - family-names: Bassi
     given-names: Jaiveer
     affiliation: Independent Researcher
-version: 1.0.3
-date-released: 2026-09-17
+version: 1.1.0
+date-released: 2026-09-19
 doi: 10.5281/zenodo.22737839
 repository-code: "https://github.com/imjbassi/transferability-of-adversarial-attacks"
 url: "https://doi.org/10.5281/zenodo.22737839"
@@ -16,10 +16,10 @@ abstract: >-
   denominator-corrected study of adversarial transfer among CIFAR-10 classifiers.
 preferred-citation:
   type: software
-  title: "Denominator-Complete Adversarial Transfer Study"
+  title: "What transfer rates do not tell you: conditioning practice in adversarial transfer evaluation"
   authors:
     - family-names: Bassi
       given-names: Jaiveer
-  version: 1.0.3
-  date-released: 2026-09-17
+  version: 1.1.0
+  date-released: 2026-09-19
   doi: 10.5281/zenodo.22737839

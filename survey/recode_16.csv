@@ -1,0 +1,17 @@
+paper_id,rank,clean_accuracy_source_target_separate,transfer_denominator_clean_correct,conditions_on_source_attack_success,reports_absolute_counts,numeric_linf_or_l2_budget,artifacts_sufficient_to_recompute
+44d43bfbd23d55b1e7c4c4fd91fe101c0eaf1a06,3,unclear,unclear,unclear,no,yes,unclear
+fb0568dcb546bbb4d7d1ed71ce395f4b66691003,4,unclear,unclear,unclear,no,yes,yes
+17293cd36ee5e7ec37dcec1d5ab85f9b77ad65d5,8,unclear,unclear,unclear,unclear,unclear,unclear
+8bac2716cd208cb8041650a001ab72ba81b559cd,9,unclear,unclear,unclear,no,yes,unclear
+8ecdbfe011b7189fa0ee49ffc4e42a93d728a371,12,unclear,unclear,unclear,no,yes,unclear
+2fb43a4c5cab8215d510fc585ca81fb5ee8a3abb,13,unclear,unclear,unclear,no,yes,unclear
+7610bcc3444c824a25f5c3779c097a9bdd4c185a,18,unclear,unclear,unclear,unclear,unclear,unclear
+4d548fd21aad60e3052455e22b7a57cc1f06e3c3,36,unclear,unclear,unclear,unclear,unclear,unclear
+54c15364b5873e39257c221112fdf22299ed9e8a,41,unclear,unclear,unclear,unclear,unclear,unclear
+ccc39584c2bbabc190aff1e7fce888590633850f,44,unclear,unclear,unclear,no,yes,unclear
+e1be974b7e1e7a381719d5c250ced83f3a6b96ee,45,unclear,unclear,unclear,no,yes,unclear
+09812e529903ff67c5fc5f1dcb2b3586eb3ffd23,50,unclear,unclear,unclear,no,yes,unclear
+f5014e34ed13191082cd20cc279ca4cc9adee84f,52,unclear,unclear,unclear,unclear,unclear,unclear
+fda5f4facce9d5567c090d7ac733158e0fe93dc7,55,yes,unclear,unclear,no,yes,unclear
+94b94c545cbb90e2d1ab316758a910c53ed95b66,69,unclear,unclear,unclear,no,yes,unclear
+16a8e329c06b4c6f61762da7fa77a84bf3e12dca,72,unclear,unclear,unclear,no,no,unclear
