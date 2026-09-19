@@ -1,0 +1,29 @@
+{
+  "run_at_utc": "2026-09-19T18:17:15+00:00",
+  "relationship": "papers citing either seed paper",
+  "seed_arxiv_ids": [
+    "1611.02770",
+    "1602.02697"
+  ],
+  "year_min_inclusive": 2018,
+  "year_max_inclusive": 2026,
+  "text_rule": "case-insensitive title-or-abstract contains 'transfer' and at least one of 'adversarial', 'black-box'/'black box', 'surrogate'",
+  "sort": "citationCount descending, then year descending, then title",
+  "limit": 80,
+  "fields": [
+    "paperId",
+    "title",
+    "abstract",
+    "year",
+    "venue",
+    "citationCount",
+    "externalIds",
+    "url",
+    "publicationDate",
+    "openAccessPdf",
+    "authors"
+  ],
+  "unique_citing_papers_retrieved": 5433,
+  "matching_papers_before_top_n": 1029,
+  "papers_selected": 80
+}
