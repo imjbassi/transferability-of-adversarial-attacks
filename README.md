@@ -16,6 +16,13 @@ The earlier code evaluated ImageNet classifiers against CIFAR-10 labels and call
 
 The code trains ten-class CIFAR-10 models, selects checkpoints on a held-out validation split, and places normalization inside each differentiable model. Attacks operate on raw pixels in `[0,1]`. FGSM, PGD, identity, and random-noise controls share the same evaluation pipeline. Each source attack is reused across every target. Outputs include checkpoint hashes, test indices, actual predictions, norm checks, denominators, and Wilson intervals. The revised manuscript reports the completed three-seed, full-test $L_\infty$ study; the [small real-data pilot](docs/PILOT.md) remains execution validation only.
 
+The repository also contains the preregistered 80-paper survey, its coding sheet,
+evidence locations, immediate 20% repeatability recode, analytic bounds, and
+recomputation records. Three releases (3.75%) met the artifact-sufficiency rule;
+all three were rerun, with per-example predictions and denominator-aware metrics
+archived under `survey/recomputation/`. The 20 aligned published-rate comparisons
+have descriptive deltas from -3.9 to +5.5 percentage points.
+
 ## Install
 
 Python 3.10–3.12 is required by this pinned environment. Python 3.11 is used in CI. On Windows, use `py -3.12 -m venv .venv` if the default Python is newer.
@@ -119,6 +126,6 @@ Software source code is released under the MIT License. The manuscript, document
 
 ## Citation
 
-Code, manuscript, and reproducibility snapshot are archived under concept DOI [10.5281/zenodo.22737839](https://doi.org/10.5281/zenodo.22737839), which resolves to the latest archived release; the results reported in the manuscript correspond to release `v1.1.0`. The per-example experiment records are deposited separately under concept DOI [10.5281/zenodo.22756878](https://doi.org/10.5281/zenodo.22756878). Machine-readable citation metadata is available in [CITATION.cff](CITATION.cff).
+Code, manuscript, and reproducibility snapshot are archived under concept DOI [10.5281/zenodo.22737839](https://doi.org/10.5281/zenodo.22737839), which resolves to the latest archived release; the results reported in the manuscript correspond to release `v1.2.0`. The per-example experiment records are deposited separately under concept DOI [10.5281/zenodo.22756878](https://doi.org/10.5281/zenodo.22756878). Machine-readable citation metadata is available in [CITATION.cff](CITATION.cff).
 
 Version DOIs are deliberately not cited: a snapshot cannot contain the DOI that archiving it mints, so the version is named in prose instead and the concept DOI is left to resolve.

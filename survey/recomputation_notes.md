@@ -1,22 +1,30 @@
 # Recomputation notes
 
-Five papers met the preregistered artifact-availability rule. Each repository was
-checked out at the immutable commit in `recomputation_ledger.csv`. The ledger
-distinguishes an artifact being available from a complete execution in the
-current environment.
+Three papers met the preregistered artifact-sufficiency rule after the linked
+releases were audited. Each repository was checked out at the immutable commit
+in `recomputation_ledger.csv`, and all three qualifying releases were rerun on
+the authors' 1,000-image evaluation set.
 
-One released pipeline was rerun end to end on its 1,000-image evaluation set.
-The original aggregate evaluator was extended to retain clean and attacked
-predictions for the source and every target. This permits direct calculation of
-PTR, CTR, \(a_{st}\), and \(b_{st}\). For the six Table 1 target models, the
-recomputed unconditional attacked-error rate differs from the published rate by
--2.0 to +0.7 percentage points. These differences are reported descriptively;
-they are not characterized as errors. Exact per-example outputs and all nine
-target summaries are in `recomputation/`.
+The SSA pipeline was run from its released PyTorch implementation. The two
+TensorFlow 1 pipelines were run through an equation-preserving PyTorch adapter
+using the authors' linked converted checkpoints and the same attack equations,
+budgets, iteration counts, and released evaluation images. The adapters and
+metric evaluator are archived in `recomputation/`.
 
-The other four releases require legacy TensorFlow/PyTorch environments, external
-model/data bundles, or fresh model-extraction training. Their checkouts and
-requirements were verified, but complete executions were not finished for this
-release. Accordingly, their metric and delta cells are blank rather than
-estimated. For those papers, the available reporting remains insufficient to
-reconstruct CTR directly.
+Each aggregate evaluator was extended to retain clean and attacked predictions
+for the source and every target. The 27 source--target summaries therefore
+contain PTR, CTR, \(a_{st}\), and \(b_{st}\), with an undefined value retained as
+blank rather than replaced by zero. Per-example prediction CSVs are archived for
+all three runs.
+
+Twenty entries have an aligned comparator in the cited result table. Their
+recomputed unconditional attacked-error rates differ from the published rates
+by -3.9 to +5.5 percentage points (median -0.65). These differences are
+descriptive portability results; they are not characterized as errors.
+
+`artifact_audit.csv` documents two releases that initially appeared plausible
+but were coded `unclear` under the preregistered rule after inspection. One did
+not supply the full checkpoint set used for the surveyed transfer experiment;
+the other did not establish a complete adversarial-transfer evaluation path or
+provide per-example transfer outcomes. Neither paper was removed from the
+corpus.

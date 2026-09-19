@@ -50,7 +50,7 @@ YES = {
         29, 30, 31, 35, 38, 39, 42, 43, 44, 45, 46, 47, 48, 49, 50,
         55, 57, 58, 59, 60, 61, 62, 67, 68, 69, 71, 74, 76, 78, 80,
     },
-    6: {4, 5, 23, 24, 27},
+    6: {4, 5, 23},
 }
 NO = {
     1: set(),
@@ -76,7 +76,32 @@ def paper_text(rank: int, paper_id: str) -> str:
     return matches[0].read_text(encoding="utf-8", errors="replace") if matches else ""
 
 
-def evidence(text: str, field: int, value: str) -> str:
+EVIDENCE_OVERRIDES = {
+    (2, 2): "Section 4.1: evaluation uses 1,000 images correctly classified by the tested networks",
+    (10, 1): "Table 1: Top-1 and Top-5 clean accuracy is listed separately for each evaluated model",
+    (10, 2): "Section 4.1: misclassified images are excluded and 327 images correctly classified by all models are retained",
+    (24, 1): "Table 3: clean accuracy is listed separately for each evaluated model",
+    (24, 2): "Section 4.1 and Equation 3: pairwise transfer uses inputs classified correctly by both models",
+    (24, 3): "Section 4.1 and Equation 3: the denominator is the pairwise clean-correct set and explicitly retains source-attack failures",
+    (31, 2): "Section 3: the evaluation assumes examples are correctly classified by both white-box and black-box models",
+    (31, 3): "Section 3: unconditional transfer is defined on examples that first fool the white-box model",
+    (37, 1): "Table 2: source and surrogate clean accuracies are reported separately",
+    (38, 1): "Table 1: the clean row reports accuracy separately by model",
+    (47, 2): "Section 4.1: the evaluation set is restricted to images correctly classified by all adopted models",
+    (55, 1): "Section 5 and model-accuracy tables: clean accuracy is reported separately for the evaluated models",
+    (57, 2): "Section 4.1: images are selected only when correctly classified by all adopted models",
+    (58, 2): "Section 4.1: 5,000 images correctly classified by all victim models are sampled",
+    (4, 6): "linked artifact SI-NI-FGSM README and model-download bundle: evaluation code and all required pretrained classifiers",
+    (5, 6): "linked artifact VT README and model-download bundle: evaluation code and all required pretrained classifiers",
+    (23, 6): "linked artifact SSA README, attack.py, and Google Drive model bundle: evaluation code and all required pretrained classifiers",
+    (24, 6): "linked artifact ViTRobust README and Section 4.1/Table 2: release supplies three checkpoints, not the full CIFAR-10/ImageNet model set used for surveyed transfer results; coded unclear",
+    (27, 6): "linked artifact datafree-model-extraction README and evaluation scripts: no per-example transfer outcomes or complete adversarial-transfer evaluation path established; coded unclear",
+}
+
+
+def evidence(rank: int, text: str, field: int, value: str) -> str:
+    if (rank, field) in EVIDENCE_OVERRIDES:
+        return EVIDENCE_OVERRIDES[(rank, field)]
     if value == "unclear":
         return "not located in full text or linked supplement; coded unclear under the silence rule"
     match = re.search(PATTERNS[field], text, re.I | re.S)
@@ -115,7 +140,7 @@ def main() -> None:
         for field, name in enumerate(FIELDS, 1):
             value = "yes" if rank in YES[field] else "no" if rank in NO[field] else "unclear"
             values[name] = value
-            ev.append(f"f{field}={evidence(text, field, value)}")
+            ev.append(f"f{field}={evidence(rank, text, field, value)}")
         coded.append(
             {
                 "paper_id": row["paper_id"],

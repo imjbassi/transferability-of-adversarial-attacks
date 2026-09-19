@@ -148,7 +148,7 @@ def _write_tree(
 ) -> None:
     excluded = exclude_suffixes or set()
     for path in sorted(source.rglob("*")):
-        if not path.is_file() or path.suffix in excluded:
+        if not path.is_file() or path.suffix in excluded or "__pycache__" in path.parts:
             continue
         target = f"{destination}/{path.relative_to(source).as_posix()}"
         if anonymize_json and path.suffix == ".json":
@@ -238,7 +238,7 @@ def _sha256(path: Path) -> str:
 def main() -> None:
     OUTPUT.mkdir(exist_ok=True)
     anonymous = OUTPUT / "tmlr-anonymous-supplement.zip"
-    public = OUTPUT / "adversarial-transfer-experiment-records-v1.1.0.zip"
+    public = OUTPUT / "adversarial-transfer-experiment-records-v1.2.0.zip"
     tmlr_source = OUTPUT / "tmlr-submission-source.zip"
     build_anonymous_supplement(anonymous)
     build_public_record(public)
