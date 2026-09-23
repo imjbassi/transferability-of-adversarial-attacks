@@ -4,7 +4,11 @@ Started 23 September 2026. This is a non-blind evidence audit, not the independe
 
 ## Current scope
 
-The ledger retains all 80 frozen paper IDs: one documented paper/supplement review is complete (rank 31), eleven have partial metric-specific checks, and 68 remain pending. No historical categorical judgment has been overwritten. Pending is a workflow state, not a new coding category. Complete means a documented non-blind review, not validated replication or independent agreement; unclear judgments may remain after review.
+The ledger retains all 80 frozen paper IDs: three documented reviews are complete (ranks 2, 3 and 31), nine have partial metric-specific checks, and 68 remain pending. No historical categorical judgment has been overwritten. Pending is a workflow state, not a new coding category. Complete means a documented non-blind review, not validated replication or independent agreement; unclear judgments may remain after review.
+
+[Rank 2's full review](reviews/02.json) separates the main seven-model clean-correct cohort, the C&W subset, ensemble/ablation experiments and the competition-defense experiment. Main-cohort filtering must not be silently extended to additional defenses. Its pinned demo code is a candidate artifact, not a verified transfer evaluator; attack-label and default-budget details are recorded for later reconciliation.
+
+[Rank 3's full review](reviews/03.json) includes the appendix and separately retrieved CVF supplement, retaining L2 Tables 9-12 and normal-target Tables 6-8. The overlapping appendix and supplement are counted once. Source checkpoint links respond to HEAD requests, but this does not verify checkpoint contents or a complete target evaluation path. Neither review adds a numerical bound or promotes artifact sufficiency to yes without verification.
 
 The dated [retrospective amendment](../coding_amendment_2026-09-23.md) now specifies scope inventory, mixed-metric aggregation, applicability and completion requirements. It was adopted after inspecting evidence and must not be described as preregistered. [Rank 31's review](reviews/31.json) records all six judgments, source hashes, supplementary clean-accuracy evidence, four distinct metrics and bounds/artifact checks. Its source-success field is explicitly mixed, not missing reporting. Its supplement Table 5 budget and exact count recovery remain unclear. The artifact search does not establish a sufficient original release.
 

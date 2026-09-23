@@ -18,22 +18,26 @@
       "rank": 2,
       "paper_id": "f78a911f516625d6b7b76a9a33c1eb14613341c4",
       "title": "Improving Transferability of Adversarial Examples With Input Diversity",
-      "evidence_audit": "partial",
-      "bounds_review": "reviewed_scope_clean_correct",
-      "artifact_review": "pending",
+      "evidence_audit": "complete",
+      "bounds_review": "reviewed_no_new_numeric_extraction",
+      "artifact_review": "reviewed_sufficiency_unclear",
       "notes": [
-        "Metric-scoped evidence in batch_02_05.md, rank 2; full paper/supplement audit remains incomplete."
+        "reviews/02.json completes the available-paper review, with four result groups and all six judgments; historical partial notes remain in batch_02_05.md.",
+        "Main seven-model clean filtering is explicit, but competition-defense scope remains unresolved; preserve the affirmative scope evidence.",
+        "Pinned demo code requires configuration and attack-label reconciliation before published-number comparison; no runtime executed."
       ]
     },
     {
       "rank": 3,
       "paper_id": "44d43bfbd23d55b1e7c4c4fd91fe101c0eaf1a06",
       "title": "Evading Defenses to Transferable Adversarial Examples by Translation-Invariant Attacks",
-      "evidence_audit": "partial",
-      "bounds_review": "pending_aligned_clean_accuracy",
-      "artifact_review": "pending",
+      "evidence_audit": "complete",
+      "bounds_review": "reviewed_aligned_clean_accuracy_unestablished",
+      "artifact_review": "reviewed_sufficiency_unclear",
       "notes": [
-        "Metric-scoped evidence in batch_02_05.md, rank 3; full paper/supplement audit remains incomplete."
+        "reviews/03.json records full main/appendix and CVF-supplement review, five result groups, six judgments and pinned artifact inspection.",
+        "L2 supplement experiments are retained; dataset size alone does not establish denominator conditioning or exact count recovery.",
+        "Four source-checkpoint links returned HTTP HEAD 200; target evaluation sufficiency and runtime execution remain unverified."
       ]
     },
     {

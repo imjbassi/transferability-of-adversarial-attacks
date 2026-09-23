@@ -83,6 +83,19 @@ class EvidenceRecordTests(unittest.TestCase):
     def test_complete_documented_review(self):
         self.assertEqual(validate_review(self.review, self.paper)["f3"]["reason"], "mixed_explicit")
 
+    def test_all_committed_review_records(self):
+        folder = Path(__file__).parent / "evidence_audit/reviews"
+        for path in folder.glob("*.json"):
+            with self.subTest(path=path.name):
+                review = json.loads(path.read_text(encoding="utf-8"))
+                validate_review(review, {"rank": int(path.stem), "paper_id": review["paper_id"]})
+
+    def test_positive_scope_survives_unresolved_aggregation(self):
+        review = json.loads((Path(__file__).parent / "evidence_audit/reviews/02.json").read_text(encoding="utf-8"))
+        result = validate_review(review, {"rank": 2, "paper_id": review["paper_id"]})
+        self.assertEqual(result["f2"]["value"], "unclear")
+        self.assertTrue(result["f2"]["any_explicit_yes"])
+
     def test_missing_field_rejected(self):
         del self.review["judgments"]["f6"]
         with self.assertRaises(ValueError):
