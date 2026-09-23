@@ -1,7 +1,7 @@
 {
-  "completed_at_utc": "2026-09-19T23:35:24+00:00",
+  "status": "invalidated",
+  "audit_date": "2026-09-22",
   "delay_days": 0,
-  "delay_waiver": "Explicit user instruction to ignore the earlier timed instruction.",
   "random_seed": 20260919,
   "sample_ranks": [
     3,
@@ -23,12 +23,15 @@
   ],
   "sample_size": 16,
   "kappa_by_field": {
-    "clean_accuracy_source_target_separate": 1.0,
-    "transfer_denominator_clean_correct": 1.0,
-    "conditions_on_source_attack_success": 1.0,
-    "reports_absolute_counts": 1.0,
-    "numeric_linf_or_l2_budget": 1.0,
-    "artifacts_sufficient_to_recompute": 1.0
+    "clean_accuracy_source_target_separate": null,
+    "transfer_denominator_clean_correct": null,
+    "conditions_on_source_attack_success": null,
+    "reports_absolute_counts": null,
+    "numeric_linf_or_l2_budget": null,
+    "artifacts_sufficient_to_recompute": null
   },
-  "kappa_overall": 1.0
+  "kappa_overall": null,
+  "reason": "Both passes in the v1.2.0 generator used the same YES/NO constants. The reported 1.00 was a deterministic self-comparison, not a blind recode. A waived time delay does not waive independent judgment.",
+  "historical_recode": "recode_16.csv is retained only as an invalid historical output; do not use it for reliability.",
+  "required_action": "Acquire a separately entered blind 16-paper recode with evidence and provenance. Undefined single-category kappa must remain null. A value below 0.7 triggers scheme tightening and full recoding."
 }

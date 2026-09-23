@@ -1,0 +1,758 @@
+{
+  "audit_started": "2026-09-23",
+  "status": "in_progress",
+  "policy": "Pending means not yet reviewed, not unclear/no. Corpus membership and historical coding are unchanged. Evidence checks are metric-specific until full paper/supplement review and aggregation rule resolution.",
+  "papers": [
+    {
+      "rank": 1,
+      "paper_id": "4637f79ddfaf923ce569996ffa5b6cda1996faa1",
+      "title": "Jailbreaking Black Box Large Language Models in Twenty Queries",
+      "evidence_audit": "partial",
+      "bounds_review": "classification_equation_not_applicable_to_reviewed_jailbreak_metric",
+      "artifact_review": "pending",
+      "notes": [
+        "Metric-scoped evidence in batch_01_06_10.md, rank 1; complete paper/supplement and artifact review pending."
+      ]
+    },
+    {
+      "rank": 2,
+      "paper_id": "f78a911f516625d6b7b76a9a33c1eb14613341c4",
+      "title": "Improving Transferability of Adversarial Examples With Input Diversity",
+      "evidence_audit": "partial",
+      "bounds_review": "reviewed_scope_clean_correct",
+      "artifact_review": "pending",
+      "notes": [
+        "Metric-scoped evidence in batch_02_05.md, rank 2; full paper/supplement audit remains incomplete."
+      ]
+    },
+    {
+      "rank": 3,
+      "paper_id": "44d43bfbd23d55b1e7c4c4fd91fe101c0eaf1a06",
+      "title": "Evading Defenses to Transferable Adversarial Examples by Translation-Invariant Attacks",
+      "evidence_audit": "partial",
+      "bounds_review": "pending_aligned_clean_accuracy",
+      "artifact_review": "pending",
+      "notes": [
+        "Metric-scoped evidence in batch_02_05.md, rank 3; full paper/supplement audit remains incomplete."
+      ]
+    },
+    {
+      "rank": 4,
+      "paper_id": "fb0568dcb546bbb4d7d1ed71ce395f4b66691003",
+      "title": "Nesterov Accelerated Gradient and Scale Invariance for Adversarial Attacks",
+      "evidence_audit": "partial",
+      "bounds_review": "pending_aligned_clean_accuracy",
+      "artifact_review": "pending",
+      "notes": [
+        "Metric-scoped evidence in batch_02_05.md, rank 4; full paper/supplement audit remains incomplete.",
+        "Paper setup says 16 iterations; released si_ni_fgsm.py and archived port use 10. Comparator configuration not established."
+      ]
+    },
+    {
+      "rank": 5,
+      "paper_id": "7301d58eb8a750e44b7da5ab0266b134d1651237",
+      "title": "Enhancing the Transferability of Adversarial Attacks through Variance Tuning",
+      "evidence_audit": "partial",
+      "bounds_review": "pending_aligned_clean_accuracy",
+      "artifact_review": "pending",
+      "notes": [
+        "Metric-scoped evidence in batch_02_05.md, rank 5; full paper/supplement audit remains incomplete."
+      ]
+    },
+    {
+      "rank": 6,
+      "paper_id": "4582e2350e4822834dcf266522690722dd4430d4",
+      "title": "PRADA: Protecting Against DNN Model Stealing Attacks",
+      "evidence_audit": "partial",
+      "bounds_review": "reviewed_clean_and_attacked_populations_differ",
+      "artifact_review": "pending",
+      "notes": [
+        "Metric-scoped evidence in batch_01_06_10.md, rank 6; complete paper/supplement and artifact review pending."
+      ]
+    },
+    {
+      "rank": 7,
+      "paper_id": "676e40050453ddeb1387f8314478c0ac3681a8c6",
+      "title": "Improving Adversarial Robustness via Promoting Ensemble Diversity",
+      "evidence_audit": "partial",
+      "bounds_review": "candidate_pending_population_alignment",
+      "artifact_review": "pending",
+      "notes": [
+        "Metric-scoped evidence in batch_01_06_10.md, rank 7; complete paper/supplement and artifact review pending."
+      ]
+    },
+    {
+      "rank": 8,
+      "paper_id": "17293cd36ee5e7ec37dcec1d5ab85f9b77ad65d5",
+      "title": "Do Adversarially Robust ImageNet Models Transfer Better?",
+      "evidence_audit": "partial",
+      "bounds_review": "not_applicable_to_reviewed_transfer_learning_metrics",
+      "artifact_review": "pending",
+      "notes": [
+        "Metric-scoped evidence in batch_01_06_10.md, rank 8; complete paper/supplement and artifact review pending."
+      ]
+    },
+    {
+      "rank": 9,
+      "paper_id": "8bac2716cd208cb8041650a001ab72ba81b559cd",
+      "title": "Why Do Adversarial Attacks Transfer? Explaining Transferability of Evasion and Poisoning Attacks",
+      "evidence_audit": "partial",
+      "bounds_review": "candidate_error_rates_only_not_loss_or_poisoning",
+      "artifact_review": "pending",
+      "notes": [
+        "Metric-scoped evidence in batch_01_06_10.md, rank 9; complete paper/supplement and artifact review pending."
+      ]
+    },
+    {
+      "rank": 10,
+      "paper_id": "821fd5bed14d6d06c25fbf44123fd7be382f7b4e",
+      "title": "Is Robustness the Cost of Accuracy? - A Comprehensive Study on the Robustness of 18 Deep Image Classification Models",
+      "evidence_audit": "partial",
+      "bounds_review": "pending_source_filtered_population_clean_error",
+      "artifact_review": "pending",
+      "notes": [
+        "Metric-scoped evidence in batch_01_06_10.md, rank 10; complete paper/supplement and artifact review pending."
+      ]
+    },
+    {
+      "rank": 11,
+      "paper_id": "48640ef269ffeb3e19c961de2eeca027a30841d8",
+      "title": "Adversarial Attack and Defense on Graph Data: A Survey",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 12,
+      "paper_id": "8ecdbfe011b7189fa0ee49ffc4e42a93d728a371",
+      "title": "On Evaluating Adversarial Robustness of Large Vision-Language Models",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 13,
+      "paper_id": "2fb43a4c5cab8215d510fc585ca81fb5ee8a3abb",
+      "title": "Skip Connections Matter: On the Transferability of Adversarial Examples Generated with ResNets",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 14,
+      "paper_id": "27d2f8a0601ce4bd73339ddffc83977e858c5503",
+      "title": "DPATCH: An Adversarial Patch Attack on Object Detectors",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 15,
+      "paper_id": "e3dacba4399fc66f31779060db730ea423f341d8",
+      "title": "AdvHat: Real-World Adversarial Attack on ArcFace Face ID System",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 16,
+      "paper_id": "b18580c6746a47603955074931d4687e268781ea",
+      "title": "Feature Importance-aware Transferable Adversarial Attacks",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 17,
+      "paper_id": "3636d3f0562f3ab5f5df68c1c9a23530c0fbce64",
+      "title": "Parametric Noise Injection: Trainable Randomness to Improve Deep Neural Network Robustness Against Adversarial Attack",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 18,
+      "paper_id": "7610bcc3444c824a25f5c3779c097a9bdd4c185a",
+      "title": "A Survey on Safety-Critical Driving Scenario Generation—A Methodological Perspective",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 19,
+      "paper_id": "edabab811aaf44b7b626efe5278a32bddd3bb77f",
+      "title": "Improving Black-box Adversarial Attacks with a Transfer-based Prior",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 20,
+      "paper_id": "90dcaf5b7ded95f61666711aa94a59eae77bc304",
+      "title": "Enhancing Adversarial Example Transferability With an Intermediate Level Attack",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 21,
+      "paper_id": "558f7fa8c8e909e7aa67b20d41ba5896b68dcf54",
+      "title": "Admix: Enhancing the Transferability of Adversarial Attacks",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 22,
+      "paper_id": "be4a4f7f65d397a4e07dc83b95da6b414e0634e2",
+      "title": "Adversarial Examples that Fool both Computer Vision and Time-Limited Humans",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 23,
+      "paper_id": "8680c075abfb7832ff1321b5f409f2a5e57570f2",
+      "title": "Frequency Domain Model Augmentation for Adversarial Attack",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 24,
+      "paper_id": "43e51c1bfd69df518e2907f7a955e485985ba423",
+      "title": "On the Robustness of Vision Transformers to Adversarial Examples",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 25,
+      "paper_id": "717425092f2e7a2a00c98e8e1778036e9b5a8b4e",
+      "title": "NATTACK: Learning the Distributions of Adversarial Examples for an Improved Black-Box Attack on Deep Neural Networks",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 26,
+      "paper_id": "7005fe514458b538b7516b41af5f5e1971154070",
+      "title": "Adversarial vulnerability for any classifier",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 27,
+      "paper_id": "287e82b08cc5b8c8aae03825b466fcb73860b0c4",
+      "title": "Data-Free Model Extraction",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 28,
+      "paper_id": "8bf18d546ae7aea144663136c5704049953ce4e2",
+      "title": "SparseFool: A Few Pixels Make a Big Difference",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 29,
+      "paper_id": "d5d7ce70a6618393176f254d5617b3bb070003cd",
+      "title": "Exploring Adversarial Examples in Malware Detection",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 30,
+      "paper_id": "9f4c17aebbb181756fab86ade02deadd90d5d4f9",
+      "title": "How Robust is Google's Bard to Adversarial Image Attacks?",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 31,
+      "paper_id": "14a865278845d5a51e3b181f322e993397650b48",
+      "title": "Feature Space Perturbations Yield More Transferable Adversarial Examples",
+      "evidence_audit": "partial",
+      "bounds_review": "partial",
+      "artifact_review": "pending",
+      "notes": [
+        "Section 3 (PDF pp. 2-3): D_orig requires both whitebox and blackbox correct; uTR denominator D_uTR contains only source-misclassified attacked examples.",
+        "Section 3 also reports error and targeted success on D_adv without source-success filtering. Paper-level aggregation of mixed metrics needs explicit treatment.",
+        "Section 5 (PDF p. 4) reports individual clean errors for five model/dataset cases. Supplement and complete numeric-budget/artifact audit pending.",
+        "Do not subtract full-test clean error from uTR: its evaluation population is jointly clean-correct and source-success conditioned."
+      ]
+    },
+    {
+      "rank": 32,
+      "paper_id": "b4196762025fb50eb3fdf521702d70f94e270b40",
+      "title": "Patch-wise Attack for Fooling Deep Neural Network",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 33,
+      "paper_id": "a5fd689c0890fa15fcdc3d97e805d38d342ed524",
+      "title": "Towards Transferable Adversarial Attack Against Deep Face Recognition",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 34,
+      "paper_id": "7cf2cfd10b4f9e99f22efdaa45c7d55ee59ffa79",
+      "title": "Adv-Makeup: A New Imperceptible and Transferable Attack on Face Recognition",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 35,
+      "paper_id": "6e85c80aae6457a76bb719c2d2d303abcc682a29",
+      "title": "Interpretable Deep Learning under Fire",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 36,
+      "paper_id": "4d548fd21aad60e3052455e22b7a57cc1f06e3c3",
+      "title": "CloudLeak: Large-Scale Deep Learning Models Stealing Through Adversarial Examples",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 37,
+      "paper_id": "5effd428e3012061ba3d8b32f1952c2938c7ab7b",
+      "title": "Deep Neural Network Fingerprinting by Conferrable Adversarial Examples",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 38,
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "title": "Boosting the Transferability of Adversarial Samples via Attention",
+      "evidence_audit": "partial",
+      "bounds_review": "table_1_case_checked",
+      "artifact_review": "pending",
+      "notes": [
+        "Section 5.1 (PDF pp. 5-6): common 1,000-image evaluation set and top-1 target accuracy metric; Table 1 reports clean row and per-source attacked accuracies.",
+        "All 120 attacked accuracy cells and five clean entries checked against cached table text; 24 diagonal cells excluded, leaving 96 off-diagonal rates.",
+        "Display-aware bounds use nearest-unit rounding intervals, treating clean 100% conservatively as [99.5%,100%]. This is an assumption, not a sampling confidence interval.",
+        "Table 2 defended-model rates require separate clean-accuracy alignment and are not included. Entire paper/supplement and artifact sufficiency remain pending."
+      ]
+    },
+    {
+      "rank": 39,
+      "paper_id": "bc1138738f24c4a23d865d7786fc4c8229e4662a",
+      "title": "Cross-Domain Transferability of Adversarial Perturbations",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 40,
+      "paper_id": "d8f64187b447d1b64f69f541dbbaec71bd79d205",
+      "title": "ActiveThief: Model Extraction Using Active Learning and Unannotated Public Data",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 41,
+      "paper_id": "54c15364b5873e39257c221112fdf22299ed9e8a",
+      "title": "Towards Large Yet Imperceptible Adversarial Image Perturbations With Perceptual Color Distance",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 42,
+      "paper_id": "29fbf409aaad5e3a0f3468c44637a140dc2c545b",
+      "title": "Stochastic Variance Reduced Ensemble Adversarial Attack for Boosting the Adversarial Transferability",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 43,
+      "paper_id": "6be44364db3a46ab5fcf8172910650b210cc5c39",
+      "title": "Black-box Adversarial Attacks on Video Recognition Models",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 44,
+      "paper_id": "ccc39584c2bbabc190aff1e7fce888590633850f",
+      "title": "On Success and Simplicity: A Second Look at Transferable Targeted Attacks",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 45,
+      "paper_id": "e1be974b7e1e7a381719d5c250ced83f3a6b96ee",
+      "title": "Disrupting Deepfakes: Adversarial Attacks Against Conditional Image Translation Networks and Facial Manipulation Systems",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 46,
+      "paper_id": "67e856f76905f2269089cede51c9a6a7c4fd2f8c",
+      "title": "Learning Transferable Adversarial Examples via Ghost Networks",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 47,
+      "paper_id": "3c2622daa8a658d5c85ea9869cb460a70b0f878d",
+      "title": "Towards Transferable Adversarial Attacks on Vision Transformers",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 48,
+      "paper_id": "ceea8f55954b87d57be4ca7247f66d21da234426",
+      "title": "Adversarial Attack Vulnerability of Medical Image Analysis Systems: Unexplored Factors",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 49,
+      "paper_id": "12ccfc188de0b40c84d6a427999239c6a379cd66",
+      "title": "Sparse Adversarial Perturbations for Videos",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 50,
+      "paper_id": "09812e529903ff67c5fc5f1dcb2b3586eb3ffd23",
+      "title": "Is LLM-as-a-Judge Robust? Investigating Universal Adversarial Attacks on Zero-shot LLM Assessment",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 51,
+      "paper_id": "d4473a41c9f7b4095599bec14ea0a88e7041e737",
+      "title": "Improving Adversarial Robustness of Ensembles with Diversity Training",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 52,
+      "paper_id": "f5014e34ed13191082cd20cc279ca4cc9adee84f",
+      "title": "Stealing Neural Networks via Timing Side Channels",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 53,
+      "paper_id": "dde69b706a2f0a68bd6b8fb90c187a935c6a5c6a",
+      "title": "Adversarial Attack and Defense on Point Sets",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 54,
+      "paper_id": "c97ffc7725daf68406ea73d1ee82f5d11f19f448",
+      "title": "ColorFool: Semantic Adversarial Colorization",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 55,
+      "paper_id": "fda5f4facce9d5567c090d7ac733158e0fe93dc7",
+      "title": "DEEPSEC: A Uniform Platform for Security Analysis of Deep Learning Model",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 56,
+      "paper_id": "428c2e5992d6ed3186c087cba0fdba2ab6a468b2",
+      "title": "Improving the Generalization of Adversarial Training with Domain Adaptation",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 57,
+      "paper_id": "c4e0c4a6e82ed58ca57ec36a8ec275db38473ba2",
+      "title": "Structure Invariant Transformation for better Adversarial Transferability",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 58,
+      "paper_id": "bcac1b00badd7c8830e10ba4eb813ad79a3222b5",
+      "title": "Backpropagating Linearly Improves Transferability of Adversarial Examples",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 59,
+      "paper_id": "d73561ab8318ce343f5cb15f96c74f210b6b24fa",
+      "title": "Imitation Attacks and Defenses for Black-box Machine Translation Systems",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 60,
+      "paper_id": "8e98bef0a7868f05ced457b9433d674ab4adf218",
+      "title": "Boosting Adversarial Transferability by Block Shuffle and Rotation",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 61,
+      "paper_id": "060c6c8312cd9277c97379e82db7c36b9321cce2",
+      "title": "Towards Transferable Targeted Attack",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 62,
+      "paper_id": "3f2095bbbf3e47fbac26da70e95a219c23e3bac9",
+      "title": "Black-Box Adversarial Attack with Transferable Model-based Embedding",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 63,
+      "paper_id": "1a6446a451472b1c5815ce3e00cf84eb7e641a2a",
+      "title": "Universal Adversarial Perturbations for Speech Recognition Systems",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 64,
+      "paper_id": "36ad06e6f9b39192e7668634eadd6fcf9593e922",
+      "title": "Efficient Adversarial Training With Transferable Adversarial Examples",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 65,
+      "paper_id": "765896e190d03a99f384bbedc412d2a52cf98cea",
+      "title": "Deceiving End-to-End Deep Learning Malware Detectors using Adversarial Examples",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 66,
+      "paper_id": "63dc08b8efd67cf788cd17301bdfaf74d9450d93",
+      "title": "Semantic Robustness of Models of Source Code",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 67,
+      "paper_id": "538f0c8379f9e091d4769ec3bdff6eb45130554f",
+      "title": "Boosting the Transferability of Adversarial Attacks with Reverse Adversarial Perturbation",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 68,
+      "paper_id": "0ab0b3cf5811a219339ad3715ce719f550122a62",
+      "title": "Universal Adversarial Attack on Attention and the Resulting Dataset DAmageNet",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 69,
+      "paper_id": "94b94c545cbb90e2d1ab316758a910c53ed95b66",
+      "title": "Rethinking Model Ensemble in Transfer-based Adversarial Attacks",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 70,
+      "paper_id": "9e5dd10d0706cec7d16e03f45f8a347c194d5888",
+      "title": "Improving the Transferability of Adversarial Samples with Adversarial Transformations",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 71,
+      "paper_id": "c6a3aff5cb098a402f5384ed46b333dad672044a",
+      "title": "Curls & Whey: Boosting Black-Box Adversarial Attacks",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 72,
+      "paper_id": "16a8e329c06b4c6f61762da7fa77a84bf3e12dca",
+      "title": "Model Extraction and Adversarial Transferability, Your BERT is Vulnerable!",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 73,
+      "paper_id": "f90e535758ba262ebbdd1e7966f6645eff535604",
+      "title": "T-SEA: Transfer-Based Self-Ensemble Attack on Object Detection",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 74,
+      "paper_id": "84421139efaae7862116f39d4df1cd5ea27103fc",
+      "title": "Adversarial Threats to DeepFake Detection: A Practical Perspective",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 75,
+      "paper_id": "7f1e602a44b56b9853fcc2063df9593e7b79ba22",
+      "title": "Adversarial Examples in Modern Machine Learning: A Review",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 76,
+      "paper_id": "11f767a0ad2b7b005fbdaea4a6139a7db9a7c93d",
+      "title": "Understanding and Enhancing the Transferability of Adversarial Examples",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 77,
+      "paper_id": "75bd07e920f631102723cca4fee996829cb41c0e",
+      "title": "Universal Adversarial Examples in Remote Sensing: Methodology and Benchmark",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 78,
+      "paper_id": "47b4744162537f40572cdd723f8f37fb489a3e75",
+      "title": "A Unified Approach to Interpreting and Boosting Adversarial Transferability",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 79,
+      "paper_id": "d90038afede2d2ea0c5b3de7a9c96485234bc29e",
+      "title": "ML-LOO: Detecting Adversarial Examples with Feature Attribution",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    },
+    {
+      "rank": 80,
+      "paper_id": "07322a941dc6ebe16ac2a31fddd356bd726fe8dd",
+      "title": "Boosting Adversarial Transferability through Enhanced Momentum",
+      "evidence_audit": "pending",
+      "bounds_review": "pending",
+      "artifact_review": "pending",
+      "notes": []
+    }
+  ]
+}

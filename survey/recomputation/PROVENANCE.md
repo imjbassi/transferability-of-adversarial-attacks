@@ -1,0 +1,55 @@
+# Scope and label conventions
+
+## Configuration reconciliation, 2026-09-23
+
+SI-NI Section 4.1 states 16 iterations and step size 1.6, while released
+si_ni_fgsm.py at commit 4464fcd55b5f0a109f7c0190819856d449cc01b5 defaults
+to 10 iterations and computes alpha = epsilon / iterations. The archived port
+used 10, matching the code default. Which configuration generated the Table 4
+comparators has not been established. Do not describe those deltas as a matched
+paper-configuration replication. Both code and port attack a predicted label;
+ground-truth labels are used separately for evaluation correctness.
+
+Future calls to modern_legacy_attack.py require --steps explicitly. Choose a
+new or empty output directory; the adapter rejects nonempty destinations to
+preserve archived runs. For example, --steps 10 describes the historical code
+default, while --steps 16 with this port's epsilon/steps rule uses a 1-pixel
+step and does not silently reproduce the paper's stated 1.6-pixel step. A
+16-iteration run alone therefore does not resolve the configuration discrepancy.
+No new GPU runs or original-runtime parity tests were performed in this batch.
+
+These archives support three selected ImageNet attack configurations, each with
+one source and nine targets. They do not constitute full replication of every
+experiment in the three papers. The SI-NI-FGSM and VMI-FGSM runs use PyTorch
+ports of TensorFlow 1 update loops; numerical equivalence of the ports has not
+been established against the original runtimes. The common images and converted
+target weights were obtained through the SSA checkout. An identical model family
+name is not proof that the original studies used identical checkpoint bytes.
+
+The raw CSV files are preserved with their original prediction indices:
+
+| Run | Source | CSV label/source indexing | Target indexing |
+| --- | --- | --- | --- |
+| si_ni | converted TF Inception-v3 | 1-based (background at 0) | 1-based |
+| vmi | converted TF Inception-v3 | 1-based (background at 0) | 1-based |
+| ssa | pretrainedmodels Inception-v3, 1000 outputs | 0-based | converted TF, 1-based |
+
+For SSA compare target predictions to `label + 1`. Its TF Inception-v3 target is
+a different checkpoint/implementation from the source, so it is not a white-box
+diagonal despite sharing an architecture name. For the other two runs the
+Inception-v3 target is the source and is a white-box control. This distinction
+must be preserved in any pooled summary.
+
+`python survey/recomputation/verify_predictions.py` reconstructs every published
+JSON count and conditioning rate from the CSVs without a GPU. Empty conditioning
+populations produce `null`. This arithmetic check cannot certify the attack
+implementation, input-image hashes, perturbation budgets after image encoding,
+or equivalence to a paper's original evaluation population. Those require a
+complete run manifest and original-runtime comparison before replication claims.
+
+The archived adapters accept `--ssa-root PATH`, where PATH is a checkout of
+https://github.com/yuyang-long/SSA at c955cf07c8372bfc4e9f17e647042e027f9f3b1d
+with its `dataset/images.csv`, `dataset/images/`, `models/`, `loader.py`,
+`Normalize.py`, and `torch_nets/` dependencies populated. Third-party checkpoint
+loaders deserialize pickle-backed weights; use only independently verified files.
+The archived CSV-to-metric verification requires none of those dependencies.

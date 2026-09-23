@@ -1,5 +1,5 @@
 \documentclass[10pt]{article}
-\usepackage{tmlr}
+\usepackage[preprint]{tmlr}
 \usepackage{amsmath,amssymb,booktabs,graphicx}
 \usepackage[hidelinks]{hyperref}
 \usepackage{url}
@@ -8,43 +8,34 @@
 \author{\name Anonymous Authors}
 \def\month{09}
 \def\year{2026}
-\def\openreview{\url{https://openreview.net/forum?id=XXXX}}
+\def\openreview{}
+\setcounter{topnumber}{5}
+\setcounter{bottomnumber}{5}
+\setcounter{totalnumber}{10}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.95}
+\renewcommand{\textfraction}{0.05}
 \begin{document}
 \maketitle
+\begin{center}\small Working revision, 23 September 2026. Survey validation incomplete.\end{center}
 \begin{abstract}
-In a preregistered corpus of 80 highly cited papers, only 7 (8.75\%) explicitly restrict the transfer denominator to inputs clean-correct for the evaluated models, while 73 are unclear under a rule that treats silence as uncertainty rather than absence. Three papers (3.75\%) release code plus checkpoints or model artifacts sufficient to attempt recomputation; none releases directly reusable per-example outcomes. We connect these practices to the exact identity $\operatorname{PTR}_{st}=a_{st}\operatorname{CTR}_{st}+(1-a_{st})b_{st}$ and to the bound that unconditional attacked error minus target clean error lower-bounds newly induced error. Ninety-six rates in one qualifying paper yield bounds from 1.2 to 77.9 percentage points (median 34.5). A compact CIFAR-10 demonstration records every term of the identity. The finding concerns reporting sufficient to reconstruct CTR, never whether an individual paper is ``wrong.''
+A provisional coding sheet for a preregistered, citation-ranked corpus of 80 papers marks 7 (8.75\%) as explicitly excluding clean target errors from the transfer denominator. This percentage is not yet a validated survey finding: a reliability audit invalidated the original repeatability calculation, and all judgments require evidence verification. We develop a reporting framework using the law-of-total-probability identity $\operatorname{PTR}_{st}=a_{st}\operatorname{CTR}_{st}+(1-a_{st})b_{st}$. Selected ImageNet reruns provide 27 internally verified summaries, but do not establish full replication of the corresponding papers. A single-paper extraction supplies 96 nominal lower bounds on newly induced error. A CIFAR-10 demonstration measures the identity's terms with exact counts. This working revision separates supported arithmetic from pending survey validation; it makes no claim about the prevalence of deficient evaluation in the literature.
 \end{abstract}
 
 \section{Introduction}
-Only 7 of 80 papers (8.75\%) in our preregistered corpus explicitly state that the transfer denominator excludes clean target errors. That percentage motivates the narrower question: what can a reader reconstruct from a reported transfer rate? Pairwise transfer rate and transfer conditional on source success are linked by the exact identity $\operatorname{PTR}_{st}=a_{st}\operatorname{CTR}_{st}+(1-a_{st})b_{st}$. Most judgments are \emph{unclear}, not negative; the result concerns reporting sufficient to reconstruct CTR.
+The provisional coding sheet marks 7 of 80 papers (8.75\%) as explicitly restricting the transfer denominator to clean-correct inputs. The other 73 are coded unclear, not no. These numbers describe an unvalidated sheet, not an established prevalence estimate. The central question remains useful independently of that percentage: what information is needed to reconstruct transfer conditional on source attack success?
 
-The practical obstacle is that the identity cannot be evaluated from conventionally reported quantities. Source ASR is not $a_{st}$: its denominator counts every source-correct input, including those on which the target is already wrong, so it is target-independent where $a_{st}$ is pair-dependent. Neither ASR nor PTR records $b_{st}$ at all, because both are silent about what the target does when the source attack fails. Recovering CTR therefore requires reporting the pairwise eligible set, pairwise source success, and the failed-source residual explicitly, which is what the measurements here supply, with numerator and denominator counts for every rate.
+Unconditional attacked error includes pre-existing target errors. Even after excluding those errors, pairwise transfer rate (PTR) and conditional transfer rate (CTR) concern different populations. Source ASR cannot generally connect them because its denominator is source-correct rather than jointly source-and-target-correct. We make these populations explicit and retain numerator and denominator counts.
 
-Applying this protocol also sharpens the directional picture. At $8/255$, mean PGD PTR spans 18.09\% for ResNet-18-to-VGG16 to 95.23\% for VGG16-to-MobileNetV2 over three independently trained checkpoints per architecture, and the ordering holds in every seed. Because VGG16 required a different initial learning rate to train at all, we ran a matched-learning-rate control that retrains the other two architectures at that rate; the largest asymmetries persist, so the effect is not an artifact of the training recipe alone. The measurement protocol itself was prompted by an error in our own earlier implementation, which compared CIFAR-10 labels against 1,000-class ImageNet indices and counted pre-existing clean errors as attack successes; the audit is summarized in Section~\ref{sec:background} and detailed in the supplementary artifact.
+Our contribution is a reporting framework and an empirical illustration of its consequences, not a new probability identity, attack, or discovery of transfer asymmetry. The identity follows directly from the law of total probability. Table~\ref{tab:conditioning} demonstrates a nonzero failed-source residual on CIFAR-10. The literature survey and its recomputability estimate remain provisional until a complete evidence audit and a separate blind recode are available.
 
-The contributions are:
-\begin{enumerate}
-\item the exact decomposition $\operatorname{PTR}_{st}=a_{st}\operatorname{CTR}_{st}+(1-a_{st})b_{st}$, together with the resulting test---evaluated on the failed-source stratum---for when a reported CTR rescales PTR and when it reflects a separate target-side effect;
-\item a full-test, three-seed measurement of every term in that identity, with jointly clean populations, exact counts, one direction ($b_{st}=2.83\%$) in which the residual is not negligible, and PGD PTR spanning 18.09--95.23\% at $8/255$; and
-\item convergence and matched-learning-rate controls that preserve the main directional result while exposing its dependence on optimization.
-\end{enumerate}
-We claim none of the following: a new attack, evidence that denominator errors occur at any particular rate in the literature, or the discovery of transfer asymmetry, which is established \citep{demontis,dong}. The contribution is the decomposition and a measurement complete enough to evaluate it.
-
-\subsection{Background and scope}
+\subsection{Related work and scope}
 \label{sec:background}
-Adversarial examples expose a gap between ordinary predictive accuracy and behavior under deliberately chosen perturbations. Transfer attacks use a source model to construct an input that is subsequently evaluated on another model, with the target supplying neither gradients nor feedback during construction. Transferability is therefore a property of a source, a target, an attack, and an evaluation population, and it cannot be inferred from a high target error rate alone: if the target already misclassifies an input, an unchanged input can appear to be a successful attack under an unconditional metric, and a mismatch between label spaces makes this worse.
+Papernot et al.\ and Liu et al.\ established practical transfer-based black-box evaluations \citep{papernot,liu}. Directionality and optimization-dependent transfer are established phenomena \citep{demontis,dong}. Conditioning on both clean correctness and successful source attacks is not new: Inkawhich et al.\ explicitly use these conditions for their untargeted transfer evaluation \citep{inkawhich2019}. Our question concerns reporting sufficient to reconstruct CTR, never whether a named paper is wrong.
 
-\citet{goodfellow} connect adversarial vulnerability to high-dimensional linear behavior and introduce FGSM. \citet{madry} formulate robustness using optimization over a perturbation set. \citet{carlini} develop optimization-based attacks and demonstrate the importance of careful evaluation. \citet{papernot} demonstrate practical transfer-based black-box attacks using substitute models. \citet{liu} study non-targeted and targeted transfer across large models, while \citet{tramerspace} characterize shared adversarial subspaces and limits of transfer.
+This framework complements general robustness-evaluation guidance \citep{carlini2019,tramer2020}, AutoAttack \citep{croce2020}, and RobustBench \citep{robustbench}; none of those benchmarks is claimed to have been run here. The mathematical setup concerns untargeted attacks against classifiers with compatible labels. Tangential corpus matches, including other tasks and surveys, need an explicit applicability ledger before substantive interpretation.
 
-Directionality and the tension between white-box optimization and transfer are established phenomena: \citet{demontis} explain asymmetric transfer through target vulnerability and surrogate complexity, while \citet{dong} use momentum to improve black-box transfer. We take this directional behavior as established and ask instead which population a reported transfer rate is conditioned on, and how far that choice moves the rate.
-
-\citet{carlini2019} systematize the methodological foundations and common pitfalls of adversarial-robustness evaluation. \citet{croce2020} introduce AutoAttack, an ensemble intended to reduce dependence on attack tuning and improve evaluation reliability. \citet{tramer2020} emphasize defense-specific adaptive evaluation and illustrate how apparently adequate evaluations can miss weaknesses. RobustBench standardizes robustness benchmarking under specified tasks and threat models and uses AutoAttack as part of its evaluation framework \citep{robustbench}.
-
-Our study complements these evaluation efforts by examining source-to-target transfer and the populations on which transfer rates are conditioned. It does not introduce a stronger attack, certify robustness, or replace adaptive defense evaluation. The FGSM/PGD study does not constitute an AutoAttack evaluation; citing AutoAttack and RobustBench must not be interpreted as having run either benchmark. Attack-strength sensitivity and the source white-box controls are necessary for interpreting the transfer measurements.
-
-The present protocol concerns untargeted digital attacks against deterministic image classifiers. It does not evaluate physical attacks, detection systems, adversarially trained defenses, or deployment security. CIFAR-10 results would not by themselves justify claims about autonomous vehicles or face recognition. The selected architectures are established CNN baselines, not a comprehensive representation of contemporary vision systems.
-
-The requirements that the protocol below enforces---compatible labels, raw-pixel budgets, clean eligibility, and recorded source success---were fixed after an audit of our own earlier implementation, which violated each of them and whose rates and rankings are excluded from the empirical record here. That audit is a motivation for the estimands, not part of the evidence; the line-by-line version is retained in the anonymized supplementary artifact.
+An audit of our own earlier repository implementation motivated the protocol. That implementation's label-space mismatch and treatment of pre-existing errors are not evidence about other papers, and its numerical results are excluded from this study.
 
 \section{Why error is not attack success}
 Let $f_t$ be the target predictor, $y$ the true label, and $A_s(x)$ an attack constructed using source $s$. Define clean error $e_t=\Pr[f_t(x)\ne y]$, newly induced error $q=\Pr[f_t(A_s(x))\ne y\mid f_t(x)=y]$, and persistence of existing error $r=\Pr[f_t(A_s(x))\ne y\mid f_t(x)\ne y]$. By partitioning on clean correctness,
@@ -70,21 +61,116 @@ Consequently, $\operatorname{CTR}_{st}=\operatorname{PTR}_{st}/a_{st}$ only when
 
 The artifact tables carry numerator and denominator counts for every reported fraction. An empty denominator is undefined, not zero. Clean accuracy and attacked accuracy on the full evaluation set are also reported. Main cross-seed results use means and seed ranges; per-run artifact tables retain Wilson 95\% intervals under a binomial sampling interpretation for fixed checkpoints. Those intervals are descriptive for the finite CIFAR-10 test set and do not measure variability across training runs. Pairwise eligibility sets differ, so raw rates across model pairs are not strictly matched-population comparisons.
 
-\section{Survey methodology and coding scheme}
-The corpus was frozen before coding at repository tag \texttt{survey-preregistration}. We queried Semantic Scholar for papers citing Liu et al. (arXiv:1611.02770) or Papernot et al. (arXiv:1602.02697), retained years 2018--2026 whose title or abstract contained ``transfer'' plus ``adversarial,'' ``black-box,'' or ``surrogate,'' sorted by citation count, and kept the first 80. The query, UTC run time, raw response, and ranked list are archived.
+\paragraph{Boundary cases.}
+The preceding rescaling statement assumes $0<a_{st}<1$. If $a_{st}=1$, $b_{st}$ is undefined but PTR equals CTR. If $a_{st}=0$, CTR is undefined. An empty eligible set leaves all pairwise rates undefined.
+Likewise, $q$ is undefined when $e_t=1$ and $r$ when $e_t=0$; in these cases the clean-error decomposition is interpreted using joint probability masses, not numerical multiplication of an undefined conditional rate by zero.
 
-Each paper and supplement was coded yes/no/unclear for separate source/target clean accuracy; clean-correct transfer eligibility; source-success conditioning; absolute counts; a numerical $L_\infty$ or $L_2$ budget; and sufficient artifacts (code plus checkpoints, or per-example outputs). Silence is unclear, and ``evaluated on correctly classified images'' is yes. The planned delay was waived by explicit instruction after preregistration, so the seeded 16-paper second pass is an immediate repeatability check: all field-level and pooled Cohen's $\kappa$ values are 1.00, interpreted with the zero-day interval and common coder.
+\section{Survey methodology and coding scheme}
+The corpus and six-field scheme were frozen at tag \texttt{survey-preregistration} before the recorded coding stage. Semantic Scholar was queried on 19 September 2026 for papers citing Liu et al.\ (arXiv:1611.02770) or Papernot et al.\ (arXiv:1602.02697). The filter retains metadata years 2018--2026 and titles or abstracts containing \emph{transfer} plus \emph{adversarial}, \emph{black-box}, or \emph{surrogate}. Eligible papers are ranked by citation count and the first 80 retained. The query, timestamp, raw paginated responses, and ranked list are preserved. Coverage of 2026 ends at retrieval; metadata years may differ from conference years. Citation ranking is purposive sampling, not a random sample of the literature.
+
+The six yes/no/unclear fields concern separate source/target clean accuracy, clean-target-correct eligibility, source-success conditioning, absolute counts, a numerical $L_\infty$ or $L_2$ budget, and sufficient recomputation artifacts. Silence is unclear. Under the frozen rule, \emph{evaluated on correctly classified images} counts as yes for clean eligibility, although model-specific ambiguity must still be described. The frozen scheme is retained rather than retrospectively altered.
+
+\paragraph{Reliability correction.}
+The historical first and second sheets were generated using the same hard-coded judgment sets. Their agreement is a self-comparison, not a blind repeatability assessment. The previously reported $\kappa=1.00$ is withdrawn; no valid $\kappa$ is currently available. Waiving the planned seven-day delay does not waive blinding. A separate blind recode of the fixed 16-paper sample, followed by comparison against a frozen, evidence-audited first pass, remains necessary. If a defined per-field $\kappa$ is below 0.7, the scheme must be tightened and all 80 papers recoded; degenerate $\kappa$ is undefined, not perfect agreement.
 
 \section{Survey results}
-Separate clean source/target accuracy was explicit in 5/80 papers (6.25\%); clean-correct transfer eligibility in 7/80 (8.75\%); source-success conditioning in 1/80 (1.25\%); and absolute counts in 0/80, with 57 percentage-only evaluations coded no and 23 unclear. A numerical norm budget was explicit in 46/80 (57.5\%). Three papers (3.75\%) met the artifact rule. These rates describe the preregistered corpus, including tangential mechanical-filter matches retained to avoid post hoc exclusion. An artifact audit records two initially plausible releases as unclear because the available checkpoints or evaluation path were insufficient to reconstruct the surveyed transfer results.
+Table~\ref{tab:survey} preserves the historical sheet's descriptive counts for auditability. Evidence snippets generated by keyword search sometimes cite titles or general discussion rather than the relevant evaluation protocol. Consequently, all 480 judgments need verification against the paper and supplement, with field-specific page, section or table evidence. In particular, a failure to find a statement cannot support no.
+
+\begin{table}[t]
+\centering
+\caption{Provisional, unvalidated coding counts ($N=80$). These are not confirmed prevalence estimates.}
+\label{tab:survey}
+\begin{tabular}{lrrr}
+\toprule
+Field & Yes & No & Unclear\\
+\midrule
+Separate clean accuracy & 5 & 0 & 75\\
+Clean-correct eligibility & 7 & 0 & 73\\
+Source-success conditioning & 1 & 1 & 78\\
+Absolute counts & 0 & 57 & 23\\
+Numerical norm budget & 46 & 9 & 25\\
+Recomputation artifacts & 3 & 0 & 77\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The artifact audit examined five candidate repositories, not all 80 papers exhaustively. Thus 3/80 is a provisional positive-code fraction, not a validated recomputability rate; the remaining 77 are not demonstrated unavailable. No corpus-wide rate of reusable per-example outputs is established. A completed audit must report recomputability as a result regardless of its value. If most papers condition correctly, that is the result to publish. The frozen corpus must not be changed to obtain a stronger conclusion.
 
 \section{Recomputation and analytic bounds}
-The three qualifying releases were checked out at recorded commits and rerun on their released 1,000-image evaluation set. None supplies per-example clean/source/target predictions directly; we therefore adapted their aggregate evaluators, using an equation-preserving PyTorch adapter with the authors' linked converted checkpoints for the two TensorFlow~1 releases. Artifact availability (3.75\%) and immediately reusable per-example availability (0/80) are therefore distinct findings. For aligned target clean error $e_t$ and unconditional attacked error $u_t$, $\max(0,u_t-e_t)$ lower-bounds the all-input fraction of newly induced errors. One paper supplied aligned values at the required granularity: 96 off-diagonal rates yield bounds from 1.2 to 77.9 points, median 34.5, mean 35.33, and interquartile range 23.55--45.35.
+\subsection{Selected artifact reruns}
+Three selected ImageNet configurations yielded 27 source--target summaries, each from 1,000 images. These runs do not cover every experiment in the three papers. Two use PyTorch ports of TensorFlow~1 implementations; original-runtime numerical equivalence has not been established. Common evaluation images and converted target weights came through the SSA checkout. Shared architecture names do not establish identical checkpoint bytes or evaluation populations.
 
-All three qualifying releases were recomputed, yielding 27 source--target summaries and per-example prediction files. Across the 20 entries with aligned published comparators, unconditional attacked-error deltas ranged from $-3.9$ to $+5.5$ points (median $-0.65$); PTR ranged from 14.64\% to 100\%, CTR from 14.68\% to 100\%, and $a_{st}$ from 99.66\% to 100\%. The failed-source stratum was empty in 18 directions; in the nine directions where $b_{st}$ was defined it was 0. These are descriptive portability results, not claims of error.
+For SSA, source labels are zero-based while converted target predictions are one-based, so target correctness compares predictions to label plus one. The SSA Inception-v3 target differs from the source implementation and is not a white-box diagonal. The other two runs use one-based labels for both. A dependency-free verifier reconstructs all 27 archived count/rate summaries from their per-example predictions using these conventions.
+
+Across these selected summaries PTR ranges from 14.64\% to 100\%, CTR from 14.68\% to 100\%, and $a_{st}$ from 99.66\% to 100\%. The failed-source stratum is empty in 18 summaries, leaving $b_{st}$ undefined; in the remaining nine it is zero. Twenty entries have nominal published comparators, with unconditional-rate differences of $-3.9$ to $+5.5$ percentage points (median $-0.65$). Without matched checkpoints, data, preprocessing, and original-runtime validation, those differences are not evidence of replication fidelity or a conditioning effect. Arithmetic verification alone does not validate perturbation budgets or attack implementations.
+
+\subsection{Bounds without per-example predictions}
+Write $u_t$ for unconditional attacked error and $e_t$ for target clean error on the same population. Equation~1 gives the sharp bounds
+\begin{equation}
+\max(0,u_t-e_t)\leq (1-e_t)q\leq\min(u_t,1-e_t).
+\end{equation}
+The quantity $e_t$ bounds the absolute probability mass attributable to persistent clean error, not its fraction of $u_t$. For $u_t>0$, that fraction is at most $\min(1,e_t/u_t)$. For $e_t<1$, dividing the lower bound by $1-e_t$ bounds target-clean-conditional newly induced error, not CTR. Recovering CTR additionally requires source-side information.
+
+The current extraction covers 96 off-diagonal rates from Table~1 of Wu et al.\ \citep{wu2020}, not 96 papers or a corpus-wide distribution. Nominal lower bounds range from 1.2 to 77.9 percentage points (median 34.5). A separate conservative calculation assumes rounding to the nearest displayed unit, including an interval of $[99.5,100]$ for the clean entry printed as $100\%$. Its lower bounds range from 0.95 to 77.35 percentage points, with median 34.175 and mean 35.143. These intervals reflect assumed reporting precision, not sampling uncertainty. The rates are correlated within-paper measurements. An independent second extraction and an eligibility/population-alignment ledger for every paper remain necessary before presenting a corpus result. The current extraction is a worked case only.
 
 \section{CIFAR-10 demonstration}
-\subsection{Experimental protocol}
+We use three independently trained checkpoints each of ResNet-18 (R), VGG16 (V), and MobileNetV2 (M), all with ten outputs and compatible class order. Checkpoint selection uses a fixed 45,000/5,000 training/validation split; evaluation uses all 10,000 test images. Mean clean accuracy is 95.11\%, 90.63\%, and 90.31\%, respectively. Normalization occurs inside the model, leaving budgets in raw-pixel coordinates. Full training, FGSM, matched-learning-rate, and convergence details appear in Appendix~\ref{app:cifar}.
+
+The demonstration uses source-selected PGD with 40 steps, five restarts, and step size one quarter of the $L_\infty$ radius. The same attacked inputs are evaluated on every target; target predictions never select an iterate. Per-example predictions and counts support each reported denominator.
+
+At $2/255$, Table~\ref{tab:conditioning} separates jointly clean-correct eligibility from source success. Five directions have mean $b_{st}\leq0.68\%$. VGG16-to-MobileNetV2 has mean $b_{st}=2.83\%$ and observed mean CTR 1.19 percentage points below mean PTR divided by mean $a_{st}$. These averages are descriptive: the identity is evaluated per seed, not by multiplying independently averaged terms. Conventional source ASR and PTR alone cannot reconstruct CTR. The experiment illustrates the distinction, not its frequency in other architectures or datasets.
+
+\setcounter{table}{5}
+\begin{table}[t]
+\centering
+\caption{$2/255$ PGD conditioning decomposition. Count tuples list seeds 0/1/2; rates are mean [range] percentages.}
+\label{tab:conditioning}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lrr}
+\toprule
+Direction & Pairwise eligible $|E|$ & Source success $|F|$\\
+\midrule
+R$\rightarrow$V & 8905/8874/8923 & 8381/8318/8424\\
+R$\rightarrow$M & 8831/8894/8873 & 8307/8339/8374\\
+V$\rightarrow$R & 8905/8874/8923 & 6457/6257/6303\\
+V$\rightarrow$M & 8583/8589/8620 & 6139/5976/6003\\
+M$\rightarrow$R & 8831/8894/8873 & 8822/8879/8857\\
+M$\rightarrow$V & 8583/8589/8620 & 8574/8574/8604\\
+\bottomrule
+\end{tabular}
+}
+\vspace{3pt}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lrrrr}
+\toprule
+Direction & Pair ASR & Fail-target & PTR & CTR\\
+\midrule
+R$\rightarrow$V & 94.09 [93.73,94.41] & 0.00 [0.00,0.00] & 5.84 & 6.21\\
+R$\rightarrow$M & 94.07 [93.76,94.38] & 0.25 [0.19,0.36] & 21.61 & 22.96\\
+V$\rightarrow$R & 71.22 [70.51,72.51] & 0.68 [0.42,0.96] & 15.45 & 21.42\\
+V$\rightarrow$M & 70.25 [69.58,71.53] & 2.83 [2.71,2.99] & 23.29 & 31.97\\
+M$\rightarrow$R & 99.85 [99.82,99.90] & 0.00 [0.00,0.00] & 10.79 & 10.81\\
+M$\rightarrow$V & 99.84 [99.81,99.90] & 0.00 [0.00,0.00] & 4.61 & 4.62\\
+\bottomrule
+\end{tabular}
+}
+\end{table}
+
+\section{Limitations}
+The survey is not publication-ready: its evidence audit and blind reliability check remain incomplete. Citation-ranked selection, partial-year coverage, and task heterogeneity limit generalization. The bounds extraction covers one paper, and the selected artifact reruns lack validated original-runtime equivalence. These limitations cannot be repaired by wording alone.
+
+Code, manuscript, and reproducibility snapshot are archived under concept DOI \href{https://doi.org/10.5281/zenodo.22737839}{10.5281/zenodo.22737839}; the historical results were released as v1.2.0. This working revision corrects its unsupported survey and reliability claims and is not a new validated release. The per-example experiment records are deposited separately under concept DOI \href{https://doi.org/10.5281/zenodo.22756878}{10.5281/zenodo.22756878}. The final record contains nine checkpoints, full-test predictions, exact eligibility counts, perturbation norms, manifests, and checkpoint and source hashes. The three seed triads provide evidence about variability under the specified training procedure, but three draws support descriptive ranges rather than precise population-level inference. Per-run Wilson intervals describe fixed-checkpoint binomial variation and do not capture training variability. The same 10,000 test images recur across seeds, so image-level counts must not be pooled as 30,000 independent observations.
+
+The CIFAR-10 demonstration covers three standard CNN families on CIFAR-10 and untargeted $L_\infty$ attacks. It does not establish behavior on larger datasets, transformers, adversarially trained models, targeted attacks, or physical settings. It also does not compare against every modern transfer attack. The VGG16 learning-rate adjustment was selected using validation results after the common recipe failed. A seed-0 matched-learning-rate control preserves its strongest asymmetries, but only one control seed was run and some individual entries change substantially; optimization and architecture remain entangled. Random-noise draws are independently generated for each nominal source row, so noise-control rows are reproducible but do not share one common perturbation realization. The retained manifests record a dirty working tree at execution time; they preserve prediction checksums, checkpoint hashes, the recorded commit, and hashes of the executed source files, while the clean release tag archives the final corrected code.
+
+The original artifact is a motivating self-correction, not evidence that similar errors are common elsewhere. The present results do not imply that one architecture is intrinsically more transferable: architecture, parameterization, training dynamics, and clean accuracy vary together. PTR and CTR answer different questions, and neither should be selected after seeing which produces the more dramatic result.
+
+\section{Conclusion}
+Explicit conditioning populations and counts make transfer rates interpretable. The probability identities and the CIFAR-10 demonstration show why source ASR and PTR generally cannot reconstruct CTR. Selected ImageNet prediction archives pass arithmetic verification, but this does not establish full replication. Survey counts, recomputability prevalence, and corpus-wide bounds remain pending evidence validation; no valid reliability estimate is currently available. A completed study must report the validated result, including a result that most papers condition correctly.
+
+\appendix
+\section{CIFAR-10 protocol and supplementary results}
+\label{app:cifar}
 \subsection{Data and model training}
 The pipeline uses the standard CIFAR-10 class order \citep{cifar}. A fixed split seed of 1729 partitions the 50,000 training images into 45,000 training and 5,000 validation images. Validation data receive no random augmentation. Training uses random crops with four-pixel padding and random horizontal flips. The 10,000 test images are reserved for final evaluation; checkpoint selection uses validation accuracy only.
 
@@ -108,7 +194,6 @@ We evaluate $L_\infty$ radii $2/255$, $4/255$, and $8/255$. The PGD step size is
 
 To test whether the architecture-specific VGG16 learning rate alone explains the largest asymmetries, we train seed-0 ResNet-18 and MobileNetV2 controls at 0.01 for the same 200 epochs and rerun the full-test $8/255$ protocol with the existing VGG16 seed-0 checkpoint. This is a prespecified sensitivity comparison; it is not pooled with the three-seed primary estimates.
 
-\subsection{Results}
 \subsection{Clean accuracy and primary attack strength}
 Table~\ref{tab:clean} reports validation-selected checkpoint performance on the untouched test set. Variation across the three training seeds is small relative to the differences among architectures. At the primary $8/255$ budget, 40-step, five-restart PGD attains 100\% source ASR for every ResNet-18 and MobileNetV2 checkpoint and at least 99.98\% for every VGG16 checkpoint. The diagonal therefore confirms that the primary attack is strong against its source models.
 
@@ -173,71 +258,18 @@ Transfer falls sharply with the perturbation budget, but the directional orderin
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\columnwidth]{transfer_summary.pdf}
+\includegraphics[width=\columnwidth]{../../artifacts/study/transfer_summary.pdf}
 \caption{Mean PGD PTR across three seeds versus $L_\infty$ budget. Error bars span the minimum and maximum seed values.}
 \label{fig:budget}
 \end{figure}
 
 At $2/255$, VGG16 source ASR is only 71.05--72.98\% (Table~\ref{tab:asr}). Table~\ref{tab:conditioning} applies the exact conditioning identity with absolute counts. Conditioning is nearly mechanical in five directions: mean $b_{st}$ is at most 0.68\%, and mean CTR is within 0.27 points of the value obtained by dividing mean PTR by mean $a_{st}$. Across individual seeds, the largest corresponding deviation is 0.40 points. VGG16-to-MobileNetV2 is the exception, with mean $b_{st}=2.83\%$ and observed CTR 1.19 points below the zero-residual value. This exception confirms that the successful- and failed-source strata are not interchangeable. More fundamentally, conventional source ASR and PTR cannot determine CTR even when the residual is negligible, because conventional ASR uses a broader, target-independent denominator than $a_{st}$.
 
-\setcounter{table}{5}
-\begin{table}[t]
-\centering
-\caption{$2/255$ PGD conditioning decomposition. Count tuples list seeds 0/1/2; rates are mean [range] percentages.}
-\label{tab:conditioning}
-\resizebox{\columnwidth}{!}{%
-\begin{tabular}{lrr}
-\toprule
-Direction & Pairwise eligible $|E|$ & Source success $|F|$\\
-\midrule
-R$\rightarrow$V & 8905/8874/8923 & 8381/8318/8424\\
-R$\rightarrow$M & 8831/8894/8873 & 8307/8339/8374\\
-V$\rightarrow$R & 8905/8874/8923 & 6457/6257/6303\\
-V$\rightarrow$M & 8583/8589/8620 & 6139/5976/6003\\
-M$\rightarrow$R & 8831/8894/8873 & 8822/8879/8857\\
-M$\rightarrow$V & 8583/8589/8620 & 8574/8574/8604\\
-\bottomrule
-\end{tabular}
-}
-\vspace{3pt}
-\resizebox{\columnwidth}{!}{%
-\begin{tabular}{lrrrr}
-\toprule
-Direction & Pair ASR & Fail-target & PTR & CTR\\
-\midrule
-R$\rightarrow$V & 94.09 [93.73,94.41] & 0.00 [0.00,0.00] & 5.84 & 6.21\\
-R$\rightarrow$M & 94.07 [93.76,94.38] & 0.25 [0.19,0.36] & 21.61 & 22.96\\
-V$\rightarrow$R & 71.22 [70.51,72.51] & 0.68 [0.42,0.96] & 15.45 & 21.42\\
-V$\rightarrow$M & 70.25 [69.58,71.53] & 2.83 [2.71,2.99] & 23.29 & 31.97\\
-M$\rightarrow$R & 99.85 [99.82,99.90] & 0.00 [0.00,0.00] & 10.79 & 10.81\\
-M$\rightarrow$V & 99.84 [99.81,99.90] & 0.00 [0.00,0.00] & 4.61 & 4.62\\
-\bottomrule
-\end{tabular}
-}
-\end{table}
 
-\section{Limitations}
-An anonymized reproducibility package accompanies this submission. It contains the corrected source snapshot, aggregate tables, manifests, and per-example evaluation records; the public repository and archival identifier are withheld during double-blind review. The final study record contains nine checkpoints, full-test predictions, exact eligibility counts, perturbation norms, manifests, and checkpoint and source hashes. The three seed triads provide evidence about variability under the specified training procedure, but three draws support descriptive ranges rather than precise population-level inference. Per-run Wilson intervals describe fixed-checkpoint binomial variation and do not capture training variability. The same 10,000 test images recur across seeds, so image-level counts must not be pooled as 30,000 independent observations.
+\section{Additional CIFAR-10 controls}
+The stronger 100-step, five-restart $8/255$ endpoint changes off-diagonal PTR by at most 1.70 percentage points relative to the primary 40-step, five-restart setting across all seeds. At $2/255$ on seed 0, increasing from 40 to 100 steps at five restarts changes all off-diagonal PTR entries by at most 0.27 points and CTR entries by at most 0.40 points.
 
-The study covers three standard CNN families on CIFAR-10 and untargeted $L_\infty$ attacks. It does not establish behavior on larger datasets, transformers, adversarially trained models, targeted attacks, or physical settings. It also does not compare against every modern transfer attack. The VGG16 learning-rate adjustment was selected using validation results after the common recipe failed. A seed-0 matched-learning-rate control preserves its strongest asymmetries, but only one control seed was run and some individual entries change substantially; optimization and architecture remain entangled. Random-noise draws are independently generated for each nominal source row, so noise-control rows are reproducible but do not share one common perturbation realization. The retained manifests record a dirty working tree at execution time; they preserve prediction checksums, checkpoint hashes, the recorded commit, and hashes of the executed source files, while the clean release tag archives the final corrected code.
-
-The original artifact is a motivating self-correction, not evidence that similar errors are common elsewhere. The present results do not imply that one architecture is intrinsically more transferable: architecture, parameterization, training dynamics, and clean accuracy vary together. PTR and CTR answer different questions, and neither should be selected after seeing which produces the more dramatic result.
-
-\section{Broader impact}
-This work studies standard, bounded attacks on CIFAR-10 classifiers to improve the validity and reproducibility of adversarial-robustness evaluation. The same methods can inform attempts to evade classifiers, but the experiments do not target a deployed system, use private data, or demonstrate a physical-world attack. Releasing exact denominators, perturbation norms, controls, and evaluation code primarily supports defensive auditing by making misleading transfer claims easier to detect and reproduce.
-
-\section{Conclusion}
-The identity $\operatorname{PTR}_{st}=a_{st}\operatorname{CTR}_{st}+(1-a_{st})b_{st}$ fixes what a reported transfer rate does and does not determine. CTR reduces to $\operatorname{PTR}_{st}/a_{st}$ exactly when the failed-source residual vanishes, and conventional source ASR cannot stand in for $a_{st}$ because its denominator is target-independent where $a_{st}$ is pair-dependent. Measuring the residual is therefore not optional.
-
-Nor is it always negligible. Across three training seeds at $2/255$, $b_{st}$ is at most 0.68\% in five directions, but 2.83\% for VGG16-to-MobileNetV2, where observed CTR falls 1.19 points below the zero-residual value. One direction in six is enough to show that the successful- and failed-source strata are not interchangeable in general, and that the near-mechanical cases are a finding about these pairs rather than a property of the metric.
-
-Within the same measurements, transfer is strongly directional and budget dependent: mean PGD PTR spans 18.09--95.23\% across off-diagonal pairs at $8/255$ and 4.61--23.29\% at $2/255$. The strongest VGG directionality persists in a seed-0 matched-learning-rate control, while the movement of individual entries cautions against an architecture-only interpretation. Stronger source optimization can also reduce transfer for a particular direction, replicating established source-overfitting behavior. Compatible labels and preprocessing make these measurements meaningful; clean-error exclusions, explicit denominators, seed-level reporting, and convergence checks make their limits visible.
-
-\appendix
-\section{CIFAR-10 controls moved from the main text}
-The matched-learning-rate, FGSM, and convergence checks are retained in the machine-readable study artifacts and anonymous supplement. The 100-step endpoint changes off-diagonal PTR by at most 1.70 points at $8/255$ and by at most 0.27 points at $2/255$ on seed 0.
-
-\begin{table}[h]
+\begin{table}[!htbp]
 \centering
 \caption{Seed-0 PGD PTR (\%) at $8/255$ before and after matching the initial learning rate.}
 \label{tab:lrcontrol}
@@ -253,7 +285,7 @@ VGG16 $\rightarrow$ MobileNetV2 & 94.80 & 93.12\\
 \end{tabular}
 \end{table}
 
-\begin{table}[h]
+\begin{table}[!htbp]
 \centering
 \caption{FGSM PTR (\%) at $8/255$, mean [minimum, maximum] over three seeds.}
 \label{tab:fgsm}
@@ -269,6 +301,7 @@ MobileNetV2 & 47.37 [47.20,47.55] & 29.34 [28.09,30.55] & ---\\
 \end{tabular}}
 \end{table}
 
+\clearpage
 \bibliography{main}
 \bibliographystyle{tmlr}
 \end{document}

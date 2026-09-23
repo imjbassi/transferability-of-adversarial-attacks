@@ -13,7 +13,13 @@ from torch.utils.data import DataLoader
 from torchvision import transforms as T
 
 HERE = Path(__file__).resolve().parent
-SSA = HERE / "23"
+_bootstrap = argparse.ArgumentParser(add_help=False)
+_bootstrap.add_argument('--ssa-root', type=Path, required=True,
+                        help='Populated SSA checkout; see PROVENANCE.md')
+_paths, _ = _bootstrap.parse_known_args()
+SSA = _paths.ssa_root.resolve()
+if not (SSA / 'loader.py').is_file():
+    raise SystemExit('SSA checkout must contain loader.py and documented dependencies')
 sys.path.insert(0, str(SSA))
 from loader import ImageNet  # noqa: E402
 from Normalize import TfNormalize  # noqa: E402
@@ -104,7 +110,7 @@ def load_model(name):
 
 
 def main():
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(parents=[_bootstrap])
     parser.add_argument("attack", choices=PUBLISHED)
     parser.add_argument("adv_dir", type=Path)
     parser.add_argument("output_prefix", type=Path)

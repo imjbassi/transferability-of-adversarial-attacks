@@ -1,8 +1,8 @@
-"""Faithful PyTorch ports of the released SI-NI-FGSM and VMI-FGSM loops.
+"""PyTorch ports of selected SI-NI-FGSM and VMI-FGSM update loops.
 
-The original releases require TensorFlow 1.x.  This adapter uses the authors'
-linked TensorFlow-to-PyTorch weights and preserves their update equations,
-image set, epsilon, iteration count, and random seed.
+The original releases require TensorFlow 1.x. Numerical equivalence has not
+been validated. These runs use images and converted weights from an SSA checkout;
+matching numeric random seeds does not establish cross-framework equivalence.
 """
 from __future__ import annotations
 
@@ -21,7 +21,13 @@ from torchvision import transforms as T
 from tqdm import tqdm
 
 HERE = Path(__file__).resolve().parent
-SSA = HERE / "23"
+_bootstrap = argparse.ArgumentParser(add_help=False)
+_bootstrap.add_argument('--ssa-root', type=Path, required=True,
+                        help='Populated SSA checkout; see PROVENANCE.md')
+_paths, _ = _bootstrap.parse_known_args()
+SSA = _paths.ssa_root.resolve()
+if not (SSA / 'loader.py').is_file():
+    raise SystemExit('SSA checkout must contain loader.py and documented dependencies')
 sys.path.insert(0, str(SSA))
 from loader import ImageNet  # noqa: E402
 from torch_nets import tf_inception_v3  # noqa: E402
@@ -83,11 +89,17 @@ def vmi_fgsm(model, clean, epsilon, steps, momentum, samples, beta):
 
 
 def main():
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(parents=[_bootstrap])
     parser.add_argument("mode", choices=("si-ni", "vmi"))
     parser.add_argument("output_dir", type=Path)
     parser.add_argument("--batch-size", type=int, default=10)
+    parser.add_argument("--steps", type=int, required=True,
+                        help="Explicit iteration count: historical port/code default 10; SI-NI paper setup states 16")
     args = parser.parse_args()
+    if args.steps <= 0 or args.batch_size <= 0:
+        parser.error('steps and batch-size must be positive')
+    if args.output_dir.exists() and any(args.output_dir.iterdir()):
+        parser.error('Use a new or empty output directory; archived runs must not be overwritten')
 
     random.seed(0)
     np.random.seed(0)
@@ -106,9 +118,9 @@ def main():
     for images, names, _ in tqdm(loader):
         images = images.to(device)
         if args.mode == "si-ni":
-            adversarial = si_ni_fgsm(model, images, 16 / 255, 10, 1.0)
+            adversarial = si_ni_fgsm(model, images, 16 / 255, args.steps, 1.0)
         else:
-            adversarial = vmi_fgsm(model, images, 16 / 255, 10, 1.0, 20, 1.5)
+            adversarial = vmi_fgsm(model, images, 16 / 255, args.steps, 1.0, 20, 1.5)
         arrays = (adversarial.detach().cpu().permute(0, 2, 3, 1).numpy() * 255).astype(np.uint8)
         for array, name in zip(arrays, names):
             Image.fromarray(array).save(args.output_dir / name)
@@ -116,7 +128,11 @@ def main():
         "mode": args.mode,
         "seed": 0,
         "epsilon": "16/255",
-        "steps": 10,
+        "steps": args.steps,
+        "attack_label_policy": "clean_source_prediction",
+        "evaluation_label_policy": "ground_truth_with_documented_index_conversion",
+        "original_runtime_equivalence": "not_validated",
+        "pixel_step_size": 16 / args.steps,
         "momentum": 1.0,
         "variance_samples": 20 if args.mode == "vmi" else None,
         "variance_beta": 1.5 if args.mode == "vmi" else None,

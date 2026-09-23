@@ -1,5 +1,22 @@
 # Survey artifacts
 
+## Audit correction, 22 September 2026
+
+This is an unvalidated working record, not a publication-ready survey.
+The historical generator populated both passes from the same judgment constants;
+the reported kappa of 1 is invalid. `reliability.json` withdraws it. The retained
+`recode_16.csv` and `first_pass.json` are historical records, not evidence of a
+blind recode or completed full-text audit. All 480 judgments need evidence review.
+The artifact audit inspected five candidates, not all 80 releases. The 96 bounds
+come from one paper and are nominal calculations from rounded table values.
+Recomputation covers selected configurations; ports are not validated replications.
+These qualifications supersede the historical descriptions below.
+
+`build_coding_outputs.py` now only validates structure and reports provisional
+counts. It does not generate judgments, recodes, completion times, or kappa.
+Use `recomputation/verify_predictions.py` for dependency-free arithmetic checks.
+The original corpus, scheme, coding sheet and historical recode are preserved.
+
 This directory is the machine-readable record for the 80-paper survey in the
 manuscript.
 

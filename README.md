@@ -2,7 +2,7 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22737839.svg)](https://doi.org/10.5281/zenodo.22737839)
 
-**Status: completed denominator-corrected CIFAR-10 study with three architectures, three training seeds, full-test evaluation, sensitivity analyses, and an archived reproducibility release.**
+**Status: working survey revision; evidence audit and valid blind reliability assessment remain incomplete. The historical CIFAR-10 records are retained.**
 
 The earlier code evaluated ImageNet classifiers against CIFAR-10 labels and called unconditional target error a transfer success rate. Those results do not establish adversarial transfer. The previous claims of approximately 90% clean accuracy and near-100% transfer are not supported by the released artifacts. See [the audit](docs/AUDIT.md).
 
@@ -16,12 +16,14 @@ The earlier code evaluated ImageNet classifiers against CIFAR-10 labels and call
 
 The code trains ten-class CIFAR-10 models, selects checkpoints on a held-out validation split, and places normalization inside each differentiable model. Attacks operate on raw pixels in `[0,1]`. FGSM, PGD, identity, and random-noise controls share the same evaluation pipeline. Each source attack is reused across every target. Outputs include checkpoint hashes, test indices, actual predictions, norm checks, denominators, and Wilson intervals. The revised manuscript reports the completed three-seed, full-test $L_\infty$ study; the [small real-data pilot](docs/PILOT.md) remains execution validation only.
 
-The repository also contains the preregistered 80-paper survey, its coding sheet,
-evidence locations, immediate 20% repeatability recode, analytic bounds, and
-recomputation records. Three releases (3.75%) met the artifact-sufficiency rule;
-all three were rerun, with per-example predictions and denominator-aware metrics
-archived under `survey/recomputation/`. The 20 aligned published-rate comparisons
-have descriptive deltas from -3.9 to +5.5 percentage points.
+The repository contains a frozen 80-paper corpus and an unvalidated historical
+coding sheet. The historical 20% recode was generated from the same judgments
+as the first pass and cannot support kappa; its reliability claim is withdrawn.
+Three selected artifact configurations have archived predictions whose arithmetic
+is verified, but full original-runtime replication and exhaustive artifact
+availability assessment remain incomplete. The existing 96 bounds are from one
+paper, not a corpus-wide distribution. See [audit progress](survey/evidence_audit/README.md)
+and [recomputation scope](survey/recomputation/PROVENANCE.md).
 
 ## Install
 

@@ -1,0 +1,1936 @@
+{
+  "scope": "Single-paper worked case; not exhaustive corpus extraction",
+  "evidence": "Wu et al. CVPR 2020, Section 5.1 and Table 1, PDF pp. 5-6",
+  "rounding_assumption": "Nearest displayed unit; closed intervals conservatively include rounding ties. 100% uses a one-percentage-point unit. Not sampling uncertainty.",
+  "extraction_status": "Table 1 transcription checked against cached full text; no independent second extraction",
+  "papers_extracted": 1,
+  "rates_bounded": 96,
+  "summary": {
+    "minimum_percent": 0.95,
+    "median_percent": 34.175,
+    "maximum_percent": 77.35,
+    "mean_percent": 35.14270833333333
+  },
+  "rows": [
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "ResNet V2",
+      "target": "Inception V3",
+      "attack": "FGSM",
+      "clean_display_percent": "96.4",
+      "attacked_display_percent": "56.3",
+      "clean_accuracy_interval_percent": [
+        96.35,
+        96.45
+      ],
+      "attacked_accuracy_interval_percent": [
+        56.25,
+        56.35
+      ],
+      "induced_mass_lower_percent": 40.0,
+      "induced_mass_upper_percent": 43.75,
+      "target_clean_conditional_lower_percent": 41.51530877010898,
+      "persistent_error_share_upper": 0.0836197021764032
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "ResNet V2",
+      "target": "Inception V4",
+      "attack": "FGSM",
+      "clean_display_percent": "97.6",
+      "attacked_display_percent": "64.8",
+      "clean_accuracy_interval_percent": [
+        97.55,
+        97.65
+      ],
+      "attacked_accuracy_interval_percent": [
+        64.75,
+        64.85
+      ],
+      "induced_mass_lower_percent": 32.7,
+      "induced_mass_upper_percent": 35.25,
+      "target_clean_conditional_lower_percent": 33.52127114300359,
+      "persistent_error_share_upper": 0.06970128022759602
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "ResNet V2",
+      "target": "Inception-ResNet V2",
+      "attack": "FGSM",
+      "clean_display_percent": "100",
+      "attacked_display_percent": "66.8",
+      "clean_accuracy_interval_percent": [
+        99.5,
+        100.0
+      ],
+      "attacked_accuracy_interval_percent": [
+        66.75,
+        66.85
+      ],
+      "induced_mass_lower_percent": 32.65,
+      "induced_mass_upper_percent": 33.25,
+      "target_clean_conditional_lower_percent": 32.814070351758794,
+      "persistent_error_share_upper": 0.015082956259426848
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "ResNet V2",
+      "target": "Ensemble",
+      "attack": "FGSM",
+      "clean_display_percent": "99.8",
+      "attacked_display_percent": "63.1",
+      "clean_accuracy_interval_percent": [
+        99.75,
+        99.85
+      ],
+      "attacked_accuracy_interval_percent": [
+        63.05,
+        63.15
+      ],
+      "induced_mass_lower_percent": 36.6,
+      "induced_mass_upper_percent": 36.95,
+      "target_clean_conditional_lower_percent": 36.69172932330827,
+      "persistent_error_share_upper": 0.0067842605156037995
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "ResNet V2",
+      "target": "Inception V3",
+      "attack": "BIM",
+      "clean_display_percent": "96.4",
+      "attacked_display_percent": "53.2",
+      "clean_accuracy_interval_percent": [
+        96.35,
+        96.45
+      ],
+      "attacked_accuracy_interval_percent": [
+        53.15,
+        53.25
+      ],
+      "induced_mass_lower_percent": 43.1,
+      "induced_mass_upper_percent": 46.85,
+      "target_clean_conditional_lower_percent": 44.732745199792426,
+      "persistent_error_share_upper": 0.07807486631016043
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "ResNet V2",
+      "target": "Inception V4",
+      "attack": "BIM",
+      "clean_display_percent": "97.6",
+      "attacked_display_percent": "62.0",
+      "clean_accuracy_interval_percent": [
+        97.55,
+        97.65
+      ],
+      "attacked_accuracy_interval_percent": [
+        61.95,
+        62.05
+      ],
+      "induced_mass_lower_percent": 35.5,
+      "induced_mass_upper_percent": 38.05,
+      "target_clean_conditional_lower_percent": 36.391594054331115,
+      "persistent_error_share_upper": 0.06455862977602109
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "ResNet V2",
+      "target": "Inception-ResNet V2",
+      "attack": "BIM",
+      "clean_display_percent": "100",
+      "attacked_display_percent": "63.8",
+      "clean_accuracy_interval_percent": [
+        99.5,
+        100.0
+      ],
+      "attacked_accuracy_interval_percent": [
+        63.75,
+        63.85
+      ],
+      "induced_mass_lower_percent": 35.65,
+      "induced_mass_upper_percent": 36.25,
+      "target_clean_conditional_lower_percent": 35.82914572864322,
+      "persistent_error_share_upper": 0.013831258644536652
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "ResNet V2",
+      "target": "Ensemble",
+      "attack": "BIM",
+      "clean_display_percent": "99.8",
+      "attacked_display_percent": "54.3",
+      "clean_accuracy_interval_percent": [
+        99.75,
+        99.85
+      ],
+      "attacked_accuracy_interval_percent": [
+        54.25,
+        54.35
+      ],
+      "induced_mass_lower_percent": 45.4,
+      "induced_mass_upper_percent": 45.75,
+      "target_clean_conditional_lower_percent": 45.51378446115288,
+      "persistent_error_share_upper": 0.00547645125958379
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "ResNet V2",
+      "target": "Inception V3",
+      "attack": "C&W",
+      "clean_display_percent": "96.4",
+      "attacked_display_percent": "94.5",
+      "clean_accuracy_interval_percent": [
+        96.35,
+        96.45
+      ],
+      "attacked_accuracy_interval_percent": [
+        94.45,
+        94.55
+      ],
+      "induced_mass_lower_percent": 1.8,
+      "induced_mass_upper_percent": 5.55,
+      "target_clean_conditional_lower_percent": 1.868188894654904,
+      "persistent_error_share_upper": 0.6697247706422018
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "ResNet V2",
+      "target": "Inception V4",
+      "attack": "C&W",
+      "clean_display_percent": "97.6",
+      "attacked_display_percent": "96.4",
+      "clean_accuracy_interval_percent": [
+        97.55,
+        97.65
+      ],
+      "attacked_accuracy_interval_percent": [
+        96.35,
+        96.45
+      ],
+      "induced_mass_lower_percent": 1.1,
+      "induced_mass_upper_percent": 3.65,
+      "target_clean_conditional_lower_percent": 1.1276268580215274,
+      "persistent_error_share_upper": 0.6901408450704225
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "ResNet V2",
+      "target": "Inception-ResNet V2",
+      "attack": "C&W",
+      "clean_display_percent": "100",
+      "attacked_display_percent": "98.5",
+      "clean_accuracy_interval_percent": [
+        99.5,
+        100.0
+      ],
+      "attacked_accuracy_interval_percent": [
+        98.45,
+        98.55
+      ],
+      "induced_mass_lower_percent": 0.95,
+      "induced_mass_upper_percent": 1.55,
+      "target_clean_conditional_lower_percent": 0.9547738693467337,
+      "persistent_error_share_upper": 0.3448275862068966
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "ResNet V2",
+      "target": "Ensemble",
+      "attack": "C&W",
+      "clean_display_percent": "99.8",
+      "attacked_display_percent": "98.5",
+      "clean_accuracy_interval_percent": [
+        99.75,
+        99.85
+      ],
+      "attacked_accuracy_interval_percent": [
+        98.45,
+        98.55
+      ],
+      "induced_mass_lower_percent": 1.2,
+      "induced_mass_upper_percent": 1.55,
+      "target_clean_conditional_lower_percent": 1.2030075187969924,
+      "persistent_error_share_upper": 0.1724137931034483
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "ResNet V2",
+      "target": "Inception V3",
+      "attack": "JSMA",
+      "clean_display_percent": "96.4",
+      "attacked_display_percent": "59.3",
+      "clean_accuracy_interval_percent": [
+        96.35,
+        96.45
+      ],
+      "attacked_accuracy_interval_percent": [
+        59.25,
+        59.35
+      ],
+      "induced_mass_lower_percent": 37.0,
+      "induced_mass_upper_percent": 40.75,
+      "target_clean_conditional_lower_percent": 38.4016606123508,
+      "persistent_error_share_upper": 0.0897908979089791
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "ResNet V2",
+      "target": "Inception V4",
+      "attack": "JSMA",
+      "clean_display_percent": "97.6",
+      "attacked_display_percent": "65.2",
+      "clean_accuracy_interval_percent": [
+        97.55,
+        97.65
+      ],
+      "attacked_accuracy_interval_percent": [
+        65.15,
+        65.25
+      ],
+      "induced_mass_lower_percent": 32.3,
+      "induced_mass_upper_percent": 34.85,
+      "target_clean_conditional_lower_percent": 33.11122501281394,
+      "persistent_error_share_upper": 0.07050359712230216
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "ResNet V2",
+      "target": "Inception-ResNet V2",
+      "attack": "JSMA",
+      "clean_display_percent": "100",
+      "attacked_display_percent": "62.1",
+      "clean_accuracy_interval_percent": [
+        99.5,
+        100.0
+      ],
+      "attacked_accuracy_interval_percent": [
+        62.05,
+        62.15
+      ],
+      "induced_mass_lower_percent": 37.35,
+      "induced_mass_upper_percent": 37.95,
+      "target_clean_conditional_lower_percent": 37.537688442211056,
+      "persistent_error_share_upper": 0.013210039630118891
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "ResNet V2",
+      "target": "Ensemble",
+      "attack": "JSMA",
+      "clean_display_percent": "99.8",
+      "attacked_display_percent": "64.4",
+      "clean_accuracy_interval_percent": [
+        99.75,
+        99.85
+      ],
+      "attacked_accuracy_interval_percent": [
+        64.35,
+        64.45
+      ],
+      "induced_mass_lower_percent": 35.3,
+      "induced_mass_upper_percent": 35.65,
+      "target_clean_conditional_lower_percent": 35.388471177944865,
+      "persistent_error_share_upper": 0.007032348804500703
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "ResNet V2",
+      "target": "Inception V3",
+      "attack": "TAP",
+      "clean_display_percent": "96.4",
+      "attacked_display_percent": "51.2",
+      "clean_accuracy_interval_percent": [
+        96.35,
+        96.45
+      ],
+      "attacked_accuracy_interval_percent": [
+        51.15,
+        51.25
+      ],
+      "induced_mass_lower_percent": 45.1,
+      "induced_mass_upper_percent": 48.85,
+      "target_clean_conditional_lower_percent": 46.808510638297875,
+      "persistent_error_share_upper": 0.07487179487179488
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "ResNet V2",
+      "target": "Inception V4",
+      "attack": "TAP",
+      "clean_display_percent": "97.6",
+      "attacked_display_percent": "60.1",
+      "clean_accuracy_interval_percent": [
+        97.55,
+        97.65
+      ],
+      "attacked_accuracy_interval_percent": [
+        60.05,
+        60.15
+      ],
+      "induced_mass_lower_percent": 37.4,
+      "induced_mass_upper_percent": 39.95,
+      "target_clean_conditional_lower_percent": 38.339313172731934,
+      "persistent_error_share_upper": 0.06148055207026349
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "ResNet V2",
+      "target": "Inception-ResNet V2",
+      "attack": "TAP",
+      "clean_display_percent": "100",
+      "attacked_display_percent": "55.5",
+      "clean_accuracy_interval_percent": [
+        99.5,
+        100.0
+      ],
+      "attacked_accuracy_interval_percent": [
+        55.45,
+        55.55
+      ],
+      "induced_mass_lower_percent": 43.95,
+      "induced_mass_upper_percent": 44.55,
+      "target_clean_conditional_lower_percent": 44.17085427135678,
+      "persistent_error_share_upper": 0.01124859392575928
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "ResNet V2",
+      "target": "Ensemble",
+      "attack": "TAP",
+      "clean_display_percent": "99.8",
+      "attacked_display_percent": "50.3",
+      "clean_accuracy_interval_percent": [
+        99.75,
+        99.85
+      ],
+      "attacked_accuracy_interval_percent": [
+        50.25,
+        50.35
+      ],
+      "induced_mass_lower_percent": 49.4,
+      "induced_mass_upper_percent": 49.75,
+      "target_clean_conditional_lower_percent": 49.523809523809526,
+      "persistent_error_share_upper": 0.005035246727089627
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "ResNet V2",
+      "target": "Inception V3",
+      "attack": "ATA",
+      "clean_display_percent": "96.4",
+      "attacked_display_percent": "52.9",
+      "clean_accuracy_interval_percent": [
+        96.35,
+        96.45
+      ],
+      "attacked_accuracy_interval_percent": [
+        52.85,
+        52.95
+      ],
+      "induced_mass_lower_percent": 43.4,
+      "induced_mass_upper_percent": 47.15,
+      "target_clean_conditional_lower_percent": 45.04411001556824,
+      "persistent_error_share_upper": 0.077577045696068
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "ResNet V2",
+      "target": "Inception V4",
+      "attack": "ATA",
+      "clean_display_percent": "97.6",
+      "attacked_display_percent": "58.3",
+      "clean_accuracy_interval_percent": [
+        97.55,
+        97.65
+      ],
+      "attacked_accuracy_interval_percent": [
+        58.25,
+        58.35
+      ],
+      "induced_mass_lower_percent": 39.2,
+      "induced_mass_upper_percent": 41.75,
+      "target_clean_conditional_lower_percent": 40.18452075858534,
+      "persistent_error_share_upper": 0.058823529411764705
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "ResNet V2",
+      "target": "Inception-ResNet V2",
+      "attack": "ATA",
+      "clean_display_percent": "100",
+      "attacked_display_percent": "55.1",
+      "clean_accuracy_interval_percent": [
+        99.5,
+        100.0
+      ],
+      "attacked_accuracy_interval_percent": [
+        55.05,
+        55.15
+      ],
+      "induced_mass_lower_percent": 44.35,
+      "induced_mass_upper_percent": 44.95,
+      "target_clean_conditional_lower_percent": 44.57286432160804,
+      "persistent_error_share_upper": 0.011148272017837236
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "ResNet V2",
+      "target": "Ensemble",
+      "attack": "ATA",
+      "clean_display_percent": "99.8",
+      "attacked_display_percent": "49.4",
+      "clean_accuracy_interval_percent": [
+        99.75,
+        99.85
+      ],
+      "attacked_accuracy_interval_percent": [
+        49.35,
+        49.45
+      ],
+      "induced_mass_lower_percent": 50.3,
+      "induced_mass_upper_percent": 50.65,
+      "target_clean_conditional_lower_percent": 50.42606516290727,
+      "persistent_error_share_upper": 0.004945598417408506
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V3",
+      "target": "ResNet V2",
+      "attack": "FGSM",
+      "clean_display_percent": "89.6",
+      "attacked_display_percent": "65.7",
+      "clean_accuracy_interval_percent": [
+        89.55,
+        89.65
+      ],
+      "attacked_accuracy_interval_percent": [
+        65.65,
+        65.75
+      ],
+      "induced_mass_lower_percent": 23.8,
+      "induced_mass_upper_percent": 34.35,
+      "target_clean_conditional_lower_percent": 26.577331099944164,
+      "persistent_error_share_upper": 0.3051094890510949
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V3",
+      "target": "Inception V4",
+      "attack": "FGSM",
+      "clean_display_percent": "97.6",
+      "attacked_display_percent": "70.2",
+      "clean_accuracy_interval_percent": [
+        97.55,
+        97.65
+      ],
+      "attacked_accuracy_interval_percent": [
+        70.15,
+        70.25
+      ],
+      "induced_mass_lower_percent": 27.3,
+      "induced_mass_upper_percent": 29.85,
+      "target_clean_conditional_lower_percent": 27.985648385443362,
+      "persistent_error_share_upper": 0.08235294117647059
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V3",
+      "target": "Inception-ResNet V2",
+      "attack": "FGSM",
+      "clean_display_percent": "100",
+      "attacked_display_percent": "72.9",
+      "clean_accuracy_interval_percent": [
+        99.5,
+        100.0
+      ],
+      "attacked_accuracy_interval_percent": [
+        72.85,
+        72.95
+      ],
+      "induced_mass_lower_percent": 26.55,
+      "induced_mass_upper_percent": 27.15,
+      "target_clean_conditional_lower_percent": 26.683417085427134,
+      "persistent_error_share_upper": 0.018484288354898338
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V3",
+      "target": "Ensemble",
+      "attack": "FGSM",
+      "clean_display_percent": "99.8",
+      "attacked_display_percent": "76.2",
+      "clean_accuracy_interval_percent": [
+        99.75,
+        99.85
+      ],
+      "attacked_accuracy_interval_percent": [
+        76.15,
+        76.25
+      ],
+      "induced_mass_lower_percent": 23.5,
+      "induced_mass_upper_percent": 23.85,
+      "target_clean_conditional_lower_percent": 23.55889724310777,
+      "persistent_error_share_upper": 0.010526315789473684
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V3",
+      "target": "ResNet V2",
+      "attack": "BIM",
+      "clean_display_percent": "89.6",
+      "attacked_display_percent": "76.8",
+      "clean_accuracy_interval_percent": [
+        89.55,
+        89.65
+      ],
+      "attacked_accuracy_interval_percent": [
+        76.75,
+        76.85
+      ],
+      "induced_mass_lower_percent": 12.7,
+      "induced_mass_upper_percent": 23.25,
+      "target_clean_conditional_lower_percent": 14.182021217197097,
+      "persistent_error_share_upper": 0.4514038876889849
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V3",
+      "target": "Inception V4",
+      "attack": "BIM",
+      "clean_display_percent": "97.6",
+      "attacked_display_percent": "67.7",
+      "clean_accuracy_interval_percent": [
+        97.55,
+        97.65
+      ],
+      "attacked_accuracy_interval_percent": [
+        67.65,
+        67.75
+      ],
+      "induced_mass_lower_percent": 29.8,
+      "induced_mass_upper_percent": 32.35,
+      "target_clean_conditional_lower_percent": 30.54843669912865,
+      "persistent_error_share_upper": 0.07596899224806201
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V3",
+      "target": "Inception-ResNet V2",
+      "attack": "BIM",
+      "clean_display_percent": "100",
+      "attacked_display_percent": "70.2",
+      "clean_accuracy_interval_percent": [
+        99.5,
+        100.0
+      ],
+      "attacked_accuracy_interval_percent": [
+        70.15,
+        70.25
+      ],
+      "induced_mass_lower_percent": 29.25,
+      "induced_mass_upper_percent": 29.85,
+      "target_clean_conditional_lower_percent": 29.396984924623116,
+      "persistent_error_share_upper": 0.01680672268907563
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V3",
+      "target": "Ensemble",
+      "attack": "BIM",
+      "clean_display_percent": "99.8",
+      "attacked_display_percent": "73.6",
+      "clean_accuracy_interval_percent": [
+        99.75,
+        99.85
+      ],
+      "attacked_accuracy_interval_percent": [
+        73.55,
+        73.65
+      ],
+      "induced_mass_lower_percent": 26.1,
+      "induced_mass_upper_percent": 26.45,
+      "target_clean_conditional_lower_percent": 26.165413533834588,
+      "persistent_error_share_upper": 0.009487666034155597
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V3",
+      "target": "ResNet V2",
+      "attack": "C&W",
+      "clean_display_percent": "89.6",
+      "attacked_display_percent": "86.9",
+      "clean_accuracy_interval_percent": [
+        89.55,
+        89.65
+      ],
+      "attacked_accuracy_interval_percent": [
+        86.85,
+        86.95
+      ],
+      "induced_mass_lower_percent": 2.6,
+      "induced_mass_upper_percent": 13.15,
+      "target_clean_conditional_lower_percent": 2.9034059184812953,
+      "persistent_error_share_upper": 0.8007662835249042
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V3",
+      "target": "Inception V4",
+      "attack": "C&W",
+      "clean_display_percent": "97.6",
+      "attacked_display_percent": "93.5",
+      "clean_accuracy_interval_percent": [
+        97.55,
+        97.65
+      ],
+      "attacked_accuracy_interval_percent": [
+        93.45,
+        93.55
+      ],
+      "induced_mass_lower_percent": 4.0,
+      "induced_mass_upper_percent": 6.55,
+      "target_clean_conditional_lower_percent": 4.1004613018964635,
+      "persistent_error_share_upper": 0.3798449612403101
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V3",
+      "target": "Inception-ResNet V2",
+      "attack": "C&W",
+      "clean_display_percent": "100",
+      "attacked_display_percent": "96.2",
+      "clean_accuracy_interval_percent": [
+        99.5,
+        100.0
+      ],
+      "attacked_accuracy_interval_percent": [
+        96.15,
+        96.25
+      ],
+      "induced_mass_lower_percent": 3.25,
+      "induced_mass_upper_percent": 3.85,
+      "target_clean_conditional_lower_percent": 3.2663316582914574,
+      "persistent_error_share_upper": 0.13333333333333333
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V3",
+      "target": "Ensemble",
+      "attack": "C&W",
+      "clean_display_percent": "99.8",
+      "attacked_display_percent": "96.0",
+      "clean_accuracy_interval_percent": [
+        99.75,
+        99.85
+      ],
+      "attacked_accuracy_interval_percent": [
+        95.95,
+        96.05
+      ],
+      "induced_mass_lower_percent": 3.7,
+      "induced_mass_upper_percent": 4.05,
+      "target_clean_conditional_lower_percent": 3.7092731829573933,
+      "persistent_error_share_upper": 0.06329113924050633
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V3",
+      "target": "ResNet V2",
+      "attack": "JSMA",
+      "clean_display_percent": "89.6",
+      "attacked_display_percent": "66.4",
+      "clean_accuracy_interval_percent": [
+        89.55,
+        89.65
+      ],
+      "attacked_accuracy_interval_percent": [
+        66.35,
+        66.45
+      ],
+      "induced_mass_lower_percent": 23.1,
+      "induced_mass_upper_percent": 33.65,
+      "target_clean_conditional_lower_percent": 25.79564489112228,
+      "persistent_error_share_upper": 0.3114754098360656
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V3",
+      "target": "Inception V4",
+      "attack": "JSMA",
+      "clean_display_percent": "97.6",
+      "attacked_display_percent": "57.2",
+      "clean_accuracy_interval_percent": [
+        97.55,
+        97.65
+      ],
+      "attacked_accuracy_interval_percent": [
+        57.15,
+        57.25
+      ],
+      "induced_mass_lower_percent": 40.3,
+      "induced_mass_upper_percent": 42.85,
+      "target_clean_conditional_lower_percent": 41.31214761660687,
+      "persistent_error_share_upper": 0.05730994152046784
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V3",
+      "target": "Inception-ResNet V2",
+      "attack": "JSMA",
+      "clean_display_percent": "100",
+      "attacked_display_percent": "60.3",
+      "clean_accuracy_interval_percent": [
+        99.5,
+        100.0
+      ],
+      "attacked_accuracy_interval_percent": [
+        60.25,
+        60.35
+      ],
+      "induced_mass_lower_percent": 39.15,
+      "induced_mass_upper_percent": 39.75,
+      "target_clean_conditional_lower_percent": 39.346733668341706,
+      "persistent_error_share_upper": 0.012610340479192938
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V3",
+      "target": "Ensemble",
+      "attack": "JSMA",
+      "clean_display_percent": "99.8",
+      "attacked_display_percent": "68.9",
+      "clean_accuracy_interval_percent": [
+        99.75,
+        99.85
+      ],
+      "attacked_accuracy_interval_percent": [
+        68.85,
+        68.95
+      ],
+      "induced_mass_lower_percent": 30.8,
+      "induced_mass_upper_percent": 31.15,
+      "target_clean_conditional_lower_percent": 30.87719298245614,
+      "persistent_error_share_upper": 0.008051529790660225
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V3",
+      "target": "ResNet V2",
+      "attack": "TAP",
+      "clean_display_percent": "89.6",
+      "attacked_display_percent": "48.2",
+      "clean_accuracy_interval_percent": [
+        89.55,
+        89.65
+      ],
+      "attacked_accuracy_interval_percent": [
+        48.15,
+        48.25
+      ],
+      "induced_mass_lower_percent": 41.3,
+      "induced_mass_upper_percent": 51.85,
+      "target_clean_conditional_lower_percent": 46.11948632049135,
+      "persistent_error_share_upper": 0.20193236714975846
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V3",
+      "target": "Inception V4",
+      "attack": "TAP",
+      "clean_display_percent": "97.6",
+      "attacked_display_percent": "24.5",
+      "clean_accuracy_interval_percent": [
+        97.55,
+        97.65
+      ],
+      "attacked_accuracy_interval_percent": [
+        24.45,
+        24.55
+      ],
+      "induced_mass_lower_percent": 73.0,
+      "induced_mass_upper_percent": 75.55,
+      "target_clean_conditional_lower_percent": 74.83341875961045,
+      "persistent_error_share_upper": 0.032471835652750164
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V3",
+      "target": "Inception-ResNet V2",
+      "attack": "TAP",
+      "clean_display_percent": "100",
+      "attacked_display_percent": "26.3",
+      "clean_accuracy_interval_percent": [
+        99.5,
+        100.0
+      ],
+      "attacked_accuracy_interval_percent": [
+        26.25,
+        26.35
+      ],
+      "induced_mass_lower_percent": 73.15,
+      "induced_mass_upper_percent": 73.75,
+      "target_clean_conditional_lower_percent": 73.51758793969849,
+      "persistent_error_share_upper": 0.006788866259334691
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V3",
+      "target": "Ensemble",
+      "attack": "TAP",
+      "clean_display_percent": "99.8",
+      "attacked_display_percent": "34.2",
+      "clean_accuracy_interval_percent": [
+        99.75,
+        99.85
+      ],
+      "attacked_accuracy_interval_percent": [
+        34.15,
+        34.25
+      ],
+      "induced_mass_lower_percent": 65.5,
+      "induced_mass_upper_percent": 65.85,
+      "target_clean_conditional_lower_percent": 65.6641604010025,
+      "persistent_error_share_upper": 0.0038022813688212928
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V3",
+      "target": "ResNet V2",
+      "attack": "ATA",
+      "clean_display_percent": "89.6",
+      "attacked_display_percent": "47.2",
+      "clean_accuracy_interval_percent": [
+        89.55,
+        89.65
+      ],
+      "attacked_accuracy_interval_percent": [
+        47.15,
+        47.25
+      ],
+      "induced_mass_lower_percent": 42.3,
+      "induced_mass_upper_percent": 52.85,
+      "target_clean_conditional_lower_percent": 47.23618090452261,
+      "persistent_error_share_upper": 0.1981042654028436
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V3",
+      "target": "Inception V4",
+      "attack": "ATA",
+      "clean_display_percent": "97.6",
+      "attacked_display_percent": "22.1",
+      "clean_accuracy_interval_percent": [
+        97.55,
+        97.65
+      ],
+      "attacked_accuracy_interval_percent": [
+        22.05,
+        22.15
+      ],
+      "induced_mass_lower_percent": 75.4,
+      "induced_mass_upper_percent": 77.95,
+      "target_clean_conditional_lower_percent": 77.29369554074833,
+      "persistent_error_share_upper": 0.03147077713551702
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V3",
+      "target": "Inception-ResNet V2",
+      "attack": "ATA",
+      "clean_display_percent": "100",
+      "attacked_display_percent": "25.7",
+      "clean_accuracy_interval_percent": [
+        99.5,
+        100.0
+      ],
+      "attacked_accuracy_interval_percent": [
+        25.65,
+        25.75
+      ],
+      "induced_mass_lower_percent": 73.75,
+      "induced_mass_upper_percent": 74.35,
+      "target_clean_conditional_lower_percent": 74.12060301507537,
+      "persistent_error_share_upper": 0.006734006734006734
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V3",
+      "target": "Ensemble",
+      "attack": "ATA",
+      "clean_display_percent": "99.8",
+      "attacked_display_percent": "31.9",
+      "clean_accuracy_interval_percent": [
+        99.75,
+        99.85
+      ],
+      "attacked_accuracy_interval_percent": [
+        31.85,
+        31.95
+      ],
+      "induced_mass_lower_percent": 67.8,
+      "induced_mass_upper_percent": 68.15,
+      "target_clean_conditional_lower_percent": 67.96992481203007,
+      "persistent_error_share_upper": 0.0036737692872887582
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V4",
+      "target": "ResNet V2",
+      "attack": "FGSM",
+      "clean_display_percent": "89.6",
+      "attacked_display_percent": "68.3",
+      "clean_accuracy_interval_percent": [
+        89.55,
+        89.65
+      ],
+      "attacked_accuracy_interval_percent": [
+        68.25,
+        68.35
+      ],
+      "induced_mass_lower_percent": 21.2,
+      "induced_mass_upper_percent": 31.75,
+      "target_clean_conditional_lower_percent": 23.67392518146287,
+      "persistent_error_share_upper": 0.330173775671406
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V4",
+      "target": "Inception V3",
+      "attack": "FGSM",
+      "clean_display_percent": "96.4",
+      "attacked_display_percent": "67.1",
+      "clean_accuracy_interval_percent": [
+        96.35,
+        96.45
+      ],
+      "attacked_accuracy_interval_percent": [
+        67.05,
+        67.15
+      ],
+      "induced_mass_lower_percent": 29.2,
+      "induced_mass_upper_percent": 32.95,
+      "target_clean_conditional_lower_percent": 30.306175402179555,
+      "persistent_error_share_upper": 0.1111111111111111
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V4",
+      "target": "Inception-ResNet V2",
+      "attack": "FGSM",
+      "clean_display_percent": "100",
+      "attacked_display_percent": "72.8",
+      "clean_accuracy_interval_percent": [
+        99.5,
+        100.0
+      ],
+      "attacked_accuracy_interval_percent": [
+        72.75,
+        72.85
+      ],
+      "induced_mass_lower_percent": 26.65,
+      "induced_mass_upper_percent": 27.25,
+      "target_clean_conditional_lower_percent": 26.78391959798995,
+      "persistent_error_share_upper": 0.01841620626151013
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V4",
+      "target": "Ensemble",
+      "attack": "FGSM",
+      "clean_display_percent": "99.8",
+      "attacked_display_percent": "76.4",
+      "clean_accuracy_interval_percent": [
+        99.75,
+        99.85
+      ],
+      "attacked_accuracy_interval_percent": [
+        76.35,
+        76.45
+      ],
+      "induced_mass_lower_percent": 23.3,
+      "induced_mass_upper_percent": 23.65,
+      "target_clean_conditional_lower_percent": 23.358395989974937,
+      "persistent_error_share_upper": 0.010615711252653927
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V4",
+      "target": "ResNet V2",
+      "attack": "BIM",
+      "clean_display_percent": "89.6",
+      "attacked_display_percent": "62.1",
+      "clean_accuracy_interval_percent": [
+        89.55,
+        89.65
+      ],
+      "attacked_accuracy_interval_percent": [
+        62.05,
+        62.15
+      ],
+      "induced_mass_lower_percent": 27.4,
+      "induced_mass_upper_percent": 37.95,
+      "target_clean_conditional_lower_percent": 30.597431602456727,
+      "persistent_error_share_upper": 0.2760898282694848
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V4",
+      "target": "Inception V3",
+      "attack": "BIM",
+      "clean_display_percent": "96.4",
+      "attacked_display_percent": "40.9",
+      "clean_accuracy_interval_percent": [
+        96.35,
+        96.45
+      ],
+      "attacked_accuracy_interval_percent": [
+        40.85,
+        40.95
+      ],
+      "induced_mass_lower_percent": 55.4,
+      "induced_mass_upper_percent": 59.15,
+      "target_clean_conditional_lower_percent": 57.49870264660093,
+      "persistent_error_share_upper": 0.06181202370872142
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V4",
+      "target": "Inception-ResNet V2",
+      "attack": "BIM",
+      "clean_display_percent": "100",
+      "attacked_display_percent": "69.1",
+      "clean_accuracy_interval_percent": [
+        99.5,
+        100.0
+      ],
+      "attacked_accuracy_interval_percent": [
+        69.05,
+        69.15
+      ],
+      "induced_mass_lower_percent": 30.35,
+      "induced_mass_upper_percent": 30.95,
+      "target_clean_conditional_lower_percent": 30.502512562814072,
+      "persistent_error_share_upper": 0.01620745542949757
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V4",
+      "target": "Ensemble",
+      "attack": "BIM",
+      "clean_display_percent": "99.8",
+      "attacked_display_percent": "55.5",
+      "clean_accuracy_interval_percent": [
+        99.75,
+        99.85
+      ],
+      "attacked_accuracy_interval_percent": [
+        55.45,
+        55.55
+      ],
+      "induced_mass_lower_percent": 44.2,
+      "induced_mass_upper_percent": 44.55,
+      "target_clean_conditional_lower_percent": 44.310776942355886,
+      "persistent_error_share_upper": 0.00562429696287964
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V4",
+      "target": "ResNet V2",
+      "attack": "C&W",
+      "clean_display_percent": "89.6",
+      "attacked_display_percent": "86.7",
+      "clean_accuracy_interval_percent": [
+        89.55,
+        89.65
+      ],
+      "attacked_accuracy_interval_percent": [
+        86.65,
+        86.75
+      ],
+      "induced_mass_lower_percent": 2.8,
+      "induced_mass_upper_percent": 13.35,
+      "target_clean_conditional_lower_percent": 3.126744835287549,
+      "persistent_error_share_upper": 0.7886792452830189
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V4",
+      "target": "Inception V3",
+      "attack": "C&W",
+      "clean_display_percent": "96.4",
+      "attacked_display_percent": "91.7",
+      "clean_accuracy_interval_percent": [
+        96.35,
+        96.45
+      ],
+      "attacked_accuracy_interval_percent": [
+        91.65,
+        91.75
+      ],
+      "induced_mass_lower_percent": 4.6,
+      "induced_mass_upper_percent": 8.35,
+      "target_clean_conditional_lower_percent": 4.7742605085625325,
+      "persistent_error_share_upper": 0.44242424242424244
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V4",
+      "target": "Inception-ResNet V2",
+      "attack": "C&W",
+      "clean_display_percent": "100",
+      "attacked_display_percent": "93.2",
+      "clean_accuracy_interval_percent": [
+        99.5,
+        100.0
+      ],
+      "attacked_accuracy_interval_percent": [
+        93.15,
+        93.25
+      ],
+      "induced_mass_lower_percent": 6.25,
+      "induced_mass_upper_percent": 6.85,
+      "target_clean_conditional_lower_percent": 6.28140703517588,
+      "persistent_error_share_upper": 0.07407407407407407
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V4",
+      "target": "Ensemble",
+      "attack": "C&W",
+      "clean_display_percent": "99.8",
+      "attacked_display_percent": "92.9",
+      "clean_accuracy_interval_percent": [
+        99.75,
+        99.85
+      ],
+      "attacked_accuracy_interval_percent": [
+        92.85,
+        92.95
+      ],
+      "induced_mass_lower_percent": 6.8,
+      "induced_mass_upper_percent": 7.15,
+      "target_clean_conditional_lower_percent": 6.81704260651629,
+      "persistent_error_share_upper": 0.03546099290780142
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V4",
+      "target": "ResNet V2",
+      "attack": "JSMA",
+      "clean_display_percent": "89.6",
+      "attacked_display_percent": "70.7",
+      "clean_accuracy_interval_percent": [
+        89.55,
+        89.65
+      ],
+      "attacked_accuracy_interval_percent": [
+        70.65,
+        70.75
+      ],
+      "induced_mass_lower_percent": 18.8,
+      "induced_mass_upper_percent": 29.35,
+      "target_clean_conditional_lower_percent": 20.99385817978783,
+      "persistent_error_share_upper": 0.3572649572649573
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V4",
+      "target": "Inception V3",
+      "attack": "JSMA",
+      "clean_display_percent": "96.4",
+      "attacked_display_percent": "68.9",
+      "clean_accuracy_interval_percent": [
+        96.35,
+        96.45
+      ],
+      "attacked_accuracy_interval_percent": [
+        68.85,
+        68.95
+      ],
+      "induced_mass_lower_percent": 27.4,
+      "induced_mass_upper_percent": 31.15,
+      "target_clean_conditional_lower_percent": 28.43798650752465,
+      "persistent_error_share_upper": 0.11755233494363929
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V4",
+      "target": "Inception-ResNet V2",
+      "attack": "JSMA",
+      "clean_display_percent": "100",
+      "attacked_display_percent": "65.2",
+      "clean_accuracy_interval_percent": [
+        99.5,
+        100.0
+      ],
+      "attacked_accuracy_interval_percent": [
+        65.15,
+        65.25
+      ],
+      "induced_mass_lower_percent": 34.25,
+      "induced_mass_upper_percent": 34.85,
+      "target_clean_conditional_lower_percent": 34.42211055276382,
+      "persistent_error_share_upper": 0.014388489208633094
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V4",
+      "target": "Ensemble",
+      "attack": "JSMA",
+      "clean_display_percent": "99.8",
+      "attacked_display_percent": "68.9",
+      "clean_accuracy_interval_percent": [
+        99.75,
+        99.85
+      ],
+      "attacked_accuracy_interval_percent": [
+        68.85,
+        68.95
+      ],
+      "induced_mass_lower_percent": 30.8,
+      "induced_mass_upper_percent": 31.15,
+      "target_clean_conditional_lower_percent": 30.87719298245614,
+      "persistent_error_share_upper": 0.008051529790660225
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V4",
+      "target": "ResNet V2",
+      "attack": "TAP",
+      "clean_display_percent": "89.6",
+      "attacked_display_percent": "58.4",
+      "clean_accuracy_interval_percent": [
+        89.55,
+        89.65
+      ],
+      "attacked_accuracy_interval_percent": [
+        58.35,
+        58.45
+      ],
+      "induced_mass_lower_percent": 31.1,
+      "induced_mass_upper_percent": 41.65,
+      "target_clean_conditional_lower_percent": 34.72920156337242,
+      "persistent_error_share_upper": 0.25150421179302046
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V4",
+      "target": "Inception V3",
+      "attack": "TAP",
+      "clean_display_percent": "96.4",
+      "attacked_display_percent": "27.3",
+      "clean_accuracy_interval_percent": [
+        96.35,
+        96.45
+      ],
+      "attacked_accuracy_interval_percent": [
+        27.25,
+        27.35
+      ],
+      "induced_mass_lower_percent": 69.0,
+      "induced_mass_upper_percent": 72.75,
+      "target_clean_conditional_lower_percent": 71.61390762843799,
+      "persistent_error_share_upper": 0.05024088093599449
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V4",
+      "target": "Inception-ResNet V2",
+      "attack": "TAP",
+      "clean_display_percent": "100",
+      "attacked_display_percent": "24.2",
+      "clean_accuracy_interval_percent": [
+        99.5,
+        100.0
+      ],
+      "attacked_accuracy_interval_percent": [
+        24.15,
+        24.25
+      ],
+      "induced_mass_lower_percent": 75.25,
+      "induced_mass_upper_percent": 75.85,
+      "target_clean_conditional_lower_percent": 75.62814070351759,
+      "persistent_error_share_upper": 0.006600660066006601
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V4",
+      "target": "Ensemble",
+      "attack": "TAP",
+      "clean_display_percent": "99.8",
+      "attacked_display_percent": "51.7",
+      "clean_accuracy_interval_percent": [
+        99.75,
+        99.85
+      ],
+      "attacked_accuracy_interval_percent": [
+        51.65,
+        51.75
+      ],
+      "induced_mass_lower_percent": 48.0,
+      "induced_mass_upper_percent": 48.35,
+      "target_clean_conditional_lower_percent": 48.1203007518797,
+      "persistent_error_share_upper": 0.0051813471502590676
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V4",
+      "target": "ResNet V2",
+      "attack": "ATA",
+      "clean_display_percent": "89.6",
+      "attacked_display_percent": "59.9",
+      "clean_accuracy_interval_percent": [
+        89.55,
+        89.65
+      ],
+      "attacked_accuracy_interval_percent": [
+        59.85,
+        59.95
+      ],
+      "induced_mass_lower_percent": 29.6,
+      "induced_mass_upper_percent": 40.15,
+      "target_clean_conditional_lower_percent": 33.054159687325516,
+      "persistent_error_share_upper": 0.26092384519350814
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V4",
+      "target": "Inception V3",
+      "attack": "ATA",
+      "clean_display_percent": "96.4",
+      "attacked_display_percent": "24.8",
+      "clean_accuracy_interval_percent": [
+        96.35,
+        96.45
+      ],
+      "attacked_accuracy_interval_percent": [
+        24.75,
+        24.85
+      ],
+      "induced_mass_lower_percent": 71.5,
+      "induced_mass_upper_percent": 75.25,
+      "target_clean_conditional_lower_percent": 74.2086144265698,
+      "persistent_error_share_upper": 0.04856952761144378
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V4",
+      "target": "Inception-ResNet V2",
+      "attack": "ATA",
+      "clean_display_percent": "100",
+      "attacked_display_percent": "22.1",
+      "clean_accuracy_interval_percent": [
+        99.5,
+        100.0
+      ],
+      "attacked_accuracy_interval_percent": [
+        22.05,
+        22.15
+      ],
+      "induced_mass_lower_percent": 77.35,
+      "induced_mass_upper_percent": 77.95,
+      "target_clean_conditional_lower_percent": 77.73869346733669,
+      "persistent_error_share_upper": 0.006422607578676943
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception V4",
+      "target": "Ensemble",
+      "attack": "ATA",
+      "clean_display_percent": "99.8",
+      "attacked_display_percent": "50.3",
+      "clean_accuracy_interval_percent": [
+        99.75,
+        99.85
+      ],
+      "attacked_accuracy_interval_percent": [
+        50.25,
+        50.35
+      ],
+      "induced_mass_lower_percent": 49.4,
+      "induced_mass_upper_percent": 49.75,
+      "target_clean_conditional_lower_percent": 49.523809523809526,
+      "persistent_error_share_upper": 0.005035246727089627
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception-ResNet V2",
+      "target": "ResNet V2",
+      "attack": "FGSM",
+      "clean_display_percent": "89.6",
+      "attacked_display_percent": "71.7",
+      "clean_accuracy_interval_percent": [
+        89.55,
+        89.65
+      ],
+      "attacked_accuracy_interval_percent": [
+        71.65,
+        71.75
+      ],
+      "induced_mass_lower_percent": 17.8,
+      "induced_mass_upper_percent": 28.35,
+      "target_clean_conditional_lower_percent": 19.87716359575656,
+      "persistent_error_share_upper": 0.36991150442477877
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception-ResNet V2",
+      "target": "Inception V3",
+      "attack": "FGSM",
+      "clean_display_percent": "96.4",
+      "attacked_display_percent": "69.0",
+      "clean_accuracy_interval_percent": [
+        96.35,
+        96.45
+      ],
+      "attacked_accuracy_interval_percent": [
+        68.95,
+        69.05
+      ],
+      "induced_mass_lower_percent": 27.3,
+      "induced_mass_upper_percent": 31.05,
+      "target_clean_conditional_lower_percent": 28.334198235599377,
+      "persistent_error_share_upper": 0.11793214862681745
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception-ResNet V2",
+      "target": "Inception V4",
+      "attack": "FGSM",
+      "clean_display_percent": "97.6",
+      "attacked_display_percent": "76.5",
+      "clean_accuracy_interval_percent": [
+        97.55,
+        97.65
+      ],
+      "attacked_accuracy_interval_percent": [
+        76.45,
+        76.55
+      ],
+      "induced_mass_lower_percent": 21.0,
+      "induced_mass_upper_percent": 23.55,
+      "target_clean_conditional_lower_percent": 21.52742183495643,
+      "persistent_error_share_upper": 0.1044776119402985
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception-ResNet V2",
+      "target": "Ensemble",
+      "attack": "FGSM",
+      "clean_display_percent": "99.8",
+      "attacked_display_percent": "78.7",
+      "clean_accuracy_interval_percent": [
+        99.75,
+        99.85
+      ],
+      "attacked_accuracy_interval_percent": [
+        78.65,
+        78.75
+      ],
+      "induced_mass_lower_percent": 21.0,
+      "induced_mass_upper_percent": 21.35,
+      "target_clean_conditional_lower_percent": 21.05263157894737,
+      "persistent_error_share_upper": 0.011764705882352941
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception-ResNet V2",
+      "target": "ResNet V2",
+      "attack": "BIM",
+      "clean_display_percent": "89.6",
+      "attacked_display_percent": "60.4",
+      "clean_accuracy_interval_percent": [
+        89.55,
+        89.65
+      ],
+      "attacked_accuracy_interval_percent": [
+        60.35,
+        60.45
+      ],
+      "induced_mass_lower_percent": 29.1,
+      "induced_mass_upper_percent": 39.65,
+      "target_clean_conditional_lower_percent": 32.49581239530988,
+      "persistent_error_share_upper": 0.26422250316055623
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception-ResNet V2",
+      "target": "Inception V3",
+      "attack": "BIM",
+      "clean_display_percent": "96.4",
+      "attacked_display_percent": "41.5",
+      "clean_accuracy_interval_percent": [
+        96.35,
+        96.45
+      ],
+      "attacked_accuracy_interval_percent": [
+        41.45,
+        41.55
+      ],
+      "induced_mass_lower_percent": 54.8,
+      "induced_mass_upper_percent": 58.55,
+      "target_clean_conditional_lower_percent": 56.8759730150493,
+      "persistent_error_share_upper": 0.06244653550042772
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception-ResNet V2",
+      "target": "Inception V4",
+      "attack": "BIM",
+      "clean_display_percent": "97.6",
+      "attacked_display_percent": "51.5",
+      "clean_accuracy_interval_percent": [
+        97.55,
+        97.65
+      ],
+      "attacked_accuracy_interval_percent": [
+        51.45,
+        51.55
+      ],
+      "induced_mass_lower_percent": 46.0,
+      "induced_mass_upper_percent": 48.55,
+      "target_clean_conditional_lower_percent": 47.15530497180933,
+      "persistent_error_share_upper": 0.05056759545923633
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception-ResNet V2",
+      "target": "Ensemble",
+      "attack": "BIM",
+      "clean_display_percent": "99.8",
+      "attacked_display_percent": "54.5",
+      "clean_accuracy_interval_percent": [
+        99.75,
+        99.85
+      ],
+      "attacked_accuracy_interval_percent": [
+        54.45,
+        54.55
+      ],
+      "induced_mass_lower_percent": 45.2,
+      "induced_mass_upper_percent": 45.55,
+      "target_clean_conditional_lower_percent": 45.31328320802005,
+      "persistent_error_share_upper": 0.005500550055005501
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception-ResNet V2",
+      "target": "ResNet V2",
+      "attack": "C&W",
+      "clean_display_percent": "89.6",
+      "attacked_display_percent": "85.6",
+      "clean_accuracy_interval_percent": [
+        89.55,
+        89.65
+      ],
+      "attacked_accuracy_interval_percent": [
+        85.55,
+        85.65
+      ],
+      "induced_mass_lower_percent": 3.9,
+      "induced_mass_upper_percent": 14.45,
+      "target_clean_conditional_lower_percent": 4.355108877721943,
+      "persistent_error_share_upper": 0.7282229965156795
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception-ResNet V2",
+      "target": "Inception V3",
+      "attack": "C&W",
+      "clean_display_percent": "96.4",
+      "attacked_display_percent": "91.7",
+      "clean_accuracy_interval_percent": [
+        96.35,
+        96.45
+      ],
+      "attacked_accuracy_interval_percent": [
+        91.65,
+        91.75
+      ],
+      "induced_mass_lower_percent": 4.6,
+      "induced_mass_upper_percent": 8.35,
+      "target_clean_conditional_lower_percent": 4.7742605085625325,
+      "persistent_error_share_upper": 0.44242424242424244
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception-ResNet V2",
+      "target": "Inception V4",
+      "attack": "C&W",
+      "clean_display_percent": "97.6",
+      "attacked_display_percent": "92.4",
+      "clean_accuracy_interval_percent": [
+        97.55,
+        97.65
+      ],
+      "attacked_accuracy_interval_percent": [
+        92.35,
+        92.45
+      ],
+      "induced_mass_lower_percent": 5.1,
+      "induced_mass_upper_percent": 7.65,
+      "target_clean_conditional_lower_percent": 5.2280881599179905,
+      "persistent_error_share_upper": 0.32450331125827814
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception-ResNet V2",
+      "target": "Ensemble",
+      "attack": "C&W",
+      "clean_display_percent": "99.8",
+      "attacked_display_percent": "93.5",
+      "clean_accuracy_interval_percent": [
+        99.75,
+        99.85
+      ],
+      "attacked_accuracy_interval_percent": [
+        93.45,
+        93.55
+      ],
+      "induced_mass_lower_percent": 6.2,
+      "induced_mass_upper_percent": 6.55,
+      "target_clean_conditional_lower_percent": 6.215538847117794,
+      "persistent_error_share_upper": 0.03875968992248062
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception-ResNet V2",
+      "target": "ResNet V2",
+      "attack": "JSMA",
+      "clean_display_percent": "89.6",
+      "attacked_display_percent": "55.4",
+      "clean_accuracy_interval_percent": [
+        89.55,
+        89.65
+      ],
+      "attacked_accuracy_interval_percent": [
+        55.35,
+        55.45
+      ],
+      "induced_mass_lower_percent": 34.1,
+      "induced_mass_upper_percent": 44.65,
+      "target_clean_conditional_lower_percent": 38.07928531546622,
+      "persistent_error_share_upper": 0.2345679012345679
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception-ResNet V2",
+      "target": "Inception V3",
+      "attack": "JSMA",
+      "clean_display_percent": "96.4",
+      "attacked_display_percent": "62.7",
+      "clean_accuracy_interval_percent": [
+        96.35,
+        96.45
+      ],
+      "attacked_accuracy_interval_percent": [
+        62.65,
+        62.75
+      ],
+      "induced_mass_lower_percent": 33.6,
+      "induced_mass_upper_percent": 37.35,
+      "target_clean_conditional_lower_percent": 34.87285936689154,
+      "persistent_error_share_upper": 0.09798657718120805
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception-ResNet V2",
+      "target": "Inception V4",
+      "attack": "JSMA",
+      "clean_display_percent": "97.6",
+      "attacked_display_percent": "66.8",
+      "clean_accuracy_interval_percent": [
+        97.55,
+        97.65
+      ],
+      "attacked_accuracy_interval_percent": [
+        66.75,
+        66.85
+      ],
+      "induced_mass_lower_percent": 30.7,
+      "induced_mass_upper_percent": 33.25,
+      "target_clean_conditional_lower_percent": 31.471040492055355,
+      "persistent_error_share_upper": 0.07390648567119155
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception-ResNet V2",
+      "target": "Ensemble",
+      "attack": "JSMA",
+      "clean_display_percent": "99.8",
+      "attacked_display_percent": "64.9",
+      "clean_accuracy_interval_percent": [
+        99.75,
+        99.85
+      ],
+      "attacked_accuracy_interval_percent": [
+        64.85,
+        64.95
+      ],
+      "induced_mass_lower_percent": 34.8,
+      "induced_mass_upper_percent": 35.15,
+      "target_clean_conditional_lower_percent": 34.88721804511278,
+      "persistent_error_share_upper": 0.007132667617689016
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception-ResNet V2",
+      "target": "ResNet V2",
+      "attack": "TAP",
+      "clean_display_percent": "89.6",
+      "attacked_display_percent": "53.3",
+      "clean_accuracy_interval_percent": [
+        89.55,
+        89.65
+      ],
+      "attacked_accuracy_interval_percent": [
+        53.25,
+        53.35
+      ],
+      "induced_mass_lower_percent": 36.2,
+      "induced_mass_upper_percent": 46.75,
+      "target_clean_conditional_lower_percent": 40.42434394193188,
+      "persistent_error_share_upper": 0.2240085744908896
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception-ResNet V2",
+      "target": "Inception V3",
+      "attack": "TAP",
+      "clean_display_percent": "96.4",
+      "attacked_display_percent": "25.9",
+      "clean_accuracy_interval_percent": [
+        96.35,
+        96.45
+      ],
+      "attacked_accuracy_interval_percent": [
+        25.85,
+        25.95
+      ],
+      "induced_mass_lower_percent": 70.4,
+      "induced_mass_upper_percent": 74.15,
+      "target_clean_conditional_lower_percent": 73.0669434353918,
+      "persistent_error_share_upper": 0.04929101958136394
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception-ResNet V2",
+      "target": "Inception V4",
+      "attack": "TAP",
+      "clean_display_percent": "97.6",
+      "attacked_display_percent": "33.2",
+      "clean_accuracy_interval_percent": [
+        97.55,
+        97.65
+      ],
+      "attacked_accuracy_interval_percent": [
+        33.15,
+        33.25
+      ],
+      "induced_mass_lower_percent": 64.3,
+      "induced_mass_upper_percent": 66.85,
+      "target_clean_conditional_lower_percent": 65.91491542798565,
+      "persistent_error_share_upper": 0.03670411985018727
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception-ResNet V2",
+      "target": "Ensemble",
+      "attack": "TAP",
+      "clean_display_percent": "99.8",
+      "attacked_display_percent": "48.2",
+      "clean_accuracy_interval_percent": [
+        99.75,
+        99.85
+      ],
+      "attacked_accuracy_interval_percent": [
+        48.15,
+        48.25
+      ],
+      "induced_mass_lower_percent": 51.5,
+      "induced_mass_upper_percent": 51.85,
+      "target_clean_conditional_lower_percent": 51.62907268170426,
+      "persistent_error_share_upper": 0.004830917874396135
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception-ResNet V2",
+      "target": "ResNet V2",
+      "attack": "ATA",
+      "clean_display_percent": "89.6",
+      "attacked_display_percent": "49.8",
+      "clean_accuracy_interval_percent": [
+        89.55,
+        89.65
+      ],
+      "attacked_accuracy_interval_percent": [
+        49.75,
+        49.85
+      ],
+      "induced_mass_lower_percent": 39.7,
+      "induced_mass_upper_percent": 50.25,
+      "target_clean_conditional_lower_percent": 44.332774986041315,
+      "persistent_error_share_upper": 0.20837487537387836
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception-ResNet V2",
+      "target": "Inception V3",
+      "attack": "ATA",
+      "clean_display_percent": "96.4",
+      "attacked_display_percent": "22.1",
+      "clean_accuracy_interval_percent": [
+        96.35,
+        96.45
+      ],
+      "attacked_accuracy_interval_percent": [
+        22.05,
+        22.15
+      ],
+      "induced_mass_lower_percent": 74.2,
+      "induced_mass_upper_percent": 77.95,
+      "target_clean_conditional_lower_percent": 77.01089776855216,
+      "persistent_error_share_upper": 0.046885035324341684
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception-ResNet V2",
+      "target": "Inception V4",
+      "attack": "ATA",
+      "clean_display_percent": "97.6",
+      "attacked_display_percent": "30.1",
+      "clean_accuracy_interval_percent": [
+        97.55,
+        97.65
+      ],
+      "attacked_accuracy_interval_percent": [
+        30.05,
+        30.15
+      ],
+      "induced_mass_lower_percent": 67.4,
+      "induced_mass_upper_percent": 69.95,
+      "target_clean_conditional_lower_percent": 69.09277293695541,
+      "persistent_error_share_upper": 0.03507516105941303
+    },
+    {
+      "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
+      "source": "Inception-ResNet V2",
+      "target": "Ensemble",
+      "attack": "ATA",
+      "clean_display_percent": "99.8",
+      "attacked_display_percent": "45.3",
+      "clean_accuracy_interval_percent": [
+        99.75,
+        99.85
+      ],
+      "attacked_accuracy_interval_percent": [
+        45.25,
+        45.35
+      ],
+      "induced_mass_lower_percent": 54.4,
+      "induced_mass_upper_percent": 54.75,
+      "target_clean_conditional_lower_percent": 54.53634085213032,
+      "persistent_error_share_upper": 0.004574565416285453
+    }
+  ]
+}
