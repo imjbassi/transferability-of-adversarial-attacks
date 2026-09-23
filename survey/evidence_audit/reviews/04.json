@@ -1,0 +1,50 @@
+{
+  "rank": 4,
+  "paper_id": "fb0568dcb546bbb4d7d1ed71ce395f4b66691003",
+  "review_date": "2026-09-23",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all twelve pages of cached arXiv 1908.06281v5, including references and appendices. Visually checked PDF pp. 6,8,9,12 covering setup, algorithms and numerical transfer results.",
+    "supplement": "Appendices A and B are included on p. 12: Algorithm 2 and Figure 3 examples. OpenReview returned a browser-verification challenge; no additional OpenReview material was inspected or assumed identical.",
+    "inventory_complete": true,
+    "applicability": "cross_model_classification_attack",
+    "excluded_results": "Figure 1 is a loss-versus-scale diagnostic. Figure 2(a) and starred source-model cells in Tables 1,2,4 are white-box results. Figure 3 illustrates images, not additional numerical rates. Table averages are summaries, not independent observations."
+  },
+  "sources": [
+    {"id": "main", "url": "https://arxiv.org/pdf/1908.06281v5", "sha256": "7632f7d292cbdfb677f49b050e062a3a73a82a6b82294b81c84b3c103a2dcbdc"},
+    {"id": "evaluator", "url": "https://github.com/JHL-HUST/SI-NI-FGSM/blob/4464fcd55b5f0a109f7c0190819856d449cc01b5/simple_eval.py", "sha256": "1f6af252151561f310af5f2fe83d71f6b18bdbb649b19e3dd7d8ecdd3375bebd"},
+    {"id": "attack", "url": "https://github.com/JHL-HUST/SI-NI-FGSM/blob/4464fcd55b5f0a109f7c0190819856d449cc01b5/si_ni_fgsm.py", "sha256": "cddac7e65628cfb604577fdcb383bcba340c19e0681e55b27db289be7b72055c"}
+  ],
+  "result_groups": [
+    {"id": "single_model", "locator": "Sections 4.1,4.3; Table 1, PDF pp. 6,8", "population": "Stated 1,000-image ILSVRC2012 validation sample; four single sources, seven evaluation models", "outcome": "off-diagonal untargeted success for TIM, DIM, TI-DIM and their SI-NI combinations", "f2": "unclear", "f3": "unclear", "evidence": "Almost correctly classified by all testing models does not state exclusion of target-clean errors. Source-success denominator filtering is not explicit. The basic released evaluator is not established as the implementation of every combination."},
+    {"id": "ensemble", "locator": "Section 4.4; Table 2, PDF p. 8", "population": "Equal-weight four-model source ensemble; three adversarially trained targets", "outcome": "untargeted success for six attack variants", "f2": "unclear", "f3": "unclear", "evidence": "Ensemble construction is stated, but target-clean exclusion and ensemble-source-success denominator filtering are not explicit."},
+    {"id": "advanced_defenses", "locator": "Section 4.5; Table 3, PDF p. 8", "population": "Four-model source ensemble against HGD, R&P, NIPS-r3, FD, ComDefend and randomized smoothing", "outcome": "untargeted success for MI-FGSM, TI-DIM and SI-NI-TI-DIM", "f2": "unclear", "f3": "unclear", "evidence": "No explicit clean-correct or successful-source denominator was established for these six defense pipelines; a basic-model evaluator does not establish their policy."},
+    {"id": "iterations", "locator": "Section 4.6; Figure 2(b,c), PDF p. 9", "population": "Inception-v3 source; Inception-v4 and Inception-ResNet-v2 targets, iteration counts 4 through 16", "outcome": "NI-FGSM versus MI-FGSM transfer success", "f2": "unclear", "f3": "unclear", "evidence": "The ablation varies iterations without an explicit denominator filtering statement. The white-box panel is excluded."},
+    {"id": "classic_comparison", "locator": "Section 4.6; Table 4, PDF p. 9", "population": "Inception-v3 source; six other evaluation models", "outcome": "off-diagonal untargeted success for FGSM, I-FGSM, PGD, C&W, NI-FGSM and SI-NI-FGSM", "f2": "unclear", "f3": "unclear", "evidence": "The linked NI/SI-NI evaluator retains source failures and divides by 1,000. This is affirmative artifact evidence, but correspondence of its configuration/population to this table and applicability to other baselines are unverified; it is not silently extended to the whole table."}
+  ],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "separate_clean_values_not_located", "locator": "Section 4.1; Tables 1-4; Figure 2", "evidence": "Almost-correct wording supplies no separate numerical model clean accuracies. Attacked diagonals and loss diagnostics are not clean accuracies. Silence does not support no."},
+    "f2": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 4.1, PDF p. 6; simple_eval.py", "evidence": "Almost correctly classified is not an exclusion rule. The evaluator does not load clean predictions, but prior dataset selection could still filter inputs; absent evaluator filtering alone does not establish published target-clean-error inclusion."},
+    "f3": {"value": "unclear", "reason": "unresolved_scope", "locator": "Sections 4.3-4.6; simple_eval.py lines 138-158", "evidence": "The released evaluator explicitly retains inputs irrespective of source success. Its behavior is preserved as an artifact finding, not proof that every published result uses that path. Published-scope denominator coverage remains unresolved."},
+    "f4": {"value": "unclear", "reason": "denominator_and_aggregation_not_fully_established", "locator": "Section 4.1; Tables 1-4; Figure 2", "evidence": "One-decimal rates could identify counts on exactly 1,000 unaveraged trials, but that denominator and aggregation policy are not established across all groups, including stochastic defenses and plotted ablations. Local survey-generated CSVs are not author-released outcomes."},
+    "f5": {"value": "unclear", "reason": "classic_baseline_budget_scope_unresolved", "locator": "Sections 2.1,2.2,4.1,4.6; Eq. 4; Table 4", "evidence": "Main setup states L-infinity epsilon=16 in pixel units. C&W uses a distance-minimizing objective in Eq. 4; a numerical radius or explicit enforcement of the global radius for this baseline was not established. Under the all-result rule this remains unclear, not no; step size is not a perturbation radius."},
+    "f6": {"value": "unclear", "reason": "original_data_checkpoint_sufficiency_unverified", "locator": "Released README and scripts at 4464fcd55b5f0a109f7c0190819856d449cc01b5", "evidence": "Attack generation and eight-model evaluation code link data and model downloads, but those contents were not verified. Original local data/model directories contain placeholders. Survey ports instead use SSA-derived images and converted weights, not verified original data/checkpoint bytes or runtime parity. Access failure does not establish absence."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-23", "url": "https://github.com/JHL-HUST/SI-NI-FGSM", "result": "Remote HEAD and local commit match 4464fcd55b5f0a109f7c0190819856d449cc01b5. Read README, simple_eval.py and si_ni_fgsm.py; inspected root inventory and clean tracked script diffs. outputs_modern and si_ni_conditioned CSV/JSON are untracked survey outputs, not original released evidence. No original TensorFlow execution performed."},
+    {"date": "2026-09-23", "url": "https://github.com/JHL-HUST/SI-NI-FGSM/blob/4464fcd55b5f0a109f7c0190819856d449cc01b5/simple_eval.py", "result": "Lines 138-158 count ground-truth misclassification for all loaded adversarial filenames, without source-success filtering or clean-prediction inputs. Printed rates divide by constant 1,000, not processed-file count. This verifies code behavior, not preselection or all published table denominators."},
+    {"date": "2026-09-23", "url": "https://github.com/JHL-HUST/SI-NI-FGSM/blob/4464fcd55b5f0a109f7c0190819856d449cc01b5/si_ni_fgsm.py", "result": "Defaults epsilon=16, 10 iterations, alpha=epsilon/iterations after normalization, five scales, momentum=1; attack label is the initial unscaled prediction. Section 4.1 states 16 iterations and alpha=1.6; Algorithms 1/2 specify alpha=epsilon/T. Archived 10-step port is not an established matched Table 4 run. Post-encoding perturbation bounds untested."},
+    {"date": "2026-09-23", "url": "https://drive.google.com/open?id=1CfobY6i8BfqfWPHL31FKFDipNjqWwAhS", "result": "README data link inaccessible through web tool; contents, hashes and population unverified. Not evidence of public absence."},
+    {"date": "2026-09-23", "url": "https://drive.google.com/open?id=10cFNVEhLpCatwECA6SPB-2g0q5zZyfaw", "result": "README model link inaccessible through web tool; checkpoint bytes and loading unverified. Not evidence of public absence."},
+    {"date": "2026-09-23", "url": "https://openreview.net/forum?id=SJlHwkBYDH", "result": "Browser-verification challenge prevented inspection. Used identified arXiv v5 including both appendices; no claim that additional OpenReview attachments were checked."}
+  ],
+  "bounds_checks": [
+    {"groups": ["single_model", "ensemble", "advanced_defenses", "iterations", "classic_comparison"], "status": "aligned_clean_accuracy_not_located", "locator": "Section 4.1 and all Section 4 empirical results", "reason": "No numerical target clean accuracies on the reported-rate population established. Almost-correct wording has no assignable numerical clean error; port clean accuracies cannot substitute for the published population. Published source-success policies also remain unresolved. No new numerical bound extracted."}
+  ],
+  "limitations": [
+    "Complete denotes non-blind review of the identified main paper and included appendices, not independent coding or successful recomputation.",
+    "Released evaluator behavior is explicit evidence retained separately from unresolved correspondence to published tables.",
+    "Historical coding, archived predictions and published-number deltas remain unchanged. No claim that the paper is wrong or its artifacts absent is supported."
+  ]
+}

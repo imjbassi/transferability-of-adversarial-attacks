@@ -18,6 +18,16 @@ step and does not silently reproduce the paper's stated 1.6-pixel step. A
 16-iteration run alone therefore does not resolve the configuration discrepancy.
 No new GPU runs or original-runtime parity tests were performed in this batch.
 
+The pinned SI-NI `simple_eval.py` (lines 138-158) counts ground-truth
+misclassification for each loaded adversarial image without source-success
+filtering, then divides by the constant 1,000, not the processed-file count.
+It does not load clean predictions. This establishes the released evaluator's
+operation, not whether the dataset was prefiltered or which evaluator produced
+each published table. A faithful run manifest must verify input membership and
+count, not merely inherit that denominator. The linked original data and model
+downloads were not verified during this audit; web-tool access failures do not
+establish that the artifacts are absent. See `../evidence_audit/reviews/04.json`.
+
 These archives support three selected ImageNet attack configurations, each with
 one source and nine targets. They do not constitute full replication of every
 experiment in the three papers. The SI-NI-FGSM and VMI-FGSM runs use PyTorch

@@ -44,12 +44,13 @@
       "rank": 4,
       "paper_id": "fb0568dcb546bbb4d7d1ed71ce395f4b66691003",
       "title": "Nesterov Accelerated Gradient and Scale Invariance for Adversarial Attacks",
-      "evidence_audit": "partial",
-      "bounds_review": "pending_aligned_clean_accuracy",
-      "artifact_review": "pending",
+      "evidence_audit": "complete",
+      "bounds_review": "reviewed_aligned_clean_accuracy_unestablished",
+      "artifact_review": "reviewed_sufficiency_unclear",
       "notes": [
-        "Metric-scoped evidence in batch_02_05.md, rank 4; full paper/supplement audit remains incomplete.",
-        "Paper setup says 16 iterations; released si_ni_fgsm.py and archived port use 10. Comparator configuration not established."
+        "reviews/04.json records the twelve-page arXiv v5 including both appendices, five result groups, all six judgments and pinned artifact checks; supersedes the partial batch_02_05.md entry.",
+        "Released evaluator retains source failures and divides by fixed 1,000; correspondence to all published results is not established.",
+        "Original downloads and paper/code step settings remain unresolved; archived port is not a matched paper-configuration replication."
       ]
     },
     {

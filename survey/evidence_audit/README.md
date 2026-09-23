@@ -4,7 +4,7 @@ Started 23 September 2026. This is a non-blind evidence audit, not the independe
 
 ## Current scope
 
-The ledger retains all 80 frozen paper IDs: three documented reviews are complete (ranks 2, 3 and 31), nine have partial metric-specific checks, and 68 remain pending. No historical categorical judgment has been overwritten. Pending is a workflow state, not a new coding category. Complete means a documented non-blind review, not validated replication or independent agreement; unclear judgments may remain after review.
+The ledger retains all 80 frozen paper IDs: four documented reviews are complete (ranks 2, 3, 4 and 31), eight have partial metric-specific checks, and 68 remain pending. No historical categorical judgment has been overwritten. Pending is a workflow state, not a new coding category. Complete means a documented non-blind review, not validated replication or independent agreement; unclear judgments may remain after review.
 
 [Rank 2's full review](reviews/02.json) separates the main seven-model clean-correct cohort, the C&W subset, ensemble/ablation experiments and the competition-defense experiment. Main-cohort filtering must not be silently extended to additional defenses. Its pinned demo code is a candidate artifact, not a verified transfer evaluator; attack-label and default-budget details are recorded for later reconciliation.
 
@@ -18,6 +18,8 @@ The second batch covers ranks 2–5 in [batch_02_05.md](batch_02_05.md). It conf
 
 - Rank 31, Inkawhich et al. 2019: Section 3 (PDF pp. 2-3) defines joint clean correctness and successful-source denominators for uTR/tTR. Section 5 (p. 4) reports model-specific clean errors, supplemented by all six SVHN models in supplement Table 3. The same paper reports error and targeted success without successful-source filtering. All four definitions are retained in the review.
 - Rank 38, Wu et al. 2020: Section 5.1 (pp. 5-6) defines the common 1,000-image dataset and top-1 target accuracy metric. Table 1 contains five clean accuracies and 120 attacked accuracies. Its 96 off-diagonal entries were checked against the cached text. Table 2 and the supplement are not yet fully reviewed.
+
+[Rank 4's full review](reviews/04.json) includes both arXiv appendices, advanced defenses, classic baselines and the iteration ablation. The released evaluator retains source failures and divides by a fixed 1,000; this operational finding is not silently generalized to every published table. Original data/checkpoint contents and paper/code configuration correspondence remain unverified. No numerical bound or verified recomputation was added.
 
 ## Source identification
 
