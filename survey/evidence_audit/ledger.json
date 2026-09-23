@@ -57,11 +57,13 @@
       "rank": 5,
       "paper_id": "7301d58eb8a750e44b7da5ab0266b134d1651237",
       "title": "Enhancing the Transferability of Adversarial Attacks through Variance Tuning",
-      "evidence_audit": "partial",
-      "bounds_review": "pending_aligned_clean_accuracy",
-      "artifact_review": "pending",
+      "evidence_audit": "complete",
+      "bounds_review": "reviewed_aligned_clean_accuracy_unestablished",
+      "artifact_review": "reviewed_sufficiency_unclear",
       "notes": [
-        "Metric-scoped evidence in batch_02_05.md, rank 5; full paper/supplement audit remains incomplete."
+        "reviews/05.json covers arXiv v3, separately retrieved CVF supplement, seven result groups and six judgments; supersedes the partial batch_02_05.md entry.",
+        "Pinned release notes identify version-specific Table 4 targets and a ComDefend setup ambiguity; do not mix conference and arXiv comparison numbers.",
+        "Public data/model folder listings are accessible, but bytes, population identity and original-runtime execution remain unverified."
       ]
     },
     {

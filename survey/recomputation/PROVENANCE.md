@@ -36,6 +36,34 @@ been established against the original runtimes. The common images and converted
 target weights were obtained through the SSA checkout. An identical model family
 name is not proof that the original studies used identical checkpoint bytes.
 
+## Variance-tuning evidence reconciliation, 2026-09-23
+
+The inspected VT release is pinned to
+`9c87680732108fefa0d3cb5f22d76715c3010a6c`; the reviewed paper is arXiv
+`2103.15571v3`, not an unspecified interchangeable conference version.
+Its `third_party/README.md` explicitly distinguishes the original Table 4
+Bit-Red/FD/NRP target choices from the revised arXiv targets. The root README
+uses Resnet_101 for ComDefend, while Section 4.1 broadly assigns Inc-v3_ens3
+to that defense category. Resolve target identity before a defense comparison;
+this does not change the archived basic VMI Table 1 comparison.
+
+The released `vmi_fgsm.py` defaults match the stated 16-pixel radius, 10 steps,
+1.6-pixel step size, momentum 1, 20 neighborhood samples and beta 1.5. It fixes
+the attack label to the initial source prediction, whereas Algorithm 1 names
+a ground-truth label. Matching these hyperparameters alone does not establish
+numerical port parity, image identity or post-encoding perturbation compliance.
+
+Like the SI-NI evaluator, VT `simple_eval.py` counts target misclassification
+without source-success filtering and divides by a fixed 1,000. Public HTTP
+inspection reached the linked data and model folders and found the expected
+checkpoint filenames; no checkpoint bytes or runtime were verified. The
+randomized-smoothing wrapper references external conversion/evaluation helpers
+and a skip parameter, so its population cannot be inferred from the basic
+evaluator. See `../evidence_audit/reviews/05.json` for all seven result groups,
+source hashes, supplementary coverage and access checks.
+
+## Archived prediction conventions
+
 The raw CSV files are preserved with their original prediction indices:
 
 | Run | Source | CSV label/source indexing | Target indexing |

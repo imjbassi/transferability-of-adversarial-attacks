@@ -4,7 +4,7 @@ Started 23 September 2026. This is a non-blind evidence audit, not the independe
 
 ## Current scope
 
-The ledger retains all 80 frozen paper IDs: four documented reviews are complete (ranks 2, 3, 4 and 31), eight have partial metric-specific checks, and 68 remain pending. No historical categorical judgment has been overwritten. Pending is a workflow state, not a new coding category. Complete means a documented non-blind review, not validated replication or independent agreement; unclear judgments may remain after review.
+The ledger retains all 80 frozen paper IDs: five documented reviews are complete (ranks 2, 3, 4, 5 and 31), seven have partial metric-specific checks, and 68 remain pending. No historical categorical judgment has been overwritten. Pending is a workflow state, not a new coding category. Complete means a documented non-blind review, not validated replication or independent agreement; unclear judgments may remain after review.
 
 [Rank 2's full review](reviews/02.json) separates the main seven-model clean-correct cohort, the C&W subset, ensemble/ablation experiments and the competition-defense experiment. Main-cohort filtering must not be silently extended to additional defenses. Its pinned demo code is a candidate artifact, not a verified transfer evaluator; attack-label and default-budget details are recorded for later reconciliation.
 
@@ -22,6 +22,8 @@ The second batch covers ranks 2–5 in [batch_02_05.md](batch_02_05.md). It conf
 [Rank 4's full review](reviews/04.json) includes both arXiv appendices, advanced defenses, classic baselines and the iteration ablation. The released evaluator retains source failures and divides by a fixed 1,000; this operational finding is not silently generalized to every published table. Original data/checkpoint contents and paper/code configuration correspondence remain unverified. No numerical bound or verified recomputation was added.
 
 ## Source identification
+
+[Rank 5's full review](reviews/05.json) includes arXiv v3 and the separately retrieved CVF supplement, retaining all transformation and hyperparameter ablations. Released notes distinguish conference and arXiv defense targets; preserve that version identity in any future comparison. The public data/model folder listings are accessible despite web-tool failures, but checkpoint bytes and execution are unverified. The numerical L-infinity budget is explicit across reviewed scopes; no aligned clean-accuracy bound was established.
 
 Rank 31 PDF SHA-256: 737c264424564caf7f39b6e9ddc487227cf141f8c6d7511ef0e8e9420d7ffa7d.
 Rank 38 PDF SHA-256: fb8dff58f38b94dde6bcf8597a1f239ce3a30b23a640868905a833bf526f46ee.
