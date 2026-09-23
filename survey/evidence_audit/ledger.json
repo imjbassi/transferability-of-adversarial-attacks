@@ -1,7 +1,7 @@
 {
   "audit_started": "2026-09-23",
   "status": "in_progress",
-  "policy": "Pending means not yet reviewed, not unclear/no. Corpus membership and historical coding are unchanged. Evidence checks are metric-specific until full paper/supplement review and aggregation rule resolution.",
+  "policy": "Pending means not yet reviewed, not unclear/no. Corpus membership and historical coding are unchanged. Complete reviews use coding_amendment_2026-09-23.md and metric-specific evidence records; completion is not independent validation or successful recomputation.",
   "papers": [
     {
       "rank": 1,
@@ -298,14 +298,13 @@
       "rank": 31,
       "paper_id": "14a865278845d5a51e3b181f322e993397650b48",
       "title": "Feature Space Perturbations Yield More Transferable Adversarial Examples",
-      "evidence_audit": "partial",
-      "bounds_review": "partial",
-      "artifact_review": "pending",
+      "evidence_audit": "complete",
+      "bounds_review": "reviewed_no_new_numeric_extraction",
+      "artifact_review": "reviewed_sufficiency_unclear",
       "notes": [
-        "Section 3 (PDF pp. 2-3): D_orig requires both whitebox and blackbox correct; uTR denominator D_uTR contains only source-misclassified attacked examples.",
-        "Section 3 also reports error and targeted success on D_adv without source-success filtering. Paper-level aggregation of mixed metrics needs explicit treatment.",
-        "Section 5 (PDF p. 4) reports individual clean errors for five model/dataset cases. Supplement and complete numeric-budget/artifact audit pending.",
-        "Do not subtract full-test clean error from uTR: its evaluation population is jointly clean-correct and source-success conditioned."
+        "reviews/31.json records six evidence-supported judgments, main/supplement coverage, four metric groups and artifact/bounds checks under the dated retrospective amendment.",
+        "Complete denotes documented non-blind evidence review, not artifact sufficiency, numerical replication or independent agreement.",
+        "Mixed explicit source conditioning must not be counted as absent denominator reporting. No new numerical bounds extracted."
       ]
     },
     {

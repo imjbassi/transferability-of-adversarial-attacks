@@ -4,13 +4,15 @@ Started 23 September 2026. This is a non-blind evidence audit, not the independe
 
 ## Current scope
 
-The ledger retains all 80 frozen paper IDs. Twelve papers have partial, metric-specific evidence checks; 68 remain pending. No paper is marked fully audited and no historical categorical judgment has been overwritten. Pending is a workflow state, not a new coding category.
+The ledger retains all 80 frozen paper IDs: one documented paper/supplement review is complete (rank 31), eleven have partial metric-specific checks, and 68 remain pending. No historical categorical judgment has been overwritten. Pending is a workflow state, not a new coding category. Complete means a documented non-blind review, not validated replication or independent agreement; unclear judgments may remain after review.
+
+The dated [retrospective amendment](../coding_amendment_2026-09-23.md) now specifies scope inventory, mixed-metric aggregation, applicability and completion requirements. It was adopted after inspecting evidence and must not be described as preregistered. [Rank 31's review](reviews/31.json) records all six judgments, source hashes, supplementary clean-accuracy evidence, four distinct metrics and bounds/artifact checks. Its source-success field is explicitly mixed, not missing reporting. Its supplement Table 5 budget and exact count recovery remain unclear. The artifact search does not establish a sufficient original release.
 
 The third batch covers ranks 1 and 6–10 in [batch_01_06_10.md](batch_01_06_10.md). It documents explicit source-success conditioning for LLM jailbreak transfer, distinguishes transfer learning from attack transfer, flags a test/attacker-set population mismatch, and identifies two further bounds candidates requiring population alignment and extraction.
 
 The second batch covers ranks 2–5 in [batch_02_05.md](batch_02_05.md). It confirms explicit clean-correct filtering in rank 2, distinguishes that from almost-correct wording in ranks 4–5, and records the rank-4 paper/code iteration discrepancy without assigning blame or assuming which configuration produced the published table.
 
-- Rank 31, Inkawhich et al. 2019: Section 3 (PDF pp. 2-3) defines joint clean correctness and successful-source denominators for uTR/tTR. Section 5 (p. 4) reports model-specific clean errors. The same paper also reports error and targeted success without successful-source filtering. Thus the existence of both conditioned and unconditioned metrics must be recorded, rather than interpreting one as a contradiction of the other.
+- Rank 31, Inkawhich et al. 2019: Section 3 (PDF pp. 2-3) defines joint clean correctness and successful-source denominators for uTR/tTR. Section 5 (p. 4) reports model-specific clean errors, supplemented by all six SVHN models in supplement Table 3. The same paper reports error and targeted success without successful-source filtering. All four definitions are retained in the review.
 - Rank 38, Wu et al. 2020: Section 5.1 (pp. 5-6) defines the common 1,000-image dataset and top-1 target accuracy metric. Table 1 contains five clean accuracies and 120 attacked accuracies. Its 96 off-diagonal entries were checked against the cached text. Table 2 and the supplement are not yet fully reviewed.
 
 ## Source identification
@@ -18,11 +20,11 @@ The second batch covers ranks 2–5 in [batch_02_05.md](batch_02_05.md). It conf
 Rank 31 PDF SHA-256: 737c264424564caf7f39b6e9ddc487227cf141f8c6d7511ef0e8e9420d7ffa7d.
 Rank 38 PDF SHA-256: fb8dff58f38b94dde6bcf8597a1f239ce3a30b23a640868905a833bf526f46ee.
 
-The cached text includes PDF-page delimiters. These hashes identify the source PDFs; this batch used extracted text, not a new visual PDF transcription.
+The cached text includes PDF-page delimiters. These hashes identify the source PDFs. Earlier partial batches used extracted text; the completed rank-31 record also identifies the pages visually checked and the newly retrieved supplement hash.
 
-## Scheme issue requiring transparent resolution
+## Scheme clarification and its limits
 
-The frozen scheme codes a paper, while several rules refer to every surveyed result and field 3 refers to the reported transfer denominator. A paper may explicitly report several different metrics. Before completing the new pass, specify the surveyed metric/result set and a paper-level aggregation convention. Retain the original scheme/tag, record any clarification as a dated amendment, and apply it to all 80. Do not choose a convention after seeing which yields a larger reporting-insufficiency percentage.
+The frozen scheme codes a paper, while several rules refer to every surveyed result and field 3 refers to the reported transfer denominator. The dated amendment preserves scope-level judgments and uses unanimous aggregation for fields 2 and 3, with a distinct mixed-explicit reason and an any-explicit-yes indicator. Apply it to all 80, report reason strata, and retain the original scheme/tag. This is a retrospective repair, not evidence that the convention predated observation.
 
 The audit must also distinguish:
 - an explicitly unconditioned rate from silence about conditioning;
@@ -46,6 +48,6 @@ The count-reconstruction helper is tested independently of the coding sheet:
 235, whereas a denominator of 5,000 yields possible counts 1,173–1,177. This
 requires a known, unaveraged denominator and nearest-unit rounding; it is not
 permission to infer a denominator from the dataset name. The current audit test
-suite contains 17 passing tests, including all 27 archived metric checks.
+suite includes boundary tests, review-schema/aggregation tests and all 27 archived metric checks.
 
 Finish the paper/supplement evidence audit and artifact/bounds decisions, with explicit metric populations and section/table locators. Freeze the audited first pass before a separate blind 16-paper recode. This context has seen first-pass judgments and must not be represented as blind. No valid kappa is available yet.

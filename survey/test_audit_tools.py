@@ -1,9 +1,12 @@
 """Dependency-free boundary tests; no model execution."""
 import unittest
+import json
+from pathlib import Path
 from compute_reliability import kappa
 from count_reconstruction import count_candidates
 from rounding_bounds import bounds, build, interval
 from recomputation.verify_predictions import summarize, verify
+from validate_evidence_audit import aggregate_conditioning, validate_review
 
 class AuditTests(unittest.TestCase):
     def test_count_recovery_known_thousand(self):
@@ -59,6 +62,56 @@ class AuditTests(unittest.TestCase):
         self.assertEqual(r["b_st_percent"], 100)
     def test_archived_predictions(self):
         self.assertEqual(sum(r["verified_summaries"] for r in verify()), 27)
+
+class EvidenceRecordTests(unittest.TestCase):
+    def setUp(self):
+        self.review = json.loads((Path(__file__).parent / "evidence_audit/reviews/31.json").read_text(encoding="utf-8"))
+        self.paper = {"rank": 31, "paper_id": self.review["paper_id"]}
+
+    def test_mixed_not_missing(self):
+        result = aggregate_conditioning(["yes", "no", "unclear"])
+        self.assertEqual(result, {"value": "unclear", "reason": "mixed_explicit", "any_explicit_yes": True})
+
+    def test_no_vacuous_yes(self):
+        self.assertEqual(aggregate_conditioning([])["reason"], "not_applicable_to_located_results")
+        self.assertEqual(aggregate_conditioning(["yes", "unclear"])["value"], "unclear")
+
+    def test_unanimous(self):
+        for value in ["yes", "no"]:
+            self.assertEqual(aggregate_conditioning([value, value])["value"], value)
+
+    def test_complete_documented_review(self):
+        self.assertEqual(validate_review(self.review, self.paper)["f3"]["reason"], "mixed_explicit")
+
+    def test_missing_field_rejected(self):
+        del self.review["judgments"]["f6"]
+        with self.assertRaises(ValueError):
+            validate_review(self.review, self.paper)
+
+    def test_uncovered_metric_rejected(self):
+        self.review["bounds_checks"].pop()
+        with self.assertRaises(ValueError):
+            validate_review(self.review, self.paper)
+
+    def test_wrong_aggregation_rejected(self):
+        self.review["judgments"]["f3"]["value"] = "no"
+        with self.assertRaises(ValueError):
+            validate_review(self.review, self.paper)
+
+    def test_bad_source_hash_rejected(self):
+        self.review["sources"][0]["sha256"] = "not-a-hash"
+        with self.assertRaises(ValueError):
+            validate_review(self.review, self.paper)
+
+    def test_empty_evidence_rejected(self):
+        self.review["judgments"]["f6"]["evidence"] = " "
+        with self.assertRaises(ValueError):
+            validate_review(self.review, self.paper)
+
+    def test_identity_mismatch_rejected(self):
+        self.paper["rank"] = 30
+        with self.assertRaises(ValueError):
+            validate_review(self.review, self.paper)
 
 if __name__ == "__main__":
     unittest.main()

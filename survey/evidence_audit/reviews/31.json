@@ -1,0 +1,46 @@
+{
+  "rank": 31,
+  "paper_id": "14a865278845d5a51e3b181f322e993397650b48",
+  "review_date": "2026-09-23",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Reviewed all nine pages; visually checked PDF pp. 2-5 (definitions, setup, Figure 2 and Table 1).",
+    "supplement": "Reviewed all eight pages; visually checked pp. 3, 6-7 (Tables 3-5).",
+    "inventory_complete": true,
+    "applicability": "cross_model_classification_attack",
+    "excluded_results": "Main Figures 4, 5, 7 and supplement Figures 2-6 are feature/distance analyses, not transfer rates; supplement Table 2 is white-box setup evidence, not a transfer result. Illustrative images are not rate observations."
+  },
+  "sources": [
+    {"id": "main", "url": "https://openaccess.thecvf.com/content_CVPR_2019/papers/Inkawhich_Feature_Space_Perturbations_Yield_More_Transferable_Adversarial_Examples_CVPR_2019_paper.pdf", "sha256": "737c264424564caf7f39b6e9ddc487227cf141f8c6d7511ef0e8e9420d7ffa7d"},
+    {"id": "supplement", "url": "https://openaccess.thecvf.com/content_CVPR_2019/supplemental/Inkawhich_Feature_Space_Perturbations_CVPR_2019_supplemental.pdf", "sha256": "82e3e2911bd0847001ff36c2549e2e463096709fc8afc0244f7aee8dfa695783"}
+  ],
+  "result_groups": [
+    {"id": "error", "locator": "Main Section 3, Figures 2-3,6, Table 1; supplement Section 5, Tables 4-5", "population": "D_adv generated from jointly clean-correct D_orig by the formal Section 3 definition", "outcome": "target misclassification", "f2": "yes", "f3": "no", "evidence": "Section 3 pp. 2-3 defines error over D_adv, not the source-success subset. Supplement uses the same named metrics."},
+    {"id": "uTR", "locator": "Main Section 3 Eq. 1, Figures 2-3,6, Table 1; supplement Tables 4-5", "population": "Source-misclassified subset D_uTR of D_adv", "outcome": "target misclassification", "f2": "yes", "f3": "yes", "evidence": "Section 3 Eq. 1 explicitly restricts the denominator to successful untargeted source attacks."},
+    {"id": "tSuc", "locator": "Main Section 3, Figures 2-3,6, Table 1; supplement Tables 4-5", "population": "D_adv from jointly clean-correct D_orig", "outcome": "target predicts attack target label", "f2": "yes", "f3": "no", "evidence": "Section 3 p. 3 defines tSuc on D_adv without source-target-label-success restriction."},
+    {"id": "tTR", "locator": "Main Section 3 Eq. 2, Figures 2-3,6, Table 1; supplement Tables 4-5", "population": "Source target-label-success subset D_tTR of D_adv", "outcome": "target predicts attack target label", "f2": "yes", "f3": "yes", "evidence": "Section 3 Eq. 2 explicitly restricts the denominator to successful targeted source attacks."}
+  ],
+  "judgments": {
+    "f1": {"value": "yes", "reason": "separate_model_values", "locator": "Main Section 5 p. 4; supplement Section 5 Table 3 p. 3", "evidence": "Main gives CIFAR-10 clean errors RN50 6.62%, DN121 4.72%, VGG19bn 6.48%, and ImageNet DN121 25.35%, RN50 23.85%. Supplement gives all six SVHN model clean accuracies separately. These are not automatically clean errors on the filtered transfer cohort."},
+    "f2": {"value": "yes", "reason": "all_scopes_explicit_yes", "locator": "Main Section 3 pp. 2-3; supplement Section 3 p. 2", "evidence": "Formal D_orig requires both source and target to classify each input correctly, and all four metrics derive from that set. The illustrative supplement explanation also specifies source and blackbox correctness. This codes reporting, not verified evaluator behavior."},
+    "f3": {"value": "unclear", "reason": "mixed_explicit", "locator": "Main Section 3 Eqs. 1-2 pp. 2-3", "evidence": "uTR and tTR explicitly condition on source success; error and tSuc explicitly use all D_adv. The paper-level aggregation is mixed, not missing denominator reporting."},
+    "f4": {"value": "unclear", "reason": "filtered_denominators_not_recovered", "locator": "Main Sections 3,5, Table 1 and Figures 2-3,6; supplement Tables 2,4-5", "evidence": "Percentages and nominal CIFAR-10 10k/ImageNet 15k sets do not identify every post-clean-filter and post-source-success denominator. White-box percentages in supplement Table 2 do not establish the relevant joint-clean cohort counts. Graphs do not supply exact per-example records. No complete exact count reconstruction established; silence is not no."},
+    "f5": {"value": "unclear", "reason": "supplement_scope_budget_ambiguous", "locator": "Main Section 4.2 p. 4, Sections 6.1-6.2,6.4; supplement Tables 4-5 pp. 6-7", "evidence": "Main L-infinity attacks use [0,1] pixels, epsilon sweep 0,.01,.03,.05,.07 and fixed .07 depth/ImageNet tests. Supplement Table 4 explicitly specifies .07, but Table 5 and its Section 5.1 do not explicitly restate or unambiguously bind its radius to Table 4. Conservatively unclear under the every-result rule, not an unbounded-attack no."},
+    "f6": {"value": "unclear", "reason": "original_artifact_sufficiency_unestablished", "locator": "Main Section 5 and reference 12; supplement Section 1 and reference 5; artifact_checks below", "evidence": "Linked generic training/model implementations do not identify released trained CIFAR-10/SVHN checkpoints for these experiments. A discovered third-party reimplementation describes different models and results. No sufficient original release established by this bounded search; this is not a claim that no release exists."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-23", "url": "https://github.com/kuangliu/pytorch-cifar", "result": "Reference identified in main/supplement as training implementation; not treated as a verified experiment-specific checkpoint release. Not executed."},
+    {"date": "2026-09-23", "url": "https://github.com/QwQ2000/Activation-Attack-Pytorch", "result": "Repository README inspected after exact-title plus github search. Describes reimplementation with ResNet-18 source and ViT target, not original experiment checkpoint provenance. Not executed; not used to promote field 6."}
+  ],
+  "bounds_checks": [
+    {"groups": ["error"], "status": "clean_correct_by_reported_definition", "locator": "Main Sections 3,5 and Figure 2", "reason": "The formal evaluation cohort has e_t=0. Full-test clean errors in Section 5 cannot be subtracted from its error metric. Section 5 also mentions full 10k test set, leaving actual retained counts unclear; no new numerical bound extracted without population reconciliation."},
+    {"groups": ["uTR", "tTR"], "status": "source_success_conditioned", "locator": "Main Section 3 Eqs. 1-2", "reason": "Not an unconditional transfer rate on the original cohort; do not subtract full-test target error."},
+    {"groups": ["tSuc"], "status": "different_outcome", "locator": "Main Section 3", "reason": "Target-label success is not the untargeted misclassification probability used by the proposed bounds."}
+  ],
+  "limitations": [
+    "Evidence audit completion does not establish artifact execution, implementation fidelity, independent agreement or count reconstruction.",
+    "Main Section 5 nominal test sizes versus Section 3 clean-correct definitions need evaluator-level reconciliation for numerical recomputation. The reporting rule remains affirmative on the explicit formal definition.",
+    "The conservative Table 5 budget judgment is available for independent recoding; do not retroactively claim this amendment or these judgments were preregistered."
+  ]
+}
