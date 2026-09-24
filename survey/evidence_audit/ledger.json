@@ -70,11 +70,13 @@
       "rank": 6,
       "paper_id": "4582e2350e4822834dcf266522690722dd4430d4",
       "title": "PRADA: Protecting Against DNN Model Stealing Attacks",
-      "evidence_audit": "partial",
+      "evidence_audit": "complete",
       "bounds_review": "reviewed_clean_and_attacked_populations_differ",
-      "artifact_review": "pending",
+      "artifact_review": "reviewed_sufficiency_unclear",
       "notes": [
-        "Metric-scoped evidence in batch_01_06_10.md, rank 6; complete paper/supplement and artifact review pending."
+        "reviews/06.json completes the seventeen-page main/appendix review, fifteen outcome/population-specific groups, all six judgments and pinned public artifact inspection.",
+        "All-seed transfer population supports no source-success conditioning as reported; target-clean preselection and actual evaluator implementation remain unresolved.",
+        "Held-out target test accuracies cannot bound attacker-seed transfer rates. Public defense wrapper is not a verified original transfer recomputation bundle."
       ]
     },
     {
