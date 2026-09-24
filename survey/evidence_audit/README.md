@@ -4,7 +4,7 @@ Started 23 September 2026. This is a non-blind evidence audit, not the independe
 
 ## Current scope
 
-The ledger retains all 80 frozen paper IDs: six documented reviews are complete (ranks 2, 3, 4, 5, 6 and 31), six have partial metric-specific checks, and 68 remain pending. No historical categorical judgment has been overwritten. Pending is a workflow state, not a new coding category. Complete means a documented non-blind review, not validated replication or independent agreement; unclear judgments may remain after review.
+The ledger retains all 80 frozen paper IDs: seven documented reviews are complete (ranks 2, 3, 4, 5, 6, 7 and 31), five have partial metric-specific checks, and 68 remain pending. No historical categorical judgment has been overwritten. Pending is a workflow state, not a new coding category. Complete means a documented non-blind review, not validated replication or independent agreement; unclear judgments may remain after review.
 
 [Rank 2's full review](reviews/02.json) separates the main seven-model clean-correct cohort, the C&W subset, ensemble/ablation experiments and the competition-defense experiment. Main-cohort filtering must not be silently extended to additional defenses. Its pinned demo code is a candidate artifact, not a verified transfer evaluator; attack-label and default-budget details are recorded for later reconciliation.
 
@@ -26,6 +26,8 @@ The second batch covers ranks 2–5 in [batch_02_05.md](batch_02_05.md). It conf
 [Rank 6's full review](reviews/06.json) separates fifteen targeted/untargeted result groups, including numerical results in prose and matching-architecture source/target pairs. The paper states an all-seed transfer population, supporting no source-success restriction as reported, not a verified implementation claim. Its target clean accuracies use a disjoint test set, so no bound is extracted. The pinned public code supplies a defense wrapper requiring user-provided models, not a verified bundle for the original transfer experiments.
 
 ## Source identification
+
+[Rank 7's full review](reviews/07.json) includes all arXiv appendices and the separately retrieved PMLR supplement. Table 1 reports separate clean errors for all six transfer members, supporting field 1 yes. Figure 3 has eight targeted/untargeted groups; its attack-cohort alignment and conditioning remain unresolved. The numerical epsilon is explicit, but the reported clipping/neighborhood norm is not explicitly identified. The released standard ADP checkpoint was downloaded, hashed and structurally inspected; the iterative evaluator attacks and scores the averaged ensemble, not member-to-member transfer. No numerical bound or verified recomputation is added.
 
 Rank 31 PDF SHA-256: 737c264424564caf7f39b6e9ddc487227cf141f8c6d7511ef0e8e9420d7ffa7d.
 Rank 38 PDF SHA-256: fb8dff58f38b94dde6bcf8597a1f239ce3a30b23a640868905a833bf526f46ee.

@@ -83,11 +83,13 @@
       "rank": 7,
       "paper_id": "676e40050453ddeb1387f8314478c0ac3681a8c6",
       "title": "Improving Adversarial Robustness via Promoting Ensemble Diversity",
-      "evidence_audit": "partial",
-      "bounds_review": "candidate_pending_population_alignment",
-      "artifact_review": "pending",
+      "evidence_audit": "complete",
+      "bounds_review": "reviewed_population_alignment_unresolved",
+      "artifact_review": "reviewed_sufficiency_unclear_checkpoint_download_verified",
       "notes": [
-        "Metric-scoped evidence in batch_01_06_10.md, rank 7; complete paper/supplement and artifact review pending."
+        "reviews/07.json covers all thirteen arXiv pages, the three-page PMLR supplement, eight transfer groups and all six judgments; supersedes the partial batch_01_06_10.md entry.",
+        "Separate clean errors are reported for all transfer members, but Figure 3 population alignment and conditioning are unresolved; targeted outcomes are not unconditional error rates.",
+        "Downloaded and structurally inspected the released standard ADP checkpoint. Available iterative evaluator scores the averaged ensemble, not Figure 3 member transfer; no runtime replication or numerical bound added."
       ]
     },
     {
