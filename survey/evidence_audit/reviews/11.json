@@ -1,0 +1,38 @@
+{
+  "rank": 11,
+  "paper_id": "48640ef269ffeb3e19c961de2eeca027a30841d8",
+  "review_date": "2026-09-24",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read the twenty-page arXiv 1812.10528v4 (6 October 2022), including Sections 1-7, Tables 1-6, Appendices A/B, references and biographies. Visually checked Table 3 on p. 5, metric definitions on p. 13 and Table 6/appendices on p. 15.",
+    "supplement": "Appendices A and B are included on p. 15 and were read. Checked arXiv metadata and the author-linked public resource repository; no separately linked experimental supplement located. The publisher DOI landing page was unavailable through the web tool; no inaccessible material is claimed inspected.",
+    "inventory_complete": true,
+    "applicability": "no_original_cross_model_attack_evaluation_located",
+    "excluded_results": "Tables 1, 3 and 4 classify other papers; Table 2 defines notation; Table 5 lists dataset properties; Table 6 links other works' implementations. Sections 3/4 synthesize prior methods, Section 5 explains prior evaluation metrics, and Section 6 catalogs datasets. These are not original numerical attack-transfer results. Appendix B explicitly distinguishes the empirical study in Jin et al.'s separate survey from this work. References to transfer, black-box attacks, clean accuracy and correctly classified nodes do not establish an original transfer experiment here."
+  },
+  "sources": [
+    {"id": "main_with_appendices", "url": "https://arxiv.org/pdf/1812.10528v4", "sha256": "7304cd367ef1bf5ff90404af1f4b2da0c7b524037ef8a4564039ea8ad2ac3961"},
+    {"id": "author_resource_readme", "url": "https://github.com/safe-graph/graph-adversarial-learning-literature/blob/7e5300d48aa6bf0bac7b067ca9eea310dde99a1e/README.md", "sha256": "5ba4a9084060396736062afe9008e4e5f92658718ed3b2b6e607eabc4e8cd41d"}
+  ],
+  "result_groups": [],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Sections 3-6; Tables 3-5", "evidence": "No original source/target transfer experiment is located. References to clean accuracy in the literature tables are not separate clean results of this survey's own trained models."},
+    "f2": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Section 5.2, p. 13; Appendix B, p. 15", "evidence": "The paper describes metrics from other works, including a correctly-classified-node condition for average confidence difference. This is not a denominator rule for an original cross-model attack evaluation by this paper."},
+    "f3": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Section 5.2.1, p. 13", "evidence": "The generic ASR formula summarizes prior work rather than reporting an original source-success-conditioned or unconditioned transfer rate. It is not coded no merely because its formula uses all attacks."},
+    "f4": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Section 5; Table 5", "evidence": "Symbolic counts in metric definitions and dataset node/edge counts are not empirical numerators and denominators for an original transfer experiment."},
+    "f5": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Section 3.2, pp. 6-7; Section 5.2", "evidence": "The paper discusses graph-specific perturbation measures but supplies no original transfer evaluation to which the survey's numerical L2/L-infinity field could be applied. This is not a claim that graph budgets are deficient."},
+    "f6": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Introduction footnote 1; Table 6; Appendix A", "evidence": "The accessible author resource is a curated bibliography with paper/code links, consistent with the survey's stated purpose. With no original cross-model attack configuration located, it is neither counted as a recomputable transfer experiment nor an artifact-release failure."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-24", "url": "https://arxiv.org/abs/1812.10528", "result": "Verified v4 date and author-linked resource repository. The cached twenty-page PDF includes both appendices; no separate experimental supplement was linked in the inspected metadata."},
+    {"date": "2026-09-24", "url": "https://doi.org/10.1109/TKDE.2022.3201243", "result": "Publisher landing page could not be accessed through the web tool. Do not infer lack of artifacts from this access failure."},
+    {"date": "2026-09-24", "url": "https://github.com/safe-graph/graph-adversarial-learning-literature/tree/7e5300d48aa6bf0bac7b067ca9eea310dde99a1e", "result": "Cloned and pinned the author-linked repository. Its tracked file inventory contains README.md, a curated literature table; inspected its introductory scope and representative entries. It identifies itself as a complement to this survey and links implementations belonging to other papers. No original transfer experiment or separate experimental supplement was identified, and no listed third-party implementation was executed."}
+  ],
+  "bounds_checks": [],
+  "bounds_exclusion": {"status": "not_applicable_to_located_results", "locator": "Sections 3-6; Tables 1-6; Appendices A/B", "reason": "No original numerical cross-model attack rate with a matched clean baseline is reported. Symbolic ASR/MCR formulas and third-party summaries do not supply data for a per-paper misclassification bound."},
+  "limitations": [
+    "Retained in the frozen corpus; non-applicability must be reported separately from ambiguous reporting and recomputability failures.",
+    "This is a non-blind evidence audit, not an independent recode. No corpus prevalence or numerical bound is computed."
+  ]
+}

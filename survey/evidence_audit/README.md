@@ -4,7 +4,7 @@ Started 23 September 2026. This is a non-blind evidence audit, not the independe
 
 ## Current scope
 
-The ledger retains all 80 frozen paper IDs: nine documented reviews are complete (ranks 2, 3, 4, 5, 6, 7, 8, 9 and 31), three have partial metric-specific checks, and 68 remain pending. No historical categorical judgment has been overwritten. Pending is a workflow state, not a new coding category. Complete means a documented non-blind review, not validated replication or independent agreement; unclear judgments may remain after review.
+The ledger retains all 80 frozen paper IDs: ten documented reviews are complete (ranks 2, 3, 4, 5, 6, 7, 8, 9, 11 and 31), three have partial metric-specific checks, and 67 remain pending. No historical categorical judgment has been overwritten. Pending is a workflow state, not a new coding category. Complete means a documented non-blind review, not validated replication or independent agreement; unclear judgments may remain after review.
 
 [Rank 2's full review](reviews/02.json) separates the main seven-model clean-correct cohort, the C&W subset, ensemble/ablation experiments and the competition-defense experiment. Main-cohort filtering must not be silently extended to additional defenses. Its pinned demo code is a candidate artifact, not a verified transfer evaluator; attack-label and default-budget details are recorded for later reconciliation.
 
@@ -26,6 +26,8 @@ The second batch covers ranks 2–5 in [batch_02_05.md](batch_02_05.md). It conf
 [Rank 6's full review](reviews/06.json) separates fifteen targeted/untargeted result groups, including numerical results in prose and matching-architecture source/target pairs. The paper states an all-seed transfer population, supporting no source-success restriction as reported, not a verified implementation claim. Its target clean accuracies use a disjoint test set, so no bound is extracted. The pinned public code supplies a defense wrapper requiring user-provided models, not a verified bundle for the original transfer experiments.
 
 ## Source identification
+
+[Rank 11's full review](reviews/11.json) covers the graph-attack survey and both appendices. Its metric definitions and tables summarize other works, with no original cross-model attack experiment located. The author-linked bibliography is accessible. The paper remains in the corpus with non-applicability reasons, not missing-reporting or artifact-failure judgments.
 
 [Rank 9's full review](reviews/09.json) retains MNIST and malware evasion separately from transferred poisoning. The evasion matrices include useful clean-target reference rows, but population alignment and the malware operating-point mapping remain unresolved. Loss-based transferability, derived ratios and poisoning outcomes are not substituted into the fixed-predictor misclassification identity. The pinned SecML transfer tutorial cites the paper but trains on synthetic blobs; no original-configuration artifact sufficiency or numerical bound is inferred.
 

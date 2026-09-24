@@ -133,10 +133,10 @@
       "rank": 11,
       "paper_id": "48640ef269ffeb3e19c961de2eeca027a30841d8",
       "title": "Adversarial Attack and Defense on Graph Data: A Survey",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_applicable_no_original_cross_model_attack_evaluation",
+      "artifact_review": "not_applicable_author_literature_resource_accessible",
+      "notes": ["reviews/11.json covers the twenty-page arXiv v4 including both appendices. Located tables and metrics summarize prior work, not original empirical transfer results.", "Retained with non-applicability reasons for all six fields; accessible author bibliography is not counted as a transfer recomputability success or failure."]
     },
     {
       "rank": 12,
