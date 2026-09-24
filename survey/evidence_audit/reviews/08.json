@@ -1,0 +1,46 @@
+{
+  "rank": 8,
+  "paper_id": "17293cd36ee5e7ec37dcec1d5ab85f9b77ad65d5",
+  "review_date": "2026-09-24",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Reviewed the complete 31-page arXiv 2007.08489v2 (8 December 2020), including all experimental sections, appendices A-G and numerical tables. Visually checked pp. 1-2, 16 and 22 for task definition, main results, pretraining clean accuracies and the adversarial-example illustration.",
+    "supplement": "Downloaded and read the separately linked 16-page NeurIPS supplement (printed pp. 14-29), including its additional ten-run figures in F.1 and all numerical tables. Visually checked PDF pp. 6 and 8 (printed pp. 19 and 21). It overlaps the arXiv appendices but has different figure numbering: supplemental Figures 11-12 are ten-run downstream transfer-learning comparisons, and Figures 13-17 correspond to arXiv Figures 11-15.",
+    "inventory_complete": true,
+    "applicability": "no_original_cross_model_attack_evaluation_located",
+    "excluded_results": "All original empirical transfer results concern representation/weight reuse across tasks, not attacked-input transfer between models. Sections 2-3, Table 1 and Figures 2-3: fixed-feature/full-network clean downstream classification over twelve datasets. Section 3, Figure 4 and Appendix C/Figure 9: detection and segmentation AP after backbone initialization. Sections 4.1-4.3, Table 2, Figures 5-7 and Appendices F/G: accuracy, architecture/width and image-resolution ablations of transfer learning. Section 4.4/Figure 8 and Appendix F: stylized-ImageNet/texture invariance comparisons. Appendix A/Tables 3-5: clean pretraining accuracy, training budgets and dataset sizes. Appendix B/Table 6: downstream learning from L-infinity-robust pretraining. Appendix G/Tables 8-11: numerical downstream-learning results. Figure 1 reproduces feature visualization/inversion from prior work; Appendix E/Figure 10 illustrates a single-model Inception-v3 attack without a source-target transfer evaluation. Appendix D is related work."
+  },
+  "sources": [
+    {"id": "arxiv_main_appendices", "url": "https://arxiv.org/pdf/2007.08489v2", "sha256": "8f06441dc8af14376a72d859c7fcc6e210f156363ceea9320f6c690451b212d7"},
+    {"id": "neurips_supplement", "url": "https://proceedings.neurips.cc/paper_files/paper/2020/file/24357dd085d2c4b1a88a7e0692e60294-Supplemental.pdf", "sha256": "b583e67f206e7e39888ede69765003b017e6764c28ba6191d782df142ecb5190"},
+    {"id": "author_model_card", "url": "https://huggingface.co/madrylab/robust-imagenet-models/raw/1c68d6e185c2a503ec164cc8f736b1642b12d769/README.md", "sha256": "021b6d7de8e1358649e2ff1168cf96b9204a2d3cc755541ececc517a6f4420a5"}
+  ],
+  "result_groups": [],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Sections 1-4; Appendix A.1, Tables 3-4; Appendix G", "evidence": "The paper reports ImageNet and downstream clean accuracies, but its source/target terminology refers to transfer-learning tasks rather than models in an attack-transfer experiment. Do not treat these as a yes for attack-pair reporting or a no for insufficient reporting."},
+    "f2": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Sections 2-3; Appendix A.2; Appendices F-G", "evidence": "Downstream classification uses learned features or fine-tuned weights. There is no located attack-transfer denominator whose clean-correct restriction can be coded; this is not a missing-denominator judgment."},
+    "f3": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Sections 2-4; Appendix E/Figure 10", "evidence": "No original cross-model attack-success population is evaluated. Adversarial training and a single-model attack illustration do not define a transfer denominator conditioned on source attack success."},
+    "f4": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Table 1; Appendix A.2/Table 5; Appendix G/Tables 8-11", "evidence": "Dataset sizes, repeated-run clean accuracies and downstream AP concern different outcomes. No in-scope transfer rate exists for count reconstruction; no reporting deficiency is inferred."},
+    "f5": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Equation 1; Appendix A.1/Tables 3-4; Appendix B/Table 6", "evidence": "Numerical L2 and L-infinity radii are explicitly reported for robust pretraining, but these are not budgets of a cross-model attack-transfer evaluation. Preserve this affirmative training detail without converting it into an in-scope yes or no."},
+    "f6": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Abstract; Appendix A.4; author Hugging Face model card", "evidence": "The authors release pretrained models for transfer learning. The dated GitHub access failure does not prove artifact absence, and the accessible model collection does not supply an original attack-transfer configuration where none is reported. Do not count this as non-recomputable attack-transfer research."
+    }
+  },
+  "artifact_checks": [
+    {"date": "2026-09-24", "url": "https://proceedings.neurips.cc/paper_files/paper/2020/hash/24357dd085d2c4b1a88a7e0692e60294-Abstract.html", "result": "Inspected the official proceedings record and retrieved its linked 16-page supplement. Supplemental experiments remain downstream transfer learning; no extra cross-model attack experiment located."},
+    {"date": "2026-09-24", "url": "https://github.com/microsoft/robust-models-transfer", "result": "The paper-linked URL returned 404 in web access and Repository not found from git clone. This is a dated access observation, not proof of permanent removal or absence of released artifacts."},
+    {"date": "2026-09-24", "url": "https://huggingface.co/madrylab/robust-imagenet-models", "result": "Located the authors' model collection. Its model card explicitly identifies this paper and links the original GitHub URL. API resolved revision 1c68d6e185c2a503ec164cc8f736b1642b12d769; downloaded and hashed the model card. Its clean-accuracy tables list pretrained checkpoints. No transfer-learning or adversarial runtime was executed."},
+    {"date": "2026-09-24", "url": "https://huggingface.co/madrylab/robust-imagenet-models/resolve/1c68d6e185c2a503ec164cc8f736b1642b12d769/resnet18_l2_eps3.ckpt", "result": "Representative pinned checkpoint link returned HEAD 200 with advertised length 93,613,210 bytes and application/octet-stream content type. Checkpoint contents not downloaded or executed; this is accessibility evidence only. No full-paper reproducibility claim is made."}
+  ],
+  "bounds_checks": [],
+  "bounds_exclusion": {
+    "status": "not_applicable_to_located_results",
+    "locator": "Sections 2-4; Appendices A-G, including supplemental F.1",
+    "reason": "No original cross-model attack-transfer rate was located. ImageNet pretraining clean error and downstream task accuracy differ in tasks, labels, populations and trained predictors; they are not the clean and attacked probabilities required by the survey identity. No numerical bound is calculated."
+  },
+  "limitations": [
+    "Retain this paper in the frozen top-80 corpus. The non-applicability reason must be reported separately from unresolved reporting when summarizing conditioning or recomputability.",
+    "All six categorical values remain within the frozen yes/no/unclear vocabulary; the adopted amendment's reason metadata identifies non-applicability rather than adding a category or silently dropping the paper.",
+    "This is a non-blind scope/evidence audit, not a blind reliability observation or validation of the paper's transfer-learning results."
+  ]
+}

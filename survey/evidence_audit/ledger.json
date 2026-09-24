@@ -96,11 +96,13 @@
       "rank": 8,
       "paper_id": "17293cd36ee5e7ec37dcec1d5ab85f9b77ad65d5",
       "title": "Do Adversarially Robust ImageNet Models Transfer Better?",
-      "evidence_audit": "partial",
-      "bounds_review": "not_applicable_to_reviewed_transfer_learning_metrics",
-      "artifact_review": "pending",
+      "evidence_audit": "complete",
+      "bounds_review": "not_applicable_no_original_cross_model_attack_evaluation",
+      "artifact_review": "not_applicable_author_model_collection_accessible",
       "notes": [
-        "Metric-scoped evidence in batch_01_06_10.md, rank 8; complete paper/supplement and artifact review pending."
+        "reviews/08.json completes the 31-page arXiv and separate 16-page NeurIPS supplement review. All located transfer experiments concern transfer learning, not cross-model attacked inputs.",
+        "Retained in the frozen corpus with all six fields unclear for non-applicability, not missing reporting. No numerical bounds or recomputability failure inferred.",
+        "Original GitHub URL is unavailable on the audit date; author Hugging Face model collection and a representative pinned checkpoint HEAD are accessible. No runtime executed."
       ]
     },
     {

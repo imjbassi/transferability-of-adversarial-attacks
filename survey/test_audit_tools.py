@@ -101,6 +101,48 @@ class EvidenceRecordTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             validate_review(self.review, self.paper)
 
+    def empty_scope_review(self):
+        self.review["result_groups"] = []
+        self.review["bounds_checks"] = []
+        self.review["bounds_exclusion"] = {
+            "status": "not_applicable_to_located_results",
+            "locator": "Test fixture",
+            "reason": "No original cross-model attack result in this fixture."
+        }
+        for judgment in self.review["judgments"].values():
+            judgment.update(value="unclear", reason="not_applicable_to_located_results")
+
+    def test_empty_scope_documented(self):
+        self.empty_scope_review()
+        result = validate_review(self.review, self.paper)
+        self.assertEqual(result["f2"]["reason"], "not_applicable_to_located_results")
+
+    def test_empty_scope_no_positive_or_negative_judgments(self):
+        for field in [f"f{i}" for i in range(1, 7)]:
+            for value in ["yes", "no"]:
+                with self.subTest(field=field, value=value):
+                    self.empty_scope_review()
+                    self.review["judgments"][field]["value"] = value
+                    with self.assertRaises(ValueError):
+                        validate_review(self.review, self.paper)
+
+    def test_empty_scope_not_missing_reporting(self):
+        self.empty_scope_review()
+        self.review["judgments"]["f6"]["reason"] = "release_not_found"
+        with self.assertRaises(ValueError):
+            validate_review(self.review, self.paper)
+
+    def test_empty_scope_requires_bounds_exclusion(self):
+        self.empty_scope_review()
+        del self.review["bounds_exclusion"]
+        with self.assertRaises(ValueError):
+            validate_review(self.review, self.paper)
+
+    def test_nonempty_scope_cannot_use_blanket_exclusion(self):
+        self.review["bounds_exclusion"] = {"status": "not_applicable_to_located_results"}
+        with self.assertRaises(ValueError):
+            validate_review(self.review, self.paper)
+
     def test_uncovered_metric_rejected(self):
         self.review["bounds_checks"].pop()
         with self.assertRaises(ValueError):

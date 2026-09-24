@@ -62,6 +62,20 @@ def validate_review(review, paper):
         require_text(judgment, ["value", "reason", "locator", "evidence"])
         if judgment["value"] not in {"yes", "no", "unclear"}:
             raise ValueError("Invalid judgment category")
+    if not groups:
+        # Enforce the existing amendment's non-applicability rule for all fields,
+        # not just the two conditioning fields aggregated below.
+        for judgment in judgments.values():
+            if (judgment["value"], judgment["reason"]) != (
+                "unclear", "not_applicable_to_located_results"
+            ):
+                raise ValueError("Empty result inventory requires non-applicable judgments")
+        exclusion = review.get("bounds_exclusion", {})
+        require_text(exclusion, ["status", "locator", "reason"])
+        if exclusion["status"] != "not_applicable_to_located_results":
+            raise ValueError("Empty result inventory requires an explicit bounds exclusion")
+    elif "bounds_exclusion" in review:
+        raise ValueError("Use group-specific bounds checks for nonempty inventories")
     for field in ["f2", "f3"]:
         derived = aggregate_conditioning([group[field] for group in groups])
         if any(judgments[field][key] != derived[key] for key in ["value", "reason"]):
