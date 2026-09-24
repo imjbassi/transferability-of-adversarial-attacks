@@ -1,5 +1,11 @@
 # Recomputation notes
 
+## Historical record: claims under evidence review
+
+The narrative below describes the earlier run record and is retained for provenance, not as a current validation claim. The repair audit has not established original-runtime parity, original checkpoint/population identity, or matched published comparators for all archived configurations. In particular, the SI-NI iteration settings differ between the paper and release, and the TensorFlow-to-PyTorch ports have not passed numerical equivalence checks. The historical claim that three papers met the artifact-sufficiency rule is being reassessed across the complete corpus. See [current provenance qualifications](recomputation/PROVENANCE.md), [survey status](README.md), and [evidence reviews](evidence_audit/README.md). Do not cite the historical deltas below as validated replications.
+
+## Earlier narrative (superseded where qualified above)
+
 Three papers met the preregistered artifact-sufficiency rule after the linked
 releases were audited. Each repository was checked out at the immutable commit
 in `recomputation_ledger.csv`, and all three qualifying releases were rerun on

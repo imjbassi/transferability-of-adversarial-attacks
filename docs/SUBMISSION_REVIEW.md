@@ -1,5 +1,11 @@
 # Submission readiness review
 
+## Current status: survey revision is not submission-ready
+
+The review below concerns the earlier CIFAR-10-focused manuscript, not a completed 80-paper survey. The current revision still requires the complete evidence audit, an actually blind reliability assessment, verified original-artifact recomputations where feasible, and a corpus-wide matched-population bounds assessment. The historical recode reused first-pass judgments and cannot support Cohen's kappa. Archived ImageNet ports are not yet validated original-configuration replications. See [survey status](../survey/README.md), [audit progress](../survey/evidence_audit/README.md), and [recomputation qualifications](../survey/recomputation/PROVENANCE.md). No release/DOI should present those unfinished analyses as complete.
+
+## Earlier CIFAR-10 readiness review
+
 The nine checkpoints, three full-test $L_\infty$ budget sweeps, and planned PGD convergence checks are complete. The empirical record supports a focused workshop paper about directionality, budget dependence, and source-success conditioning. Pilot measurements remain excluded from the manuscript.
 
 ## Defensible findings
