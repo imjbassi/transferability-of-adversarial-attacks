@@ -109,11 +109,13 @@
       "rank": 9,
       "paper_id": "8bac2716cd208cb8041650a001ab72ba81b559cd",
       "title": "Why Do Adversarial Attacks Transfer? Explaining Transferability of Evasion and Poisoning Attacks",
-      "evidence_audit": "partial",
-      "bounds_review": "candidate_error_rates_only_not_loss_or_poisoning",
-      "artifact_review": "pending",
+      "evidence_audit": "complete",
+      "bounds_review": "reviewed_evasion_alignment_unresolved_poisoning_separate",
+      "artifact_review": "reviewed_general_library_original_configuration_unverified",
       "notes": [
-        "Metric-scoped evidence in batch_01_06_10.md, rank 9; complete paper/supplement and artifact review pending."
+        "reviews/09.json completes all nineteen arXiv pages, six result groups and six judgments; supersedes the partial batch_01_06_10.md entry.",
+        "Clean-target rows accompany evasion matrices, but denominator and malware operating-point alignment remain unresolved. Poisoning is not silently treated as fixed-predictor evasion.",
+        "Pinned SecML tutorial and attack implementation cite the paper; synthetic tutorial training is not a verified original experiment bundle. No numerical bound or runtime replication added."
       ]
     },
     {
