@@ -976,46 +976,66 @@
       "rank": 76,
       "paper_id": "11f767a0ad2b7b005fbdaea4a6139a7db9a7c93d",
       "title": "Understanding and Enhancing the Transferability of Adversarial Examples",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_applicable_clean_correct_conditioned",
+      "artifact_review": "reviewed_no_author_release",
+      "notes": [
+        "reviews/76.json covers the fifteen-page arXiv technical report with Appendices A-B.",
+        "ImageNet scopes use 5,000 images correct for all examined models (group field 2 yes) with Eq. 7 averaging over all adversarial pairs (group field 3 no); MNIST/CIFAR populations unstated; destruction-rate scope is clean-correct conditioned.",
+        "No code linked."
+      ]
     },
     {
       "rank": 77,
       "paper_id": "75bd07e920f631102723cca4fee996829cb41c0e",
       "title": "Universal Adversarial Examples in Remote Sensing: Methodology and Benchmark",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "clean_baseline_missing_unconditional",
+      "artifact_review": "candidate_release_sufficiency_unverified",
+      "notes": [
+        "reviews/77.json covers all fifteen arXiv v3 pages (IEEE TGRS).",
+        "Scene-classification SR divides by all test samples (fields 2/3 explicit no for that scope); segmentation pixel SR coded by outcome mapping; no clean accuracies; explicit L-infinity epsilon = 1.",
+        "UAE-RS code and adversarial dataset released; not executed."
+      ]
     },
     {
       "rank": 78,
       "paper_id": "47b4744162537f40572cdd723f8f37fb489a3e75",
       "title": "A Unified Approach to Interpreting and Boosting Adversarial Transferability",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "clean_baseline_missing",
+      "artifact_review": "candidate_release_sufficiency_unverified",
+      "notes": [
+        "reviews/78.json covers all thirty-five arXiv pages with Appendices A-M.",
+        "Leave-one-out transferability averages over all 1,000 clean examples (fields 2/3 no for that scope) with target-informed step selection recorded as a design choice; secured-model and transfer-utility scopes unresolved; explicit L-infinity/L2 radii.",
+        "Code linked; not executed."
+      ]
     },
     {
       "rank": 79,
       "paper_id": "d90038afede2d2ea0c5b3de7a9c96485234bc29e",
       "title": "ML-LOO: Detecting Adversarial Examples with Feature Attribution",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_applicable_to_located_results",
+      "artifact_review": "reviewed_not_applicable",
+      "notes": [
+        "reviews/79.json covers the twenty-one-page arXiv PDF.",
+        "Detection paper; 'transferability' is detector generalisation across attack types; non-applicable.",
+        "Not applicable."
+      ]
     },
     {
       "rank": 80,
       "paper_id": "07322a941dc6ebe16ac2a31fddd356bd726fe8dd",
       "title": "Boosting Adversarial Transferability through Enhanced Momentum",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_eligible_clean_baseline_missing",
+      "artifact_review": "reviewed_no_author_release",
+      "notes": [
+        "reviews/80.json covers all thirteen arXiv v1 pages with appended supplementary tables.",
+        "1,000 random images, bare misclassification-rate wording (fields 2/3 unclear, as ranks 5 and 21); explicit L-infinity 16/255.",
+        "No author code linked."
+      ]
     }
   ]
 }

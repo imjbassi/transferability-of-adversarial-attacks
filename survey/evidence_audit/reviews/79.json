@@ -1,0 +1,35 @@
+{
+  "rank": 79,
+  "paper_id": "d90038afede2d2ea0c5b3de7a9c96485234bc29e",
+  "review_date": "2026-09-25",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all twenty-one pages of arXiv 1906.03499 (AAAI 2020 content): method, experiments (Tables 1-3, Figures 1-5), references and appended material. The AAAI version of record was not retrieved.",
+    "supplement": "Any appended material in the arXiv PDF was read; no separate supplement was retrieved.",
+    "inventory_complete": true,
+    "applicability": "no_original_cross_model_attack_evaluation_located",
+    "excluded_results": "All results evaluate adversarial-example detectors (TPR at fixed FPR, AUC). The 'transferability' experiments (Table 3, Figure 5) train detectors on C&W examples and test them on examples from other attack algorithms (L-infinity PGD, FGSM, JSMA, Boundary, DeepFool) against the same classifier. This is detector transfer across attack types, not transfer of adversarial examples across models."
+  },
+  "sources": [
+    {"id": "arxiv", "url": "https://arxiv.org/pdf/1906.03499", "sha256": "cd9f3f9f75ed451aa830cf11f31783a123e27cd94bea2a93ac8ab5dd2de87bf9"}
+  ],
+  "result_groups": [],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Tables 1-3", "evidence": "Detection metrics only; no transferred misclassification rate."},
+    "f2": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Experiments", "evidence": "No transfer denominator exists."},
+    "f3": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Experiments", "evidence": "No source-to-target model transfer."},
+    "f4": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Tables 1-3", "evidence": "Detection TPR/AUC values."},
+    "f5": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Experiments", "evidence": "Attack budgets define detector test sets, not transfer evaluations."},
+    "f6": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Paper", "evidence": "No transfer configuration exists."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-25", "url": "https://arxiv.org/abs/1906.03499", "result": "Downloaded and hashed; the detection code (if any) is not evaluated as a transfer artifact."}
+  ],
+  "bounds_checks": [],
+  "bounds_exclusion": {"status": "not_applicable_to_located_results", "locator": "Tables 1-3", "reason": "Only detection outcomes are reported."},
+  "limitations": [
+    "Retained in the frozen corpus with non-applicability reasons; 'transferability' in this paper refers to detector generalisation across attack types.",
+    "Non-blind evidence audit."
+  ]
+}

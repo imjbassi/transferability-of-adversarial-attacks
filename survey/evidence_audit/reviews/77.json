@@ -1,0 +1,40 @@
+{
+  "rank": 77,
+  "paper_id": "75bd07e920f631102723cca4fee996829cb41c0e",
+  "review_date": "2026-09-25",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all fifteen pages of arXiv 2202.07054v3 (17 July 2022; IEEE TGRS 2022): Sections I-V, Algorithms, Tables I-VI, Figures 1-9 and references. The IEEE version of record was not retrieved.",
+    "supplement": "No appendix or supplement; the UAE-RS dataset and code are linked.",
+    "inventory_complete": true,
+    "applicability": "cross_model_classification_and_segmentation_attack",
+    "excluded_results": "Diagonal (surrogate = target) cells of Tables I-II and IV-V are white-box. Figures 1-4 and 6-9 are qualitative."
+  },
+  "sources": [
+    {"id": "arxiv_v3", "url": "https://arxiv.org/pdf/2202.07054v3", "sha256": "58d29f93b65d1062d5c8f182cceabcd4158955abe1ff05a06ad482609fb15d02"}
+  ],
+  "result_groups": [
+    {"id": "scene_classification_transfer", "locator": "Section IV-A/B/C; Tables I-III; Figure 5", "population": "Test halves (random 50% splits) of UCM (2,100 images) and AID (10,000 images); four surrogates; nine target classifiers", "outcome": "success rate SR = n_wrong / n_total, where n_total is 'the number of samples in the test set' and n_wrong the misclassified samples", "f2": "no", "f3": "no", "evidence": "The denominator is explicitly the whole test set, so clean-misclassified samples and surrogate failures remain in the population. The outcome is ground-truth misclassification."},
+    {"id": "semantic_segmentation_transfer", "locator": "Section IV-D; Tables IV-VI", "population": "Vaihingen and Zurich Summer test images (five each); four segmentation surrogates and other segmentation targets", "outcome": "pixel-level SR: misclassified pixels over all valid test pixels", "f2": "unclear", "f3": "unclear", "evidence": "All valid pixels are counted, but per-pixel clean-correct and source-success events are not the classification events of fields 2-3; coded by outcome mapping."}
+  ],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "separate_clean_values_not_located", "locator": "Section IV", "evidence": "No clean accuracy of the classifiers or clean segmentation accuracy is reported."},
+    "f2": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section IV-B", "evidence": "The classification scope explicitly includes all test samples (no); the segmentation scope is unresolved by outcome mapping."},
+    "f3": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section IV-B", "evidence": "Classification SR counts all test samples (no); segmentation is unresolved."},
+    "f4": {"value": "unclear", "reason": "denominator_implied_counts_not_extracted", "locator": "Tables I-II", "evidence": "Classification denominators follow from the 50% splits (1,050 UCM; 5,000 AID), and two-decimal rates would map to unique counts, but the split sizes are not printed and no cell was extracted."},
+    "f5": {"value": "yes", "reason": "explicit_linf_radius_all_results", "locator": "Section IV-B (p. 9)", "evidence": "'The perturbation level epsilon and the step size alpha in all methods are fixed to 1'; all methods use the L-infinity norm (the pixel scale is not restated)."},
+    "f6": {"value": "unclear", "reason": "candidate_release_sufficiency_unverified", "locator": "artifact_checks below", "evidence": "The official repository provides attack, pretraining and test scripts, including test_cls_uae_rs.py for the released UAE-RS adversarial dataset. The splits and checkpoints needed to recompute Tables I-II were not verified. Not executed."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-25", "url": "https://github.com/YonghaoXu/UAE-RS/tree/4ddc8371baec85d84ab4b25b217de8a9c8d82c38", "result": "Linked in the paper. Listed via the GitHub API (37 files, head 12 May 2022): attack_cls.py, pretrain_cls.py, test_cls.py, test_cls_uae_rs.py and segmentation scripts. Not executed."}
+  ],
+  "bounds_checks": [
+    {"groups": ["scene_classification_transfer"], "status": "clean_baseline_missing_unconditional_population", "locator": "Tables I-II", "reason": "The population is unconditional, but no clean error on the same test halves is reported. A bound would require recomputing clean accuracy."},
+    {"groups": ["semantic_segmentation_transfer"], "status": "different_outcome_pixel_level", "locator": "Tables IV-V", "reason": "Pixel misclassification is not a per-image misclassification probability, and no clean baseline is given."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit.",
+    "No execution."
+  ]
+}

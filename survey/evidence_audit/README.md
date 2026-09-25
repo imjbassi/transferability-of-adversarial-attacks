@@ -4,7 +4,9 @@ Started 23 September 2026. This is a non-blind evidence audit, not the independe
 
 ## Current scope
 
-The ledger retains all 80 frozen paper IDs: seventy-five documented reviews are complete (ranks 1-75) and 5 remain pending; no partial reviews remain.
+The ledger retains all 80 frozen paper IDs: all 80 documented first-pass reviews are complete (ranks 1-80); none is pending or partial. Complete means a documented, validated, non-blind review record, not independent agreement, recomputation or a frozen export.
+
+Ranks 76-80 ([76](reviews/76.json)-[80](reviews/80.json)): rank 79 (detector generalisation across attack types) is non-applicable. Rank 76 restricts its ImageNet sample to images all models classify correctly (field 2 yes) and averages over all adversarial pairs. Rank 77 divides by all test samples (fields 2/3 explicit no for classification). Rank 78's leave-one-out transferability averages over all clean examples but selects each example's step with target predictions on the other examples; this is recorded as a design choice. Rank 80 uses the bare misclassification-rate wording, as ranks 5 and 21 do.
 
 Ranks 71-75 ([71](reviews/71.json)-[75](reviews/75.json)): rank 71 (query-assisted minimum-distance search) and rank 75 (a review whose only original experiment is white-box) are non-applicable. Rank 74 excludes videos each deepfake detector originally mispredicts (field 2 yes). Rank 72 transfers typo attacks from an extracted BERT to victim APIs with victim clean accuracy reported (field 1 yes). Rank 73's detector-patch mAP is coded by outcome mapping, as rank 14 was.
 

@@ -1,0 +1,41 @@
+{
+  "rank": 76,
+  "paper_id": "11f767a0ad2b7b005fbdaea4a6139a7db9a7c93d",
+  "review_date": "2026-09-25",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all fifteen pages of arXiv 1802.09707 (technical report): Sections 1-7, Tables 1-6, Figures 1-4, references and Appendices A-B (step-size Figure 5, one-step and Top-1 ensemble Tables 7-9). The corpus lists only the arXiv record.",
+    "supplement": "Appendices are embedded in the arXiv PDF and read.",
+    "inventory_complete": true,
+    "applicability": "cross_model_classification_attack",
+    "excluded_results": "Diagonal (source = target) cells are white-box. Figure 2 plots gradient similarity. Section 5 theory has no rates."
+  },
+  "sources": [
+    {"id": "arxiv_with_appendices", "url": "https://arxiv.org/pdf/1802.09707", "sha256": "44447e0d346d4c6451cbac905cad0f243c2c081bed15ade32ed7ce87aff98310"}
+  ],
+  "result_groups": [
+    {"id": "imagenet_transfer", "locator": "Section 3.4 (p. 5); Tables 1, 4-6; Figures 1, 3; Appendix Figure 5, Tables 7-9", "population": "For each ImageNet experiment, 5,000 randomly selected validation images 'that can be correctly recognized by all the examined models' (1,000 for Appendix A); PyTorch pre-trained sources, targets and ensembles", "outcome": "Top-1 (or Top-5 for targeted ensembles) success rate, Eq. 7: 100 x (1/N) sum over the set of adversarial pairs of 1[prediction != true label]", "f2": "yes", "f3": "no", "evidence": "Images are explicitly restricted to those all examined models classify correctly. The rate is averaged over the whole set of generated adversarial pairs, with no selection by source success."},
+    {"id": "mnist_cifar_transfer", "locator": "Section 4.2 Table 2; Section 6.2.1 Table 3", "population": "MNIST fully connected networks and CIFAR-10 models (lenet, resnet20/44/56, densenet); evaluation set not stated", "outcome": "Top-1 success rate (Eq. 7)", "f2": "unclear", "f3": "no", "evidence": "The correctness filter is stated only for ImageNet; Eq. 7 averages over all generated adversarial pairs."},
+    {"id": "destruction_rate_transforms", "locator": "Section 6.3; Figure 4", "population": "DenseNet121-source adversarial examples evaluated on ResNet34 under rotation, Gaussian noise, blur and JPEG", "outcome": "destruction rate R: among images correctly classified clean and misclassified adversarially (on the evaluated model), the fraction correctly classified after transformation", "f2": "yes", "f3": "unclear", "evidence": "R is explicitly restricted to clean-correct images that the evaluated model misclassifies adversarially; it is a destruction outcome rather than a transfer rate."}
+  ],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "partial_separate_clean_values", "locator": "Section 3.4; Figure 1", "evidence": "CIFAR-10 test accuracies are printed and MNIST accuracies bounded (>98%). ImageNet accuracies are deferred to an external website and plotted in Figure 1 only."},
+    "f2": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 3.4; Section 6.3", "evidence": "ImageNet and destruction scopes are explicitly clean-correct (yes); MNIST/CIFAR scopes are unresolved. Positive conditioning evidence."},
+    "f3": {"value": "unclear", "reason": "unresolved_scope", "locator": "Eq. 7; Section 6.3", "evidence": "Success-rate scopes average over all adversarial pairs (no); the destruction-rate scope is conditioned on the evaluated model's adversarial misclassification and is unresolved for source success."},
+    "f4": {"value": "unclear", "reason": "denominator_stated_counts_not_extracted", "locator": "Tables 1, 4-9", "evidence": "ImageNet one-decimal rates over the stated 5,000 images would map to unique counts, but they were not extracted cell by cell; MNIST/CIFAR denominators are unstated."},
+    "f5": {"value": "yes", "reason": "explicit_linf_radius_all_results", "locator": "Table captions; Figure 1, 4 captions", "evidence": "Sign-gradient L-infinity attacks with explicit epsilon (e.g., 15 or 20 on ImageNet, 10 on CIFAR-10, 40 on MNIST, pixel scale 0-255)."},
+    "f6": {"value": "unclear", "reason": "no_author_release_located", "locator": "Paper", "evidence": "No code is linked; models are public PyTorch checkpoints but the sampled images and attack code are not released."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-25", "url": "https://arxiv.org/abs/1802.09707", "result": "Downloaded and hashed; no code or data release is linked."}
+  ],
+  "bounds_checks": [
+    {"groups": ["imagenet_transfer", "destruction_rate_transforms"], "status": "not_applicable_clean_correct_conditioned_population", "locator": "Section 3.4; Section 6.3", "reason": "Rates are conditional on clean correctness."},
+    {"groups": ["mnist_cifar_transfer"], "status": "population_alignment_unresolved", "locator": "Tables 2-3", "reason": "Test accuracies are reported, but the attacked set is not identified."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit. The field 3 'no' rests on Eq. 7 averaging over the set of adversarial pairs (as in rank 47); a stricter wording test could code unclear.",
+    "No execution."
+  ]
+}
