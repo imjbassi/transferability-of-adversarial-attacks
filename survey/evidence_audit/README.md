@@ -4,7 +4,9 @@ Started 23 September 2026. This is a non-blind evidence audit, not the independe
 
 ## Current scope
 
-The ledger retains all 80 frozen paper IDs: seventy documented reviews are complete (ranks 1-70) and 10 remain pending; no partial reviews remain.
+The ledger retains all 80 frozen paper IDs: seventy-five documented reviews are complete (ranks 1-75) and 5 remain pending; no partial reviews remain.
+
+Ranks 71-75 ([71](reviews/71.json)-[75](reviews/75.json)): rank 71 (query-assisted minimum-distance search) and rank 75 (a review whose only original experiment is white-box) are non-applicable. Rank 74 excludes videos each deepfake detector originally mispredicts (field 2 yes). Rank 72 transfers typo attacks from an extracted BERT to victim APIs with victim clean accuracy reported (field 1 yes). Rank 73's detector-patch mAP is coded by outcome mapping, as rank 14 was.
 
 Ranks 67-70 ([67](reviews/67.json)-[70](reviews/70.json)): rank 68 (DAmageNet) is the second paper found with a matched unconditional population. Its Table 5 reports clean ImageNet error and DAmageNet error on the same 50,000 validation images for 18 non-source victims. First-pass nominal bounds, max(0, adversarial error - clean error), range from 3.20 to 69.29 points (median 60.355). They are recorded in the review only, pending a second extraction, rounding propagation, and resolution of a validation/training wording ambiguity. Its random-200 experiments skip victim-misclassified samples (group field 2 yes). Rank 70's "nearly all" correctly classified wording is not coded as a restriction. Ranks 67 and 69 state no population rule; rank 69 adds detector-patch and Bard scopes.
 

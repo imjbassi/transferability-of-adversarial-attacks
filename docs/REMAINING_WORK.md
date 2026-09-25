@@ -1,6 +1,6 @@
 # Publication-readiness work remaining
 
-Status at 25 September 2026, after completing ranks 1-70. The manuscript is **not publication-ready**.
+Status at 25 September 2026, after completing ranks 1-75. The manuscript is **not publication-ready**.
 
 ## Completed current batch
 
@@ -17,11 +17,12 @@ Status at 25 September 2026, after completing ranks 1-70. The manuscript is **no
 - Ranks 56-60 reviewed; ranks 57, 58 and 60 flagged as recomputation candidates (rank 58's 5,000-instance selection lists are not released).
 - Ranks 61-66 reviewed (ranks 62, 65 and 66 non-applicable with documented reasons).
 - Ranks 67-70 reviewed. Rank 68 (DAmageNet) Table 5 supplies a second bounds source: 18 non-source victims with clean and adversarial error on the same 50,000 images (first-pass nominal bounds in `reviews/68.json`; second extraction, rounding and wording check pending).
-- Seventy of 80 full evidence reviews complete; none partial; 10 pending. These are workflow counts, not survey findings.
+- Ranks 71-75 reviewed (ranks 71 and 75 non-applicable with documented reasons).
+- Seventy-five of 80 full evidence reviews complete; none partial; 5 pending. These are workflow counts, not survey findings.
 
 ## Required before defensible survey claims
 
-1. **Finish 10 evidence reviews:** review the remaining 10 papers, including supplements, all result scopes, six judgments, evidence locators, applicability, artifact checks and bounds eligibility. Preserve unclear versus explicit no and all positive conditioning evidence. Keep the original corpus/scheme/tag immutable; the September 23 amendment is retrospective.
+1. **Finish 5 evidence reviews:** review the remaining 5 papers, including supplements, all result scopes, six judgments, evidence locators, applicability, artifact checks and bounds eligibility. Preserve unclear versus explicit no and all positive conditioning evidence. Keep the original corpus/scheme/tag immutable; the September 23 amendment is retrospective.
 2. **Export and freeze the repaired first pass:** only after all 80 reviews, generate the replacement coding sheet and stratified results. Distinguish mixed explicit reporting, non-applicable tasks and unresolved evidence. Report whatever the validated corpus shows, including a null result and the recomputability rate.
 3. **Obtain genuinely blind reliability data:** draw and archive a reproducible random 16-paper sample, recode without first-pass access, and compute Cohen's kappa per field with counts and uncertainty/limitations. The previous copied recode is invalid. This context has seen the first pass and cannot act as the blind recoder. The author waived waiting, not independence. Any kappa below 0.7 requires a documented tightening pass and full recode under the revised scheme.
 4. **Complete qualified-paper recomputation:** verify code, checkpoints, data and evaluators for every field-6 yes paper; execute the required configurations and archive PTR, CTR, a_st, b_st and counts. Existing SI-NI/VMI ports need original-runtime parity and configuration reconciliation; other historical runs need checkpoint/cohort matching. Rank 10 now has an executable selected original-runtime configuration, but historical seed/objective correspondence, other attacks/pairs and full-paper coverage remain unresolved. Do not report unmatched deltas as replication errors.

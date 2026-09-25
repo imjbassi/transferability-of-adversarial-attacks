@@ -1,0 +1,38 @@
+{
+  "rank": 72,
+  "paper_id": "16a8e329c06b4c6f61762da7fa77a84bf3e12dca",
+  "review_date": "2026-09-25",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all seven pages of arXiv 2103.10013v1 (18 March 2021): Sections 1-6, Tables 1-6, Figure 1, references and Appendices A-D (datasets, training, query-size Table 7, architecture-mismatch Table 8). The NAACL 2021 anthology version was not retrieved separately.",
+    "supplement": "Appendices A-D are embedded in the arXiv PDF and read.",
+    "inventory_complete": true,
+    "applicability": "cross_model_text_classification_attack",
+    "excluded_results": "Tables 2, 3 and 7 (extraction accuracy and cost) are model-extraction outcomes; MEA columns of Tables 5, 6 and 8 likewise."
+  },
+  "sources": [
+    {"id": "arxiv_v1_with_appendices", "url": "https://arxiv.org/pdf/2103.10013v1", "sha256": "ba1251ca430f22aab0e4b3f06aeb51f7c08d85108869bfab115730d3cd891ca9"}
+  ],
+  "result_groups": [
+    {"id": "extracted_to_victim_typo_attacks", "locator": "Section 4.3; Table 4; Section 4.4 Table 5; Section 5 Table 6 AET columns; Appendix D Table 8", "population": "Held-out data of TP-US, Yelp, AG news and Blog (sizes in Table 1; the attacked subset is not stated); adversarial typo examples crafted on the extracted BERT model (adv-bert) or black-box baselines, transferred to the victim BERT API, including mismatched architectures and softening/perturbation defenses", "outcome": "transferability: 'the misclassification rate of adversarial samples on the victim APIs' / 'percentage of adversarial examples transferred from the extracted model to the victim model'", "f2": "unclear", "f3": "unclear", "evidence": "No clean-correct or extracted-model-success rule is stated; the two wordings of the metric do not fix the denominator."}
+  ],
+  "judgments": {
+    "f1": {"value": "yes", "reason": "separate_clean_values_all_targets", "locator": "Tables 2, 6 (parentheses), 7", "evidence": "Victim accuracy on the held-out set is reported for every dataset, and defended-victim accuracy is given in parentheses in Table 6; extracted-model accuracies are also reported."},
+    "f2": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 4.3", "evidence": "No clean-correct restriction or explicit inclusion statement."},
+    "f3": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 4.3", "evidence": "No source-success restriction or explicit inclusion statement."},
+    "f4": {"value": "unclear", "reason": "denominator_unstated", "locator": "Tables 4-6, 8", "evidence": "One-decimal rates; the attacked subset and its size are not stated."},
+    "f5": {"value": "no", "reason": "explicit_discrete_token_attack_not_lp", "locator": "Section 4.3", "evidence": "Typo corruptions (insertion, deletion, swap, mistype, pronounce, replace-W) of gradient-selected tokens; no L-infinity/L2 radius applies to text. Reported in the non-image stratum."},
+    "f6": {"value": "unclear", "reason": "candidate_release_sufficiency_unverified", "locator": "Section 1 footnote", "evidence": "Code is linked (github.com/xlhex/extract_and_transfer); datasets are public, but victim/extracted checkpoints and the evaluated subset were not verified. Not executed."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-25", "url": "https://github.com/xlhex/extract_and_transfer", "result": "Repository linked in the paper; not listed, cloned or executed."}
+  ],
+  "bounds_checks": [
+    {"groups": ["extracted_to_victim_typo_attacks"], "status": "population_alignment_unresolved", "locator": "Tables 2, 4", "reason": "Victim clean accuracy is on the held-out set, but the attacked subset is not stated, so the populations cannot be matched."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit.",
+    "No execution."
+  ]
+}
