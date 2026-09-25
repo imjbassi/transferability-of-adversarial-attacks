@@ -716,46 +716,66 @@
       "rank": 56,
       "paper_id": "428c2e5992d6ed3186c087cba0fdba2ab6a468b2",
       "title": "Improving the Generalization of Adversarial Training with Domain Adaptation",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "candidate_population_match_unstated",
+      "artifact_review": "partial_release_candidate_unverified",
+      "notes": [
+        "reviews/56.json covers all fourteen arXiv v7 pages (ICLR 2019) with Appendix A.",
+        "One held-out-model black-box scope across four datasets; clean accuracy printed for every defended target (field 1 yes); population and conditioning unstated. Explicit L-infinity epsilons.",
+        "Release includes ATDA/PATDA checkpoints and evaluation code; source/baseline checkpoints not identified."
+      ]
     },
     {
       "rank": 57,
       "paper_id": "c4e0c4a6e82ed58ca57ec36a8ec275db38473ba2",
       "title": "Structure Invariant Transformation for better Adversarial Transferability",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_applicable_clean_correct_conditioned",
+      "artifact_review": "candidate_release_sufficiency_unverified",
+      "notes": [
+        "reviews/57.json covers arXiv v1 with Appendix A and the ICCV open-access version (identical 156 values).",
+        "1,000 images correct for the adopted models (normal-model scope field 2 yes); defense scope unresolved; results mostly graphical. Explicit L-infinity 16.",
+        "Official code with torchvision DEFAULT weights and evaluator; not executed."
+      ]
     },
     {
       "rank": 58,
       "paper_id": "bcac1b00badd7c8830e10ba4eb813ad79a3222b5",
       "title": "Backpropagating Linearly Improves Transferability of Adversarial Examples",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_applicable_clean_correct_conditioned",
+      "artifact_review": "candidate_release_sufficiency_unverified",
+      "notes": [
+        "reviews/58.json covers the sixteen-page arXiv v1 with appended supplementary material A-F.",
+        "5,000 instances correct for all victims (main scope field 2 yes); robust-victim scope unresolved; benign accuracies for normal models in supplement Table 5; per-victim cells are count-reconstruction candidates over 5,000.",
+        "Official code and model links; selection CSVs must be user-created. Not executed."
+      ]
     },
     {
       "rank": 59,
       "paper_id": "d73561ab8318ce343f5cb15f96c74f210b6b24fa",
       "title": "Imitation Attacks and Defenses for Black-box Machine Translation Systems",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_applicable_different_outcome",
+      "artifact_review": "reviewed_hosted_targets_unverifiable",
+      "notes": [
+        "reviews/59.json covers all sixteen arXiv pages with Appendices A-G.",
+        "MT imitation transfer: flip/nonsense transfer rate explicitly over successful attacks (field 3 yes for two scopes); universal-trigger scope unresolved; discrete-token budget (field 5 no, non-image stratum).",
+        "Attack code released; production API targets not recomputable."
+      ]
     },
     {
       "rank": 60,
       "paper_id": "8e98bef0a7868f05ced457b9433d674ab4adf218",
       "title": "Boosting Adversarial Transferability by Block Shuffle and Rotation",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_eligible_clean_baseline_missing",
+      "artifact_review": "candidate_release_sufficiency_unverified",
+      "notes": [
+        "reviews/60.json covers arXiv v3 with appendix and the CVPR 2024 open-access version (values a subset of v3).",
+        "1,000-image ImageNet protocol without a population rule; fields 1-4 unclear; explicit L-infinity 16.",
+        "Official code; images/checkpoints separate; not executed."
+      ]
     },
     {
       "rank": 61,

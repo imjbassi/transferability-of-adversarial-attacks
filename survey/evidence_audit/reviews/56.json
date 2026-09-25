@@ -1,0 +1,38 @@
+{
+  "rank": 56,
+  "paper_id": "428c2e5992d6ed3186c087cba0fdba2ab6a468b2",
+  "review_date": "2026-09-25",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all fourteen pages of arXiv 1810.00740v7 (15 March 2019, ICLR 2019 camera-ready header): Sections 1-5, Algorithm 1, Tables 1-4, Figures 1-3, references and Appendix A (attack settings Table 5, architectures Tables 6-8).",
+    "supplement": "Appendix A is embedded in the arXiv PDF and read; no separate supplement is referenced.",
+    "inventory_complete": true,
+    "applicability": "cross_model_classification_attack_defense_evaluation",
+    "excluded_results": "White-box columns of Tables 1 and 4, Table 2 (loss sensitivity), Table 3 and Figure 2 (MMD/t-SNE), and the white-box averages in Figure 3 are excluded. The Figure 3 black-box averages summarise the same black-box protocol graphically for ablations."
+  },
+  "sources": [
+    {"id": "arxiv_v7_with_appendix", "url": "https://arxiv.org/pdf/1810.00740v7", "sha256": "67dc9d7bdaabe3ba2ab2b9b2315073f60af8166e4bffc70644f47c9fa7e96fcc"}
+  ],
+  "result_groups": [
+    {"id": "holdout_to_defended_models", "locator": "Section 4.1 Evaluation Setup (pp. 6-7); Table 1a-d and Table 4 black-box columns; Figure 3 black-box bars", "population": "Test sets of Fashion-MNIST, SVHN, CIFAR-10 and CIFAR-100 (sizes not stated); FGSM, PGD, R+FGSM and MIM examples from a held-out model transferred to NT, SAT, EAT, PRT, ATDA, PAT and PATDA models", "outcome": "defended-model accuracy on the transferred adversarial examples, next to a clean test accuracy column", "f2": "unclear", "f3": "unclear", "evidence": "The paper reports 'the accuracy of defense methods on the testing datasets and the adversarial examples' without a clean-correct or held-out-model-success rule."}
+  ],
+  "judgments": {
+    "f1": {"value": "yes", "reason": "separate_clean_values_all_targets", "locator": "Tables 1 and 4 'Clean (%)' column", "evidence": "Every defended target model has a separate clean test accuracy in the same table. The held-out source model's clean accuracy is not printed."},
+    "f2": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 4.1", "evidence": "No clean-correct restriction or explicit inclusion statement."},
+    "f3": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 4.1", "evidence": "No source-success restriction or explicit inclusion statement."},
+    "f4": {"value": "unclear", "reason": "denominator_unstated", "locator": "Tables 1, 4", "evidence": "One-decimal accuracies without stated evaluation-set sizes."},
+    "f5": {"value": "yes", "reason": "explicit_linf_radius_all_results", "locator": "Table 1 and 4 captions; Appendix Table 5", "evidence": "L-infinity epsilon 0.1 (Fashion-MNIST), 0.02 (SVHN) and 4/255 (CIFAR-10/100) for all attacks."},
+    "f6": {"value": "unclear", "reason": "partial_release_candidate_unverified", "locator": "artifact_checks below", "evidence": "The official repository releases training and evaluation code and ATDA/PATDA checkpoints for all four datasets. Baseline and held-out source checkpoints are not identified among the files. Not executed."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-25", "url": "https://github.com/JHL-HUST/ATDA/tree/1617b030bcd8d3501e46ede15c55f942bc319b55", "result": "Linked in the paper. Listed via the GitHub API (32 files, head 25 February 2019): per-dataset scripts, train_adv.py, train_atda.py, train_atda_npgd.py, simple_eval.py, attack_utils.py, and models/<dataset>/modelZ_ours and modelZ_ours_npgd checkpoints. Not executed."}
+  ],
+  "bounds_checks": [
+    {"groups": ["holdout_to_defended_models"], "status": "candidate_population_match_unstated", "locator": "Tables 1, 4", "reason": "Clean and black-box accuracies of each defended model are side by side and apparently on the test set, but the paper does not state that both use the same full test set with no filtering. No bound is extracted."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit; coded consistently with rank 51 (side-by-side clean and transferred accuracy without an explicit shared-population statement).",
+    "No execution."
+  ]
+}

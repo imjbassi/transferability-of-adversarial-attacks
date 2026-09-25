@@ -4,7 +4,9 @@ Started 23 September 2026. This is a non-blind evidence audit, not the independe
 
 ## Current scope
 
-The ledger retains all 80 frozen paper IDs: fifty-five documented reviews are complete (ranks 1-55) and 25 remain pending; no partial reviews remain.
+The ledger retains all 80 frozen paper IDs: sixty documented reviews are complete (ranks 1-60) and 20 remain pending; no partial reviews remain.
+
+Ranks 56-60 ([56](reviews/56.json)-[60](reviews/60.json)): ranks 57 and 58 restrict their main samples to images all (normally trained) victims classify correctly (field 2 yes for those scopes), while their defense/robust scopes remain unresolved. Rank 59 (machine-translation imitation) defines transfer over attacks successful on the imitation model (field 3 yes for two scopes) and has a discrete-token budget stratified with ranks 1 and 50. Rank 56 prints clean accuracy for every defended target (field 1 yes) without a population rule, as rank 51 does. Rank 60 follows the 1,000-image protocol without a population rule, as rank 42 does.
 
 Ranks 51-55 ([51](reviews/51.json)-[55](reviews/55.json)): rank 52 (timing side-channel extraction) has no adversarial evaluation. Rank 55 (DEEPSEC; author-hosted PDF, since no arXiv version exists) explicitly transfers only source-misclassified AEs (field 3 yes). Its per-row AE counts make field 4 a reconstruction candidate, pending cell-by-cell verification. Rank 53's point-cloud transfer is source-success conditioned by Eq. 6 and the 100.0/0.00 diagonal, and reports matched pre/post target accuracy; that is a conditioned, not unconditional, baseline. Rank 54 divides by all images with a prediction-change outcome, as rank 28 does. Rank 51 prints clean and attacked target accuracy side by side, but the evaluated split is unstated, so no bound is extracted.
 

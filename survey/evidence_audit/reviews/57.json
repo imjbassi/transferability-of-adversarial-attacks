@@ -1,0 +1,41 @@
+{
+  "rank": 57,
+  "paper_id": "c4e0c4a6e82ed58ca57ec36a8ec275db38473ba2",
+  "review_date": "2026-09-25",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all fourteen pages of arXiv 2309.14700v1 (Sections 1-5, Algorithm 1, Tables 1-3, Figures 1-11, references, Appendix A) and the thirteen-page ICCV 2023 open-access version; all 156 one-decimal values match between versions.",
+    "supplement": "Appendix A (transformation implementation details) is embedded in the arXiv PDF and read; it contains no results.",
+    "inventory_complete": true,
+    "applicability": "cross_model_classification_attack",
+    "excluded_results": "White-box (source) bars in Figure 3. Table 1's LPIPS column is a similarity measure. Figures 1-2 and Table 2 are illustrations."
+  },
+  "sources": [
+    {"id": "arxiv_v1_with_appendix", "url": "https://arxiv.org/pdf/2309.14700v1", "sha256": "4752a89a306ab6dcd6e732ca739da320bbe5974a0395cce2d413a3e3c9f7f620"},
+    {"id": "iccv_open_access", "url": "https://openaccess.thecvf.com/content/ICCV2023/papers/Wang_Structure_Invariant_Transformation_for_better_Adversarial_Transferability_ICCV_2023_paper.pdf", "sha256": "6666176fcde0ebbc18e6be0c96438619b13187f7ac65503e2686788938fb67a8"}
+  ],
+  "result_groups": [
+    {"id": "normal_model_transfer", "locator": "Section 4.1 Dataset (p. 5); Table 1; Figures 3-6, 8-11; Table 3", "population": "1,000 ILSVRC 2012 validation images, one per category, 'correctly classified by the adopted models'; single-model, SGM/LinBP-integrated, ensemble and ablation settings with eight CNN/transformer victims", "outcome": "attack success rate: 'the misclassification rates of the victim model on the crafted adversarial examples'", "f2": "yes", "f3": "unclear", "evidence": "The images are explicitly restricted to those the adopted (normally trained) models classify correctly. The success-rate definition is a bare outcome definition, with no statement retaining or removing source failures."},
+    {"id": "defense_transfer", "locator": "Section 4.5; Figure 7", "population": "Same 1,000 images; examples generated on all eight models simultaneously; Inc-v3ens/IncRes-v2ens, HGD, R&P, NIPS-r3, FD, JPEG, Bit-Red, RS and NRP", "outcome": "attack success rate (graphical)", "f2": "unclear", "f3": "unclear", "evidence": "It is not stated whether the defended models are among the 'adopted models' used for the correctness filter."}
+  ],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "separate_clean_values_not_located", "locator": "Section 4", "evidence": "No clean accuracy is printed; correctness is used only as a filter."},
+    "f2": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 4.1; Section 4.5", "evidence": "The normal-model scope is explicitly clean-correct (yes); the defense scope is unresolved. Positive conditioning evidence."},
+    "f3": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 4.2", "evidence": "No source-success rule or explicit inclusion statement."},
+    "f4": {"value": "unclear", "reason": "graphical_or_averaged_rates", "locator": "Figures 3-11; Tables 1, 3", "evidence": "Most results are bar charts; the tabulated values are averages over victims (Table 3, Figure 8) or a single cell (Table 1) without a stated count."},
+    "f5": {"value": "yes", "reason": "explicit_linf_radius_all_results", "locator": "Section 4.1 Evaluation Settings", "evidence": "MI-FGSM-based attacks with epsilon = 16 (L-infinity, sign-step), T = 10, for all experiments."},
+    "f6": {"value": "unclear", "reason": "candidate_release_sufficiency_unverified", "locator": "artifact_checks below", "evidence": "The official repository provides SIA and an evaluator on torchvision models with weights='DEFAULT'. Images come from the Admix Drive folder. Default torchvision weights may differ from those used in 2023, and defenses are not included. Not executed."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-25", "url": "https://github.com/xiaosen-wang/SIT/tree/6d5432d4165a85753c8ae8fdee5cfd3362509a97", "result": "Linked in the paper. Listed via the GitHub API (6 files, head 23 February 2024): attack.py, main.py, utils.py. The main.py --eval branch counts, for each listed torchvision model, adversarial images whose prediction equals the label over all saved images (accuracy; source failures retained). As pinned, the non-eval branch's post-attack loop instantiates the source model for every entry. Artifact evidence only; not executed."}
+  ],
+  "bounds_checks": [
+    {"groups": ["normal_model_transfer"], "status": "not_applicable_clean_correct_conditioned_population", "locator": "Section 4.1", "reason": "Rates are over images all adopted models classify correctly, so no unconditional matched bound applies."},
+    {"groups": ["defense_transfer"], "status": "clean_baseline_missing", "locator": "Figure 7", "reason": "No clean accuracy for defended models."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit. Figure values were not digitised.",
+    "No execution."
+  ]
+}
