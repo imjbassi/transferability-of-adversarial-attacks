@@ -4,7 +4,9 @@ Started 23 September 2026. This is a non-blind evidence audit, not the independe
 
 ## Current scope
 
-The ledger retains all 80 frozen paper IDs: twenty-eight documented reviews are complete (ranks 1-26, 31 and 38) and 52 remain pending; no partial reviews remain.
+The ledger retains all 80 frozen paper IDs: thirty-three documented reviews are complete (ranks 1-32 and 38) and 47 remain pending; no partial reviews remain.
+
+Ranks 27-30 and 32 ([27](reviews/27.json), [28](reviews/28.json), [29](reviews/29.json), [30](reviews/30.json), [32](reviews/32.json)): rank 27 (model extraction) has no adversarial transfer. Rank 29 explicitly restricts malware transfer to source-evading samples that the target classifies correctly (fields 2 and 3 yes). Rank 28 defines the fooling rate over all images as prediction change (fields 2/3 explicit no). Rank 30 reports same-image no-attack baselines for hosted MLLMs, recorded but not used as bounds. Rank 32 subtracts the feature-denoising target clean-error ratio from its reported rates, an explicit clean-baseline adjustment distinct from a clean-correct denominator.
 
 Ranks 22-26 ([22](reviews/22.json)-[26](reviews/26.json)) add explicit positive conditioning evidence. Rank 22 retains only examples that fooled all 10 ensemble members; rank 25 transfers only source-correct, source-successful images. Both are field 3 yes. Rank 24 defines transfer on 1,000 jointly clean-correct examples per pair (field 2 yes for that scope, field 3 explicit no by Eq. 3). Rank 23 is the SSA paper whose release was executed historically; its manifest and checkpoint hashes still need verification. Rank 26 treats transferability only theoretically.
 

@@ -341,37 +341,52 @@
       "rank": 27,
       "paper_id": "287e82b08cc5b8c8aae03825b466fcb73860b0c4",
       "title": "Data-Free Model Extraction",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_applicable_no_original_cross_model_attack_evaluation",
+      "artifact_review": "not_applicable_no_transfer_configuration",
+      "notes": [
+        "reviews/27.json covers all fifteen arXiv v2 pages including Appendices A-D; results concern model-extraction fidelity and query complexity, with no adversarial transfer evaluation.",
+        "Retained with non-applicability reasons for all six fields."
+      ]
     },
     {
       "rank": 28,
       "paper_id": "8bf18d546ae7aea144663136c5704049953ce4e2",
       "title": "SparseFool: A Few Pixels Make a Big Difference",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_applicable_prediction_change_outcome",
+      "artifact_review": "reviewed_transfer_sample_not_released",
+      "notes": [
+        "reviews/28.json covers all fourteen arXiv v4 pages including supplementary Sections A-D; one transfer scope (Table 3, three ImageNet models, 4,000 images).",
+        "The fooling rate is formally defined over all of D as prediction change from each model's clean prediction, so fields 2/3 are explicit no. Clean accuracy is reported for all transfer models; field 5 is an explicit sparse attack without an L2/L-infinity radius.",
+        "Attack code is released with public torchvision weights; the 4,000-image sample and transfer evaluator are not. No bound: prediction-change outcome."
+      ]
     },
     {
       "rank": 29,
       "paper_id": "d5d7ce70a6618393176f254d5617b3bb070003cd",
       "title": "Exploring Adversarial Examples in Malware Detection",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_applicable_clean_correct_and_source_success_conditioned",
+      "artifact_review": "reviewed_proprietary_no_release",
+      "notes": [
+        "reviews/29.json covers all seven arXiv v3 pages; one transfer scope (EMBER and Full MalConv in both directions, Section V.C).",
+        "Transfer is explicitly evaluated only on source-evading samples whose originals the target classifies correctly (fields 2 and 3 yes); result stated as at most 2/400 per experiment.",
+        "Full model and data are proprietary; no release located. No bound: conditioned population."
+      ]
     },
     {
       "rank": 30,
       "paper_id": "9f4c17aebbb181756fab86ade02deadd90d5d4f9",
       "title": "How Robust is Google's Bard to Adversarial Image Attacks?",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_applicable_hosted_nonclassification_analog_not_extracted",
+      "artifact_review": "reviewed_hosted_targets_judgments_unreleased",
+      "notes": [
+        "reviews/30.json covers all thirteen arXiv v2 pages; four scopes: Bard description, 20-image surrogate ablation, other commercial MLLMs, and Bard filter evasion.",
+        "The 100-image description scopes evaluate all images with same-image no-attack baselines (field 2 no for those scopes). Every rate is an integer percentage of a stated 100- or 20-image set, uniquely reconstructable (field 4 yes, reconstruction mode).",
+        "Release includes images and 200 adversarial examples but no per-example judgments; hosted targets are not reproducible. The same-image baseline analog is recorded but not added to bounds."
+      ]
     },
     {
       "rank": 31,
@@ -390,10 +405,14 @@
       "rank": 32,
       "paper_id": "b4196762025fb50eb3fdf521702d70f94e270b40",
       "title": "Patch-wise Attack for Fooling Deep Neural Network",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "reviewed_fd_clean_error_already_subtracted",
+      "artifact_review": "candidate_release_sufficiency_unverified",
+      "notes": [
+        "reviews/32.json covers all 21 arXiv v3 pages including appendix Tables 5-13; three groups (normal, ensemble-adversarially-trained and feature-denoising targets).",
+        "Feature-denoising target rates explicitly subtract the target's clean misclassification ratio, an explicit clean-error adjustment rather than a clean-correct denominator, so field 2 stays unclear while the evidence is preserved. Explicit L-infinity epsilon 16.",
+        "Release evaluates one target over 1,000 images without FD code; recomputation candidate."
+      ]
     },
     {
       "rank": 33,

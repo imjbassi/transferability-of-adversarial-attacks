@@ -1,0 +1,38 @@
+{
+  "rank": 29,
+  "paper_id": "d5d7ce70a6618393176f254d5617b3bb070003cd",
+  "review_date": "2026-09-24",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all seven pages of arXiv 1810.08280v3 (13 April 2019; IEEE S&P Workshops 2019): Sections I-VII, Algorithms 1-2, Table I, Figures 1-3 and references.",
+    "supplement": "No appendix or supplement is included or linked. The IEEE workshop version was not retrieved.",
+    "inventory_complete": true,
+    "applicability": "cross_model_classification_attack_binary_malware_detection",
+    "excluded_results": "Table I and Figure 3 evaluate append and slack attacks against the model on which they were generated (white-box). Figure 2 is a feature-location analysis."
+  },
+  "sources": [
+    {"id": "main", "url": "https://arxiv.org/pdf/1810.08280v3", "sha256": "846410239a4ff940aa1faf15c82d35775498ca9ad712ea7335858a1c7a94b182"}
+  ],
+  "result_groups": [
+    {"id": "ember_full_malconv_transfer", "locator": "Section V (p. 5) candidate selection; Section V.C 'Attack Transferability' (p. 6)", "population": "400 random test malware files under 990,000 bytes correctly detected by the source; transfer evaluated on samples that evade the source (EMBER or Full MalConv) and whose original is correctly classified by the other model", "outcome": "evasion of the target detector (malware classified benign)", "f2": "yes", "f3": "yes", "evidence": "Section V.C: attacks are evaluated 'on samples that successfully evade the source model and for which the original (pre-attack) sample is correctly classified by the target model'. Both target-clean-correct and source-success restrictions are explicit. Result: 'at most 2/400 samples evade the target model' for each experiment."}
+  ],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "partial_separate_clean_values", "locator": "Section III (p. 3)", "evidence": "The Full model's accuracy (0.89, AUC 0.97) and Mini model's accuracy (0.73) on the Full test set are reported; for the EMBER model only a previously reported 0.99 AUC on its own test set is cited, not an accuracy."},
+    "f2": {"value": "yes", "reason": "all_scopes_explicit_yes", "locator": "Section V.C (p. 6)", "evidence": "Transfer is evaluated only on samples whose originals the target classifies correctly."},
+    "f3": {"value": "yes", "reason": "all_scopes_explicit_yes", "locator": "Section V.C (p. 6)", "evidence": "Only samples that successfully evade the source are transferred."},
+    "f4": {"value": "unclear", "reason": "bounded_counts_conditioned_denominators_unstated", "locator": "Section V.C (p. 6)", "evidence": "Counts are given in a literal but bounded form ('at most 2/400') per experiment; the conditioned denominators (source-evading, target-correct samples) and the exact numerators for each attack and direction are not reported."},
+    "f5": {"value": "no", "reason": "explicit_byte_modification_threat_model_without_input_lp_radius", "locator": "Section IV (pp. 3-4); Section V.B (p. 6)", "evidence": "Attacks append up to 10,000 bytes or modify slack bytes; the FGM step and slack epsilon are defined in the byte-embedding space (L-infinity and L2 respectively) and mapped back to discrete bytes. There is no input-space L-infinity or L2 radius; the transfer settings (bytes, epsilon) are also not restated. Explicit discrete-binary threat model, not an omitted radius."},
+    "f6": {"value": "unclear", "reason": "proprietary_model_and_data_no_release", "locator": "Section II.C (pp. 2-3)", "evidence": "The Full model is trained on a proprietary 12.5M-binary FireEye dataset; no code, model or adversarial samples are linked and a bounded search found none. The EMBER model is public, but the Full model required for either transfer direction is not."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-24", "url": "https://api.github.com/search/repositories?q=slack%20FGM%20malconv%20adversarial", "result": "Repository search returned 0 results; the paper links no code. Bounded search."}
+  ],
+  "bounds_checks": [
+    {"groups": ["ember_full_malconv_transfer"], "status": "clean_correct_and_source_success_conditioned", "locator": "Section V.C", "reason": "The transfer population is target-clean-correct and source-successful by construction; the rate is conditional and no population-level misclassification rate is reported."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit. Binary malware evasion is treated as classification misclassification of the malware class.",
+    "IEEE workshop version not inspected."
+  ]
+}
