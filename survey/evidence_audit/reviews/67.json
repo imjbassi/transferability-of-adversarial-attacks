@@ -1,0 +1,40 @@
+{
+  "rank": 67,
+  "paper_id": "538f0c8379f9e091d4769ec3bdff6eb45130554f",
+  "review_date": "2026-09-25",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all twenty-six pages of arXiv 2210.05968v1 (12 October 2022; NeurIPS 2022 paper): Sections 1-5, Tables 1-7, Figures 1-5, references and Appendices A-E (implementation details, flatness computation and cost, comparisons with VT/EMI/Ghost Net/EOT in Tables 8-11, stronger defenses, iteration and ensemble results). The NeurIPS proceedings PDF was not retrieved separately.",
+    "supplement": "Appendices are embedded in the arXiv PDF and read.",
+    "inventory_complete": true,
+    "applicability": "cross_model_classification_attack",
+    "excluded_results": "White-box (surrogate) cells; Figure 3 (loss-flatness visualisation) and Figures 4-5 plotted ablation curves are graphical transfer results included in the main group but not tabulated; computational-cost figures."
+  },
+  "sources": [
+    {"id": "arxiv_v1_with_appendices", "url": "https://arxiv.org/pdf/2210.05968v1", "sha256": "8f6f62194424f5d630dd63996ba77c43c8ea63d1b6a4ec7846be7e816778d65e"}
+  ],
+  "result_groups": [
+    {"id": "untargeted_and_targeted_normal_victims", "locator": "Section 4.1-4.5; Tables 1-7 (cols 2-7); Figures 2, 4-5; Appendix Tables 8-11 and iteration/ensemble results", "population": "ImageNet-compatible dataset of 1,000 images; Inc-v3, Res-50, Dense-121, VGG-16 surrogates; normally trained CNN and ViT victims", "outcome": "untargeted or targeted attack success rate", "f2": "unclear", "f3": "unclear", "evidence": "No clean-correct or surrogate-success rule is stated."},
+    {"id": "defense_victims", "locator": "Section 4.5; Table 7 cols 8-11; Appendix D", "population": "Same images; four-model ensemble source; adv-Inc-v3, ens-adv-IncRes-v2, multi-step AT, input-transformation, feature-denoising and NRP defenses", "outcome": "attack success rate", "f2": "unclear", "f3": "unclear", "evidence": "No population rule stated."},
+    {"id": "google_cloud_vision_targeted", "locator": "Section 4.7 (pp. 9-10)", "population": "500 randomly selected images; ResNet-50 surrogate; target class counted if among the 10 returned labels (semantically similar labels merged)", "outcome": "number of images successfully attacked (232 baseline, 342 RAP-LS)", "f2": "unclear", "f3": "unclear", "evidence": "Counts over 500 random images; no API-clean-correct or surrogate-success rule stated."}
+  ],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "separate_clean_values_not_located", "locator": "Section 4; Appendices", "evidence": "No clean accuracy is reported for surrogates, victims, defenses or the API."},
+    "f2": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 4.1", "evidence": "No clean-correct restriction or explicit inclusion statement in any scope."},
+    "f3": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 4", "evidence": "No surrogate-success restriction or explicit inclusion statement."},
+    "f4": {"value": "unclear", "reason": "partial_scope_counts_only", "locator": "Section 4.7; Tables 1-11", "evidence": "The Google API scope reports explicit counts (232 and 342 of 500). Table cells are one-decimal rates without a stated denominator."},
+    "f5": {"value": "yes", "reason": "explicit_linf_radius_all_results", "locator": "Section 4.1 Implementation Details", "evidence": "Perturbations restricted to L-infinity 16/255 for all attacks."},
+    "f6": {"value": "unclear", "reason": "candidate_release_sufficiency_unverified", "locator": "artifact_checks below", "evidence": "The official repository contains a single rap_attack.py and README; models are public (timm/torchvision), but evaluation scripts and defended models are not included. Not executed."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-25", "url": "https://github.com/SCLBD/Transfer_attack_RAP/tree/2112d8892136f8009392076e2193bb4031cc9b97", "result": "Linked in the paper. Listed via the GitHub API (head 16 December 2022): README.md and rap_attack.py only. Not executed."}
+  ],
+  "bounds_checks": [
+    {"groups": ["untargeted_and_targeted_normal_victims", "defense_victims", "google_cloud_vision_targeted"], "status": "clean_baseline_missing_or_targeted", "locator": "Tables 1-11; Section 4.7", "reason": "No clean baselines; targeted scopes are not misclassification probabilities."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit. Plotted ablation values were not digitised.",
+    "No execution."
+  ]
+}

@@ -859,37 +859,53 @@
       "rank": 67,
       "paper_id": "538f0c8379f9e091d4769ec3bdff6eb45130554f",
       "title": "Boosting the Transferability of Adversarial Attacks with Reverse Adversarial Perturbation",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_eligible_clean_baseline_missing",
+      "artifact_review": "candidate_release_sufficiency_unverified",
+      "notes": [
+        "reviews/67.json covers all twenty-six arXiv v1 pages with appendices.",
+        "Untargeted/targeted transfer on the 1,000-image dataset, defenses, and a Google Cloud Vision scope with explicit counts (232/342 of 500); no population rules. Explicit L-infinity 16/255.",
+        "Release is a single rap_attack.py; not executed."
+      ]
     },
     {
       "rank": 68,
       "paper_id": "0ab0b3cf5811a219339ad3715ce719f550122a62",
       "title": "Universal Adversarial Attack on Attention and the Resulting Dataset DAmageNet",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "eligible_nominal_bounds_recorded_pending_verification",
+      "artifact_review": "candidate_release_sufficiency_unverified",
+      "notes": [
+        "reviews/68.json covers all eleven arXiv v3 pages.",
+        "Random-200 scope skips victim-misclassified samples (group field 2 yes); DAmageNet Table 5 evaluates all 50,000 validation images with clean and adversarial error for 18 non-source victims (group fields 2/3 explicit no; field 1 yes).",
+        "First-pass nominal bounds recorded (18 rows, median 60.355 points) pending second extraction, rounding and validation/training wording check. DAmageNet dataset page responds; contents unverified."
+      ]
     },
     {
       "rank": 69,
       "paper_id": "94b94c545cbb90e2d1ab316758a910c53ed95b66",
       "title": "Rethinking Model Ensemble in Transfer-based Adversarial Attacks",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_eligible_clean_baseline_missing",
+      "artifact_review": "candidate_release_sufficiency_unverified",
+      "notes": [
+        "reviews/69.json covers all twenty-seven arXiv v2 pages (ICLR 2024) with appendices.",
+        "Classification transfer to 31 models, detector patch mAP and Bard response counts; no population rules; mixed L-infinity and patch budgets.",
+        "Official attack library linked; not executed."
+      ]
     },
     {
       "rank": 70,
       "paper_id": "9e5dd10d0706cec7d16e03f45f8a347c194d5888",
       "title": "Improving the Transferability of Adversarial Samples with Adversarial Transformations",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_eligible_clean_baseline_missing",
+      "artifact_review": "reviewed_no_author_release",
+      "notes": [
+        "reviews/70.json covers the ten-page CVPR 2021 paper; no supplement located.",
+        "1,000 images 'nearly all' correctly classified (not coded as a restriction); no source-success rule; explicit epsilon 16.",
+        "No author code located."
+      ]
     },
     {
       "rank": 71,
