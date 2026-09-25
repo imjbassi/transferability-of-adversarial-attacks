@@ -1,0 +1,44 @@
+{
+  "rank": 33,
+  "paper_id": "a5fd689c0890fa15fcdc3d97e805d38d342ed524",
+  "review_date": "2026-09-24",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all fifteen pages of arXiv 2004.05790v2 (IEEE TIFS 2020): Sections I-V, Eq. 14 hit-rate definition, Tables I-VI, Figures 1-10. Also retrieved v1 (fifteen pages) and read its Appendix A (Tables A1-A2), which v2 cites but no longer contains; printed-number comparison shows v2 changes in Table VI (added Selective Dropout row) and perturbation RMSD statements, with Tables I-V unchanged.",
+    "supplement": "The appendix that v2 references is present only in v1 (Appendix A) and was read there. The TALFW website (http://www.whdeng.cn/TALFW/index.html) was read as an artifact page; the IEEE TIFS version of record was not retrieved.",
+    "inventory_complete": true,
+    "applicability": "cross_model_face_verification_attack",
+    "excluded_results": "Figure 6 distance curves are optimization diagnostics on 100 pairs; source-model (white-box) cells in Tables I-IV marked '/' or self-attacks are excluded. Figures 1-3 and 9-10 are illustrations or ROC summaries of Table VI."
+  },
+  "sources": [
+    {"id": "arxiv_v2", "url": "https://arxiv.org/pdf/2004.05790v2", "sha256": "c618d8ecf6d9d0b14b115ce6c0b663d40ce2b4c17dc9bb36701faf81a76aaf74"},
+    {"id": "arxiv_v1_with_appendix", "url": "https://arxiv.org/pdf/2004.05790v1", "sha256": "6ce16fc4c85d06852df5ef9b4ed0ad521dca88f99698b920e1e2097499517c7d"}
+  ],
+  "result_groups": [
+    {"id": "targeted_impersonation_hit_rate", "locator": "Section IV.A and Eq. 14 (p. 7); Tables I-V (pp. 8-9); Figures 4-5 hit-rate ablations", "population": "10,000 pairs from 100 MS-Celeb-1M source and 100 VGGFace2 target images 'originally judged as negative pairs'; source/target face models varying training data, loss and architecture", "outcome": "hit rate: fraction of the 10,000 pairs whose adversarial source embedding falls within the target model's FAR = 1e-3 threshold of the target image", "f2": "unclear", "f3": "no", "evidence": "Eq. 14 averages over all N_p = 10,000 pairs with no source-success restriction, an explicit population statement. The pairs were 'originally judged as negative pairs' (a clean-correct condition for impersonation), but the paper does not state which model(s) made that judgment, so target coverage is unresolved."},
+    {"id": "untargeted_verification_meds_pasc", "locator": "Section IV.F (pp. 11-12); Figures 7-8", "population": "MEDS-II (858 frontal images) and PaSC still-to-still (4,688 images); 50% of images perturbed, pairs with both images perturbed removed; source ResNet-50/WebFace/ArcFace; nine target models", "outcome": "verification ROC curves with no-attack baselines", "f2": "unclear", "f3": "unclear", "evidence": "All remaining pairs enter the score matrices and a no-attack ROC is shown, but results are threshold-free curves; a clean-correct or source-success event is not defined for these scopes."},
+    {"id": "talfw_benchmark", "locator": "Section IV.G and Table VI (pp. 12-14); TALFW website", "population": "The 6,000 LFW verification pairs with 4,069 images perturbed by the authors' private surrogate models; targets are five open-source SOTA models, four commercial APIs and their fusion, and defended ResNet-50 variants", "outcome": "LFW-protocol verification accuracy on LFW versus TALFW", "f2": "no", "f3": "unclear", "evidence": "TALFW keeps the LFW protocol over all 6,000 pairs and reports each target's LFW accuracy on the same pairs, so clean-misverified pairs are explicitly included. The private surrogates and their success are not described, so source conditioning is undefined."}
+  ],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "partial_separate_clean_values", "locator": "v1 Appendix Table A2; Table VI", "evidence": "v1 Table A2 reports LFW and YTF accuracy separately for all ten models used in Tables I-V and the MEDS/PaSC study, and Table VI reports LFW accuracy for every TALFW target (positive evidence). The TALFW generation surrogates ('our private models') have no reported clean accuracy, and v2 omits Table A2."},
+    "f2": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section IV.A; Section IV.G", "evidence": "TALFW explicitly includes clean-misverified pairs (no); the hit-rate pairs were 'originally judged as negative' by an unnamed model; ROC scopes are threshold-free."},
+    "f3": {"value": "unclear", "reason": "unresolved_scope", "locator": "Eq. 14; Sections IV.F-G", "evidence": "The hit rate explicitly averages over all pairs (no); MEDS/PaSC and TALFW scopes define no source-success event."},
+    "f4": {"value": "unclear", "reason": "partial_unique_reconstruction", "locator": "Eq. 14; Tables I-VI; Figures 7-8", "evidence": "Two-decimal hit rates over an explicit N_p = 10,000 map to unique counts, and two-decimal TALFW accuracies over 6,000 pairs admit at most one integer each; the MEDS/PaSC results are ROC curves without recoverable counts."},
+    "f5": {"value": "unclear", "reason": "talfw_budget_unstated_measured_norm_only", "locator": "Section IV.A-B, F (epsilon 10); Section IV.G; TALFW website", "evidence": "Tables I-V and MEDS/PaSC use L-infinity epsilon 10 on [0,255]. TALFW reports only a measured perturbation RMSD (1.34 on the website; v1 and v2 differ in stated values) rather than a budget radius, which the amendment distinguishes from a numerical radius."},
+    "f6": {"value": "unclear", "reason": "released_adversarial_benchmark_source_side_unavailable", "locator": "Section IV.G footnote 1; artifact_checks below", "evidence": "TALFW images, protocol and (per the footnote) codes are distributed via Baidu, Google Drive and Dropbox, and several targets are public models, so target-side attacked and clean verification could plausibly be recomputed. The private surrogate models are not released, so source success cannot be recomputed, and the models of Tables I-V are not linked. Download contents unverified."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-24", "url": "http://www.whdeng.cn/TALFW/index.html", "result": "Page reachable; describes TALFW (4,069 modified images, RMSD 1.34) and links Baidu, Google Drive and Dropbox downloads. Its commercial-API table lists Amazon LFW accuracy 98.47% whereas v2 Table VI prints 99.47%; recorded as a discrepancy only."},
+    {"date": "2026-09-24", "url": "https://drive.google.com/file/d/1LMlboBwHK5grNxOLlR5IDfspB6HcXSux/view", "result": "HTTP HEAD 200 via the TALFW page link; archive not downloaded."}
+  ],
+  "bounds_checks": [
+    {"groups": ["targeted_impersonation_hit_rate"], "status": "different_outcome_targeted", "locator": "Eq. 14; Tables I-V", "reason": "Targeted impersonation hit rate is not an untargeted misclassification probability."},
+    {"groups": ["untargeted_verification_meds_pasc"], "status": "graphical_threshold_free", "locator": "Figures 7-8", "reason": "ROC curves provide no single-threshold rates to extract."},
+    {"groups": ["talfw_benchmark"], "status": "threshold_selection_breaks_fixed_predictor", "locator": "Table VI", "reason": "LFW-protocol accuracy selects verification thresholds on the evaluated data, so the clean (LFW) and attacked (TALFW) accuracies need not come from the same fixed predictor; commercial APIs are hosted. Arithmetic differences are not treated as bounds."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit. Version-specific values (v1 appendix, v2 Table VI) must not be mixed without labels.",
+    "No downloads or execution."
+  ]
+}

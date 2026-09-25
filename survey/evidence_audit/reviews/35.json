@@ -1,0 +1,38 @@
+{
+  "rank": 35,
+  "paper_id": "6e85c80aae6457a76bb719c2d2d303abcc682a29",
+  "review_date": "2026-09-24",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all nineteen pages of arXiv 1812.00891v3 (USENIX Security 2020): Sections 1-7 including Q1-Q5 experiments, Tables 1-9, Figures 1-16, references and Appendices A-C (implementation details, parameter Tables 11-12, additional results Tables 10, 13-14, Figures 17-19).",
+    "supplement": "Appendices are embedded in the arXiv PDF and read. The USENIX version was not retrieved.",
+    "inventory_complete": true,
+    "applicability": "other_attack_outcome_interpretation_maps",
+    "excluded_results": "Tables 3-8, 10, 13-14 and Figures 4-13, 15-19 evaluate ADV2/PGD/STADV against the attacked classifier-interpreter pair itself (white-box), detection-based and adversarial-training countermeasures, or the ISIC case study. None transfers adversarial inputs to a different classifier."
+  },
+  "sources": [
+    {"id": "main_with_appendices", "url": "https://arxiv.org/pdf/1812.00891v3", "sha256": "db7529abec7e4536207d04d7969cc3e0c7f6d41f5ea0549f166e1b1f1c374e5b"}
+  ],
+  "result_groups": [
+    {"id": "cross_interpreter_transfer", "locator": "Section 5 'Attack Transferability' (p. 11); Table 9; Figure 14", "population": "A random set of ADV2 inputs crafted against one interpreter (GRAD, CAM, MASK, RTS) on ResNet-50, drawn from 1,000 ImageNet validation images the classifier classifies correctly; interpretations recomputed with each other interpreter on the same classifier", "outcome": "L1 distance between adversarial and benign attribution maps on the target interpreter", "f2": "unclear", "f3": "unclear", "evidence": "The classifier is shared between source and target, so no prediction transfers across models; the transferred quantity is interpretation quality. The test set is clean-correct for the shared classifier, but no clean-correct event is defined for interpretation, and the paper does not say whether only successful ADV2 inputs were sampled."}
+  ],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "no_clean_accuracy_defined_for_outcome", "locator": "Section 4 Experimental Setting; Table 2", "evidence": "Classifier top-1 accuracies (77.15%, 77.92%) and clean localization performance of all four interpreters with ResNet (Table 2) are reported, positive baseline evidence, but interpretation quality is not a classification clean accuracy."},
+    "f2": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 4 Datasets (p. 6)", "evidence": "Images are selected as correctly classified by the shared classifier; the field's target-clean-correct event does not map onto an interpretation-distance outcome."},
+    "f3": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 5 (p. 11)", "evidence": "'We randomly select a set of adversarial inputs crafted against g' without stating whether unsuccessful ones are included."},
+    "f4": {"value": "unclear", "reason": "continuous_outcome_sample_size_unstated", "locator": "Table 9", "evidence": "Mean L1 distances over an unstated number of sampled inputs; counts are not the relevant record."},
+    "f5": {"value": "yes", "reason": "explicit_linf_radius_all_results", "locator": "Section 2 (p. 2); Appendix B1 (p. 18)", "evidence": "PGD-based ADV2 and PGD use an L-infinity threshold epsilon = 0.031 on [0,1] pixels, which covers the transfer experiment."},
+    "f6": {"value": "unclear", "reason": "code_release_transfer_configuration_unverified", "locator": "artifact_checks below", "evidence": "A repository alps-lab/adv2 (276 files) provides attack, interpreter and distance scripts; it is not linked from the reviewed text, and its coverage of the Table 9 experiment and model/masking-model checkpoints were not verified."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-24", "url": "https://github.com/alps-lab/adv2/tree/e3472df42197fe6dbe035412d43a9205ede880c2", "result": "Found by exact-title search; listed via the GitHub API (276 files, head 17 June 2021): expr_attacks (CAM, Grad-CAM, MASK, RTS generators), distance scripts per interpreter and ISIC scripts. Not linked in the paper text reviewed; not executed."}
+  ],
+  "bounds_checks": [
+    {"groups": ["cross_interpreter_transfer"], "status": "different_outcome", "locator": "Table 9", "reason": "Attribution-map distance on a shared classifier is not a cross-model misclassification probability."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit. Cross-interpreter transfer is retained as an in-scope 'other attack outcome' because the attacked system component (interpreter) differs; an independent recoder could treat it as out of scope.",
+    "No execution."
+  ]
+}

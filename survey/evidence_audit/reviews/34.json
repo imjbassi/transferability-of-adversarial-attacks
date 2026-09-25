@@ -1,0 +1,41 @@
+{
+  "rank": 34,
+  "paper_id": "7cf2cfd10b4f9e99f22efdaa45c7d55ee59ffa79",
+  "review_date": "2026-09-24",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all eight pages of arXiv 2105.03162v1 and the seven-page IJCAI 2021 version of record: Sections 1-5, Algorithm 1, Eq. 10, Table 1, Figures 1-6. The two versions print identical values.",
+    "supplement": "arXiv v1 says 'more experimental results please refer to the supplementary materials', but the IJCAI version of record omits that sentence, the IJCAI page hosts only the PDF, and no supplement was found in the official repository. No supplementary material is treated as part of the published paper.",
+    "inventory_complete": true,
+    "applicability": "cross_model_face_verification_attack",
+    "excluded_results": "Figures 1, 3, 4 and 6 are visual comparisons with commercial-platform confidence scores for individual examples, not rates; the meta-train (white-box) models are not evaluated as targets."
+  },
+  "sources": [
+    {"id": "arxiv_v1", "url": "https://arxiv.org/pdf/2105.03162v1", "sha256": "0d3158c726f9677c04673583a840f9bb2de24f2361106ecdec0518118683c8ae"},
+    {"id": "ijcai_version_of_record", "url": "https://www.ijcai.org/proceedings/2021/0173.pdf", "sha256": "8c5d05f26e9eca5e1235d043de08490df2a6a0929ace8aaed4065fad3a947427"}
+  ],
+  "result_groups": [
+    {"id": "digital_impersonation_leave_one_out", "locator": "Section 4.1 Datasets and Attacking protocols (pp. 4-5); Eq. 10; Table 1 (p. 6)", "population": "LFW: 1,000 random different-identity pairs; Makeup dataset: 100 source faces x 10 targets = 1,000 comparisons; three of IR152, IRSE50, MobileFace, FaceNet used for training and the fourth as the black-box target", "outcome": "impersonation ASR: fraction of comparisons whose cosine similarity to the target exceeds the target model's threshold at FAR 0.01", "f2": "unclear", "f3": "no", "evidence": "Eq. 10 averages the success indicator over all N comparisons with no selection by success on the training models, an explicit population statement. Pairs are different identities, but whether each target model rejects the clean pair is not stated."},
+    {"id": "physical_commercial_platforms", "locator": "Section 4.3 and Figure 5 (p. 6)", "population": "20 personators x 20 targets with printed tattoo eye shadow; Face++ and Microsoft", "outcome": "ASR as a function of platform confidence threshold (graphical)", "f2": "unclear", "f3": "unclear", "evidence": "No clean-pair baseline or population rule is stated; results are curves."}
+  ],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "separate_clean_values_not_located", "locator": "Section 4.1", "evidence": "FAR-0.01 thresholds are listed per model, but no clean recognition accuracy is reported for any model or platform."},
+    "f2": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 4.1", "evidence": "No clean-correct (clean-rejected pair) restriction is stated for either scope."},
+    "f3": {"value": "unclear", "reason": "unresolved_scope", "locator": "Eq. 10; Section 4.3", "evidence": "The digital scope explicitly averages over all comparisons (no); the physical scope states no rule."},
+    "f4": {"value": "unclear", "reason": "stated_denominator_inconsistent_with_values", "locator": "Table 1; Section 4.1", "evidence": "Two-decimal ASRs such as 7.59% are not multiples of 0.1% and so are not single proportions over the stated 1,000 comparisons; aggregation is described only as 'average results across 1000 identity pairs'. Physical results are graphical."},
+    "f5": {"value": "no", "reason": "explicit_generative_region_attack_without_linf_l2_budget", "locator": "Sections 3.2-3.4; Section 4.1 Competitors", "evidence": "Adv-Makeup synthesizes eye shadow within an orbital mask, constrained by realism and blending losses rather than an L-infinity or L2 radius; baseline attacks are restricted to the same mask with unstated 'official' budgets. The proposed method's results explicitly have no norm radius."},
+    "f6": {"value": "unclear", "reason": "candidate_release_sufficiency_unverified", "locator": "artifact_checks below", "evidence": "The official repository provides training/test code, a makeup-dataset subset and Google Drive links to the four face-recognition models; LFW pairs must be recreated by the user, and no per-comparison outcomes are released. Drive contents and execution unverified."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-24", "url": "https://github.com/TencentYoutuResearch/Adv-Makeup/tree/359af7e19ad4efc69c2775ea00ce2bdff69cc491", "result": "Listed via the GitHub API (25 files, head 6 December 2022): train.py, test.py (reports ASR under black-box models), model/network code, Poisson blending, Datasets_Makeup with landmarks and 14 images; README links Drive folders for face-recognition and VGG models and says LFW must be prepared by the user. Not executed."},
+    {"date": "2026-09-24", "url": "https://www.ijcai.org/proceedings/2021/173", "result": "Proceedings page lists only the PDF and BibTeX; no supplementary material."}
+  ],
+  "bounds_checks": [
+    {"groups": ["digital_impersonation_leave_one_out", "physical_commercial_platforms"], "status": "different_outcome_targeted", "locator": "Eq. 10; Table 1; Figure 5", "reason": "Targeted impersonation success at a similarity threshold is not an untargeted misclassification probability; no clean baseline is reported."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit. The arXiv mention of supplementary material is recorded; if a supplement later surfaces it should be reviewed.",
+    "No execution."
+  ]
+}
