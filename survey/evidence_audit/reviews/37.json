@@ -1,0 +1,39 @@
+{
+  "rank": 37,
+  "paper_id": "5effd428e3012061ba3d8b32f1952c2938c7ab7b",
+  "review_date": "2026-09-24",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all eighteen pages of arXiv 1912.00888v4 (ICLR 2021): Sections 1-6 (conferrability definition, CEM, fingerprint generation/verification, experiments), Tables 1-2, Figures 1-4 and Appendices A.1-A.6 (CIFAR-10 details, ImageNet32 Tables 3-4, security games, optimization, removal-attack details, hyperparameter Table 5, Figures 5-7).",
+    "supplement": "Appendices are embedded in the arXiv PDF and read. The OpenReview version was not retrieved.",
+    "inventory_complete": true,
+    "applicability": "cross_model_classification_attack_targeted_fingerprint",
+    "excluded_results": "Figure 3b and the non-evasiveness game evaluate a detector (ROC AUC), not transfer. CEM's local surrogate/reference ensemble used during generation is the optimization target, not an evaluation set. Figures 1, 2, 5-7 are illustrations."
+  },
+  "sources": [
+    {"id": "main_with_appendices", "url": "https://arxiv.org/pdf/1912.00888v4", "sha256": "6ed78880aa59bd7441f9ce027ffe86004c9f12ba7a7a92c96661ee2505debaa5"}
+  ],
+  "result_groups": [
+    {"id": "conferrability_evaluation_unseen_models", "locator": "Section 6 'Conferrability Scores' (p. 7); Figure 3a, 3d; Appendix A.6 Table 5", "population": "n = 100 (Table 5: 50) CIFAR-10 test inputs; adversarial examples from CEM, FGM, BIM, PGD, CW-L-infinity on a ResNet20 source, 'filter those that are non-successful to the source model'; five unseen surrogate and five unseen reference models", "outcome": "targeted transfer (CAEAcc: target model predicts the source's adversarial label) and conferrability score", "f2": "unclear", "f3": "yes", "evidence": "Source-unsuccessful examples are explicitly filtered before evaluating transfer to unseen models. No clean-correct restriction for the unseen models is stated."},
+    {"id": "fingerprint_retention_removal_attacks", "locator": "Section 4 fingerprinting algorithms (p. 5); Eq. 7; Figures 3c-f and 4a-e; Table 2; Appendix A.2 Tables 3-4", "population": "Fingerprint of conferrable examples (conferrability >= 0.95 on 18+18 local models; target label = the source's prediction on the adversarial example) evaluated on stolen surrogates (fine-tuning, pruning, retraining, extraction, transfer learning, adversarial training, ground-truth attacks) and reference models; CIFAR-10 and ImageNet32; three repetitions", "outcome": "CAEAcc (agreement with the fingerprint's target labels)", "f2": "unclear", "f3": "yes", "evidence": "Conferrable examples are defined (Section 4, Fig. 2a) as targeted adversarial examples of the source that transfer to surrogates, and each fingerprint example's target is the source's adversarial prediction, so the evaluated set is restricted to source-successful targeted examples by construction. No target-clean-correct restriction is stated."}
+  ],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "partial_separate_clean_values", "locator": "Table 2; Appendix Tables 3-4; Figure 4e", "evidence": "Test accuracies are reported for CIFAR-10 surrogates (Table 2) and ImageNet32 surrogates and references (Tables 3-4); the source model and the unseen CIFAR-10 reference models' clean accuracies are not located."},
+    "f2": {"value": "unclear", "reason": "unresolved_scope", "locator": "Sections 4-6", "evidence": "No target-clean-correct restriction or explicit inclusion is stated for either scope."},
+    "f3": {"value": "yes", "reason": "all_scopes_explicit_yes", "locator": "Section 6 (p. 7); Section 4 definitions (pp. 4-5)", "evidence": "Both scopes evaluate only examples that succeed on the source (explicit filter; definitional restriction with source-assigned targets). Positive conditioning evidence."},
+    "f4": {"value": "unclear", "reason": "averaged_rates_fingerprint_size_unstated", "locator": "Section 5 (three repetitions); Figures 3-4; Tables 2-5", "evidence": "CAEAcc values are means over repetitions and models, mostly graphical; fingerprint sizes after filtering are not stated."},
+    "f5": {"value": "yes", "reason": "explicit_linf_radius_all_results", "locator": "Section 4 (p. 5); Table 1; Section 6; Appendix A.2, A.4, A.6", "evidence": "L-infinity box constraint ||delta|| <= epsilon with explicit values (sweep 0.01-0.15; fingerprints at 0.025 for CIFAR-10 and 0.15 for ImageNet32; 0.025 in Table 5)."},
+    "f6": {"value": "unclear", "reason": "no_author_release_located", "locator": "artifact_checks below", "evidence": "The paper links no code or fingerprints; the repositories found by title search are third-party reimplementations, which do not establish the authors' trained models or fingerprints."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-24", "url": "https://api.github.com/search/repositories?q=conferrable%20adversarial%20examples", "result": "Two results: ayberkuckun/DNN-Fingerprinting and RorschachChen/conferrable_adversarial_examples_pytorch, both apparently third-party reimplementations not linked by the paper. Not inspected further or executed; not used for field 6."}
+  ],
+  "bounds_checks": [
+    {"groups": ["conferrability_evaluation_unseen_models", "fingerprint_retention_removal_attacks"], "status": "source_success_conditioned_targeted_outcome", "locator": "Eq. 7; Section 6", "reason": "CAEAcc is targeted agreement on source-successful examples, not an unconditional misclassification probability."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit. Coding the fingerprint scope's field 3 as yes relies on the paper's definition of conferrable examples; an independent recoder may prefer unclear.",
+    "No execution."
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "rank": 36,
+  "paper_id": "4d548fd21aad60e3052455e22b7a57cc1f06e3c3",
+  "review_date": "2026-09-24",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read the sixteen-page NDSS 2020 paper (DOI 10.14722/ndss.2020.24178; NDSS-hosted PDF): Sections I-VII including the FeatureFool attack, Algorithm 1, Tables I-III, Figures 1-5, experiments on five MLaaS platforms, defenses, limitations and references.",
+    "supplement": "No appendix or supplement is included or linked; no arXiv version is listed in the corpus.",
+    "inventory_complete": true,
+    "applicability": "no_original_cross_model_attack_evaluation_located",
+    "excluded_results": "Adversarial examples (FeatureFool, PGD, CW, FA) are generated on local substitutes and used only as extraction queries; Table III and the ablations report substitute accuracy relative to the victim (extraction fidelity) and query budgets. The statement that malicious examples fool the local model with 100% success rate (Section IV) is white-box. The DefenseNet detection rate (Section VI) is a detection outcome. No transferred-evasion rate against a victim is reported."
+  },
+  "sources": [
+    {"id": "main", "url": "https://www.ndss-symposium.org/wp-content/uploads/2020/02/24178.pdf", "sha256": "e616108a238c1112fbec8a44444bd2b84e3622fb80efe8434e3e48cc1ead5c7b"}
+  ],
+  "result_groups": [],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Table III caption", "evidence": "Victim and substitute clean accuracies are reported for extraction fidelity, not for any transfer-attack evaluation."},
+    "f2": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Section V", "evidence": "No transfer denominator exists."},
+    "f3": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Section IV", "evidence": "Adversarial queries are not evaluated as transferred attacks."},
+    "f4": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Table III", "evidence": "Reported values are extraction accuracies."},
+    "f5": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Section IV", "evidence": "Perturbation settings for query generation are not transfer-attack budgets."},
+    "f6": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Paper", "evidence": "No code is linked; with no transfer configuration this is neither a transfer recomputability success nor failure."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-24", "url": "https://doi.org/10.14722/ndss.2020.24178", "result": "Downloaded the NDSS-hosted PDF and hashed it; the paper links only MLaaS platform pages and GitHub-collected test images, no code or data release."}
+  ],
+  "bounds_checks": [],
+  "bounds_exclusion": {"status": "not_applicable_to_located_results", "locator": "Sections V-VI", "reason": "No transferred misclassification rate against a victim model is reported."},
+  "limitations": [
+    "Retained in the frozen corpus with non-applicability reasons; model-extraction fidelity is not an adversarial transfer outcome.",
+    "Non-blind evidence audit."
+  ]
+}

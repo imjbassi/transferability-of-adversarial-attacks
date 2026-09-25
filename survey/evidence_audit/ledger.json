@@ -418,46 +418,65 @@
       "rank": 33,
       "paper_id": "a5fd689c0890fa15fcdc3d97e805d38d342ed524",
       "title": "Towards Transferable Adversarial Attack Against Deep Face Recognition",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "reviewed_targeted_or_threshold_selected_not_extracted",
+      "artifact_review": "reviewed_benchmark_released_source_side_unavailable",
+      "notes": [
+        "reviews/33.json covers arXiv v2 and v1, whose Appendix A (model clean accuracies) v2 cites but omits; three scopes: targeted impersonation hit rate, MEDS/PaSC ROC, and the TALFW benchmark.",
+        "Hit rate explicitly averages over all 10,000 pairs (field 3 no for that scope); TALFW keeps all LFW pairs (field 2 no for that scope); remaining scopes are unresolved. TALFW reports only a measured RMSD, not a budget radius.",
+        "TALFW adversarial images are distributed publicly but the private surrogate models are not. No bound: targeted outcome or threshold selection on evaluated data."
+      ]
     },
     {
       "rank": 34,
       "paper_id": "7cf2cfd10b4f9e99f22efdaa45c7d55ee59ffa79",
       "title": "Adv-Makeup: A New Imperceptible and Transferable Attack on Face Recognition",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_applicable_targeted_impersonation",
+      "artifact_review": "candidate_release_sufficiency_unverified",
+      "notes": [
+        "reviews/34.json covers arXiv v1 and the IJCAI version of record (identical values); the arXiv mention of supplementary material is absent from the version of record and no supplement was located.",
+        "Digital impersonation ASR averages over all comparisons (field 3 no for that scope); physical scope graphical. Two-decimal ASRs are inconsistent with single proportions over 1,000; field 5 is an explicit generative eye-region attack without an L2/L-infinity radius.",
+        "Official code and Drive-hosted face models exist; LFW pairs and per-comparison outcomes are not released."
+      ]
     },
     {
       "rank": 35,
       "paper_id": "6e85c80aae6457a76bb719c2d2d303abcc682a29",
       "title": "Interpretable Deep Learning under Fire",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_applicable_interpretation_distance_outcome",
+      "artifact_review": "reviewed_code_release_transfer_configuration_unverified",
+      "notes": [
+        "reviews/35.json covers all nineteen arXiv v3 pages including Appendices A-C; one transfer scope (cross-interpreter transfer on a shared ResNet classifier, Table 9).",
+        "The transferred quantity is attribution-map distance, not cross-model misclassification; fields 1-4 are unclear for task mapping. Explicit L-infinity epsilon 0.031.",
+        "Title-matched repository alps-lab/adv2 found; not linked in the text and not executed. No bound: interpretation outcome."
+      ]
     },
     {
       "rank": 36,
       "paper_id": "4d548fd21aad60e3052455e22b7a57cc1f06e3c3",
       "title": "CloudLeak: Large-Scale Deep Learning Models Stealing Through Adversarial Examples",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_applicable_no_original_cross_model_attack_evaluation",
+      "artifact_review": "not_applicable_no_transfer_configuration",
+      "notes": [
+        "reviews/36.json covers the sixteen-page NDSS paper; adversarial examples serve only as model-extraction queries and no transferred-evasion rate is reported.",
+        "Retained with non-applicability reasons for all six fields."
+      ]
     },
     {
       "rank": 37,
       "paper_id": "5effd428e3012061ba3d8b32f1952c2938c7ab7b",
       "title": "Deep Neural Network Fingerprinting by Conferrable Adversarial Examples",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_applicable_source_success_conditioned_targeted_outcome",
+      "artifact_review": "reviewed_no_author_release",
+      "notes": [
+        "reviews/37.json covers all eighteen arXiv v4 pages including Appendices A.1-A.6; two scopes (conferrability on unseen models; fingerprint retention under removal attacks).",
+        "Explicit filtering of source-unsuccessful examples plus a definitional restriction for fingerprints (field 3 yes); CAEAcc is a targeted agreement outcome. Explicit L-infinity epsilons.",
+        "No author release; title-matched repositories are third-party reimplementations. No bound: conditioned targeted outcome."
+      ]
     },
     {
       "rank": 38,
@@ -476,10 +495,14 @@
       "rank": 39,
       "paper_id": "bc1138738f24c4a23d865d7786fc4c8229e4662a",
       "title": "Cross-Domain Transferability of Adversarial Perturbations",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "reviewed_error_increase_already_subtracted",
+      "artifact_review": "candidate_release_sufficiency_unverified",
+      "notes": [
+        "reviews/39.json covers all twenty arXiv v5 pages including supplementary pp. 13-20; four scopes (ImageNet-source fool rate, ChexNet cross-domain, adversarially trained error increase, TI comparison).",
+        "Fooling rate is defined over all inputs (fields 2/3 explicit no for several scopes); Table 5 reports attacked minus clean error. The ChexNet and Table 6 scopes are unresolved. Explicit L-infinity budgets.",
+        "Official release with pretrained generators and a clean/adversarial evaluator is a recomputation candidate; not executed."
+      ]
     },
     {
       "rank": 40,

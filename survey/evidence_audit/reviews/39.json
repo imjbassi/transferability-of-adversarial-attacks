@@ -1,0 +1,43 @@
+{
+  "rank": 39,
+  "paper_id": "bc1138738f24c4a23d865d7786fc4c8229e4662a",
+  "review_date": "2026-09-24",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all twenty pages of arXiv 1905.11736v5 (NeurIPS 2019): Sections 1-6, Tables 1-6, Figures 1-6, references and the supplementary pages 13-20 (RCE vs CE analysis, GAP comparison Table 1, training-time and kernel-size Figures 2-5, example Figures 7-10).",
+    "supplement": "Supplementary material is appended in the arXiv PDF (pp. 13-20) and read.",
+    "inventory_complete": true,
+    "applicability": "cross_model_classification_attack",
+    "excluded_results": "White-box starred cells in Tables 4 and 6 and supplement Table 1 (explicitly white-box) are excluded. Table 1 compares method properties. Figures 1, 4-5 and supplement Figures 7-10 are qualitative."
+  },
+  "sources": [
+    {"id": "main_with_supplement", "url": "https://arxiv.org/pdf/1905.11736v5", "sha256": "618cef86ced5ddce89080a317c0823caf60deaed75eb88ed09105ce0b65d2d29"}
+  ],
+  "result_groups": [
+    {"id": "imagenet_source_generators_fool_rate", "locator": "Section 5.2 Evaluation Metrics (p. 7); Table 2 (p. 6); Table 4 black-box cells (p. 8); Figure 6 (p. 9); supplement Figures 2-5", "population": "All ImageNet validation images (50k) or ImageNet-NeurIPS (1k, Figure 6); universal generators trained on Paintings/Comics/ImageNet against VGG-16/19, Inc-v3, ResNet-152, applied to every input", "outcome": "fooling rate: percentage of input samples whose predicted label flips after perturbation (also top-1 accuracy in Table 2)", "f2": "no", "f3": "no", "evidence": "Section 5.2 defines the fooling rate over all input samples, so clean-misclassified inputs and inputs not fooling the source are retained. The outcome is prediction change rather than ground-truth misclassification."},
+    {"id": "cross_domain_chexnet_generators", "locator": "Section 5.2.1 and Table 3 (pp. 6-7)", "population": "50k ImageNet validation images; generators trained against ChexNet (a chest-X-ray DenseNet-121) on Paintings, Comics or ChestX; ImageNet targets", "outcome": "fooling rate and top-1 accuracy", "f2": "no", "f3": "unclear", "evidence": "The fooling rate covers all 50k inputs. The ChexNet source has a different label space, so source success on ImageNet inputs is undefined; not coded no."},
+    {"id": "adversarially_trained_error_increase", "locator": "Table 5 (p. 8)", "population": "5k ImageNet subset; generators trained against Inc-v3; targets Inc-v3ens3, Inc-v3ens4, IncRes-v2ens", "outcome": "% increase in error rate = adversarial error rate minus clean error rate", "f2": "no", "f3": "no", "evidence": "Both error rates are computed over all 5k images, with the clean error explicitly subtracted (positive clean-baseline handling); no source-success filtering."},
+    {"id": "ti_comparison_success_rate", "locator": "Section 5.2.2 and Table 6 (p. 8)", "population": "ImageNet-NeurIPS 1k images; Inc-v3-trained generators versus instance-specific attacks; naturally and adversarially trained targets", "outcome": "'success rate' (not separately defined; compared against TI results from prior work)", "f2": "unclear", "f3": "unclear", "evidence": "Table 6 reports a success rate without restating whether it is the fooling-rate definition; competitor numbers follow a prior protocol."}
+  ],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "separate_clean_values_not_located", "locator": "Tables 2-6; supplement Table 1", "evidence": "No clean accuracy rows are printed (Gaussian-noise baselines only); Table 5's clean error rates are subtracted but not reported."},
+    "f2": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 5.2; Table 6", "evidence": "Three scopes explicitly include all inputs (no); the Table 6 success rate is undefined."},
+    "f3": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 5.2; Tables 3, 6", "evidence": "ImageNet-source and Table 5 scopes explicitly retain all inputs (no); the ChexNet-source and Table 6 scopes are unresolved."},
+    "f4": {"value": "unclear", "reason": "one_or_two_decimal_rates_do_not_identify_counts", "locator": "Tables 2-6", "evidence": "Rates over 50k, 5k or 1k images printed to two decimals (50k) or as differences (Table 5) do not uniquely identify numerators across scopes."},
+    "f5": {"value": "yes", "reason": "explicit_linf_radius_all_results", "locator": "Tables 2-6 captions; Figure 6", "evidence": "Every result states an L-infinity budget of 10, 16 or 32 on 0-255 pixels."},
+    "f6": {"value": "unclear", "reason": "candidate_release_sufficiency_unverified", "locator": "Abstract code link; artifact_checks below", "evidence": "The official repository provides train/eval code, validation image lists and a Google Drive folder of pretrained generators; eval.py reports clean and adversarial accuracy of public torchvision targets. This could supply per-configuration recomputation, but Drive contents and execution were not verified."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-24", "url": "https://github.com/Muzammal-Naseer/Cross-domain-perturbations/tree/dd2f5a0c1fffbce429f939bd3119fa895ea53dd1", "result": "Listed via the GitHub API (head 7 July 2021): train.py, eval.py (clean and adversarial accuracy of a target under a chosen generator), generators.py, gaussian_smoothing.py, images.csv, val.txt, saved_models/ReadMe.md; README links a Drive folder of pretrained generators. Not executed."}
+  ],
+  "bounds_checks": [
+    {"groups": ["imagenet_source_generators_fool_rate", "cross_domain_chexnet_generators"], "status": "different_outcome_prediction_change_clean_baseline_missing", "locator": "Section 5.2; Tables 2-4", "reason": "Fooling rate counts prediction changes; top-1 attacked accuracy is printed without a clean accuracy on the same set. A bound would need recomputed clean accuracy."},
+    {"groups": ["adversarially_trained_error_increase"], "status": "clean_error_already_subtracted_values_unreported", "locator": "Table 5", "reason": "Reported values already equal attacked minus clean error on the same 5k images (a nominal bound without max(0, .)); the separate clean error is not printed, so no further extraction."},
+    {"groups": ["ti_comparison_success_rate"], "status": "population_alignment_unresolved", "locator": "Table 6", "reason": "Metric definition and clean baseline unstated."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit. Table 5's clean-error subtraction is noted for the manuscript alongside rank 32's feature-denoising adjustment.",
+    "No execution."
+  ]
+}

@@ -4,7 +4,9 @@ Started 23 September 2026. This is a non-blind evidence audit, not the independe
 
 ## Current scope
 
-The ledger retains all 80 frozen paper IDs: thirty-three documented reviews are complete (ranks 1-32 and 38) and 47 remain pending; no partial reviews remain.
+The ledger retains all 80 frozen paper IDs: thirty-nine documented reviews are complete (ranks 1-39) and 41 remain pending; no partial reviews remain.
+
+Ranks 33-37 and 39 ([33](reviews/33.json)-[37](reviews/37.json), [39](reviews/39.json)): rank 36 (model extraction with adversarial queries) has no transferred-evasion outcome. Rank 35 transfers across interpreters on a shared classifier, retained as an other-outcome scope. Rank 37 evaluates only source-successful examples (explicit filter; conferrable-example definition), so field 3 is yes. Rank 34's digital ASR averages over all comparisons (group field 3 no); its generative eye-shadow attack has an explicit no-norm design (field 5 no), and the IJCAI version of record drops the arXiv mention of a supplement. Rank 39's Table 5 reports error increase with the same-set clean error already subtracted, positive clean-baseline evidence like rank 32; its release is a recomputation candidate.
 
 Ranks 27-30 and 32 ([27](reviews/27.json), [28](reviews/28.json), [29](reviews/29.json), [30](reviews/30.json), [32](reviews/32.json)): rank 27 (model extraction) has no adversarial transfer. Rank 29 explicitly restricts malware transfer to source-evading samples that the target classifies correctly (fields 2 and 3 yes). Rank 28 defines the fooling rate over all images as prediction change (fields 2/3 explicit no). Rank 30 reports same-image no-attack baselines for hosted MLLMs, recorded but not used as bounds. Rank 32 subtracts the feature-denoising target clean-error ratio from its reported rates, an explicit clean-baseline adjustment distinct from a clean-correct denominator.
 
