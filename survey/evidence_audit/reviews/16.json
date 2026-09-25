@@ -1,0 +1,42 @@
+{
+  "rank": 16,
+  "paper_id": "b18580c6746a47603955074931d4687e268781ea",
+  "review_date": "2026-09-24",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all ten pages of arXiv 2107.14185v3 (24 February 2022), including Sections 1-6, Algorithm 1, Tables 1-3, Figures 1-7. Also retrieved the ten-page CVF ICCV 2021 version and compared every printed percentage: 423 values in both, identical except the NRDM/FDA baseline rows for the Inc-v3 and IncRes-v2 sources in Table 1, which differ between versions (e.g., Inc-v3 NRDM Inc-v4 cell 60.3% arXiv vs 68.1% CVF).",
+    "supplement": "Read the twelve-page CVF supplement: Sections A-C qualitative attention maps (Figures 1-10), D Table 1 (SI-NI comparison), E Table 2 (top-3 NIPS 2017 defenses), F Table 3 (equal iteration budget) and G (four transformation variants, single values).",
+    "inventory_complete": true,
+    "applicability": "cross_model_classification_attack",
+    "excluded_results": "Starred white-box diagonal cells in main Table 1 and supplement Tables 1 and 3 are excluded from transfer judgments. Figure 1 and supplement Figures 1-10 are qualitative attention visualizations."
+  },
+  "sources": [
+    {"id": "arxiv_v3", "url": "https://arxiv.org/pdf/2107.14185v3", "sha256": "9046664bf74dc778be049aea0eba202d47ab859ed50f6be2ccca28042c9a3b9e"},
+    {"id": "cvf_main", "url": "https://openaccess.thecvf.com/content/ICCV2021/papers/Wang_Feature_Importance-Aware_Transferable_Adversarial_Attacks_ICCV_2021_paper.pdf", "sha256": "e9585d12dc17f1b78490dbfb91c60f9e992e8489ce457a07da43ff4e991d80b5"},
+    {"id": "cvf_supplement", "url": "https://openaccess.thecvf.com/content/ICCV2021/supplemental/Wang_Feature_Importance-Aware_Transferable_ICCV_2021_supplemental.pdf", "sha256": "b128fd510e0d388ad3be9a5c84a96dac49adbaada5177a782e1b1f0a741c1408"},
+    {"id": "fia_verify_py", "url": "https://github.com/hcguoO0/FIA/blob/4e116ae545b34596882b869819eaf2b9f1304317/verify.py", "sha256": "ab870858b5792cd917a40693e472d7b6ed1243ea45526904af4941a5d5a99e82"}
+  ],
+  "result_groups": [
+    {"id": "normally_trained_targets", "locator": "Table 1 (p. 5); Section 5.2; Figures 5-7 normal-target panels (pp. 7-8); supplement Tables 1 and 3 and Section G", "population": "ImageNet-compatible NIPS 2017 dataset of 1,000 images (Section 5.1); sources Inc-v3, IncRes-v2, Res-152, Vgg-16", "outcome": "attack success rate (not defined in the paper)", "f2": "unclear", "f3": "unclear", "evidence": "The paper names the 1,000-image dataset and reports success rates but defines neither success nor any clean-correct or source-success restriction. The released verify.py logs the fraction of all 1,000 images whose target prediction changes from its clean prediction (ground-truth success is printed but not logged); this operational definition is recorded as artifact evidence, not a reporting judgment."},
+    {"id": "defense_targets", "locator": "Table 2 (p. 6); Table 3 ensemble source (p. 7); Figures 5-7 defense panels; supplement Table 2 (top-3 NIPS 2017 defenses)", "population": "Same 1,000 images; five adversarially trained targets, and three competition defenses in the supplement; Table 3 uses an ensemble of Res-50/Res-152/Vgg-16/Vgg-19", "outcome": "attack success rate (not defined in the paper)", "f2": "unclear", "f3": "unclear", "evidence": "Same undefined success-rate metric and no stated conditioning. Table 3 prints identical PIM and PITIDIM rows (72.1/66.4/76.3/79.3/68.2), recorded as a reporting anomaly without inferring which is intended."}
+  ],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "separate_clean_values_not_located", "locator": "Sections 5.1-5.2; supplement", "evidence": "No clean accuracy is reported for any source or target. The released evaluator computes clean accuracy but does not write it."},
+    "f2": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 5.1 (pp. 5-6)", "evidence": "No clean-correct filtering or explicit inclusion is stated for either group."},
+    "f3": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 5.1-5.2", "evidence": "Success rate is undefined relative to source success. The released evaluator scores every image, but paper-table correspondence is not established."},
+    "f4": {"value": "unclear", "reason": "denominator_and_aggregation_not_fully_established", "locator": "Section 5.1; Tables 1-3; supplement Tables 1-3; Figures 5-7", "evidence": "One-decimal percentages over a stated 1,000-image set would map to k/1,000 only if success is computed over all 1,000 images, which the paper does not define. Supplement Table 2 mixes integer and one-decimal values (e.g., 5%, 7.8%), and Figures 5-7 are graphical. No complete unique reconstruction."},
+    "f5": {"value": "yes", "reason": "explicit_linf_radius_all_results", "locator": "Section 3 Eq. 1 (p. 3); Eq. 5 (p. 5); Section 5.1 Parameter Settings (p. 6)", "evidence": "p = infinity is adopted and 'in all experiments, the maximum perturbation epsilon = 16' with T = 10 and alpha = 1.6. The supplement's equal-iteration Table 3 changes iterations but not the stated all-experiments radius. Pixel scale is not stated explicitly; 16 with step 1.6 is consistent with 0-255."},
+    "f6": {"value": "unclear", "reason": "candidate_release_sufficiency_unverified", "locator": "Abstract code link; artifact_checks below", "evidence": "The linked release tracks attack.py, verify.py, the 1,000 PNG images with labels, and TF-slim network definitions; checkpoints are to be downloaded from the public TF-slim and adv_imagenet_models pages the paper cites. This could meet the existence criterion for at least one configuration, but checkpoint availability/identity and execution were not verified, and the logged success rate is a prediction-change rate. Recorded as a recomputation candidate."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-24", "url": "https://github.com/hcguoO0/FIA/tree/4e116ae545b34596882b869819eaf2b9f1304317", "result": "Cloned and pinned (last commit 9 June 2022). Tracks attack.py, verify.py, utils.py, TF-slim nets, dataset/images/1-1000.png with dev_dataset.csv and labels.txt, models_tf/url.txt and an empty log.csv. verify.py logs sum(ori_pred != adv_pred)/1000 for 14 models and prints, but does not log, clean accuracy and ground-truth success. Not executed."}
+  ],
+  "bounds_checks": [
+    {"groups": ["normally_trained_targets", "defense_targets"], "status": "clean_baseline_missing", "locator": "Section 5.1; Tables 1-3", "reason": "No clean accuracy on the 1,000-image set is reported and the success-rate definition is unstated (the released evaluator logs prediction changes rather than misclassification). Not eligible without recomputation."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit. Version-specific Table 1 baseline values must not be mixed across the CVF and arXiv versions.",
+    "No checkpoint download or execution."
+  ]
+}

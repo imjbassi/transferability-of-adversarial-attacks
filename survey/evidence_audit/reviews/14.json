@@ -1,0 +1,41 @@
+{
+  "rank": 14,
+  "paper_id": "27d2f8a0601ce4bd73339ddffc83977e858c5503",
+  "review_date": "2026-09-24",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all eight pages of arXiv 1806.02299v4 (23 April 2019; SafeAI@AAAI workshop paper), including the approach, experiments, Tables 1-5, Figures 1-11 and references.",
+    "supplement": "No appendix or supplement is included or linked. No separate workshop proceedings version was retrieved; arXiv v4 is the latest version.",
+    "inventory_complete": true,
+    "applicability": "other_attack_outcome_object_detection_patch",
+    "excluded_results": "Untargeted/targeted DPATCH rows in Tables 1-2, Tables 3-4, Figures 4-8 and 10-11 evaluate the detector on which the patch was trained (white-box/same-model). Figures 1, 5, 7 and 9 are qualitative."
+  },
+  "sources": [
+    {"id": "main", "url": "https://arxiv.org/pdf/1806.02299v4", "sha256": "8261aebf61b9f7f7e511085c61219530ba8d347ce8bb6841c4caf80767041052"},
+    {"id": "dpatch_repo_readme", "url": "https://github.com/veralauee/DPatch/blob/ea3412b2d61de5efc0d40653409b00b0fdff9a96/README.md", "sha256": "a8d7dbd4af5bdabba763029435d763392fdf79aaea4c92f8d94938eaf17b4a28"}
+  ],
+  "result_groups": [
+    {"id": "cross_detector_patch_transfer", "locator": "Section 'Detector Transferability of DPATCH' (p. 6); Table 1 'YOLO trained DPATCH' row and Table 2 'Faster R-CNN trained DPATCH' row (p. 5)", "population": "Pascal VOC 2007 test set; a single YOLO-trained (person-targeted) or Faster R-CNN-trained patch applied to each test image", "outcome": "per-class AP and mAP of the other detector", "f2": "unclear", "f3": "unclear", "evidence": "The patch trained on one detector is applied to each test image and the other detector's mAP is reported beside its no-DPATCH mAP. mAP is a dataset-level detection metric: no per-image clean-correct event or source-success event is defined, and no selection is described."},
+    {"id": "cross_dataset_patch_transfer", "locator": "Section 'Dataset Transferability of DPATCH' (p. 6); Table 5 (p. 7)", "population": "Untargeted patch trained on COCO (training detector not specified) applied to Pascal VOC test images for VOC-trained Faster R-CNN and YOLO", "outcome": "mAP", "f2": "unclear", "f3": "unclear", "evidence": "Same dataset-level mAP outcome with no-DPatch baselines; the COCO training detector is unspecified, so source identity and source-side performance are unknown."}
+  ],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "detection_map_baselines_partial_coco_source_unreported", "locator": "Experiments Setup (p. 4); Tables 1, 2, 5", "evidence": "Clean (no-DPATCH) mAP is reported separately for YOLO (65.7%), Faster R-CNN VGG16 (70.01%) and ResNet101 (75.1%), which is positive per-model baseline reporting for detection. The COCO-trained patch's source detector and its clean performance are not reported, and mAP is not a classification clean accuracy; complete coverage is not established."},
+    "f2": {"value": "unclear", "reason": "unresolved_scope", "locator": "Tables 1, 2, 5", "evidence": "No clean-correct event is defined for dataset-level mAP; not an explicit inclusion statement."},
+    "f3": {"value": "unclear", "reason": "unresolved_scope", "locator": "p. 6 transferability sections", "evidence": "A universal patch is applied to each test image; per-image source success is undefined for mAP evaluation, so neither explicit conditioning nor explicit retention of source failures is established."},
+    "f4": {"value": "unclear", "reason": "detection_ap_outcome_counts_not_applicable", "locator": "Tables 1-5", "evidence": "Results are average precisions, not proportions with integer numerators; the test-set size is not stated in the paper."},
+    "f5": {"value": "no", "reason": "explicit_patch_attack_without_linf_l2_budget", "locator": "DPATCH Formulation Eqs. 2-3 (p. 3); DPATCH Design (p. 3); Multiple-Sized DPATCH (p. 6)", "evidence": "The attack optimizes patch pixels without a norm constraint (Eqs. 2-3); perturbation size is defined by patch area (20, 40 or 80 pixels square), not an L-infinity or L2 radius. This is an explicit threat-model choice for patch attacks, reported in the non-classification stratum, not an omitted budget."},
+    "f6": {"value": "unclear", "reason": "unlinked_partial_release_yolo_only", "locator": "artifact_checks below", "evidence": "The paper links no code. A repository by user veralauee (plausibly the first author, not confirmed from the paper) provides a YOLOv2 PyTorch implementation with train/test scripts and Drive links for YOLO weights and a trained patch; no Faster R-CNN implementation or checkpoints, so neither cross-detector transfer direction is covered. Drive contents not verified."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-24", "url": "https://github.com/veralauee/DPatch/tree/ea3412b2d61de5efc0d40653409b00b0fdff9a96", "result": "Cloned and pinned (71 tracked files, last commit 21 January 2019). YOLOv2 (longcw yolo2-pytorch based) training/testing of DPATCH on VOC 2007; README links Google Drive for yolo-voc.weights.h5 and one trained patch. No Faster R-CNN code or weights, no per-image outputs. Not executed."},
+    {"date": "2026-09-24", "url": "https://api.github.com/search/repositories?q=dpatch", "result": "Search returned 47 repositories; only veralauee/DPatch matched the paper; others were unrelated or third-party generalizations. Bounded search."}
+  ],
+  "bounds_checks": [
+    {"groups": ["cross_detector_patch_transfer", "cross_dataset_patch_transfer"], "status": "different_outcome", "locator": "Tables 1, 2, 5", "reason": "Detection mAP is not a fixed-predictor misclassification probability; the classification bound is not applicable."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit; non-classification detection outcome recorded in the applicability stratum.",
+    "No release execution; authorship of the unlinked repository is not established from the paper."
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "rank": 15,
+  "paper_id": "e3dacba4399fc66f31779060db730ea423f341d8",
+  "review_date": "2026-09-24",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all nine pages of arXiv 1908.08705v1 (23 August 2019; the only arXiv version), including Sections 1-5, Figures 1-8, footnotes and references.",
+    "supplement": "No appendix or supplement is included or linked. The ICPR 2020 proceedings version (corpus venue) was not retrieved; judgments rest on arXiv v1. The linked code and video are artifacts, not paper text.",
+    "inventory_complete": true,
+    "applicability": "cross_model_face_recognition_physical_attack_similarity_outcome",
+    "excluded_results": "Figures 5 and 7 evaluate the attacked LResNet100E-IR model itself (fixed and varied shooting conditions); Figures 1-4 and 6 are illustrations. Section 4.2 sticker localization is a white-box digital observation without reported values."
+  },
+  "sources": [
+    {"id": "main", "url": "https://arxiv.org/pdf/1908.08705v1", "sha256": "4104b5683c3b26e722a3153524a81ee3ce5b43137eaa51af24a49d634c47148f"},
+    {"id": "advhat_readme", "url": "https://github.com/papermsucode/advhat/blob/b34289475e24b033f3f19c0f8bf8360f606358fb/README.md", "sha256": "3dd0a721a25f53e0de0701e9af414438771dfd1cc1d28fa926256257b8b054cc"}
+  ],
+  "result_groups": [
+    {"id": "figure8_face_model_transfer", "locator": "Section 4.6 and Figure 8 (p. 6-7)", "population": "Printed physical stickers for 10 volunteers (from the Section 4.4 fixed-condition photos), evaluated on LResNet50E, LResNet34E and MobileFaceNet from the InsightFace model zoo", "outcome": "difference between baseline (hat) and final (adversarial sticker) cosine similarity to the ground-truth embedding, shown as boxplots", "f2": "unclear", "f3": "unclear", "evidence": "Section 4.3 explicitly declines to report a dodging success percentage because success depends on a deployment threshold; Figure 8 plots continuous similarity differences. No clean-correct or source-success event is defined, and every volunteer's sticker is evaluated."}
+  ],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "no_clean_accuracy_defined_for_outcome", "locator": "Section 4.3 (p. 5); Section 4.6", "evidence": "A per-person baseline similarity with a plain hat is used, which is a relevant clean reference for the similarity outcome, but no clean recognition accuracy is reported for the source or transfer models."},
+    "f2": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 4.3 (p. 5)", "evidence": "No rate or clean-correct denominator exists for the continuous similarity outcome."},
+    "f3": {"value": "unclear", "reason": "unresolved_scope", "locator": "Sections 4.3-4.6", "evidence": "Stickers for all ten volunteers are evaluated; no source-success event or threshold is defined, by explicit design choice, so conditioning cannot be coded yes or no."},
+    "f4": {"value": "unclear", "reason": "continuous_boxplot_outcome_no_rates", "locator": "Figure 8; Section 4.4", "evidence": "Ten persons are stated, but outcomes are boxplots of similarity differences with no rates or per-person values printed."},
+    "f5": {"value": "no", "reason": "explicit_physical_sticker_attack_without_linf_l2_budget", "locator": "Section 3.4 loss (p. 4); Section 4 (p. 4); Section 4.1 (p. 5)", "evidence": "The sticker (400 x 900 pixels before projection) is optimized with cosine-similarity plus TV loss and no norm constraint; the paper contrasts L-infinity attacks with L0-style physical patches. This is an explicit physical-patch threat model, not an omitted radius."},
+    "f6": {"value": "unclear", "reason": "code_released_evaluation_inputs_not_released", "locator": "Footnote 1 (p. 2); artifact_checks below", "evidence": "The linked MIT repository provides attack, alignment and demo code and CASIA centroids, relying on InsightFace model-zoo weights. The volunteer photographs and printed-sticker captures needed to recompute Figure 8 are not released (reasonably, given they are images of people), so the original transfer outcomes cannot be recomputed from the release."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-24", "url": "https://github.com/papermsucode/advhat/tree/b34289475e24b033f3f19c0f8bf8360f606358fb", "result": "Cloned and pinned (25 tracked files). Attack pipeline (TF/MXNet cosine models, STN projection), face preparation, Demo with MTCNN alignment and CASIA centroids, MXNet-to-TF notebook. No volunteer images, stickers or per-person similarity records. Not executed."}
+  ],
+  "bounds_checks": [
+    {"groups": ["figure8_face_model_transfer"], "status": "different_outcome", "locator": "Figure 8; Section 4.3", "reason": "Cosine-similarity differences are not misclassification probabilities; the paper explicitly avoids a thresholded success rate. Not applicable."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit; physical face-recognition similarity outcome recorded in the non-classification stratum.",
+    "ICPR version not inspected; no execution."
+  ]
+}

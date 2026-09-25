@@ -149,46 +149,66 @@
       "rank": 12,
       "paper_id": "8ecdbfe011b7189fa0ee49ffc4e42a93d728a371",
       "title": "On Evaluating Adversarial Robustness of Large Vision-Language Models",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_applicable_continuous_targeted_generation_outcome",
+      "artifact_review": "reviewed_release_accessible_sufficiency_unclear",
+      "notes": [
+        "reviews/12.json covers all 28 arXiv v2 pages including Appendices A-C; one pure-transfer group (Table 2 MF-it/MF-ii), with query-based MF-tt results excluded.",
+        "Outcome is mean CLIP similarity to a target caption; clean-image baselines are reported per model, but clean-correct and source-success events are undefined, so fields 1-4 are unclear for task mapping. Explicit L-infinity epsilon 8/255.",
+        "Pinned AttackVLM code inspected; Google Drive data not verified and Table 2 sample unidentified. No bound: continuous non-classification outcome."
+      ]
     },
     {
       "rank": 13,
       "paper_id": "2fb43a4c5cab8215d510fc585ca81fb5ee8a3abb",
       "title": "Skip Connections Matter: On the Transferability of Adversarial Examples Generated with ResNets",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "reviewed_clean_baseline_missing",
+      "artifact_review": "candidate_release_sufficiency_unverified",
+      "notes": [
+        "reviews/13.json covers all fifteen arXiv pages including Appendices A-C; three groups (unsecured, secured, ablations) and six judgments.",
+        "5,000 images filtered on all eight source models only; this covers targets that are also sources but not the other targets, so field 2 stays unclear. Success-rate denominator not defined relative to source success.",
+        "Later author repository with 5,000-image subset and public torchvision weights is a recomputation candidate; released evaluator scores all adversarial images and uses step epsilon/steps unlike the stated alpha=2. Not executed."
+      ]
     },
     {
       "rank": 14,
       "paper_id": "27d2f8a0601ce4bd73339ddffc83977e858c5503",
       "title": "DPATCH: An Adversarial Patch Attack on Object Detectors",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_applicable_detection_map_outcome",
+      "artifact_review": "reviewed_unlinked_partial_release",
+      "notes": [
+        "reviews/14.json covers all eight arXiv v4 pages (no supplement); two transfer groups: cross-detector (Tables 1-2) and cross-dataset (Table 5).",
+        "Detection mAP with per-detector no-patch baselines; clean-correct and source-success events are undefined for dataset-level mAP. Field 5 is an explicit patch-area threat model without an L2/L-infinity radius.",
+        "Unlinked YOLO-only repository (veralauee/DPatch) inspected; no Faster R-CNN path, so neither transfer direction is covered. No bound: non-classification outcome."
+      ]
     },
     {
       "rank": 15,
       "paper_id": "e3dacba4399fc66f31779060db730ea423f341d8",
       "title": "AdvHat: Real-World Adversarial Attack on ArcFace Face ID System",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_applicable_similarity_outcome_no_rates",
+      "artifact_review": "reviewed_code_released_inputs_unreleased",
+      "notes": [
+        "reviews/15.json covers all nine arXiv v1 pages; one transfer scope (Figure 8, three InsightFace models, 10 volunteers). ICPR version not inspected.",
+        "The paper explicitly reports similarity differences instead of thresholded success rates, so fields 1-4 are unclear for task mapping; field 5 is an explicit physical-sticker threat model without an L2/L-infinity radius.",
+        "Linked MIT code inspected; volunteer photographs needed for Figure 8 are not released. No bound: continuous similarity outcome."
+      ]
     },
     {
       "rank": 16,
       "paper_id": "b18580c6746a47603955074931d4687e268781ea",
       "title": "Feature Importance-aware Transferable Adversarial Attacks",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "reviewed_clean_baseline_missing",
+      "artifact_review": "candidate_release_sufficiency_unverified",
+      "notes": [
+        "reviews/16.json covers arXiv v3, the CVF ICCV version (Table 1 NRDM/FDA baseline rows differ between versions) and the twelve-page CVF supplement; two groups (normal and defense targets).",
+        "Success rate, clean accuracy and conditioning are not defined in the paper; explicit L-infinity epsilon 16 for all experiments. Table 3 prints identical PIM and PITIDIM rows.",
+        "Linked release includes the 1,000 images and evaluator; its logged success rate is a prediction-change rate over all 1,000 images. Recomputation candidate; checkpoints and execution unverified."
+      ]
     },
     {
       "rank": 17,
