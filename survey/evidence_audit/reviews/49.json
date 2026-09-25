@@ -1,0 +1,39 @@
+{
+  "rank": 49,
+  "paper_id": "12ccfc188de0b40c84d6a427999239c6a379cd66",
+  "review_date": "2026-09-25",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all eight pages of the AAAI 2019 version of record (pp. 8973-8980; adds a fourth author, a related-work paragraph and a temporal-mask subsection) and all seven pages of arXiv 1803.02536v1. Tables 1-4 print the same values in both; judgments rest on the version of record.",
+    "supplement": "No appendix or supplement is included or referenced.",
+    "inventory_complete": true,
+    "applicability": "cross_model_video_classification_attack",
+    "excluded_results": "Table 3 diagonal cells are white-box. Table 1 (sparsity) and Figure 8 (l2 versus l2,1) are white-box fooling rates on the attacked network. Table 4 applies universal perturbations from training to test videos on the same network, which is cross-input rather than cross-model. Table 2 reports computation time. Figures 1 and 3-7 are qualitative or per-example perturbation traces."
+  },
+  "sources": [
+    {"id": "aaai_version_of_record", "url": "https://ojs.aaai.org/index.php/AAAI/article/download/4927/4800", "sha256": "f99507ebeed6a804ebd16787e93328c1665f002dab751ba00f10fcd8c0c405fb"},
+    {"id": "arxiv_v1", "url": "https://arxiv.org/pdf/1803.02536v1", "sha256": "267f734a247a2e52d73200846a7b59e57a8cc4653ac4ee64e2ee23cf8dcaef1c"}
+  ],
+  "result_groups": [
+    {"id": "cross_rnn_transfer", "locator": "Performance and Transferability, Transferability across Models; Table 3 off-diagonal cells (VoR p. 8978-8979)", "population": "UCF101 videos (the evaluated split and number are not stated); perturbations computed on the first N = 20 of 40 frames with an l2 penalty on a CNN+VanillaRNN, LSTM, GRU or average-pooling source; other architectures as targets", "outcome": "fooling ratio: 'the percentage of adversarial videos that are successfully misclassified'", "f2": "unclear", "f3": "unclear", "evidence": "No clean-correct or source-success rule is stated. The white-box diagonal cells are below 100% for VanillaRNN (95.2%) and Pooling (87.3%)."}
+  ],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "separate_clean_values_not_located", "locator": "Experiments", "evidence": "No clean accuracy of any action-recognition model is reported."},
+    "f2": {"value": "unclear", "reason": "unresolved_scope", "locator": "Metrics; Table 3", "evidence": "No clean-correct restriction or explicit inclusion is stated."},
+    "f3": {"value": "unclear", "reason": "unresolved_scope", "locator": "Metrics; Table 3", "evidence": "No source-success restriction or explicit inclusion is stated."},
+    "f4": {"value": "unclear", "reason": "denominator_unstated", "locator": "Table 3", "evidence": "One-decimal percentages without a stated number of evaluated videos."},
+    "f5": {"value": "no", "reason": "explicit_penalty_objective_without_radius", "locator": "Methodology Eqs. 1-4; Adversarial Video based on Propagation", "evidence": "Perturbations minimise lambda times an l2,1 (or, for Table 3, l2) norm penalty minus the loss, with no L-infinity or L2 radius; magnitude is reported only as mean absolute perturbation. This is an explicit design choice."},
+    "f6": {"value": "unclear", "reason": "no_author_release_linked", "locator": "artifact_checks below", "evidence": "The paper links no code. A 2019 TensorFlow repository describing itself as code for the paper exists under an account not matching an author name. Its provenance and contents were not established."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-25", "url": "https://api.github.com/search/repositories?q=sparse%20adversarial%20perturbations%20videos", "result": "Two results: yanhui002/video_adv ('Tensorflow code for Sparse Adversarial Perturbations for Videos', last push 8 March 2019) and a 2024 third-party PyTorch reimplementation. Neither is linked from the paper; not inspected further or executed; not used for field 6."}
+  ],
+  "bounds_checks": [
+    {"groups": ["cross_rnn_transfer"], "status": "clean_baseline_missing", "locator": "Table 3", "reason": "No clean accuracy of the target networks on the evaluated videos, and the evaluated set is not identified."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit. Only the four-by-four Table 3 matrix is a cross-model transfer result.",
+    "No execution."
+  ]
+}

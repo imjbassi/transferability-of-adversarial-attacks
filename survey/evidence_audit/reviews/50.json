@@ -1,0 +1,40 @@
+{
+  "rank": 50,
+  "paper_id": "09812e529903ff67c5fc5f1dcb2b3586eb3ffd23",
+  "review_date": "2026-09-25",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all nineteen pages of arXiv 2402.14016v2 (4 July 2024): Sections 1-9, Algorithm 1, Tables 1-4, Figures 1-4 and Appendices A-I (phrases Table 5, asymmetric ablations Tables 6-7, comparative transfer Figure 5, direct Llama2 attack Figure 6, GCG Table 8, per-candidate Tables 9-32, prompts Figures 7-8). The nineteen-page EMNLP 2024 version of record (pp. 7499-7517) was also retrieved; all 1,638 decimal values match those in arXiv v2.",
+    "supplement": "Appendices A-I are embedded in both versions and read.",
+    "inventory_complete": true,
+    "applicability": "other_attack_outcome_llm_assessment_score",
+    "excluded_results": "Figure 2, Table 3, Tables 6-14, 21-22 and Appendix D Figure 6 are direct attacks on the attacked judge (FlanT5-xl or Llama2-7B). Tables 29-32 (Appendix H) are direct attacks on UniEval. Tables 1-2 report clean assessment correlation. Table 4 and Figure 4 evaluate perplexity detection. Table 8 compares GCG with greedy search on the surrogate."
+  },
+  "sources": [
+    {"id": "arxiv_v2_with_appendices", "url": "https://arxiv.org/pdf/2402.14016v2", "sha256": "d10f97ce404e460004a35cd0ca4093f7bbd547230986280be1f5f4460fac9b12"},
+    {"id": "emnlp_version_of_record", "url": "https://aclanthology.org/2024.emnlp-main.427.pdf", "sha256": "b7ff83c6f451b241d718d4c399096903c029f2e1b22f7a30727e3ecd907126f6"}
+  ],
+  "result_groups": [
+    {"id": "absolute_scoring_transfer", "locator": "Section 6.3; Figure 3; Appendix F Tables 15-20, 23-28", "population": "Test split (80% of contexts) of SummEval (16 candidates per context) and TopicalChat (6 per context); universal phrases of 1-4 words learned by greedy search on FlanT5-xl using 2 candidates of the 20% development split; transferred to GPT3.5, Mistral-7B and Llama2-7B absolute scorers", "outcome": "average rank of the attacked candidate among unattacked candidates (Eq. 8), and average predicted score", "f2": "unclear", "f3": "unclear", "evidence": "Every test candidate is attacked and ranked (Eq. 8 averages over all contexts and candidates), and per-candidate unattacked scores are printed. However, rank or score inflation has no per-item clean-correct or source-success event, so neither field maps onto this outcome."},
+    {"id": "comparative_assessment_transfer", "locator": "Appendix C; Figure 5", "population": "Same test splits; comparative-assessment phrases learned on FlanT5-xl and transferred to Llama2-7B and Mistral-7B comparative judges", "outcome": "average rank of the attacked candidate (graphical)", "f2": "unclear", "f3": "unclear", "evidence": "Same rank outcome; graphical only."}
+  ],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "no_clean_accuracy_defined_for_outcome", "locator": "Tables 1-2; 'None' rows of Tables 15-20, 23-28", "evidence": "Clean assessment quality (Spearman correlation) and unattacked per-candidate scores and ranks are reported, which is positive baseline evidence. A clean classification accuracy is not defined for a score-inflation outcome."},
+    "f2": {"value": "unclear", "reason": "unresolved_scope", "locator": "Sections 5.3-5.4", "evidence": "No clean-correct event exists for either scope."},
+    "f3": {"value": "unclear", "reason": "unresolved_scope", "locator": "Eq. 8; Section 6.3", "evidence": "All test candidates are attacked and averaged, but source success is not defined per item for a universal phrase."},
+    "f4": {"value": "unclear", "reason": "continuous_outcome_counts_not_applicable", "locator": "Figure 3; Tables 15-28", "evidence": "Average ranks and scores are continuous. Candidate and context counts follow from the dataset description, but no counted events are reported."},
+    "f5": {"value": "no", "reason": "explicit_token_count_budget_not_lp", "locator": "Section 4.1 (Eq. 6); Section 4.2", "evidence": "The perturbation is a concatenated phrase of L <= 4 vocabulary words (budget in words); an L-infinity or L2 radius does not apply to discrete text. Reported in the non-image stratum, as for rank 1."},
+    "f6": {"value": "unclear", "reason": "code_release_hosted_target_unverified", "locator": "artifact_checks below", "evidence": "The official repository releases greedy/GCG attack, evaluation and model wrappers for FlanT5, Llama, OpenAI and UniEval, and Appendix A prints every learned phrase. The GPT-3.5 target is a hosted model whose 2024 behaviour cannot be verified. Not executed."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-25", "url": "https://github.com/rainavyas/attack-comparative-assessment/tree/8567fa277d3fb818226bac69705e368aa6698387", "result": "Linked in the paper. Listed via the GitHub API (29 files, head 4 July 2024): train_attack.py, attack.py, evaluate.py, src/attacker/greedy.py and gcg.py, src/models/flant5.py, llama.py, openai.py and unieval.py, src/data/load_data.py. Not executed."}
+  ],
+  "bounds_checks": [
+    {"groups": ["absolute_scoring_transfer", "comparative_assessment_transfer"], "status": "different_outcome", "locator": "Figure 3; Figure 5", "reason": "Rank or score inflation of an LLM judge is not a misclassification probability."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit. Fields 1-4 are unclear because of outcome mapping, not deficient reporting.",
+    "No execution."
+  ]
+}
