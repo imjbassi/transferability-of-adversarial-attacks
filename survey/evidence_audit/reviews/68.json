@@ -1,0 +1,41 @@
+{
+  "rank": 68,
+  "paper_id": "0ab0b3cf5811a219339ad3715ce719f550122a62",
+  "review_date": "2026-09-25",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all eleven pages of arXiv 2001.06325v3 (21 October 2020; IEEE TPAMI manuscript header): Sections 1-5, Algorithm 1, Tables 1-5, Figures 1-5 and references. No appendix.",
+    "supplement": "No supplement is included or referenced.",
+    "inventory_complete": true,
+    "applicability": "cross_model_classification_attack",
+    "excluded_results": "White-box (surrogate) cells of Tables 2-4 and the VGG19 row of Table 5 (DAmageNet was generated on VGG19). Figures 1-5 are illustrations. The 'Defenses on DAmageNet' columns of Table 5 lack a clean error for the defended pipeline and are kept in the group but excluded from bounds."
+  },
+  "sources": [
+    {"id": "arxiv_v3", "url": "https://arxiv.org/pdf/2001.06325v3", "sha256": "36ead01404175a8b0a7b6767a1007c42c89a54f70f84c433923b9d5d8cf4330f"}
+  ],
+  "result_groups": [
+    {"id": "random200_victim_correct", "locator": "Section 4.1 (p. 5); Tables 1-4", "population": "200 random ImageNet validation images per repetition (5 repetitions, 1,000 samples overall), with 'the samples incorrectly predicted by the victim model ... skipped'; Keras surrogates and victims, including adversarially trained and preprocessing-defended victims (Table 4)", "outcome": "top-1 error rate (transfer rate) of the victim, mean ± std over repetitions", "f2": "yes", "f3": "unclear", "evidence": "Victim-misclassified clean samples are explicitly skipped. No rule for surrogate failures is stated (white-box error is near 100%)."},
+    {"id": "damagenet_50000", "locator": "Section 4.4; Table 5 (p. 8)", "population": "All 50,000 ImageNet validation images attacked with SI-AoA on VGG19 (DAmageNet); 18 transfer victims (12 other undefended models, 5 adversarially trained, 1 feature-denoising; plus VGG19 itself) evaluated on ImageNet and on DAmageNet", "outcome": "top-1 error rate on ImageNet (clean) and on DAmageNet (adversarial); also DAmageNet error after JPEG, pixel deflection, randomization and TVM defenses", "f2": "no", "f3": "no", "evidence": "The dataset is generated 'from all 50000 samples from ImageNet validation set' and every victim's error is computed over all of it, alongside its clean ImageNet error. No clean-correct or source-success filtering. The same paragraph also says the originals 'come from ImageNet training set'; this wording ambiguity is recorded."}
+  ],
+  "judgments": {
+    "f1": {"value": "yes", "reason": "separate_clean_values_all_transfer_victims", "locator": "Table 5 'ImageNet' column", "evidence": "Clean top-1 error on ImageNet validation is printed for every victim model, including adversarially trained ones."},
+    "f2": {"value": "unclear", "reason": "mixed_explicit", "locator": "Section 4.1; Section 4.4", "evidence": "The random-200 scope explicitly skips victim-incorrect samples (yes); DAmageNet evaluates all 50,000 images (no). Both are explicit; positive conditioning evidence."},
+    "f3": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 4.1; Section 4.4", "evidence": "DAmageNet retains all generated samples (no); the random-200 scope states no surrogate-success rule."},
+    "f4": {"value": "unclear", "reason": "averaged_or_nonunique_rates", "locator": "Tables 1-5", "evidence": "Tables 1-4 are means over five repetitions. Table 5's two-decimal rates over 50,000 images correspond to about five possible counts each, so counts are not unique."},
+    "f5": {"value": "yes", "reason": "explicit_linf_radius_all_results", "locator": "Section 4.1; Algorithm 1", "evidence": "L-infinity epsilon = 0.1 x 255 with an RMSE stopping threshold eta = 7. DAmageNet uses SI-AoA with average RMSE 7.23; its epsilon is not restated but follows the stated AoA setting."},
+    "f6": {"value": "unclear", "reason": "candidate_release_sufficiency_unverified", "locator": "Section 4.4; artifact_checks below", "evidence": "The DAmageNet dataset is published and the victims are public Keras Applications models, so Table 5 could in principle be recomputed. The dataset contents, hashes and model-version correspondence were not verified."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-25", "url": "http://www.pami.sjtu.edu.cn/Show/56/122", "result": "Dataset page linked in the paper returned HTTP 200 (HTML); download links and file contents were not inspected."},
+    {"date": "2026-09-25", "url": "https://github.com/AllenChen1998/DAmageNet", "result": "Author-named repository returned HTTP 200; not listed, cloned or executed; not linked in the reviewed text."}
+  ],
+  "bounds_checks": [
+    {"groups": ["damagenet_50000"], "status": "eligible_nominal_bounds_recorded_pending_verification", "locator": "Table 5 'ImageNet' and 'DAmageNet' columns, 18 non-source victims", "reason": "Clean and adversarial top-1 errors are reported for each victim on the same 50,000 validation images without conditioning, so the nominal lower bound on newly induced error mass is max(0, DAmageNet error - ImageNet error). Values (percentage points): VGG16 61.34, RN50 57.29, RN101 58.75, RN152 58.13, NASNetM 65.78, NASNetL 68.55, IncV3 67.32, IncRNV2 63.49, Xception 69.19, DN121 69.29, DN169 68.93, DN201 69.08, IncV3adv 59.37, IncV3advens3 56.60, IncV3advens4 54.81, IncRNV2adv 56.39, IncRNV2advens 50.35, RNXt101den 3.20. That is 18 rows excluding the VGG19 source (min 3.20, median 60.355, max 69.29). These are one paper's correlated observations from one source. Rounding propagation, a second extraction, and resolution of the validation/training wording remain pending before corpus use."},
+    {"groups": ["random200_victim_correct"], "status": "not_applicable_clean_correct_conditioned_population", "locator": "Section 4.1", "reason": "Victim-incorrect samples are skipped, so rates are conditional on clean correctness."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit. The Table 5 bounds are a first-pass extraction by the same auditor, not yet verified visually or by a second person; the victim count is 18 rows, excluding the VGG19 source.",
+    "No execution."
+  ]
+}

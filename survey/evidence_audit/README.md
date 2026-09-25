@@ -4,7 +4,9 @@ Started 23 September 2026. This is a non-blind evidence audit, not the independe
 
 ## Current scope
 
-The ledger retains all 80 frozen paper IDs: sixty-six documented reviews are complete (ranks 1-66) and 14 remain pending; no partial reviews remain.
+The ledger retains all 80 frozen paper IDs: seventy documented reviews are complete (ranks 1-70) and 10 remain pending; no partial reviews remain.
+
+Ranks 67-70 ([67](reviews/67.json)-[70](reviews/70.json)): rank 68 (DAmageNet) is the second paper found with a matched unconditional population. Its Table 5 reports clean ImageNet error and DAmageNet error on the same 50,000 validation images for 18 non-source victims. First-pass nominal bounds, max(0, adversarial error - clean error), range from 3.20 to 69.29 points (median 60.355). They are recorded in the review only, pending a second extraction, rounding propagation, and resolution of a validation/training wording ambiguity. Its random-200 experiments skip victim-misclassified samples (group field 2 yes). Rank 70's "nearly all" correctly classified wording is not coded as a restriction. Ranks 67 and 69 state no population rule; rank 69 adds detector-patch and Bard scopes.
 
 Ranks 61-66 ([61](reviews/61.json)-[66](reviews/66.json)) contain three non-applicable papers. Rank 62 is a transfer-prior query attack; rank 65 (MalConv payloads) transfers across files on one detector, which is cross-input, as rank 49 was; rank 66 attacks source-code models directly. Rank 63's speech universal perturbation is evaluated on the entire validation set with a transcription-change outcome (fields 2/3 explicit no, as ranks 28 and 54). Rank 61's targeted transfer states no population rule, but its Figure 7 partitions all adversarial examples. Rank 64's only transfer scope is a motivating epoch/seed ratio figure.
 
