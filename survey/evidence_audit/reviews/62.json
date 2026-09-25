@@ -1,0 +1,35 @@
+{
+  "rank": 62,
+  "paper_id": "3f2095bbbf3e47fbac26da70e95a219c23e3bac9",
+  "review_date": "2026-09-25",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all twenty pages of arXiv 1911.07140 (ICLR 2020 camera-ready header): Sections 1-5, Algorithm 1, Tables 1-3, Figures 1-4 and Appendices A-C (per-class targeted results, untargeted ImageNet, ensembles, generator trained on other data, hyperparameter sweeps, CombOpt comparison, Google Cloud Vision, architectures and hyperparameters).",
+    "supplement": "Appendices are embedded in the arXiv PDF and read.",
+    "inventory_complete": true,
+    "applicability": "no_original_cross_model_attack_evaluation_located",
+    "excluded_results": "All reported results are score-based query attacks on the target (up to 50,000 queries): TREMBA searches a generator's embedding learned on source networks, and Trans-NES/Trans-P-RGF start from transferred perturbations. Success-rate-versus-query curves count an example as succeeding at one query if its starting point already fools the target, but no separate zero-query transfer rate is reported."
+  },
+  "sources": [
+    {"id": "arxiv_with_appendices", "url": "https://arxiv.org/pdf/1911.07140", "sha256": "dcd7b6ab6c1dbcd12091044282f02a0495b982bd077a434673e9e2c159f7c3ce"}
+  ],
+  "result_groups": [],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Section 4.1", "evidence": "Target clean accuracies are mentioned (about 99% on MNIST), but no transferred-example evaluation exists."},
+    "f2": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Section 4", "evidence": "'Only correctly classified images were counted towards success rate and average queries', recorded as positive setup evidence for the query attacks; no transfer denominator exists."},
+    "f3": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Section 4", "evidence": "Success is defined for the query attack within the query limit."},
+    "f4": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Tables 1-3", "evidence": "Counts would concern query-attack success."},
+    "f5": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Tables 1-3 captions", "evidence": "Explicit L-infinity bounds (e.g., 0.2 on MNIST) are recorded as setup evidence for query attacks."},
+    "f6": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Section 4 footnote 1", "evidence": "Code is linked (github.com/TransEmbedBA/TREMBA), but with no transfer configuration it is neither a transfer recomputability success nor a failure."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-25", "url": "https://github.com/TransEmbedBA/TREMBA", "result": "Repository linked in the paper; not cloned or executed; not evaluated as a transfer artifact."}
+  ],
+  "bounds_checks": [],
+  "bounds_exclusion": {"status": "not_applicable_to_located_results", "locator": "Section 4; Tables 1-3", "reason": "Only query-attack success rates on the attacked target are reported."},
+  "limitations": [
+    "Transfer-prior query attacks are classified as out of scope, consistent with ranks 19 and 43; an independent recoder could flag the one-query success counts as an implicit transfer outcome.",
+    "Non-blind evidence audit."
+  ]
+}

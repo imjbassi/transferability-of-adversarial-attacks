@@ -1,0 +1,35 @@
+{
+  "rank": 66,
+  "paper_id": "63dc08b8efd67cf788cd17301bdfaf74d9450d93",
+  "review_date": "2026-09-25",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all sixteen pages of arXiv 2002.03043v2 (11 June 2020): Sections 1-7, Algorithm 1, Tables 1-2, Figures 1-3, references and Appendices A-D (transformations, dataset sizes Table 3, 5-adversary sampling Table 4, full results Table 5). The corpus lists only the arXiv record.",
+    "supplement": "Appendices A-D are embedded in the arXiv PDF and read.",
+    "inventory_complete": true,
+    "applicability": "no_original_cross_model_attack_evaluation_located",
+    "excluded_results": "Tables 1-2, 4-5 and Figures 2-3 evaluate semantics-preserving program-transformation attacks (random or gradient-based sketch filling) directly on the evaluated seq2seq/code2seq model, including adversarially trained models. No adversarial program crafted on one model is evaluated on another."
+  },
+  "sources": [
+    {"id": "arxiv_v2_with_appendices", "url": "https://arxiv.org/pdf/2002.03043v2", "sha256": "effa059e8b6a3c3d21df377538e3249cb2bf8233040d3973a0cc809eb0006dca"}
+  ],
+  "result_groups": [],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Table 2 'Nor' columns", "evidence": "Clean test F1 is reported beside adversarial F1 for every model, positive setup evidence, but no transfer evaluation exists."},
+    "f2": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Section 5.1", "evidence": "Every test point is attacked on the evaluated model; no transfer denominator exists."},
+    "f3": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Section 5", "evidence": "No source-to-target transfer step exists."},
+    "f4": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Tables 1-2, 5", "evidence": "F1 scores, not counts."},
+    "f5": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Section 4; Table 1", "evidence": "Budgets are numbers of program transformations k, a discrete non-Lp constraint; no transfer result exists."},
+    "f6": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Paper", "evidence": "No transfer configuration exists, so this is neither a transfer recomputability success nor a failure."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-25", "url": "https://arxiv.org/abs/2002.03043v2", "result": "Downloaded and hashed; the paper cites third-party model code (IBM pytorch-seq2seq, code2seq) and transformation tools; no transfer artifact applies."}
+  ],
+  "bounds_checks": [],
+  "bounds_exclusion": {"status": "not_applicable_to_located_results", "locator": "Section 5", "reason": "Only direct attacks on the evaluated model are reported."},
+  "limitations": [
+    "Retained in the frozen corpus with non-applicability reasons; the random adversary is black-box but not a transfer attack.",
+    "Non-blind evidence audit."
+  ]
+}

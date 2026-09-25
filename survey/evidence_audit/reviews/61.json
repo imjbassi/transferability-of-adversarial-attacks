@@ -1,0 +1,40 @@
+{
+  "rank": 61,
+  "paper_id": "060c6c8312cd9277c97379e82db7c36b9321cce2",
+  "review_date": "2026-09-25",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all nine pages of the CVPR 2020 open-access paper (pp. 641-649): Sections 1-5, Algorithm 1, Tables 1-2, Figures 1-7 and references. No arXiv version is listed in the corpus.",
+    "supplement": "Read the four-page CVF supplementary PDF: Appendix A (proof of Eq. 7) and B (per-hold-out Table 1 with MI-FGSM, adversarially trained Table 2, epsilon sweeps Tables 3-4 for targeted and non-targeted attacks).",
+    "inventory_complete": true,
+    "applicability": "cross_model_classification_attack_targeted",
+    "excluded_results": "Ensemble (white-box) rows of main Tables 1-2 and supplement Table 3; Figure 6 (gradient magnitude on 10 images) and Figures 1-5 (illustrations)."
+  },
+  "sources": [
+    {"id": "cvpr_open_access", "url": "https://openaccess.thecvf.com/content_CVPR_2020/papers/Li_Towards_Transferable_Targeted_Attack_CVPR_2020_paper.pdf", "sha256": "1ba335de6067cc9e2d660fba2b5c731f02083e559f039ebffce6887cf59198c6"},
+    {"id": "cvpr_supplement", "url": "https://openaccess.thecvf.com/content_CVPR_2020/supplemental/Li_Towards_Transferable_Targeted_CVPR_2020_supplemental.pdf", "sha256": "80c9e475129b451c53ce996ea72d17f08ec810108c99c18f4db4de34eadf8d80"}
+  ],
+  "result_groups": [
+    {"id": "hold_out_targeted_success", "locator": "Section 4.1-4.3; Tables 1-2 hold-out rows; supplement Tables 1, 2, 4", "population": "1,000-image ImageNet-compatible dataset; ensembles of five normally trained networks (or eight of nine models for adversarially trained hold-outs) with the remaining model held out; supplement Table 4 adds non-targeted rates over epsilon", "outcome": "targeted (and, in supplement Table 4, non-targeted) success rate on the hold-out model", "f2": "unclear", "f3": "unclear", "evidence": "No clean-correct or ensemble-success rule is stated."},
+    {"id": "tar_untar_correct_partition", "locator": "Section 4.4 'Influence of triplet loss'; Figure 7", "population": "Adversarial examples from the Section 4.2 setting, divided into target-success, non-target-success and correctly classified shares on the hold-out network", "outcome": "shares of Tar, unTar and correct (graphical)", "f2": "unclear", "f3": "no", "evidence": "The paper divides 'the adversarial examples into three parts', including those still correctly classified, so the shares cover all generated examples without selection by ensemble success. Clean correctness of the originals is not stated."}
+  ],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "separate_clean_values_not_located", "locator": "Section 4", "evidence": "No clean accuracy is reported; models are described only as well performing."},
+    "f2": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 4.1", "evidence": "No clean-correct restriction or explicit inclusion statement."},
+    "f3": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 4.4; Tables 1-2", "evidence": "The Figure 7 partition covers all adversarial examples (no); the success-rate tables state no rule."},
+    "f4": {"value": "unclear", "reason": "denominator_unstated", "locator": "Tables 1-2; supplement Tables 1-4", "evidence": "One-decimal rates without a stated denominator; Figure 7 is graphical."},
+    "f5": {"value": "yes", "reason": "explicit_linf_radius_all_results", "locator": "Section 4.1 Parameters; supplement Tables 3-4", "evidence": "Maximum per-pixel perturbation epsilon = 16 (sign-gradient iterative attacks), with an explicit epsilon sweep in the supplement."},
+    "f6": {"value": "unclear", "reason": "no_author_release_located", "locator": "artifact_checks below", "evidence": "The paper links only public model checkpoints; no author attack code was located."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-25", "url": "https://api.github.com/search/repositories?q=towards%20transferable%20targeted%20attack%20poincare%20triplet", "result": "Zero results; the paper links only TF-slim and adversarially trained model repositories."}
+  ],
+  "bounds_checks": [
+    {"groups": ["hold_out_targeted_success", "tar_untar_correct_partition"], "status": "different_outcome_targeted_clean_baseline_missing", "locator": "Tables 1-2; Figure 7", "reason": "Targeted success is not an untargeted misclassification probability; the non-targeted supplement rates and the Figure 7 partition lack clean baselines."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit. The Figure 7 'no' rests on the explicit three-way partition of all adversarial examples.",
+    "No execution."
+  ]
+}
