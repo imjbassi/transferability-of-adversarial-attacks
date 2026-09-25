@@ -1,0 +1,46 @@
+{
+  "rank": 20,
+  "paper_id": "90dcaf5b7ded95f61666711aa94a59eae77bc304",
+  "review_date": "2026-09-24",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all twenty pages of arXiv 1907.10823v3 (27 February 2020): Sections 1-6, Algorithm (Figure 2), Tables 1-3, Figures 1-8, references and Appendices A-H (Tables 4-8, Figures 9-16). Footnote 7 states that earlier versions contained results with incorrect normalization; v3 is treated as the corrected record.",
+    "supplement": "Appendices A-H are embedded in the arXiv PDF and read. The CVF ICCV 2019 version was not retrieved; given the footnoted correction, CVF and arXiv v3 values must not be mixed.",
+    "inventory_complete": true,
+    "applicability": "cross_model_classification_attack",
+    "excluded_results": "Dagger-marked source=target cells (Tables 2, 5, 8 and figure curves for the source) are white-box. Figures 4, 6, 12 (disturbance/angle diagnostics) and 15 (decision-boundary visualization) are not transfer rates."
+  },
+  "sources": [
+    {"id": "main_with_appendices", "url": "https://arxiv.org/pdf/1907.10823v3", "sha256": "785cc9388eb5fe48ce5fcefe5d65902e0b4742eab08afce9d983057e8959ffb3"},
+    {"id": "ila_readme", "url": "https://github.com/CUVL/Intermediate-Level-Attack/blob/25271f84f74a9ee02b9ba0e707cc02680ab236dd/README.md", "sha256": "db72c2a4d0d22ec0f96f3931381ab19f9378ec77f9a0ee7d293df46afc23a790"},
+    {"id": "ila_cifar_evaluator", "url": "https://github.com/CUVL/Intermediate-Level-Attack/blob/25271f84f74a9ee02b9ba0e707cc02680ab236dd/all_in_one_cifar10.py", "sha256": "16a0d401042baafe42340f0fe429d41b12a8b71b6cab6311ab09e936ab94e0af"}
+  ],
+  "result_groups": [
+    {"id": "cifar10_full_test_transfer", "locator": "Section 4 (pp. 4-6), Table 2, Table 3, Figures 3, 7, 8; Appendix A (p. 11), Tables 4-5, 8, Figures 9-11, 13, 16", "population": "All CIFAR-10 test images; four author-trained models (ResNet18, SENet18, DenseNet121, GoogLeNet) as sources and targets", "outcome": "target top-1 accuracy after attack (complement is unconditional misclassification)", "f2": "no", "f3": "no", "evidence": "Appendix A: adversarial examples are generated 'for all images in the test set' and transferability is evaluated by testing accuracies, so target-clean-incorrect inputs and source failures are retained (source white-box accuracies above zero, e.g., ResNet18 MI-FGSM 5.7%). Explicit unconditioned design, not missing reporting."},
+    {"id": "imagenet_torchvision_transfer", "locator": "Section 4.4 and Figure 5 (pp. 5-6); Appendix D and Figure 14", "population": "All 50,000 ImageNet validation images; torchvision ResNet18, DenseNet121, SqueezeNet1.0, AlexNet", "outcome": "target accuracy after attack (graphical)", "f2": "no", "f3": "no", "evidence": "Section 4.4 and Appendix D test accuracies 'over adversarial examples generated from all 50000 ImageNet test images', explicitly retaining all inputs and source failures."},
+    {"id": "imagenet_table1_tap_di", "locator": "Table 1 (p. 5); Section 4.4", "population": "5,000 randomly selected ImageNet validation images; Cadene Inc-v3 source, Inc-v4 and IncRes-v2 targets; epsilon 0.06", "outcome": "target accuracy after attack", "f2": "unclear", "f3": "unclear", "evidence": "The caption states random selection and 'same as experiment in Table 2' but does not restate whether all selected images and all adversarial examples are evaluated; not coded no from protocol analogy."},
+    {"id": "appendix_g_lr_ablation", "locator": "Appendix G, Tables 6-7 (pp. 12-13)", "population": "1,600 adversarial examples (50 batches x 32); selection not stated", "outcome": "target accuracy after attack", "f2": "unclear", "f3": "unclear", "evidence": "Subset construction and conditioning are not described."}
+  ],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "partial_separate_clean_values", "locator": "Section 4 (p. 4); Section 4.4; Table 1", "evidence": "Final CIFAR-10 test accuracies are reported separately for all four CIFAR models (94.8%, 94.6%, 95.6%, 94.9%), covering every source and target in that group. Clean accuracies for the ImageNet torchvision and Cadene Inception models are not reported."},
+    "f2": {"value": "unclear", "reason": "unresolved_scope", "locator": "Appendix A; Section 4.4; Table 1; Appendix G", "evidence": "CIFAR-10 and 50k-ImageNet groups explicitly retain all inputs (no); Table 1 and Appendix G populations are unresolved. Not mixed_explicit because no group is yes."},
+    "f3": {"value": "unclear", "reason": "unresolved_scope", "locator": "Appendix A; Section 4.4; Table 1; Appendix G", "evidence": "Two groups explicitly evaluate all adversarial examples (no); two are unresolved."},
+    "f4": {"value": "unclear", "reason": "one_decimal_rates_do_not_identify_counts", "locator": "Tables 1-8; Figures", "evidence": "One-decimal percentages over 10,000 CIFAR-10 test images or 5,000/50,000 ImageNet images do not yield unique integer numerators; many results are graphical."},
+    "f5": {"value": "unclear", "reason": "imagenet_torchvision_budget_unstated", "locator": "Appendix A (p. 11); Table 1 caption; Section 4.4; Appendix D; Appendix F and Figure 16", "evidence": "CIFAR-10 uses L-infinity epsilon 0.015 for all attacks (DeepFool clipped); Table 1 uses epsilon 0.06. The ImageNet torchvision experiments (Figure 5, Appendix D) state no radius. Appendix F text lists epsilon 0.01-0.025 while Figure 16 panels are labelled 0.02-0.05. Missing radius for one surveyed scope, so unclear."},
+    "f6": {"value": "unclear", "reason": "candidate_release_sufficiency_unverified", "locator": "Abstract code link; artifact_checks below", "evidence": "The linked official repository provides attack code, all_in_one evaluators that log clean accuracy and accuracy after attack on the same batches, and a Google Drive folder of the four CIFAR-10 checkpoints (config filenames encode 94.77/95.61/94.86/94.59% accuracy, matching the paper). Config epsilon 0.03 applies to inputs normalized to [-1,1], plausibly equal to the paper's 0.015 on [0,1]; the release's C&W wrapper is untargeted while the paper used a randomized targeted C&W. Drive checkpoints not downloaded and nothing executed. Strong recomputation candidate, not yet verified."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-24", "url": "https://github.com/CUVL/Intermediate-Level-Attack/tree/25271f84f74a9ee02b9ba0e707cc02680ab236dd", "result": "Cloned and pinned (13 tracked files, last commit 24 October 2019). all_in_one_cifar10.py iterates the unshuffled CIFAR-10 test loader for num_batches (README example 50 x 32 = 1,600 images), logging fool_rate (prediction change), acc_after_attack and original_acc for each target and batch. README links a Drive checkpoint folder; ImageNet evaluator uses pretrainedmodels. Not executed."},
+    {"date": "2026-09-24", "url": "https://drive.google.com/drive/folders/1RGtlPCc2vTqeQc5utOgLb1Y3_vIO5JVi", "result": "README-linked CIFAR-10 checkpoint folder; not listed or downloaded in this review."}
+  ],
+  "bounds_checks": [
+    {"groups": ["cifar10_full_test_transfer"], "status": "candidate_matched_population_rounding_limited", "locator": "Section 4 clean accuracies; Appendix A; Table 2", "reason": "Clean test accuracy and attacked accuracy are both on the full CIFAR-10 test set for fixed deterministic models, unconditioned, so max(0, attacked error - clean error) is well defined per target. Not extracted in this review: clean accuracies are printed to 0.1% and several transfer cells appear only in figures; extraction and rounding propagation belong to the corpus-wide bounds pass."},
+    {"groups": ["imagenet_torchvision_transfer"], "status": "clean_baseline_missing", "locator": "Section 4.4; Appendix D", "reason": "No clean accuracies for the torchvision models on the 50,000 images are reported; results are graphical."},
+    {"groups": ["imagenet_table1_tap_di", "appendix_g_lr_ablation"], "status": "population_alignment_unresolved", "locator": "Table 1; Appendix G", "reason": "No clean baseline on the evaluated subsets and conditioning unresolved."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit. The epsilon reconciliation between release and paper is an inference from the release normalization, to be checked in any recomputation.",
+    "No checkpoint download or execution; CIFAR-10 bound extraction deferred to the corpus-wide pass."
+  ]
+}

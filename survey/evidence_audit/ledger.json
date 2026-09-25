@@ -214,46 +214,64 @@
       "rank": 17,
       "paper_id": "3636d3f0562f3ab5f5df68c1c9a23530c0fbce64",
       "title": "Parametric Noise Injection: Trainable Randomness to Improve Deep Neural Network Robustness Against Adversarial Attack",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "reviewed_population_alignment_unresolved",
+      "artifact_review": "reviewed_release_lacks_transfer_configuration",
+      "notes": [
+        "reviews/17.json covers arXiv v1, the CVF CVPR version (differences confined to white-box tables) and the four-page CVF supplement; two transfer groups (Table 5 ResNet-18 A/B; supplement AlexNet substitute).",
+        "Supplement Table 2 prints target and substitute clean accuracies separately, but the attacked population, attack and budget are unstated; ResNet-18 clean accuracies are missing and PNI targets are stochastic at inference.",
+        "Linked repository covers ResNet-20 PNI training/evaluation only; no transfer configuration. No bound extracted."
+      ]
     },
     {
       "rank": 18,
       "paper_id": "7610bcc3444c824a25f5c3779c097a9bdd4c185a",
       "title": "A Survey on Safety-Critical Driving Scenario Generation—A Methodological Perspective",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_applicable_no_original_cross_model_attack_evaluation",
+      "artifact_review": "not_applicable_survey_without_experiments",
+      "notes": [
+        "reviews/18.json covers all eighteen arXiv v6 pages; a methodological survey of driving-scenario generation with no original attack or transfer experiment.",
+        "Retained with non-applicability reasons for all six fields; scenario 'transferability' is discussed only conceptually."
+      ]
     },
     {
       "rank": 19,
       "paper_id": "edabab811aaf44b7b626efe5278a32bddd3bb77f",
       "title": "Improving Black-box Adversarial Attacks with a Transfer-based Prior",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_applicable_query_attacks_only",
+      "artifact_review": "not_applicable_no_transfer_configuration",
+      "notes": [
+        "reviews/19.json covers all 23 arXiv v3 pages including Appendices A-D. All attacks are score-based queries to the target with a surrogate gradient prior; no zero-query transfer rate is reported.",
+        "Retained with non-applicability reasons; the boundary between transfer-prior query attacks and transfer evaluation is documented for the independent recoder."
+      ]
     },
     {
       "rank": 20,
       "paper_id": "90dcaf5b7ded95f61666711aa94a59eae77bc304",
       "title": "Enhancing Adversarial Example Transferability With an Intermediate Level Attack",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "reviewed_cifar10_candidate_extraction_deferred",
+      "artifact_review": "candidate_release_sufficiency_unverified",
+      "notes": [
+        "reviews/20.json covers all twenty arXiv v3 pages including Appendices A-H (v3 notes corrected normalization); four groups: CIFAR-10 full test set, ImageNet 50k torchvision, Table 1 5k ImageNet, Appendix G subset.",
+        "CIFAR-10 and 50k-ImageNet groups explicitly evaluate all inputs and all adversarial examples (fields 2/3 no); Table 1 and Appendix G populations are unresolved. CIFAR clean accuracies are reported for all four models; the ImageNet torchvision radius is unstated.",
+        "Official release logs clean and attacked accuracy per batch, with CIFAR-10 checkpoints on Drive: strong recomputation and bounds candidate, not yet executed. CIFAR bound extraction deferred to the corpus-wide pass."
+      ]
     },
     {
       "rank": 21,
       "paper_id": "558f7fa8c8e909e7aa67b20d41ba5896b68dcf54",
       "title": "Admix: Enhancing the Transferability of Adversarial Attacks",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "reviewed_clean_baseline_missing",
+      "artifact_review": "candidate_release_sufficiency_unverified",
+      "notes": [
+        "reviews/21.json covers the ten-page arXiv v3 and the identical CVF ICCV version (no supplement); three groups: single source, ensemble to adversarially trained targets, advanced defenses.",
+        "Success rate is defined as target misclassification without a population rule, so fields 2/3 are unclear, consistent with rank 5; explicit L-infinity epsilon 16 throughout.",
+        "Released simple_eval.py divides ground-truth misclassification counts by 1,000 without filtering; recomputation candidate with ranks 4-5. Drive data/models unverified."
+      ]
     },
     {
       "rank": 22,

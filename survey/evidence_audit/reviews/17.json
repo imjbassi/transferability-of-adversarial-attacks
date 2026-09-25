@@ -1,0 +1,43 @@
+{
+  "rank": 17,
+  "paper_id": "3636d3f0562f3ab5f5df68c1c9a23530c0fbce64",
+  "review_date": "2026-09-24",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all fifteen pages of arXiv 1811.09310v1 (the only arXiv version) and the transfer-relevant sections of the ten-page CVF CVPR 2019 version (setup, Section 4.2.2 and Table 5, which match arXiv values). The CVF version additionally links the code repository.",
+    "supplement": "Read the four-page CVF supplement: A (MNIST white-box Table 1), B (AlexNet substitute-model black-box Table 2), C (convergence and weight-distribution figures).",
+    "inventory_complete": true,
+    "applicability": "cross_model_classification_attack",
+    "excluded_results": "Tables 1-4, 6-7, Figures 2-3 and supplement Table 1 and Figures 1-4 are white-box or training diagnostics. The ZOO column of Table 5 is a query attack on the target itself, not transfer."
+  },
+  "sources": [
+    {"id": "arxiv_v1", "url": "https://arxiv.org/pdf/1811.09310v1", "sha256": "502e1b70ad5ae9cd1569da03fb88b0fd065ecb9d11024c1802742c18580a632e"},
+    {"id": "cvf_main", "url": "https://openaccess.thecvf.com/content_CVPR_2019/papers/He_Parametric_Noise_Injection_Trainable_Randomness_to_Improve_Deep_Neural_Network_CVPR_2019_paper.pdf", "sha256": "cb7edf2899e18b48ba5c90f34d0290fc3a6f667b9d7d6a60da794658e2451b8c"},
+    {"id": "cvf_supplement", "url": "https://openaccess.thecvf.com/content_CVPR_2019/supplemental/He_Parametric_Noise_Injection_CVPR_2019_supplemental.pdf", "sha256": "99b6974c01f497606825f1854494641c715192c0e0b2622389b657611863d4a2"},
+    {"id": "pni_readme", "url": "https://github.com/elliothe/CVPR_2019_PNI/blob/031e24fbffec56730840a7406be2be47cd5f234c/README.md", "sha256": "ac516aedab0624644097e3aa54eb7f984e4c11c38448a316cf7122b4ed8d779a"}
+  ],
+  "result_groups": [
+    {"id": "table5_resnet18_pgd_transfer", "locator": "Section 4.2.2 and Table 5 transferable-attack columns (arXiv p. 10; CVF Section 4.2.2)", "population": "CIFAR-10 test set; ResNet-18 model A (vanilla adversarial training) and model B (PNI variants, noise active at inference) attacking each other; mean +/- std over 5 trials", "outcome": "target perturbed-data accuracy", "f2": "unclear", "f3": "unclear", "evidence": "Accuracy on the CIFAR-10 test set is reported with no clean-correct filtering or source-success selection stated, and neither is explicitly excluded or retained."},
+    {"id": "supp_alexnet_substitute_transfer", "locator": "Supplement Section B and Table 2 (pp. 1-2)", "population": "AlexNet substitute trained for the same task; targets are the adversarially trained baseline and three PNI variants; test population and size not stated", "outcome": "target attack accuracy, beside target and substitute clean accuracy", "f2": "unclear", "f3": "unclear", "evidence": "Target and substitute clean accuracies are printed separately, but the attacked population, the attack algorithm/budget and any conditioning are not described."}
+  ],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "partial_separate_clean_values", "locator": "Supplement Table 2; Section 4.2.2; Tables 2-4, 6", "evidence": "Supplement Table 2 reports target and substitute clean accuracy separately for every substitute pair (positive evidence). Clean accuracies of the ResNet-18 models A and B used in Table 5 are not located; main clean accuracies are for ResNet-20 variants."},
+    "f2": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 4.1-4.2.2; supplement B", "evidence": "No clean-correct denominator statement for either group."},
+    "f3": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 4.2.2; supplement B", "evidence": "No source-success definition or selection is stated."},
+    "f4": {"value": "unclear", "reason": "averaged_rates_and_unstated_population", "locator": "Section 4.1 (5 trials); Table 5; supplement Table 2", "evidence": "Table 5 reports means over five trials, so per-trial counts are not unique; the substitute experiment's population size is not stated."},
+    "f5": {"value": "unclear", "reason": "substitute_attack_budget_unstated", "locator": "Section 4.1 Adversarial attacks; supplement Section B", "evidence": "PGD on CIFAR-10 is specified as L-infinity epsilon 8/255 with 7 steps, which covers the transferable PGD of Table 5. The supplement substitute attack states neither the attack algorithm nor a numerical radius. Missing detail, so unclear rather than no."},
+    "f6": {"value": "unclear", "reason": "release_lacks_transfer_configuration", "locator": "CVF abstract code link; artifact_checks below", "evidence": "The linked repository provides ResNet-20 PNI training/evaluation code and Drive links to ResNet-20 PNI-W checkpoints. No ResNet-18 A/B checkpoints, AlexNet substitute, transfer or substitute-attack scripts, or per-example outputs are included for either transfer group. Drive checkpoints not downloaded."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-24", "url": "https://github.com/elliothe/CVPR_2019_PNI/tree/031e24fbffec56730840a7406be2be47cd5f234c", "result": "Cloned and pinned (38 tracked files, last commit 23 October 2019). Contains train_cifar.sh/eval_cifar.sh, noise layers, ResNet-20 models and README Drive links for layer-wise and channel-wise PNI-W ResNet-20 checkpoints. Case-insensitive search of code for transfer/black/substitute/resnet18/zoo found no matches. Not executed."}
+  ],
+  "bounds_checks": [
+    {"groups": ["table5_resnet18_pgd_transfer"], "status": "clean_baseline_missing_and_stochastic_target", "locator": "Table 5; Section 4.1", "reason": "ResNet-18 clean accuracies are not reported, rates are five-trial means, and PNI targets inject noise at inference, so the fixed-predictor identity does not directly apply to A => B."},
+    {"groups": ["supp_alexnet_substitute_transfer"], "status": "population_alignment_unresolved", "locator": "Supplement Table 2", "reason": "Target clean and attacked accuracies are printed side by side (e.g., adversarially trained baseline 87.49% clean, 84.89% attacked), but the attacked population and its identity with the clean evaluation are not stated, and the PNI targets are stochastic. No bound is extracted until population identity is established; the deterministic baseline row is the only arithmetic candidate (nominal 2.60 percentage points) and is not added to any corpus summary."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit. A printed-number comparison of the CVF and arXiv versions found differences only in white-box Tables 4 and 6 (e.g., C&W L2 1.97 vs 1.95 +/- 0.02 and an added Table 6 row); transfer values are identical.",
+    "No checkpoint download or execution."
+  ]
+}

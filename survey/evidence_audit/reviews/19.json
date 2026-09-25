@@ -1,0 +1,35 @@
+{
+  "rank": 19,
+  "paper_id": "edabab811aaf44b7b626efe5278a32bddd3bb77f",
+  "review_date": "2026-09-24",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all 23 pages of arXiv 1906.06919v3 (26 July 2020; NeurIPS 2019 camera-ready stamp): Sections 1-5, Algorithm 1, Figures 1-2, Tables 1-2, references and Appendices A-D (proofs, the averaging alternative, estimation of A, and full L2/L-infinity Tables 3-6).",
+    "supplement": "Appendices A-D are embedded in the arXiv PDF and were read. No separate NeurIPS supplement was retrieved.",
+    "inventory_complete": true,
+    "applicability": "no_original_cross_model_attack_evaluation_located",
+    "excluded_results": "Every reported attack (Tables 1-6, Figure 2) is a score-based query attack on the evaluated target (normal or defended) with up to 10,000 queries; the ResNet-152 surrogate supplies only a gradient prior. No zero-query transfer rate from the surrogate to a target is reported. Figure 1(c)-(e) reports cosine similarities between transfer and true gradients, a gradient-alignment diagnostic rather than an attack outcome. Excluded as direct query attacks, consistent with the treatment of direct attacks in other reviews."
+  },
+  "sources": [
+    {"id": "main_with_appendices", "url": "https://arxiv.org/pdf/1906.06919v3", "sha256": "bfbdd6ddbeff4eee065aa1916457e1e53ad38cb09025232c51a578a3ef3923c9"}
+  ],
+  "result_groups": [],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Section 4; Tables 1-6", "evidence": "No transferred-example evaluation exists; clean accuracies of targets are not reported for the query attacks either."},
+    "f2": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Section 4 (p. 7)", "evidence": "1,000 random ImageNet validation images are attacked by querying the target; no transfer denominator exists."},
+    "f3": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Section 4.2 (p. 9)", "evidence": "Success is defined for the query attack on the target (within 10,000 queries and the budget); there is no source-to-target transfer step to condition."},
+    "f4": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Tables 1-6", "evidence": "Counts would concern query-attack success, not transfer."},
+    "f5": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Section 4 (p. 7); Appendix D (p. 22)", "evidence": "Numerical L2 (sqrt(0.001 D)) and L-infinity (0.05) budgets are explicit for the query attacks, recorded as positive setup evidence; no transfer result exists to which the field applies."},
+    "f6": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Section 4 footnote 2; artifact_checks below", "evidence": "A public query-attack implementation exists, but with no original transfer configuration it is neither a transfer recomputability success nor a failure."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-24", "url": "https://github.com/thu-ml/Prior-Guided-RGF/tree/cc4748d3d4871c5f23c1ad630498eef50bb3281e", "result": "GitHub API listing of the paper-linked repository (head 9 September 2023): attack.py, surrogate_model.py, models.py, nets, torch_nets, run_attack.sh. Not cloned or executed; not evaluated as a transfer artifact."}
+  ],
+  "bounds_checks": [],
+  "bounds_exclusion": {"status": "not_applicable_to_located_results", "locator": "Section 4; Tables 1-6", "reason": "Only query-attack success rates on the attacked target are reported; there is no transferred misclassification rate with a matched clean baseline."},
+  "limitations": [
+    "Classification of transfer-prior query attacks as out of scope follows the amendment's direct-attack exclusion; an independent recoder could reasonably flag this boundary and should see this rationale.",
+    "Non-blind evidence audit."
+  ]
+}
