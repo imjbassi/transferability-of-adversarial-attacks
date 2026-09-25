@@ -277,46 +277,65 @@
       "rank": 22,
       "paper_id": "be4a4f7f65d397a4e07dc83b95da6b414e0634e2",
       "title": "Adversarial Examples that Fool both Computer Vision and Time-Limited Humans",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_applicable_source_success_conditioned_targeted_outcome",
+      "artifact_review": "reviewed_no_release_custom_checkpoints",
+      "notes": [
+        "reviews/22.json covers all 22 arXiv v3 pages and the fourteen-page full supplemental PDF from the goo.gl Drive link (tables match); groups: held-out model transfer and human-observer transfer.",
+        "Appendix D explicitly retains only adversarial images that fooled all 10 ensemble models (7/10 for the false condition), so field 3 is yes for all scopes. Table Supp.2 reports separate top-1 accuracy for all 12 models (field 1 yes).",
+        "No code or custom retina-layer checkpoints released. No bound: source-success conditioned, targeted coarse-class outcome."
+      ]
     },
     {
       "rank": 23,
       "paper_id": "8680c075abfb7832ff1321b5f409f2a5e57570f2",
       "title": "Frequency Domain Model Augmentation for Adversarial Attack",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "reviewed_clean_baseline_missing",
+      "artifact_review": "historical_run_archived_manifest_unverified",
+      "notes": [
+        "reviews/23.json covers all 22 arXiv pages including supplementary Sections A-D; three groups (normal targets, defenses single-source, defenses ensemble-source).",
+        "Success rate is not formally defined and no clean accuracy is reported; explicit L-infinity epsilon 16 in all experiments. README RS 'skip=100' setting is inconsistent with the published RS resolution; unresolved.",
+        "Pinned official release (code plus 1,000 images; third-party converted weights) was executed historically with archived per-example predictions; checkpoint hashes and a manifest still need verification before field 6 can be yes."
+      ]
     },
     {
       "rank": 24,
       "paper_id": "43e51c1bfd69df518e2907f7a955e485985ba423",
       "title": "On the Robustness of Vision Transformers to Adversarial Examples",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "reviewed_jointly_clean_cohort_no_subtraction",
+      "artifact_review": "candidate_release_sufficiency_unverified",
+      "notes": [
+        "reviews/24.json covers all 25 arXiv v2 pages including supplemental Sections A-G; groups: pairwise transfer (Table 2, Tables 10-12) and adaptive black-box transfer (Figure 3).",
+        "Pairwise transfer explicitly uses m = 1,000 jointly clean-correct examples (field 2 yes for that scope) and Eq. 3 retains source failures (field 3 no); the adaptive scope is unresolved, so both paper-level fields are unclear with preserved scope evidence.",
+        "CIFAR-10 checkpoints and attack code are released (Drive, unverified); the pairwise study is not packaged. No bound: the jointly clean cohort already has zero baseline error."
+      ]
     },
     {
       "rank": 25,
       "paper_id": "717425092f2e7a2a00c98e8e1778036e9b5a8b4e",
       "title": "NATTACK: Learning the Distributions of Adversarial Examples for an Improved Black-Box Attack on Deep Neural Networks",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_applicable_source_success_conditioned",
+      "artifact_review": "reviewed_release_lacks_transfer_evaluation_code",
+      "notes": [
+        "reviews/25.json covers all thirteen arXiv v3 pages including supplementary pages; one transfer scope (Figure 2 BPDA/NATTACK confusion tables across CIFAR-10 defenses).",
+        "Section 3.3 explicitly transfers only source-correct, source-successful images (field 3 yes); clean accuracy is reported for every model (field 1 yes). Printed two-decimal rates are inconsistent with the stated 1,000-image denominator.",
+        "Release confusion.py only plots hard-coded values, transposed relative to the published figure; no transfer evaluator. No bound: source-success conditioned."
+      ]
     },
     {
       "rank": 26,
       "paper_id": "7005fe514458b538b7516b41af5f5e1971154070",
       "title": "Adversarial vulnerability for any classifier",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_applicable_no_original_cross_model_attack_evaluation",
+      "artifact_review": "not_applicable_no_transfer_configuration",
+      "notes": [
+        "reviews/26.json covers all seventeen arXiv v2 pages including appendices; transferability appears only as Theorem 3, and experiments measure per-classifier robustness against theoretical bounds.",
+        "Retained with non-applicability reasons for all six fields."
+      ]
     },
     {
       "rank": 27,

@@ -1,0 +1,40 @@
+{
+  "rank": 24,
+  "paper_id": "43e51c1bfd69df518e2907f7a955e485985ba423",
+  "review_date": "2026-09-24",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all 25 pages of arXiv 2104.02610v2 (5 June 2021; ICCV 2021): Sections 1-7, Tables 1-2, Figures 1-3, references and the embedded supplemental material Sections A-G (attack definitions and parameters Tables 3-5, SAGA Table 6, black-box models and Tables 7-8/Figure 6, decision-region Figures 7-9, FAT Table 9, full transferability Tables 10-12).",
+    "supplement": "The supplemental material is embedded in the arXiv PDF and read. The CVF ICCV version was not retrieved.",
+    "inventory_complete": true,
+    "applicability": "cross_model_classification_attack",
+    "excluded_results": "Tables 1, 3, 9 and white-box parts of Tables 10-12 (source = target without an independent copy) are white-box. SAGA and the 'Single MIM' bar in Figure 2 attack a random-selection ensemble that contains the attacked source model (white-box/ensemble-containing-source). RayS (Figure 3, Table 7) is a query attack on the target. Figures 7-9 are decision-region visualizations."
+  },
+  "sources": [
+    {"id": "main_with_supplement", "url": "https://arxiv.org/pdf/2104.02610v2", "sha256": "79edd16251059656eb573c226efae3a5e3f1682d0102f8f01d74063c532ef615"}
+  ],
+  "result_groups": [
+    {"id": "pairwise_jointly_clean_transfer", "locator": "Section 4.1 Eq. 2-3 and Section 4.2 (p. 4); Table 2 (p. 6); Figure 1; supplement Tables 10-12 (pp. 23-25)", "population": "For each classifier pair, m = 1,000 examples correctly classified by both; CIFAR-10/CIFAR-100 (8 models, independent copies for i = j) and ImageNet (7 models)", "outcome": "t_ij = fraction of the m examples whose source-generated adversarial example the target misclassifies; Table 2 reports the maximum over FGSM, PGD and MIM", "f2": "yes", "f3": "no", "evidence": "Section 4.2: 'for each pair of classifiers (i, j), we find a set of m = 1000 examples that both classifiers correctly identify', an explicit joint clean-correct denominator. Eq. 3 averages target misclassification over all m examples without requiring source misclassification, and supplement Tables 10-12 show source robust accuracies above zero (e.g., CIFAR-10 PGD ViT-B-32 4.2%), so source failures are explicitly retained."},
+    {"id": "adaptive_blackbox_transfer", "locator": "Section 6.1-6.2 and Figure 3 Adaptive bar (pp. 7-8); supplement D.2, Table 8 and Figure 6 (pp. 15-18)", "population": "CIFAR-10; synthetic model (pretrained ViT-B-32 or CNNs in hyperparameter runs) trained on defense-labelled training data; targets ViT/BiT random-selection ensemble, ViT-L-16 and ResNet-56; evaluation set size not restated", "outcome": "defense robust accuracy on synthetic-model MIM adversarial examples", "f2": "unclear", "f3": "unclear", "evidence": "The black-box sections define robust accuracy over adversarial samples but do not restate the clean-correct selection used in Section 3, nor any synthetic-model success condition. The random-selection ensemble is a stochastic predictor."}
+  ],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "partial_separate_clean_values", "locator": "Table 1 and supplement Table 3 'Acc' columns; Section 6.2", "evidence": "Clean accuracy is reported separately for all eight CIFAR and seven ImageNet models (positive evidence) and ensemble average clean accuracy is given. Independent copies used for i = j and the synthetic models of the adaptive attack have no reported clean accuracy."},
+    "f2": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 4.2; Section 6", "evidence": "Pairwise transfer explicitly uses jointly clean-correct examples (yes; any_explicit_yes = true); the adaptive black-box population is not stated."},
+    "f3": {"value": "unclear", "reason": "unresolved_scope", "locator": "Eq. 3 (p. 4); Section 6", "evidence": "Pairwise transfer explicitly retains source failures (no); the adaptive scope does not state a rule. Not mixed_explicit because no scope is yes."},
+    "f4": {"value": "unclear", "reason": "partial_unique_reconstruction", "locator": "Section 4.2; Table 2; Tables 10-12; Figure 3", "evidence": "Pairwise rates are single proportions over an explicit m = 1,000, so each one-decimal value maps to a unique k/1,000 (reconstruction mode, not literal counts). The adaptive attack's evaluation-set size is not stated, so coverage is incomplete."},
+    "f5": {"value": "yes", "reason": "explicit_linf_radius_all_results", "locator": "Section 3.1 (p. 2); Section 6.1 (p. 8); supplement Tables 4-5", "evidence": "L-infinity epsilon 0.031 (CIFAR) and 0.062 (ImageNet) on [0,1] inputs for all white-box, transfer and black-box attacks; step sizes listed per attack."},
+    "f6": {"value": "unclear", "reason": "candidate_release_sufficiency_unverified", "locator": "Supplement G (p. 22); artifact_checks below", "evidence": "The linked repository provides CIFAR-10 ViT-L-16, BiT-M-R101x3 and pretrained ViT-B-32 checkpoints on Drive plus SAGA, adaptive-attack and RayS code. The pairwise transferability study (Table 2) and non-CIFAR-10 models are not packaged; the adaptive attack needs 128 GB RAM. Drive contents unverified and nothing executed."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-24", "url": "https://github.com/MetaMain/ViTRobust/tree/bd044bd8e62b5dd24c24a97a495e89ac925a35ca", "result": "Read the README and top-level listing via the GitHub API (head bd044bd, pushed 16 December 2025). CIFAR-10-only attack code for single ViT/BiT and the ViT+BiT defense; models on Google Drive (folder 18ZD1XsJBreRLlYhm13jIQXf3nfWHo1F-). Not cloned or executed."}
+  ],
+  "bounds_checks": [
+    {"groups": ["pairwise_jointly_clean_transfer"], "status": "clean_correct_by_reported_definition", "locator": "Section 4.2; Eq. 3", "reason": "The cohort is jointly clean-correct, so target clean error is zero by construction and t_ij is already the newly induced error on that cohort; subtracting full-test clean error would be wrong. It is not a population-level rate; no further bound extracted."},
+    {"groups": ["adaptive_blackbox_transfer"], "status": "population_alignment_unresolved", "locator": "Section 6; Figure 3", "reason": "Evaluation population and clean baseline for the adaptive attack are not stated, and the ensemble is stochastic."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit. Table 2's caption states that rows are the generating model, while Section 4.2 describes the top row as the generating model; the supplement tables follow the caption. Orientation is recorded as an inconsistency without choosing between them.",
+    "Table 2 reports the maximum over three attacks per pair, a selection rule to keep in any recomputation."
+  ]
+}

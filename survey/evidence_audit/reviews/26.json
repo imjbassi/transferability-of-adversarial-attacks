@@ -1,0 +1,35 @@
+{
+  "rank": 26,
+  "paper_id": "7005fe514458b538b7516b41af5f5e1971154070",
+  "review_date": "2026-09-24",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all seventeen pages of arXiv 1802.08686v2 (NeurIPS 2018): Sections 1-6 including Theorem 3 on transferability (Section 4.2), Tables 1-2, appendices A-B (proofs, checkerboard Figure 3) and C (model details, numerical bound evaluation Algorithm 1, generated-image Figures 4-5).",
+    "supplement": "Appendices are embedded in the arXiv PDF and read. No separate NeurIPS supplement was retrieved.",
+    "inventory_complete": true,
+    "applicability": "no_original_cross_model_attack_evaluation_located",
+    "excluded_results": "Theorem 3 proves the existence of shared perturbations for two low-risk classifiers but reports no empirical transfer rate. Tables 1-2 compare per-classifier empirical minimal-perturbation robustness (DeepFool-style, in-distribution and unconstrained) with the paper's upper bounds on SVHN and CIFAR-10 generated data; each classifier is attacked directly. Figures 4-5 are illustrations."
+  },
+  "sources": [
+    {"id": "main_with_appendices", "url": "https://arxiv.org/pdf/1802.08686v2", "sha256": "837f16cca7c82d55e9f7fdc3d80e3e8e55cb221500cc669512642e627aa59244"}
+  ],
+  "result_groups": [],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Tables 1-2", "evidence": "Error rates are reported per classifier (positive setup evidence), but there is no source/target transfer evaluation to which the field applies."},
+    "f2": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Section 5", "evidence": "Robustness is measured by label change on generated samples without ground truth (footnote 9); no transfer denominator exists."},
+    "f3": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Section 4.2", "evidence": "Transferability is treated theoretically only."},
+    "f4": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Tables 1-2", "evidence": "Reported quantities are robustness percentiles, not transfer proportions."},
+    "f5": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Section 5", "evidence": "Minimal-norm L2 robustness is measured rather than a fixed-budget transfer attack; no transfer result exists."},
+    "f6": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Appendix C.1", "evidence": "No original transfer configuration exists for which a release could be sufficient or insufficient; the paper links only third-party architecture code."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-24", "url": "https://arxiv.org/abs/1802.08686v2", "result": "Downloaded and hashed v2; the paper links third-party DCGAN, pytorch-cifar and wide-residual-networks implementations and no authors' release. Not evaluated as a transfer artifact."}
+  ],
+  "bounds_checks": [],
+  "bounds_exclusion": {"status": "not_applicable_to_located_results", "locator": "Sections 4.2 and 5", "reason": "No empirical transfer misclassification rate is reported."},
+  "limitations": [
+    "Retained in the frozen corpus with non-applicability reasons; a theoretical transferability result is not coded as missing reporting.",
+    "Non-blind evidence audit."
+  ]
+}
