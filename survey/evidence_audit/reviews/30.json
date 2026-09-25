@@ -1,0 +1,42 @@
+{
+  "rank": 30,
+  "paper_id": "9f4c17aebbb181756fab86ade02deadd90d5d4f9",
+  "review_date": "2026-09-24",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all thirteen pages of arXiv 2309.11751v2 (14 October 2023, adding GPT-4V): Sections 1-5, Eqs. 1-3, Tables 1-4, Figures 1-7 and references.",
+    "supplement": "No appendix or supplement is included or linked.",
+    "inventory_complete": true,
+    "applicability": "other_attack_outcome_commercial_mllm_image_description_and_filters",
+    "excluded_results": "Figures 1-7 are screenshots. The prompt-generalization paragraph (Section 3.2) reports no rate and conditions on success against Bard itself, not cross-model transfer."
+  },
+  "sources": [
+    {"id": "main", "url": "https://arxiv.org/pdf/2309.11751v2", "sha256": "5d358b9d6461b8505dc0368514a465f81763da0b562baac8b7936886cb752d82"}
+  ],
+  "result_groups": [
+    {"id": "bard_image_description", "locator": "Section 3.2 and Table 1 (pp. 4-5)", "population": "100 random NIPS 2017 images; surrogate ensembles (ViT-B/16, CLIP, BLIP-2 encoders or BLIP-2, InstructBLIP, MiniGPT-4); target Bard queried 10-15 September 2023", "outcome": "manually judged misdescription of the main object; rejection rate reported separately", "f2": "no", "f3": "unclear", "evidence": "All 100 images are evaluated and a No Attack row on the same images is reported (0% success, 1% rejection), so no clean-correct restriction applies. The surrogate objectives (embedding distance, targeted caption likelihood) define no source-success event and no selection is described."},
+    {"id": "bard_surrogate_ablation", "locator": "Section 3.2 'Ablation study on model ensemble' and Table 2 (p. 5)", "population": "20 NIPS 2017 images; seven surrogate-encoder combinations; target Bard", "outcome": "manually judged misdescription", "f2": "unclear", "f3": "unclear", "evidence": "No clean baseline or population rule is given for the 20-image subset."},
+    {"id": "other_commercial_mllms", "locator": "Section 3.3 and Table 3 (p. 6)", "population": "The same 100 image-embedding adversarial examples evaluated on GPT-4V (13 October 2023), Bing Chat and ERNIE Bot", "outcome": "manually judged misdescription and rejection", "f2": "no", "f3": "unclear", "evidence": "'We adopt the 100 adversarial examples ... to directly evaluate'; No Attack rows on the same images (GPT-4V 0%, Bing Chat 2%, ERNIE Bot 4% misdescription) show clean failures are not removed. No surrogate success event is defined."},
+    {"id": "bard_defense_evasion", "locator": "Section 4.1 and Table 4 (pp. 7-8); Section 4.2 (p. 8)", "population": "100 FFHQ and 100 LFW face images (surrogate face detectors); 100 manually collected toxic images (surrogate CLIP-probe toxicity detectors); target Bard's filters", "outcome": "Bard does not reject and provides a description", "f2": "unclear", "f3": "unclear", "evidence": "No clean rejection rate for natural faces or toxic images is reported on these sets, and no surrogate-success selection is described."}
+  ],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "no_clean_accuracy_defined_for_outcome", "locator": "Tables 1 and 3 'No Attack' rows", "evidence": "Clean-image misdescription and rejection rates are reported for every commercial target (positive baseline evidence), but surrogate clean performance is not, and the outcome is judged description quality rather than classification accuracy."},
+    "f2": {"value": "unclear", "reason": "unresolved_scope", "locator": "Sections 3.2-4.2", "evidence": "The two 100-image description scopes explicitly evaluate all images (no); the 20-image ablation and defense-evasion scopes are unresolved."},
+    "f3": {"value": "unclear", "reason": "unresolved_scope", "locator": "Sections 3.1-3.3, 4.1", "evidence": "Surrogate objectives define no success event and no selection by surrogate success is described for any scope."},
+    "f4": {"value": "yes", "reason": "unique_reconstruction_known_denominators", "locator": "Tables 1-4; Section 4.2", "evidence": "Every transfer rate is an integer percentage of an explicitly stated set of 100 images (Tables 1, 3, 4 and the 36% toxicity result) or 20 images (Table 2, multiples of 5%), so each numerator is uniquely determined (e.g., 22/100, 3/20). This is reconstruction mode, not literal count reporting."},
+    "f5": {"value": "yes", "reason": "explicit_linf_radius_all_results", "locator": "Section 3.2 Hyper-parameters (p. 4); Section 4.1 (p. 7); Section 4.2 (p. 8)", "evidence": "L-infinity epsilon 16/255 for description and toxicity attacks; 16/255 and 32/255 for face-detection attacks."},
+    "f6": {"value": "unclear", "reason": "hosted_targets_and_judgments_unreleased", "locator": "Abstract code link; artifact_checks below", "evidence": "The linked repository releases attack code, 1,000 NIPS 2017 images and 200 image-embedding adversarial examples, but not which 100 were evaluated, the manual per-image judgments or model responses. Targets are dated hosted commercial services whose versions are not reproducible."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-24", "url": "https://github.com/thu-ml/Attack-Bard/tree/5e9618a2e11fd9d213e31ac2da67325f80b7f70b", "result": "Listed the tree via the GitHub API (1,350 files, head 16 February 2024): attack code, dataset/NIPS17 (1,000 PNGs), dataset/ssa-cwa-200 (200 adversarial examples), demos and prompts/alignment.txt. No per-example outcome or judgment files. Not executed."}
+  ],
+  "bounds_checks": [
+    {"groups": ["bard_image_description", "other_commercial_mllms"], "status": "nonclassification_stochastic_hosted_analog_not_extracted", "locator": "Tables 1 and 3", "reason": "Same-image No Attack and attacked misdescription rates allow an arithmetic analog (e.g., ERNIE Bot 86% attacked vs 4% clean), but the outcome is a human-judged description of a stochastic hosted model with a separate rejection category, not a fixed-predictor classification error. Recorded for transparency; not added to any bound distribution."},
+    {"groups": ["bard_surrogate_ablation", "bard_defense_evasion"], "status": "clean_baseline_missing", "locator": "Tables 2 and 4; Section 4.2", "reason": "No clean baseline on the evaluated sets."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit. Evaluations of dated hosted models cannot be re-executed as published.",
+    "The text description attack is targeted at a sentence while success is judged as untargeted main-object misdescription; both are retained in the Bard description scope."
+  ]
+}
