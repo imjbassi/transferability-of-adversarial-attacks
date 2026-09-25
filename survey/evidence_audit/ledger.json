@@ -781,55 +781,79 @@
       "rank": 61,
       "paper_id": "060c6c8312cd9277c97379e82db7c36b9321cce2",
       "title": "Towards Transferable Targeted Attack",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_eligible_targeted_clean_baseline_missing",
+      "artifact_review": "reviewed_no_author_release",
+      "notes": [
+        "reviews/61.json covers the nine-page CVPR 2020 paper and four-page CVF supplement.",
+        "Targeted hold-out transfer on the 1,000-image dataset with no population rule; the Figure 7 Tar/unTar/correct partition covers all adversarial examples (group field 3 no). Explicit epsilon 16 with supplement sweep.",
+        "No author code located."
+      ]
     },
     {
       "rank": 62,
       "paper_id": "3f2095bbbf3e47fbac26da70e95a219c23e3bac9",
       "title": "Black-Box Adversarial Attack with Transferable Model-based Embedding",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_applicable_to_located_results",
+      "artifact_review": "reviewed_not_applicable",
+      "notes": [
+        "reviews/62.json covers all twenty arXiv pages with appendices.",
+        "TREMBA and baselines are score-based query attacks with transfer priors; no separate zero-query transfer rate (non-applicable, as ranks 19 and 43).",
+        "Code linked but not evaluated as a transfer artifact."
+      ]
     },
     {
       "rank": 63,
       "paper_id": "1a6446a451472b1c5815ce3e00cf84eb7e641a2a",
       "title": "Universal Adversarial Perturbations for Speech Recognition Systems",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_applicable_prediction_change_outcome",
+      "artifact_review": "reviewed_no_author_release",
+      "notes": [
+        "reviews/63.json covers all five arXiv v2 pages.",
+        "DeepSpeech-to-WaveNet universal perturbation over the entire validation set with transcription-change outcome (fields 2/3 explicit no, as ranks 28/54). Explicit L-infinity bounds.",
+        "Only an audio-example page is linked."
+      ]
     },
     {
       "rank": 64,
       "paper_id": "36ad06e6f9b39192e7668634eadd6fcf9593e922",
       "title": "Efficient Adversarial Training With Transferable Adversarial Examples",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_eligible_ratio_outcome",
+      "artifact_review": "code_release_transfer_configuration_unverified",
+      "notes": [
+        "reviews/64.json covers the fourteen-page arXiv PDF with appendix.",
+        "Only the Figure 1 epoch/seed transferability ratio is a cross-model scope; population and attack budget for it unstated; remaining results are white-box adversarial-training evaluations.",
+        "ATTA code linked; Figure 1 coverage unverified."
+      ]
     },
     {
       "rank": 65,
       "paper_id": "765896e190d03a99f384bbedc412d2a52cf98cea",
       "title": "Deceiving End-to-End Deep Learning Malware Detectors using Adversarial Examples",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_applicable_to_located_results",
+      "artifact_review": "reviewed_not_applicable",
+      "notes": [
+        "reviews/65.json covers all six arXiv v3 pages.",
+        "All evasion results are on the single MalConv model; file/position transferability is cross-input (non-applicable, consistent with rank 49).",
+        "No code linked."
+      ]
     },
     {
       "rank": 66,
       "paper_id": "63dc08b8efd67cf788cd17301bdfaf74d9450d93",
       "title": "Semantic Robustness of Models of Source Code",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_applicable_to_located_results",
+      "artifact_review": "reviewed_not_applicable",
+      "notes": [
+        "reviews/66.json covers all sixteen arXiv v2 pages with Appendices A-D.",
+        "Program-transformation attacks and adversarial training evaluated on the same model; no cross-model transfer.",
+        "Not applicable."
+      ]
     },
     {
       "rank": 67,

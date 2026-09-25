@@ -1,0 +1,35 @@
+{
+  "rank": 65,
+  "paper_id": "765896e190d03a99f384bbedc412d2a52cf98cea",
+  "review_date": "2026-09-25",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all six pages of arXiv 1802.04528v3 (10 January 2019): Sections 1-5, Algorithm 1, Figure 1 and references. The corpus lists only the arXiv record.",
+    "supplement": "No appendix or supplement.",
+    "inventory_complete": true,
+    "applicability": "no_original_cross_model_attack_evaluation_located",
+    "excluded_results": "All results are white-box on the single MalConv detector whose embedding gradients generate the payload: evasion rates on the test set (99.21% L2, 98.83% L-infinity), spatial invariance (100% still misclassified after repositioning), file transferability (75% of payloads injected from file A to file B still evade the same detector), payload-size and entropy analyses. The 'transferability' is across files and positions on the same model, not across models; the authors list black-box attacks as future work."
+  },
+  "sources": [
+    {"id": "arxiv_v3", "url": "https://arxiv.org/pdf/1802.04528v3", "sha256": "482bdfad4661684a5d6016d5fead144e7ad68f17583d95e1142ee7a71746bb18"}
+  ],
+  "result_groups": [],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Section 4 Detection Evasion", "evidence": "Detector accuracy (98% validation, 97% test) is reported as setup evidence; no cross-model evaluation exists."},
+    "f2": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Section 2", "evidence": "Attacks start from correctly classified malicious files, recorded as setup evidence; no transfer denominator exists."},
+    "f3": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Section 4", "evidence": "No source-to-target model transfer step exists."},
+    "f4": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Section 4", "evidence": "Counts would concern same-model evasion."},
+    "f5": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Section 3", "evidence": "The payload is iterated in embedding space until misclassification, with a byte-length budget; no transfer result exists to which the field applies."},
+    "f6": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Paper", "evidence": "No code is linked; with no transfer configuration this is neither a transfer recomputability success nor a failure."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-25", "url": "https://arxiv.org/abs/1802.04528v3", "result": "Downloaded and hashed; no code, model or data release is linked."}
+  ],
+  "bounds_checks": [],
+  "bounds_exclusion": {"status": "not_applicable_to_located_results", "locator": "Section 4", "reason": "Only same-model evasion rates are reported."},
+  "limitations": [
+    "Cross-file payload reuse on the same detector is treated as cross-input, not cross-model, transfer, consistent with rank 49; an independent recoder could flag this boundary.",
+    "Non-blind evidence audit."
+  ]
+}

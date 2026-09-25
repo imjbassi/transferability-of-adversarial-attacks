@@ -1,0 +1,38 @@
+{
+  "rank": 64,
+  "paper_id": "36ad06e6f9b39192e7668634eadd6fcf9593e922",
+  "review_date": "2026-09-25",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all fourteen pages of arXiv 1912.11969 (CVPR 2020 content): Sections 1-8, Tables 1-9, Figures 1-8, references and the appendix (implementation details, visualisations, Table 9, Figure 8). The CVPR open-access version was not retrieved separately.",
+    "supplement": "The appendix is embedded in the arXiv PDF and read.",
+    "inventory_complete": true,
+    "applicability": "cross_model_classification_attack_other_ratio_outcome",
+    "excluded_results": "Tables 3-9 and Figure 6 are white-box robustness evaluations of adversarially trained models (PGD, M-PGD, CW on the evaluated model) and training-time comparisons. Figure 3 measures the attack loss of accumulated perturbations on the current model. The paper states that it does not use black-box attacks beyond the Section 3.1 analysis."
+  },
+  "sources": [
+    {"id": "arxiv_with_appendix", "url": "https://arxiv.org/pdf/1912.11969", "sha256": "05c498f9b9e2541351a69dfd389530f8273648aab295d4ea76a41ed9bf02ff99"}
+  ],
+  "result_groups": [
+    {"id": "epoch_and_seed_transferability", "locator": "Section 3.1; Figure 1 (p. 3)", "population": "MNIST and CIFAR-10 examples (split and number not stated); adversarial examples from intermediate epoch models T1-T3 or independently seeded models S1-S3 transferred to an adversarially trained target T", "outcome": "error-rate transferability: ratio of the number of adversarial examples misclassified by the source to that misclassified by the target; loss transferability ratio (graphical)", "f2": "unclear", "f3": "unclear", "evidence": "A ratio of source and target misclassification counts over an unstated common set; no clean-correct or source-success rule is stated."}
+  ],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "separate_clean_values_not_located_for_transfer_scope", "locator": "Section 3.1; Tables 3-4", "evidence": "Natural accuracies are reported for the adversarially trained models in the white-box evaluation tables, but not for the Figure 1 source and target models."},
+    "f2": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 3.1", "evidence": "No population rule stated."},
+    "f3": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 3.1", "evidence": "The ratio metric counts source and target misclassifications separately; no filter is stated."},
+    "f4": {"value": "unclear", "reason": "graphical_ratio_outcome", "locator": "Figure 1", "evidence": "Only graphical ratios are reported."},
+    "f5": {"value": "unclear", "reason": "budget_not_stated_for_transfer_scope", "locator": "Section 3.1; Section 5.1", "evidence": "Section 5.1 states L-infinity 0.3/0.031 for training and evaluation, but the Section 3.1 transfer attack parameters are not given."},
+    "f6": {"value": "unclear", "reason": "code_release_transfer_configuration_unverified", "locator": "Abstract code link", "evidence": "Code is linked (github.com/hzzheng93/ATTA) for ATTA training; its coverage of the Figure 1 analysis was not verified."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-25", "url": "https://github.com/hzzheng93/ATTA", "result": "Repository linked in the paper; not cloned or executed; coverage of the Section 3.1 transfer analysis not established."}
+  ],
+  "bounds_checks": [
+    {"groups": ["epoch_and_seed_transferability"], "status": "different_outcome_ratio_clean_baseline_missing", "locator": "Figure 1", "reason": "A ratio of misclassification counts is not a transferred misclassification probability, and no clean baseline is given."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit. The paper's main contribution is adversarial training; only the Figure 1 motivation analysis is a cross-model transfer scope.",
+    "No execution."
+  ]
+}

@@ -4,7 +4,9 @@ Started 23 September 2026. This is a non-blind evidence audit, not the independe
 
 ## Current scope
 
-The ledger retains all 80 frozen paper IDs: sixty documented reviews are complete (ranks 1-60) and 20 remain pending; no partial reviews remain.
+The ledger retains all 80 frozen paper IDs: sixty-six documented reviews are complete (ranks 1-66) and 14 remain pending; no partial reviews remain.
+
+Ranks 61-66 ([61](reviews/61.json)-[66](reviews/66.json)) contain three non-applicable papers. Rank 62 is a transfer-prior query attack; rank 65 (MalConv payloads) transfers across files on one detector, which is cross-input, as rank 49 was; rank 66 attacks source-code models directly. Rank 63's speech universal perturbation is evaluated on the entire validation set with a transcription-change outcome (fields 2/3 explicit no, as ranks 28 and 54). Rank 61's targeted transfer states no population rule, but its Figure 7 partitions all adversarial examples. Rank 64's only transfer scope is a motivating epoch/seed ratio figure.
 
 Ranks 56-60 ([56](reviews/56.json)-[60](reviews/60.json)): ranks 57 and 58 restrict their main samples to images all (normally trained) victims classify correctly (field 2 yes for those scopes), while their defense/robust scopes remain unresolved. Rank 59 (machine-translation imitation) defines transfer over attacks successful on the imitation model (field 3 yes for two scopes) and has a discrete-token budget stratified with ranks 1 and 50. Rank 56 prints clean accuracy for every defended target (field 1 yes) without a population rule, as rank 51 does. Rank 60 follows the 1,000-image protocol without a population rule, as rank 42 does.
 

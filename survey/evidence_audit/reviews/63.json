@@ -1,0 +1,38 @@
+{
+  "rank": 63,
+  "paper_id": "1a6446a451472b1c5815ce3e00cf84eb7e641a2a",
+  "review_date": "2026-09-25",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all five pages of arXiv 1905.03828v2 (15 August 2019): Sections 1-6, Algorithm 1, Tables 1-2, Figures 1-3 and references. The corpus lists only the arXiv record.",
+    "supplement": "No appendix or supplement; the paper links only an audio-example web page.",
+    "inventory_complete": true,
+    "applicability": "other_attack_outcome_speech_recognition",
+    "excluded_results": "Table 1, Figure 2 and Figure 3 are white-box universal-perturbation results on DeepSpeech (the attacked model), including the random-noise comparison. The DeepSpeech columns of Table 2 repeat these white-box values."
+  },
+  "sources": [
+    {"id": "arxiv_v2", "url": "https://arxiv.org/pdf/1905.03828v2", "sha256": "4e4aa43e62511c46430f91b6f80c2d1cbfd03c71af9342025cf84c3555d301c5"}
+  ],
+  "result_groups": [
+    {"id": "deepspeech_to_wavenet_uap", "locator": "Section 4 Evaluation; Section 5.2; Table 2 WaveNet columns (p. 4)", "population": "The entire unseen Mozilla Common Voice validation set; universal perturbations trained on DeepSpeech (5,000 training clips) at L-infinity 150-400; evaluated on a public pre-trained WaveNet ASR model", "outcome": "success rate: share of waveforms whose adversarial transcription differs from the model's own clean transcription by CER > 0.5; mean CER", "f2": "no", "f3": "no", "evidence": "Evaluation is 'on ... the entire unseen validation set', and success is measured against each model's own clean transcription, so no input is removed for clean errors or for failing on DeepSpeech. The outcome is transcription change rather than ground-truth error (as for ranks 28 and 54)."}
+  ],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "no_clean_accuracy_defined_for_outcome", "locator": "Sections 4-5", "evidence": "Success is defined against the model's own clean transcription; clean word/character error rates of DeepSpeech and WaveNet are not reported."},
+    "f2": {"value": "no", "reason": "all_scopes_explicit_no", "locator": "Section 4 (p. 3); Section 5.2", "evidence": "The entire validation set is evaluated."},
+    "f3": {"value": "no", "reason": "all_scopes_explicit_no", "locator": "Section 4; Section 5.2", "evidence": "The same universal perturbation is added to every validation clip and all clips are scored on WaveNet."},
+    "f4": {"value": "unclear", "reason": "denominator_unstated", "locator": "Table 2", "evidence": "Two-decimal success rates over a validation set whose size is not stated."},
+    "f5": {"value": "yes", "reason": "explicit_linf_radius_all_results", "locator": "Section 3.3 (||v||_inf < epsilon); Tables 1-2", "evidence": "Explicit L-infinity bounds 100-400 (raw waveform units), with the corresponding mean relative loudness dB_x(v)."},
+    "f6": {"value": "unclear", "reason": "no_author_release_located", "locator": "Section 1 footnote", "evidence": "Only a sound-example web page is linked; DeepSpeech and WaveNet are public, but the perturbations and evaluation code are not identified."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-25", "url": "https://arxiv.org/abs/1905.03828v2", "result": "Downloaded and hashed; the paper links universal-audio-perturbation.herokuapp.com (examples) and third-party model repositories only. The example site was not accessed."}
+  ],
+  "bounds_checks": [
+    {"groups": ["deepspeech_to_wavenet_uap"], "status": "different_outcome_prediction_change", "locator": "Table 2", "reason": "Transcription change relative to the model's own output is not a ground-truth misclassification probability, and no clean error rate is reported."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit; coded consistently with ranks 28 and 54 for prediction-change outcomes with explicit all-input populations.",
+    "No execution."
+  ]
+}
