@@ -1,0 +1,38 @@
+{
+  "rank": 51,
+  "paper_id": "d4473a41c9f7b4095599bec14ea0a88e7041e737",
+  "review_date": "2026-09-25",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all ten pages of arXiv 1901.09981v1 (28 January 2019): Sections 1-7, Tables 1-2, Figures 1-5 and references. The corpus lists only this arXiv record; no later version of record was identified.",
+    "supplement": "No appendix or supplement is included or referenced.",
+    "inventory_complete": true,
+    "applicability": "cross_model_classification_attack_defense_evaluation",
+    "excluded_results": "Figure 4 (gradient coherence histograms) and Figure 5 (gradient-aligned adversarial subspace analysis, a white-box probe of the target) are not transfer outcomes. Figures 1-3 are illustrations."
+  },
+  "sources": [
+    {"id": "arxiv_v1", "url": "https://arxiv.org/pdf/1901.09981v1", "sha256": "bbcd4c3965493507a7646b663e7f9e786ae0d9012550218ddf8bc3a212f5dee9"}
+  ],
+  "result_groups": [
+    {"id": "surrogate_ensemble_to_defended_ensembles", "locator": "Section 4.1 Attack Configuration; Section 4.2; Table 2 (p. 6)", "population": "MNIST and CIFAR-10 inputs (split and number not stated); a separately trained five-model surrogate ensemble with the target's architecture and training data; targets TBase, TDiv, TEns and TEns+Div for Conv-3, Conv-4, ResNet-20 and a mixed ensemble; FGSM, R-FGSM, I-FGSM, MI-FGSM, PGD-CW", "outcome": "target classification accuracy on the adversarial examples, printed next to a CLEAN accuracy column", "f2": "unclear", "f3": "unclear", "evidence": "The paper evaluates target accuracy 'for clean examples as well as adversarial examples crafted from black-box attacks' without stating the evaluation split, a clean-correct restriction or a surrogate-success rule."}
+  ],
+  "judgments": {
+    "f1": {"value": "yes", "reason": "separate_clean_values_all_targets", "locator": "Table 2 CLEAN column; Section 4.1", "evidence": "A separate clean accuracy is printed for every target ensemble in the same table as its attacked accuracies. Surrogate clean accuracy is not printed."},
+    "f2": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 4.1", "evidence": "No clean-correct restriction or explicit inclusion statement."},
+    "f3": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 4.1", "evidence": "No surrogate-success restriction or explicit inclusion statement."},
+    "f4": {"value": "unclear", "reason": "denominator_unstated", "locator": "Table 2", "evidence": "One-decimal accuracies without a stated number of evaluated inputs."},
+    "f5": {"value": "yes", "reason": "explicit_linf_radius_all_results", "locator": "Sections 2.1, 2.3; Section 4.1; Table 2 caption", "evidence": "L-infinity epsilon = 0.1/0.3 (MNIST) and 0.03/0.09 (CIFAR-10) for all attacks."},
+    "f6": {"value": "unclear", "reason": "no_author_release_located", "locator": "artifact_checks below", "evidence": "The paper links no code or models, and a repository search found none."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-25", "url": "https://api.github.com/search/repositories?q=diversity%20training%20gradient%20alignment%20loss%20ensemble", "result": "Zero results; the paper links no repository (it names only the Cleverhans library used for attacks)."}
+  ],
+  "bounds_checks": [
+    {"groups": ["surrogate_ensemble_to_defended_ensembles"], "status": "candidate_population_match_unstated", "locator": "Table 2", "reason": "Clean and attacked accuracies of each target are printed side by side, so max(0, clean accuracy - attacked accuracy) would be the matched lower bound if both were computed on the same inputs. The paper does not state the evaluation split or that the populations match, so no bound is extracted."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit. Table 2 is a potential bounds source if the evaluated inputs can be confirmed as one shared test set.",
+    "No execution."
+  ]
+}

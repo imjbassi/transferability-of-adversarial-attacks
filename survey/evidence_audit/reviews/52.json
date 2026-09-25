@@ -1,0 +1,35 @@
+{
+  "rank": 52,
+  "paper_id": "f5014e34ed13191082cd20cc279ca4cc9adee84f",
+  "review_date": "2026-09-25",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all ten pages of arXiv 1812.11720v4 (8 July 2019): Sections I-XI, Tables I-V, Figures 1-5 and references. The corpus lists only the arXiv record.",
+    "supplement": "No appendix or supplement is included or referenced.",
+    "inventory_complete": true,
+    "applicability": "no_original_cross_model_attack_evaluation_located",
+    "excluded_results": "The paper infers network depth from execution time (Tables I-II, IV, V; Figures 2-4) and reconstructs a substitute by reinforcement-learning architecture search (Table III: substitute versus target test accuracy). Adversarial examples are mentioned only as a motivation; no adversarial example is generated or evaluated."
+  },
+  "sources": [
+    {"id": "arxiv_v4", "url": "https://arxiv.org/pdf/1812.11720v4", "sha256": "eb74dbc99ddc560fee444435b785a6d83fd4b7f5ce18be91566cad0b8b1ba9de"}
+  ],
+  "result_groups": [],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Table III", "evidence": "Target and substitute CIFAR-10 test accuracies are reported for extraction fidelity, not for a transfer-attack evaluation."},
+    "f2": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Section VII", "evidence": "No adversarial transfer denominator exists."},
+    "f3": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Section VII", "evidence": "No adversarial examples are generated."},
+    "f4": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Tables I-V", "evidence": "Reported values are timings, regression errors and accuracies."},
+    "f5": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Paper", "evidence": "No perturbation budget applies."},
+    "f6": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Paper", "evidence": "No code is linked; with no transfer configuration this is neither a transfer recomputability success nor a failure."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-25", "url": "https://arxiv.org/abs/1812.11720v4", "result": "Downloaded and hashed the arXiv v4 PDF; the paper links no code, data or models."}
+  ],
+  "bounds_checks": [],
+  "bounds_exclusion": {"status": "not_applicable_to_located_results", "locator": "Section VII", "reason": "No transferred misclassification rate is reported."},
+  "limitations": [
+    "Retained in the frozen corpus with non-applicability reasons (model extraction without an adversarial-example evaluation), as for ranks 27 and 36.",
+    "Non-blind evidence audit."
+  ]
+}

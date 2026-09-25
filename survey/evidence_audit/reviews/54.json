@@ -1,0 +1,39 @@
+{
+  "rank": 54,
+  "paper_id": "c97ffc7725daf68406ea73d1ee82f5d11f19f448",
+  "review_date": "2026-09-25",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all ten pages of arXiv 1911.10891v2 (12 April 2020): Sections 1-5, Tables 1-5, Figures 1-6 and references; and the ten-page CVPR 2020 open-access version. All 212 three-decimal values match between versions.",
+    "supplement": "No appendix is included; a separate CVPR supplement was not retrieved or referenced in the text.",
+    "inventory_complete": true,
+    "applicability": "cross_model_classification_attack",
+    "excluded_results": "Diagonal (seen-classifier) cells of Table 3, Table 4 (attacks on ResNet110 variants as the seen classifier), Figure 3 (seen-classifier success after filtering), Figure 4 (detectability), Table 5 (NIMA image quality) and Figure 6 (randomness on seen R50) are not cross-model transfer outcomes."
+  },
+  "sources": [
+    {"id": "arxiv_v2", "url": "https://arxiv.org/pdf/1911.10891v2", "sha256": "45b9c9cf9cd54136923321fb9545dd61b20fdb813cc2a45af684557120d2b632"},
+    {"id": "cvpr_open_access", "url": "https://openaccess.thecvf.com/content_CVPR_2020/papers/Shamsabadi_ColorFool_Semantic_Adversarial_Colorization_CVPR_2020_paper.pdf", "sha256": "3251519f2a650374bf50add61a77b8af5955cf25ae0894aa0df0c08d05f3190e"}
+  ],
+  "result_groups": [
+    {"id": "unseen_classifier_transfer", "locator": "Section 4 Datasets and Performance measures (p. 5); Table 3 off-diagonal cells", "population": "P-Places365 (60 classes x 50 = 3,000 images), the whole CIFAR-10 test set (10,000) and ImageNet validation (3 random images x 1,000 classes); seven attacks crafted on ResNet50, ResNet18 or AlexNet and tested on the other two", "outcome": "success rate: 'the ratio between the number of adversarial images that mislead the classifier on its most-likely predicted class and the total number of images' (prediction change relative to the classifier's clean prediction)", "f2": "no", "f3": "no", "evidence": "The denominator is explicitly the total number of images, so neither clean-misclassified images nor seen-classifier failures are removed. The outcome is change from the classifier's own clean prediction rather than ground-truth misclassification, as for rank 28."}
+  ],
+  "judgments": {
+    "f1": {"value": "yes", "reason": "separate_clean_values_all_targets", "locator": "Table 3 'Acc. on clean images' row", "evidence": "Clean accuracy of all three classifiers on each dataset is printed with the success rates."},
+    "f2": {"value": "no", "reason": "all_scopes_explicit_no", "locator": "Performance measures (p. 5)", "evidence": "The success rate is divided by the total number of images."},
+    "f3": {"value": "no", "reason": "all_scopes_explicit_no", "locator": "Performance measures (p. 5)", "evidence": "Transfer success uses the same all-image denominator, with no selection by success on the seen classifier."},
+    "f4": {"value": "unclear", "reason": "three_decimal_rates_do_not_identify_counts", "locator": "Table 3", "evidence": "With 3,000 or 10,000 images, a three-decimal proportion corresponds to about 3 or 10 possible counts, so counts are not uniquely recoverable."},
+    "f5": {"value": "no", "reason": "explicit_unrestricted_color_attack_baseline_budgets_unstated", "locator": "Sections 2-3; Table 1", "evidence": "ColorFool and SemanticAdv are explicitly unrestricted color perturbations with no Lp radius; DeepFool and SparseFool are minimum-norm attacks; the BIM/TI-BIM epsilon is not stated. The proposed method's results explicitly have no norm budget."},
+    "f6": {"value": "unclear", "reason": "release_lacks_transfer_evaluation_code", "locator": "artifact_checks below", "evidence": "The official repository releases ColorFool generation and segmentation code but no transfer-evaluation script, classifier checkpoints or the sampled image lists. P-Places365 is a private challenge subset."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-25", "url": "https://github.com/smartcameras/ColorFool/tree/a2ccae4db821e304fb54090c332545b71046ea22", "result": "Linked in the paper. Listed via the GitHub API (54 files, head 12 October 2020): Adversarial/ColorFool.py, misc_functions.py, script.sh, Segmentation/ (ADE20K semantic masks). No transfer evaluation or dataset lists. Not executed."}
+  ],
+  "bounds_checks": [
+    {"groups": ["unseen_classifier_transfer"], "status": "different_outcome_prediction_change_clean_baseline_present", "locator": "Table 3", "reason": "Clean accuracy on the same image set is printed, but the outcome counts changes from each classifier's clean prediction rather than ground-truth errors, so the misclassification bound cannot be applied without recomputation."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit. Coded consistently with rank 28 (prediction-change outcome with an explicit all-image denominator).",
+    "No execution."
+  ]
+}

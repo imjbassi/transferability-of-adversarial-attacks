@@ -4,7 +4,9 @@ Started 23 September 2026. This is a non-blind evidence audit, not the independe
 
 ## Current scope
 
-The ledger retains all 80 frozen paper IDs: fifty documented reviews are complete (ranks 1-50) and 30 remain pending; no partial reviews remain.
+The ledger retains all 80 frozen paper IDs: fifty-five documented reviews are complete (ranks 1-55) and 25 remain pending; no partial reviews remain.
+
+Ranks 51-55 ([51](reviews/51.json)-[55](reviews/55.json)): rank 52 (timing side-channel extraction) has no adversarial evaluation. Rank 55 (DEEPSEC; author-hosted PDF, since no arXiv version exists) explicitly transfers only source-misclassified AEs (field 3 yes). Its per-row AE counts make field 4 a reconstruction candidate, pending cell-by-cell verification. Rank 53's point-cloud transfer is source-success conditioned by Eq. 6 and the 100.0/0.00 diagonal, and reports matched pre/post target accuracy; that is a conditioned, not unconditional, baseline. Rank 54 divides by all images with a prediction-change outcome, as rank 28 does. Rank 51 prints clean and attacked target accuracy side by side, but the evaluated split is unstated, so no bound is extracted.
 
 Ranks 46-50 ([46](reviews/46.json)-[50](reviews/50.json)): ranks 46 and 47 restrict their main scopes to images every model classifies correctly (field 2 yes). Rank 47 defines ASR over all generated adversarial examples (field 3 explicit no). All 36 of rank 46's Table 3 cells reconstruct uniquely over its 5,000 images. Rank 46's main Table 2 averages include the white-box source, as its repository supplement shows. Rank 48 reports clean and attacked AUC on the same medical test sets (field 1 yes). Its fields 2-3 are unclear because AUC has no per-image correctness event. Rank 49's AAAI version of record differs in text but not in table values from arXiv v1; its penalty-based attack has no radius. Rank 50 is an LLM-judge score-inflation transfer with a phrase-length budget, stratified with rank 1. Ranks 46-48 have recomputation-candidate releases.
 
