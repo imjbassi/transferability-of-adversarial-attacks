@@ -1,0 +1,35 @@
+{
+  "rank": 18,
+  "paper_id": "7610bcc3444c824a25f5c3779c097a9bdd4c185a",
+  "review_date": "2026-09-24",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all eighteen pages of arXiv 2202.02215v6 (20 June 2023), Sections I-VIII, Figures 1-5, Tables I-II and references. Section VII.D discusses 'transferability' of generated driving scenarios across autonomous-vehicle policies conceptually, without experiments.",
+    "supplement": "No appendix or supplement is included or linked. The IEEE T-ITS version of record was not retrieved; arXiv v6 is the latest version.",
+    "inventory_complete": true,
+    "applicability": "no_original_cross_model_attack_evaluation_located",
+    "excluded_results": "Figure 2 and Sections III-V classify prior scenario-generation methods; Table I compares datasets; Table II compares simulators; Section VI lists platforms; Sections VII-VIII discuss challenges. None reports an original numerical attack or transfer result."
+  },
+  "sources": [
+    {"id": "main", "url": "https://arxiv.org/pdf/2202.02215v6", "sha256": "5d6010ed941aa51865de822ea5ab0cd194b5242e8aee484c227662b83a0e389a"}
+  ],
+  "result_groups": [],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Sections I-VIII", "evidence": "The paper is a methodological survey of safety-critical driving scenario generation with no original source/target model evaluation."},
+    "f2": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Sections II-IV", "evidence": "No original transfer denominator exists to code."},
+    "f3": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Section VII.D", "evidence": "Scenario transferability is discussed conceptually; no source-success conditioning question arises."},
+    "f4": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Tables I-II", "evidence": "Tables compare datasets and simulators, not attack outcomes."},
+    "f5": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Sections IV and VII.D", "evidence": "Pixel-level and semantic attacks are mentioned in passing; no original perturbation budget applies. Not a claim of deficient reporting."},
+    "f6": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Section VI; artifact_checks below", "evidence": "No original transfer configuration exists for which artifacts could be sufficient or insufficient."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-24", "url": "https://arxiv.org/abs/2202.02215v6", "result": "Downloaded and hashed v6. The paper links no code or experimental supplement; referenced platforms such as SafeBench are separate works and were not treated as artifacts of this survey."}
+  ],
+  "bounds_checks": [],
+  "bounds_exclusion": {"status": "not_applicable_to_located_results", "locator": "Sections I-VIII", "reason": "No original numerical attack rate or clean baseline is reported."},
+  "limitations": [
+    "Retained in the frozen corpus with non-applicability reasons; report separately from ambiguous reporting.",
+    "Non-blind evidence audit; T-ITS version of record not inspected."
+  ]
+}
