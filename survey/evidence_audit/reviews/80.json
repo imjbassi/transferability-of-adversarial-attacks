@@ -1,0 +1,39 @@
+{
+  "rank": 80,
+  "paper_id": "07322a941dc6ebe16ac2a31fddd356bd726fe8dd",
+  "review_date": "2026-09-25",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all thirteen pages of arXiv 2103.10609v1 (19 March 2021; BMVC 2021): Sections 1-5, Algorithm, Tables 1-5, Figures 1-6, references and the appended supplementary material (Tables 6-7 for Inc-v4, IncRes-v2 and Res-101 sources). The BMVC version of record was not retrieved.",
+    "supplement": "The supplementary material is appended to the arXiv PDF and read.",
+    "inventory_complete": true,
+    "applicability": "cross_model_classification_attack",
+    "excluded_results": "White-box (starred source) cells of Tables 1-7; Figures 1-2 are illustrations."
+  },
+  "sources": [
+    {"id": "arxiv_v1_with_supplement", "url": "https://arxiv.org/pdf/2103.10609v1", "sha256": "9fb394d3be301ec2a294ed683a1cb3b8790846d374f0509fa978825e2dbe8aa5"}
+  ],
+  "result_groups": [
+    {"id": "normal_and_adv_trained_targets", "locator": "Section 4.1-4.4; Tables 1-7; Figures 4-6", "population": "1,000 randomly chosen ILSVRC 2012 validation images; single sources (Inc-v3, Inc-v4, IncRes-v2, Res-101) and a four-model ensemble; four normally trained and three ensemble-adversarially trained targets", "outcome": "attack success rate: 'the misclassification rates of the corresponding models using adversarial examples as the inputs'", "f2": "unclear", "f3": "unclear", "evidence": "No clean-correct filter is stated, and the rate definition is the bare outcome wording coded unclear for ranks 5 and 21."},
+    {"id": "advanced_defenses", "locator": "Section 4.3; Figure 3", "population": "Same images; ensemble source; HGD, R&P, NIPS-r3, RS, ARS, FD, Bit-Red", "outcome": "attack success rate (graphical)", "f2": "unclear", "f3": "unclear", "evidence": "No population rule stated."}
+  ],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "separate_clean_values_not_located", "locator": "Section 4", "evidence": "No clean accuracy is reported."},
+    "f2": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 4.1", "evidence": "No clean-correct restriction or explicit inclusion statement."},
+    "f3": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 4.2", "evidence": "No source-success rule; bare outcome definition."},
+    "f4": {"value": "unclear", "reason": "denominator_unstated", "locator": "Tables 1-7", "evidence": "One-decimal rates without a stated denominator."},
+    "f5": {"value": "yes", "reason": "explicit_linf_radius_all_results", "locator": "Section 4.1 Attack Settings", "evidence": "Maximum perturbation epsilon = 16/255 on [0, 1] pixels, T = 10."},
+    "f6": {"value": "unclear", "reason": "no_author_release_located", "locator": "Paper", "evidence": "No code link in the paper."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-25", "url": "https://arxiv.org/abs/2103.10609v1", "result": "Downloaded and hashed; the only repository linked is the NIPS-r3 defense; no author attack code is linked."}
+  ],
+  "bounds_checks": [
+    {"groups": ["normal_and_adv_trained_targets", "advanced_defenses"], "status": "clean_baseline_missing", "locator": "Tables 1-7; Figure 3", "reason": "No clean accuracy on the 1,000 images is reported."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit; coded consistently with ranks 5 and 21 for the bare misclassification-rate wording.",
+    "No execution."
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "rank": 78,
+  "paper_id": "47b4744162537f40572cdd723f8f37fb489a3e75",
+  "review_date": "2026-09-25",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all thirty-five pages of arXiv 2010.04055 (ICLR 2021 content): Sections 1-6, Tables 1-4, Figures 1-3, references and Appendices A-M (Shapley background, proofs, interaction tables 5 and 11, computational cost Table 6, leave-one-out evaluation (Appendix K), MI/SGM/VR+IR Tables 7-9, targeted Table 10, lambda sweeps Figures 8-9).",
+    "supplement": "Appendices are embedded in the arXiv PDF and read.",
+    "inventory_complete": true,
+    "applicability": "cross_model_classification_attack",
+    "excluded_results": "Interaction measurements (Tables 5, 11; Figure 2) and proofs are not transfer rates; white-box cells are excluded."
+  },
+  "sources": [
+    {"id": "arxiv_with_appendices", "url": "https://arxiv.org/pdf/2010.04055", "sha256": "b0bc73383d1aeb7ffbe4560062e76f38764925332fe0b6c6d921888212d648dc"}
+  ],
+  "result_groups": [
+    {"id": "loo_transferability_normal_targets", "locator": "Section 5 (p. 8); Tables 1, 2, 4; Figure 3; Appendix K; Tables 7-10; Figures 8-9", "population": "1,000 randomly selected ImageNet validation images; six single sources and an ensemble; normally trained targets; three random repetitions", "outcome": "Transferability = E_i[1[C(x_hat_i) != y_i]] over all N clean examples, where each example's step t* is chosen by leave-one-out success on the target over the other N-1 examples (Appendix K)", "f2": "no", "f3": "no", "evidence": "The average is explicitly over all N clean examples, with no clean-correct or source-success filter. The leave-one-out step selection uses target-model predictions on the other images; this is recorded as an evaluation design choice, not as population conditioning."},
+    {"id": "secured_targets_without_loo", "locator": "Table 3", "population": "Same images; attacks transferred to adversarially trained (secured) models; LOO not used", "outcome": "success rate (not separately defined)", "f2": "unclear", "f3": "unclear", "evidence": "The metric without LOO is not defined."},
+    {"id": "transfer_utility_correlation", "locator": "Section 3; Figure 1", "population": "50 random ImageNet validation images; ResNet-to-DenseNet and DenseNet-to-ResNet transfer", "outcome": "transfer utility (target logit margin) correlated with interaction", "f2": "unclear", "f3": "unclear", "evidence": "A continuous margin outcome; no population rule stated."}
+  ],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "separate_clean_values_not_located", "locator": "Section 5; Appendices", "evidence": "No clean accuracy is reported."},
+    "f2": {"value": "unclear", "reason": "unresolved_scope", "locator": "Appendix K; Table 3; Figure 1", "evidence": "The LOO scope includes all examples (no); the other scopes are unresolved."},
+    "f3": {"value": "unclear", "reason": "unresolved_scope", "locator": "Appendix K; Table 3", "evidence": "The LOO scope includes all examples (no); the other scopes are unresolved."},
+    "f4": {"value": "unclear", "reason": "averaged_rates_not_single_proportions", "locator": "Tables 1-4, 7-10", "evidence": "Values are means ± std over three repetitions."},
+    "f5": {"value": "yes", "reason": "explicit_linf_l2_radius_all_results", "locator": "Section 5 (p. 8)", "evidence": "L-infinity epsilon = 16/255 and L2 epsilon = 16/255 x sqrt(n) for all attacks."},
+    "f6": {"value": "unclear", "reason": "candidate_release_sufficiency_unverified", "locator": "Section 1 footnote", "evidence": "Code is linked (github.com/xherdan76/A-Unified-Approach-to-Interpreting-and-Boosting-Adversarial-Transferability); the sampled images and checkpoints were not verified. Not executed."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-25", "url": "https://github.com/xherdan76/A-Unified-Approach-to-Interpreting-and-Boosting-Adversarial-Transferability", "result": "Repository linked in the paper; not listed, cloned or executed."}
+  ],
+  "bounds_checks": [
+    {"groups": ["loo_transferability_normal_targets", "secured_targets_without_loo", "transfer_utility_correlation"], "status": "clean_baseline_missing", "locator": "Tables 1-4", "reason": "The LOO population is unconditional, but no clean error on the same 1,000 images is reported, and the target-informed step selection means the reported rate is not a fixed-attack transfer probability."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit. The target-informed leave-one-out step selection is recorded for the manuscript's discussion of evaluation choices; it is not described as an error.",
+    "No execution."
+  ]
+}
