@@ -651,46 +651,66 @@
       "rank": 51,
       "paper_id": "d4473a41c9f7b4095599bec14ea0a88e7041e737",
       "title": "Improving Adversarial Robustness of Ensembles with Diversity Training",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "candidate_population_match_unstated",
+      "artifact_review": "reviewed_no_author_release",
+      "notes": [
+        "reviews/51.json covers all ten arXiv v1 pages.",
+        "One defended-ensemble transfer scope (Table 2) with clean target accuracy beside attacked accuracy (field 1 yes); evaluation split and conditioning unstated. Explicit L-infinity epsilons.",
+        "No code located. Table 2 is a potential bound source if one shared test set can be confirmed."
+      ]
     },
     {
       "rank": 52,
       "paper_id": "f5014e34ed13191082cd20cc279ca4cc9adee84f",
       "title": "Stealing Neural Networks via Timing Side Channels",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_applicable_to_located_results",
+      "artifact_review": "reviewed_not_applicable",
+      "notes": [
+        "reviews/52.json covers all ten arXiv v4 pages.",
+        "Timing side-channel model extraction; no adversarial examples evaluated; all fields not applicable (as ranks 27, 36).",
+        "No code linked."
+      ]
     },
     {
       "rank": 53,
       "paper_id": "dde69b706a2f0a68bd6b8fb90c187a935c6a5c6a",
       "title": "Adversarial Attack and Defense on Point Sets",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "matched_baseline_source_conditioned_not_unconditional",
+      "artifact_review": "reviewed_no_author_release",
+      "notes": [
+        "reviews/53.json covers all seventeen arXiv v4 pages including Appendices A-E.",
+        "PC-Net transfer (Tables V-VI) is source-success conditioned by Eq. 6 and 100.0/0.00 diagonal arithmetic (group field 3 yes) and includes target-misclassified inputs (group field 2 no), with matched pre/post target accuracy (field 1 yes). MNIST cross-modal scopes unresolved. Chamfer budget.",
+        "No code located."
+      ]
     },
     {
       "rank": 54,
       "paper_id": "c97ffc7725daf68406ea73d1ee82f5d11f19f448",
       "title": "ColorFool: Semantic Adversarial Colorization",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_applicable_prediction_change_outcome",
+      "artifact_review": "reviewed_release_lacks_transfer_evaluation",
+      "notes": [
+        "reviews/54.json covers arXiv v2 and the CVPR open-access version (identical 212 values).",
+        "Success rate over the total number of images as prediction change (fields 2/3 explicit no, as rank 28); clean accuracies printed (field 1 yes); unrestricted colour attack (field 5 no).",
+        "Release covers generation only."
+      ]
     },
     {
       "rank": 55,
       "paper_id": "fda5f4facce9d5567c090d7ac733158e0fe93dc7",
       "title": "DEEPSEC: A Uniform Platform for Security Analysis of Deep Learning Model",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_applicable_source_success_conditioned",
+      "artifact_review": "reviewed_release_lacks_transfer_models",
+      "notes": [
+        "reviews/55.json covers the eighteen-page author-hosted S&P 2019 PDF with Appendices VIII-XI.",
+        "Case Study 1 transfers only source-misclassified AEs from source-correct samples (field 3 yes); per-row AE counts make counts a reconstruction candidate pending full verification; mixed L-infinity and minimum-norm attacks.",
+        "Official platform code lacks case-study models/script."
+      ]
     },
     {
       "rank": 56,

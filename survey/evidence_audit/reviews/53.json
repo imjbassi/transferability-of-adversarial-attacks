@@ -1,0 +1,41 @@
+{
+  "rank": 53,
+  "paper_id": "dde69b706a2f0a68bd6b8fb90c187a935c6a5c6a",
+  "review_date": "2026-09-25",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all seventeen pages of arXiv 1902.10899v4 (31 May 2021): Sections I-VIII, Tables I-VI, Figures 1-6, references and Appendices A-E (proofs, training details for all models, rotation attack, defense Table A1, visualisations). The corpus lists only the arXiv record.",
+    "supplement": "Appendices A-E are embedded in the arXiv PDF and read; none adds a transfer result.",
+    "inventory_complete": true,
+    "applicability": "cross_model_classification_attack_point_cloud",
+    "excluded_results": "Table I, Figure 3, Figure 5 and Table III are white-box attacks. Tables II, IV and A1 and Figure 4 evaluate the detection defense. The diagonal cells of Tables V-VI are white-box. The Section VII rotation attack is white-box."
+  },
+  "sources": [
+    {"id": "arxiv_v4_with_appendices", "url": "https://arxiv.org/pdf/1902.10899v4", "sha256": "224e47c81591a522c54865991481f78b433cacc2cb79436a78715e5c41d55afe"}
+  ],
+  "result_groups": [
+    {"id": "pcnet_to_pcnet_pg_mpg", "locator": "Section III-A Eq. 6; Section VI-A; Tables V-VI (p. 9)", "population": "ModelNet40 test point clouds (2,468 in the official split) attacked by PG or MPG at Chamfer D_C = 0.03 on PointNet, PointNet++ or DGCNN, retained as adversarial examples of the source, and evaluated on the other two networks", "outcome": "target pre-attacking / post-attacking accuracy on the transferred set", "f2": "no", "f3": "yes", "evidence": "Eq. 6 defines the adversarial set B as examples the source classifies correctly and misclassifies after attack. The source diagonal cells read 100.0 / 0.00, whereas white-box PG at D_C = 0.03 leaves PointNet at 39.38% accuracy on the full test set (Table I). The arithmetic confirms that transfer is evaluated only on source-correct, source-successful examples. Target pre-attack accuracies below 100% (e.g., 94.63, 80.30) show the set is not restricted to target-clean-correct examples."},
+    {"id": "pointnet_to_cnn_mnist", "locator": "Section VI-B(a) (p. 9); Figure 6 left", "population": "MNIST point clouds attacked by PG on PointNet (source post-attack accuracy 21%), converted to images and fed to a LeNet-like CNN", "outcome": "CNN accuracy drop from 99.1% to 60.8%", "f2": "unclear", "f3": "unclear", "evidence": "It is not stated whether the converted set contains all attacked inputs or only source-successful ones, or whether the 99.1% clean accuracy is measured on the same inputs."},
+    {"id": "cnn_to_pointnet_mnist", "locator": "Section VI-B(b); Figure 6 right", "population": "MNIST adversarial images from the CNN at several attack intensities, converted to point clouds and fed to PointNet", "outcome": "PointNet accuracy (graphical; 98.9% in the worst case)", "f2": "unclear", "f3": "unclear", "evidence": "Population rule not stated; graphical."}
+  ],
+  "judgments": {
+    "f1": {"value": "yes", "reason": "separate_clean_values_on_transfer_populations", "locator": "Tables V-VI pre-attacking accuracies; Section VI-B; Table I text (89.20%)", "evidence": "Every PC-Net transfer cell prints the target's clean accuracy on the same transferred set, and the MNIST scopes print clean accuracies for the CNN (99.1%) and PointNet (99.2%)."},
+    "f2": {"value": "unclear", "reason": "unresolved_scope", "locator": "Tables V-VI; Section VI-B", "evidence": "The PC-Net scope explicitly includes target-misclassified examples (no); the MNIST scopes are unresolved."},
+    "f3": {"value": "unclear", "reason": "unresolved_scope", "locator": "Eq. 6; Tables I, V-VI; Section VI-B", "evidence": "The PC-Net scope is source-success conditioned (yes, by definition and arithmetic); the MNIST scopes are unresolved. Positive conditioning evidence."},
+    "f4": {"value": "unclear", "reason": "denominator_unstated", "locator": "Tables V-VI", "evidence": "The size of each source's adversarial set is not stated, so the two- and three-decimal rates cannot be converted to counts."},
+    "f5": {"value": "unclear", "reason": "non_lp_chamfer_budget_and_unstated_scope", "locator": "Eqs. 4, 8; Tables V-VI captions; Section VI-B", "evidence": "The PC-Net transfer budget is an explicit Chamfer pseudo-distance (D_C = 0.03), a non-L-infinity/L2 geometry that is not converted. The PointNet-to-CNN attack budget is not stated."},
+    "f6": {"value": "unclear", "reason": "no_author_release_located", "locator": "artifact_checks below", "evidence": "The paper links no code; the models were trained with official PointNet/PointNet++/DGCNN code, but the attack and transfer evaluation are not released."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-25", "url": "https://api.github.com/search/repositories?q=adversarial%20attack%20defense%20point%20sets", "result": "Zero results; the paper links no repository."}
+  ],
+  "bounds_checks": [
+    {"groups": ["pcnet_to_pcnet_pg_mpg"], "status": "matched_clean_baseline_source_conditioned_population", "locator": "Tables V-VI", "reason": "Pre- and post-attack target accuracies are on the same transferred set, but that set is restricted to source-successful examples, so max(0, pre - post) is a bound for that conditioned population, not the unconditional misclassification probability. Not extracted as an unconditional bound; recorded for the manuscript as positive matched-baseline reporting."},
+    {"groups": ["pointnet_to_cnn_mnist", "cnn_to_pointnet_mnist"], "status": "population_alignment_unresolved", "locator": "Section VI-B", "reason": "Clean and attacked populations are not shown to match."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit. The PC-Net field 3 'yes' rests on Eq. 6's definition of adversarial examples together with the 100.0/0.00 diagonal arithmetic, not on an explicit filtering sentence; an independent recoder may prefer unclear.",
+    "No execution."
+  ]
+}

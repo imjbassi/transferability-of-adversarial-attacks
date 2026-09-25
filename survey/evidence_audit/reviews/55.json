@@ -1,0 +1,39 @@
+{
+  "rank": 55,
+  "paper_id": "fda5f4facce9d5567c090d7ac733158e0fe93dc7",
+  "review_date": "2026-09-25",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read the eighteen-page author-hosted PDF of the IEEE S&P 2019 paper (NESA lab, Zhejiang University): Sections I-VII (attack and defense utility metrics, evaluations, Case Study 1 on transferability, Case Study 2 on defense ensembles), Tables I-IX, and Appendices VIII-XI (model architectures, parameter settings, MNIST supplementary Tables XIV-XVIII). The IEEE Xplore version of record was not accessed.",
+    "supplement": "Appendices VIII-XI are embedded in the PDF and read, including the MNIST transferability Table XVII.",
+    "inventory_complete": true,
+    "applicability": "cross_model_classification_attack",
+    "excluded_results": "Table III/XIV attack utility (white-box on the original model), defense utility and white-box defense-evaluation tables, detection results, and Case Study 2 (ensembles of defenses attacked with AEs generated on the original model; population and conditioning follow the Section IV setup and are not cross-model transfer rates of the form reported in Case Study 1). ACAC confidence columns are not misclassification outcomes."
+  },
+  "sources": [
+    {"id": "author_hosted_pdf", "url": "https://nesa.zju.edu.cn/download/DEEPSEC%20A%20Uniform%20Platform%20for%20Security%20Analysis%20of%20Deep%20Learning%20Model.pdf", "sha256": "7c4ea26d8b80afa035025d36c34945c6fb919b32834b3ca7538a4517beb264c5"}
+  ],
+  "result_groups": [
+    {"id": "case_study_transferability", "locator": "Section IV-A Evaluation methodology (p. 6); Section V-A (pp. 11-12); Table VIII (CIFAR-10); Appendix XI Table XVII (MNIST)", "population": "1,000 test examples sampled from those correctly predicted by the original model; AEs from 16 untargeted and targeted attacks; only 'the misclassified AEs generated in Section IV-A' (source-successful; count per attack in the '# of AEs' column) are classified by Models 1-3 (re-initialised copy, slightly different architecture, different architecture)", "outcome": "MR (untargeted: misclassified away from ground truth; targeted: classified as the target class)", "f2": "unclear", "f3": "yes", "evidence": "The transferred set is explicitly restricted to source-misclassified AEs from source-clean-correct examples (original-model MR is 100.0% in every row, with per-attack AE counts such as 897 or 134). No restriction to examples Models 1-3 classify correctly is stated."}
+  ],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "partial_separate_clean_values", "locator": "Section IV-A; Section V-A; Appendix VIII-B", "evidence": "Clean test accuracy of the original (source) models is reported (99.27% MNIST, 85.95% CIFAR-10); Models 1-3 are said to have 'comparable accuracy' without numbers."},
+    "f2": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section V-A1", "evidence": "No target-clean-correct restriction or explicit inclusion statement."},
+    "f3": {"value": "yes", "reason": "all_scopes_explicit_yes", "locator": "Section V-A1 (p. 11); Table VIII", "evidence": "'we employ the three trained models to classify the misclassified AEs generated in Section IV-A'. Positive conditioning evidence."},
+    "f4": {"value": "unclear", "reason": "count_reconstruction_candidate_not_verified_all_cells", "locator": "Tables VIII, XVII", "evidence": "Each row states its AE count (at most 1,000) with one-decimal MR. Ten sampled CIFAR-10 cells (e.g., 88.2% of 897 = 791; 3.7% of 134 = 5) each give a unique count with survey/count_reconstruction.py. Every cell of both tables has not yet been verified, so field 4 stays unclear pending full extraction."},
+    "f5": {"value": "unclear", "reason": "mixed_explicit_linf_radius_and_minimum_norm_attacks", "locator": "Table VIII Objective column; Appendix IX-A Table XIII", "evidence": "L-infinity attacks state epsilon (e.g., 0.1/0.2 on CIFAR-10, 0.3/0.5 on MNIST). DeepFool, OM, CW2 and the L0 attacks are minimum-norm or L0 attacks without an L-infinity/L2 radius."},
+    "f6": {"value": "unclear", "reason": "release_lacks_transfer_models_and_script", "locator": "artifact_checks below", "evidence": "The official DEEPSEC repository implements attacks, defenses and evaluations and says how to regenerate models, clean samples and AEs. It contains no script or checkpoints for the case-study Models 1-3; not executed."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-25", "url": "https://github.com/ryderling/DEEPSEC/tree/2c67afac0ae966767b6712a51db85f04f4f5c565", "result": "Listed via the GitHub API (101 files, head 21 May 2019): RawModels/, CleanDatasets/, Attacks/, AdversarialExampleDatasets/ (README only), Defenses/, DefenseEnhancedModels/, Evaluations/ (AttackEvaluations.py, DefenseEvaluations.py, SecurityEvaluation.py). No transferability case-study script or Model 1-3 files located. Not executed."},
+    {"date": "2026-09-25", "url": "https://nesa.zju.edu.cn/download/DEEPSEC%20A%20Uniform%20Platform%20for%20Security%20Analysis%20of%20Deep%20Learning%20Model.pdf", "result": "Author-hosted PDF located by web search and hashed; used because no arXiv version is listed in the corpus."}
+  ],
+  "bounds_checks": [
+    {"groups": ["case_study_transferability"], "status": "source_success_conditioned_population", "locator": "Section V-A1", "reason": "Rates are over source-successful AEs from source-clean-correct examples, and target clean accuracies are not printed, so no unconditional bound applies."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit. Field 4 is a strong reconstruction candidate pending cell-by-cell verification of Tables VIII and XVII.",
+    "No execution."
+  ]
+}
