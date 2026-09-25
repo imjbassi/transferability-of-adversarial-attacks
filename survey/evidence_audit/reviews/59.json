@@ -1,0 +1,40 @@
+{
+  "rank": 59,
+  "paper_id": "d73561ab8318ce343f5cb15f96c74f210b6b24fa",
+  "review_date": "2026-09-25",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all sixteen pages of arXiv 2004.15015 (downloaded 25 September 2026): Sections 1-7, Tables 1-5, Figures 1-3, references and Appendices A-G (implementation, qualitative Table 6, cost calculation, suffix-dropper sentences, related work, angular-deviation Figure 4, API screenshots Figures 5-11). The EMNLP 2020 anthology version was not retrieved.",
+    "supplement": "Appendices A-G are embedded in the arXiv PDF and read; they contain no additional transfer rates.",
+    "inventory_complete": true,
+    "applicability": "other_attack_outcome_machine_translation",
+    "excluded_results": "Tables 1-2 and Figure 3 (imitation fidelity BLEU and defended BLEU) and Table 5 (defense candidates) are model-stealing or defense outcomes. Table 3 and Appendix G screenshots are qualitative examples. The imitation-model columns of Table 4 are white-box."
+  },
+  "sources": [
+    {"id": "arxiv_with_appendices", "url": "https://arxiv.org/pdf/2004.15015", "sha256": "313f2a1c83596562c4428993a24d41bfa5e16302b828200428225333d934c575"}
+  ],
+  "result_groups": [
+    {"id": "imitation_to_production_flips_nonsense", "locator": "Sections 4.4-4.5; Table 4 (p. 7); Transformer-Big baseline paragraph", "population": "200 WMT newstest2013 examples containing a token with a German antonym; targeted-flip and malicious-nonsense attacks on imitation models of Google, Bing and Systran (and a WMT14-trained Transformer Big for the Google baseline)", "outcome": "transfer rate: 'the percent of successful attacks which are also successful on the production MT systems'", "f2": "unclear", "f3": "yes", "evidence": "The transfer rate is explicitly conditioned on attacks successful on the imitation model. A clean-correct event is not defined for translation outputs."},
+    {"id": "universal_triggers_production", "locator": "Section 4.5 (p. 7)", "population": "The same 200 examples (Systran untargeted trigger) and 100 constructed prefix/suffix sentences (Bing suffix dropper, Appendix D)", "outcome": "BLEU of the triggered output against the original output (5.46 versus 62.2/58.8 for random tokens); 76/100 dropped suffixes", "f2": "unclear", "f3": "unclear", "evidence": "Universal phrases are applied to all inputs; source success per input is not defined for these outcomes."},
+    {"id": "defense_inhibits_transfer", "locator": "Section 5 'Adversarial Example Transfer' (p. 9)", "population": "400 IWSLT validation examples; malicious-nonsense attacks on imitation models trained against defended or undefended victims, plus a two-transformer baseline", "outcome": "transfer rate (38% undefended; 32.5/29.5/27.0% defended; 11.5% baseline)", "f2": "unclear", "f3": "yes", "evidence": "The same transfer-rate definition (percent of successful attacks that also succeed on the victim) is used."}
+  ],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "no_clean_accuracy_defined_for_outcome", "locator": "Tables 1-2", "evidence": "Clean BLEU of victim and imitation models is reported, which is positive baseline evidence, but a clean classification accuracy is not defined for token-flip or nonsense outcomes."},
+    "f2": {"value": "unclear", "reason": "unresolved_scope", "locator": "Sections 4-5", "evidence": "No clean-correct analogue exists for these outcomes."},
+    "f3": {"value": "unclear", "reason": "unresolved_scope", "locator": "Table 4 caption; Section 5", "evidence": "Two scopes are explicitly source-success conditioned (yes); the universal-trigger scope is unresolved."},
+    "f4": {"value": "unclear", "reason": "partial_scope_counts_only", "locator": "Table 4; Section 4.5; Section 5", "evidence": "The dropper result is an explicit count (76/100). Table 4 transfer rates are over unstated numbers of successful attacks (derivable only approximately from % Inputs x 200)."},
+    "f5": {"value": "no", "reason": "explicit_discrete_token_attack_not_lp", "locator": "Sections 4.2-4.3", "evidence": "Token replacement or appended phrases, reported as the percentage of changed tokens or phrase length; no L-infinity/L2 radius applies to discrete text. Reported in the non-image stratum."},
+    "f6": {"value": "unclear", "reason": "hosted_targets_unverifiable", "locator": "artifact_checks below", "evidence": "The linked fairseq-based attack code is released, but the targets are production APIs as of April 2020 and cannot be recomputed. Not executed."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-25", "url": "https://github.com/Eric-Wallace/adversarial-mt/tree/1e181f9550e6e4f3ed96af6e1adfd42a23374902", "result": "Linked in the paper. Listed via the GitHub API (386 files, head 1 May 2020): a fairseq fork with all_attack_utils.py. Imitation-model checkpoints and API outputs were not located. Not executed."}
+  ],
+  "bounds_checks": [
+    {"groups": ["imitation_to_production_flips_nonsense", "universal_triggers_production", "defense_inhibits_transfer"], "status": "different_outcome", "locator": "Table 4; Sections 4.5, 5", "reason": "Translation flips, nonsense preservation and BLEU are not misclassification probabilities."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit. Positive source-success conditioning is recorded for the flip/nonsense scopes.",
+    "No execution."
+  ]
+}

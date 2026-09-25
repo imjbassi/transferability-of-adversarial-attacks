@@ -1,0 +1,40 @@
+{
+  "rank": 60,
+  "paper_id": "8e98bef0a7868f05ced457b9433d674ab4adf218",
+  "review_date": "2026-09-25",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all fourteen pages of arXiv 2308.10299v3 (25 March 2024): Sections 1-5, Tables 1-4, Figures 1-5, references and Section 6 Appendix (Tables 5-7 for Inc-v4, IncRes-v2 and Res-101 sources; heatmap figures). The eleven-page CVPR 2024 open-access version was also retrieved; every one-decimal value in it also occurs in arXiv v3, which adds the appendix tables.",
+    "supplement": "The appendix is embedded in arXiv v3 and read; the CVPR supplement was not retrieved separately.",
+    "inventory_complete": true,
+    "applicability": "cross_model_classification_attack",
+    "excluded_results": "White-box cells (source model columns) of Tables 1-3 and 5-7. Figures 1-2 and the appendix heatmaps are qualitative. The ~86.8% figure in Section 3 is the clean accuracy of Inc-v3 on transformed (not adversarial) images, a method diagnostic."
+  },
+  "sources": [
+    {"id": "arxiv_v3_with_appendix", "url": "https://arxiv.org/pdf/2308.10299v3", "sha256": "c61551db9dc82705bcef8c331becefe63e633de1707f3158fbaee8db8ca5d215"},
+    {"id": "cvpr_open_access", "url": "https://openaccess.thecvf.com/content/CVPR2024/papers/Wang_Boosting_Adversarial_Transferability_by_Block_Shuffle_and_Rotation_CVPR_2024_paper.pdf", "sha256": "ddf61f19b022c9dc4d4993460db4d988762fddf13a119d262fbed54f7d6899ea"}
+  ],
+  "result_groups": [
+    {"id": "normal_and_adv_trained_victims", "locator": "Section 4.1 (p. 5); Tables 1-3, 5-7; Figures 3-4", "population": "1,000 ImageNet validation images from 1,000 categories; single-model (Inc-v3, Inc-v4, IncRes-v2, Res-101) and ensemble sources; seven victims including three ensemble-adversarially trained models", "outcome": "attack success rate: 'the misclassification rates of the victim model on the adversarial examples'", "f2": "unclear", "f3": "unclear", "evidence": "No clean-correct filter or source-success rule is stated; the rate definition is a bare outcome definition."},
+    {"id": "defense_victims", "locator": "Section 4.5; Table 4", "population": "Same images; ensemble-source attacks against HGD, R&P, NIPS-r3, Bit-RD, JPEG, FD, RS, NRP", "outcome": "attack success rate", "f2": "unclear", "f3": "unclear", "evidence": "Same undefined population rule."}
+  ],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "separate_clean_values_not_located", "locator": "Section 4", "evidence": "No clean accuracy of any victim is reported."},
+    "f2": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 4.1", "evidence": "No clean-correct restriction or explicit inclusion statement."},
+    "f3": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 4.2", "evidence": "No source-success restriction or explicit inclusion statement."},
+    "f4": {"value": "unclear", "reason": "denominator_unstated", "locator": "Tables 1-7", "evidence": "One-decimal rates; the 1,000-image set is described, but the rate denominator is not stated, and averages are included."},
+    "f5": {"value": "yes", "reason": "explicit_linf_radius_all_results", "locator": "Section 4.1 Parameters Settings", "evidence": "MI-FGSM-based attacks with epsilon = 16, T = 10 for all experiments."},
+    "f6": {"value": "unclear", "reason": "candidate_release_sufficiency_unverified", "locator": "artifact_checks below", "evidence": "The official repository provides mi_bsr.py, TF-slim model definitions and simple_eval.py; images and checkpoints must be obtained separately. Not executed."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-25", "url": "https://github.com/Trustworthy-AI-Group/BSR/tree/6ec37d9ef176cb962f6cc062733bf8dc118627b6", "result": "Linked in the paper. Listed via the GitHub API (head 28 February 2024): mi_bsr.py, simple_eval.py, nets/ (TF-slim architectures). No image list or checkpoints in the tree. Not executed."}
+  ],
+  "bounds_checks": [
+    {"groups": ["normal_and_adv_trained_victims", "defense_victims"], "status": "clean_baseline_missing", "locator": "Tables 1-7", "reason": "No clean accuracy on the 1,000 images is reported."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit; coded consistently with ranks 42 and 21 (1,000-image ImageNet-compatible protocol without a stated population rule).",
+    "No execution."
+  ]
+}

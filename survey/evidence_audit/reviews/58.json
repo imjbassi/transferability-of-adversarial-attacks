@@ -1,0 +1,40 @@
+{
+  "rank": 58,
+  "paper_id": "bcac1b00badd7c8830e10ba4eb813ad79a3222b5",
+  "review_date": "2026-09-25",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all sixteen pages of arXiv 2012.03528v1 (NeurIPS 2020): Sections 1-6, Tables 1-4, Figures 1-4 and references, plus the appended Supplementary Material (Sections A-F: frozen-h fine-tuning Figures 5-6, benign accuracy Table 5, ILA re-interpretation, FGSM Tables 6-7, DI2-FGSM/PGD Tables 8-9, other-epsilon Tables 10-13). The NeurIPS proceedings PDF was not retrieved separately.",
+    "supplement": "The supplementary material is appended to the arXiv PDF and read.",
+    "inventory_complete": true,
+    "applicability": "cross_model_classification_attack",
+    "excluded_results": "White-box source columns (e.g., VGG-19* in Table 2) and the test-loss curves (supplement Figure 6) are excluded."
+  },
+  "sources": [
+    {"id": "arxiv_v1_with_supplement", "url": "https://arxiv.org/pdf/2012.03528v1", "sha256": "23cb353398eee911f821a4bf040a4288ab57aadd6c5b7c3a6bf7d3164b4b6d98"}
+  ],
+  "result_groups": [
+    {"id": "normal_victims_5000", "locator": "Section 5.1 (pp. 5-6); Section 3.1 Figures 1-2; Tables 1-4; Figure 4; supplement Figure 5, Tables 6-13", "population": "5,000 test instances per dataset 'that could be classified correctly by all the victim models'; VGG-19 (CIFAR-10) and ResNet-50/Inception v3 (ImageNet) sources; normally trained victims (WRN, ResNeXt, DenseNet, PyramidNet, GDAS; Inception v3, DenseNet, MobileNet v2, SENet, PNASNet)", "outcome": "success (transfer) rate of untargeted L-infinity attacks", "f2": "yes", "f3": "unclear", "evidence": "The sample is explicitly restricted to instances every victim classifies correctly, and all competitors are evaluated on the same 5,000 instances. No source-success rule is stated."},
+    {"id": "robust_victims", "locator": "Section 5.2 last paragraph (p. 7)", "population": "Examples from the ResNet-50 source against an ensemble-adversarially-trained Inception and a PGD-trained robust ResNet (MadryLab)", "outcome": "success rate / 'victim error rate' at epsilon 0.1, 0.05, 0.03 (in-text values)", "f2": "unclear", "f3": "unclear", "evidence": "It is not stated whether these robust models were part of the correctness filter; the robust ResNet result is described as an error rate."}
+  ],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "partial_separate_clean_values", "locator": "Supplement Table 5", "evidence": "Benign test accuracy is reported for all normally trained source and victim models (CIFAR-10 test set; 50,000 ImageNet validation images), but not for the two robust victims."},
+    "f2": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 5.1; Section 5.2", "evidence": "The main scope is explicitly clean-correct for all victims (yes); the robust-victim scope is unresolved. Positive conditioning evidence."},
+    "f3": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 5", "evidence": "No source-success rule or explicit inclusion statement in either scope."},
+    "f4": {"value": "unclear", "reason": "partial_scope_counts_only", "locator": "Tables 2-4, 6-13", "evidence": "Per-victim two-decimal rates over the stated 5,000 instances have 0.02% resolution and are candidates for unique count reconstruction; they were not extracted cell by cell here. Average columns and the robust-victim scope do not identify counts."},
+    "f5": {"value": "yes", "reason": "explicit_linf_radius_all_results", "locator": "Tables 2-4, 6-13 captions; Section 5.2", "evidence": "Untargeted L-infinity attacks with epsilon in {0.1, 0.05, 0.03} (and 16/255, 8/255, 4/255 in supplement F)."},
+    "f6": {"value": "unclear", "reason": "candidate_release_selection_lists_not_released", "locator": "artifact_checks below", "evidence": "The official repository releases attack and test scripts and links a Drive folder of pretrained models. The README asks users to create selected_cifar10.csv and selected_imagenet.csv themselves, so the exact 5,000-instance samples are not released. Not executed."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-25", "url": "https://github.com/qizhangli/linbp-attack/tree/7e1702f55c62c399146e22afa868acf5e81cdacd", "result": "Linked in the paper. Listed via the GitHub API (74 files, head 10 February 2023): attack/cifar10/attack_vgg19.py and test.py, attack/imagenet/attack_resnet50.py and test.py, model definitions (including GDAS); README links pretrained models on Drive and instructs users to write their own selection CSVs. Not executed."}
+  ],
+  "bounds_checks": [
+    {"groups": ["normal_victims_5000"], "status": "not_applicable_clean_correct_conditioned_population", "locator": "Section 5.1", "reason": "Rates are over instances all victims classify correctly, so no unconditional matched bound applies."},
+    {"groups": ["robust_victims"], "status": "clean_baseline_missing", "locator": "Section 5.2", "reason": "No clean accuracy is given for the robust victims on the evaluated inputs."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit. Count reconstruction over 5,000 is feasible for per-victim cells but was not performed.",
+    "No execution."
+  ]
+}
