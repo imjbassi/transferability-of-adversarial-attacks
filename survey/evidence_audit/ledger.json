@@ -508,55 +508,79 @@
       "rank": 40,
       "paper_id": "d8f64187b447d1b64f69f541dbbaec71bd79d205",
       "title": "ActiveThief: Model Extraction Using Active Learning and Unannotated Public Data",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_eligible_clean_baseline_missing",
+      "artifact_review": "reviewed_release_lacks_transfer_evaluation",
+      "notes": [
+        "reviews/40.json covers the eight-page AAAI version of record; the cited supplement URL no longer resolves and has no Wayback capture.",
+        "One FGSM substitute-to-secret transfer scope (Table 3); population, clean baseline and denominator unstated in the main text (fields 1-4 unclear). FGSM epsilon 0.25 explicit.",
+        "Official repository covers extraction only, with no FGSM/transfer code or checkpoints."
+      ]
     },
     {
       "rank": 41,
       "paper_id": "54c15364b5873e39257c221112fdf22299ed9e8a",
       "title": "Towards Large Yet Imperceptible Adversarial Image Perturbations With Perceptual Color Distance",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_applicable_clean_correct_conditioned",
+      "artifact_review": "reviewed_release_evaluator_differs_from_described_protocol",
+      "notes": [
+        "reviews/41.json covers arXiv v2 with appendix and the CVPR open-access version (identical Table 3).",
+        "One transfer scope on 767 images all four models classify correctly (field 2 yes); source-success rule unstated; three 2.4% cells are inconsistent with a 767 denominator. Minimum-perturbation attacks without a radius (field 5 explicit no).",
+        "Official notebook's transfer cell uses a prediction-agreement mask and passes clean inputs to two targets as pinned; not executed."
+      ]
     },
     {
       "rank": 42,
       "paper_id": "29fbf409aaad5e3a0f3468c44637a140dc2c545b",
       "title": "Stochastic Variance Reduced Ensemble Adversarial Attack for Boosting the Adversarial Transferability",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_eligible_clean_baseline_missing",
+      "artifact_review": "reviewed_partial_release_example_only",
+      "notes": [
+        "reviews/42.json covers arXiv v2 with appendix and the CVPR open-access version (identical main-table values).",
+        "Three scopes (hold-out normal, adversarially trained, advanced defenses); success rate undefined, fields 1-4 unclear; SVRE values are five-seed averages. Explicit L-infinity 16/255.",
+        "Official release is an example subset; evaluator divides label mismatches by a fixed 1,000; defenses not released. Not executed."
+      ]
     },
     {
       "rank": 43,
       "paper_id": "6be44364db3a46ab5fcf8172910650b210cc5c39",
       "title": "Black-box Adversarial Attacks on Video Recognition Models",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_applicable_to_located_results",
+      "artifact_review": "reviewed_not_applicable",
+      "notes": [
+        "reviews/43.json covers all ten arXiv v2 pages; V-BAD uses image-model transfer priors inside a score-based query attack on the video target.",
+        "No zero-query transfer rate; all fields not applicable (boundary consistent with rank 19). Video-model test accuracies and L-infinity 0.05 recorded as setup evidence.",
+        "Author-named repository found by search, not linked; not evaluated as a transfer artifact."
+      ]
     },
     {
       "rank": 44,
       "paper_id": "ccc39584c2bbabc190aff1e7fce888590633850f",
       "title": "On Success and Simplicity: A Second Look at Transferable Targeted Attacks",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_eligible_targeted_or_conditioned",
+      "artifact_review": "candidate_release_sufficiency_unverified",
+      "notes": [
+        "reviews/44.json covers all seventeen arXiv v4 pages including Appendices A-F; six transfer scopes (single-model, ensemble, low-ranked targets, Google Cloud Vision, TTP comparison, unbounded FDA comparison).",
+        "Google Cloud Vision scope explicitly uses 100 API-clean-correct images (group field 2 yes); other scopes unresolved. Explicit L-infinity 16/8 plus an explicitly unbounded comparison (field 5 unclear, mixed).",
+        "Official release with images and per-scenario evaluators on public models is a recomputation candidate for model-to-model scopes; not executed."
+      ]
     },
     {
       "rank": 45,
       "paper_id": "e1be974b7e1e7a381719d5c250ced83f3a6b96ee",
       "title": "Disrupting Deepfakes: Adversarial Attacks Against Conditional Image Translation Networks and Facial Manipulation Systems",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_applicable_different_outcome",
+      "artifact_review": "reviewed_code_release_unverified",
+      "notes": [
+        "reviews/45.json covers all sixteen arXiv v3 pages; the Springer version of record was not retrieved.",
+        "Two other-outcome scopes on the same generator (class-transferable disruption; gray-box blur evasion); no cross-model transfer. Fields 1-4 unclear by task mapping; blur-scope budget unstated.",
+        "Official attack code released; checkpoints upstream, sampled images unlisted. Not executed."
+      ]
     },
     {
       "rank": 46,

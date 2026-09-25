@@ -1,0 +1,39 @@
+{
+  "rank": 45,
+  "paper_id": "e1be974b7e1e7a381719d5c250ced83f3a6b96ee",
+  "review_date": "2026-09-25",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all sixteen pages of arXiv 2003.01279v3 (27 April 2020): Sections 1-5, Tables 1-6, Figures 1-7 and references. The ECCV Workshops version of record (Springer, DOI 10.1007/978-3-030-66823-5_14) was not retrieved.",
+    "supplement": "No appendix or supplement is included or referenced.",
+    "inventory_complete": true,
+    "applicability": "other_attack_outcome_image_translation_disruption",
+    "excluded_results": "Tables 1-3 and 6 are white-box disruptions of the attacked generator, including white-box attacks on adversarially trained and blur-defended StarGAN (Table 6). Table 5 (identity objective) reports mean distances without a disruption rate. Figures 1-3, 5 and 7 are qualitative. No experiment transfers a disruption between different generator models."
+  },
+  "sources": [
+    {"id": "arxiv_v3", "url": "https://arxiv.org/pdf/2003.01279v3", "sha256": "40eef9526984ab3155c13e8a173ff9ca694d192a0e16382d9aeb16ed8fc30204"}
+  ],
+  "result_groups": [
+    {"id": "class_transferable_disruption", "locator": "Section 4.2; Table 4 (p. 12); Figure 4", "population": "GANimation on 50 random CelebA images x 80 action units (4,000 disruptions); disruptions computed for an incorrect conditioning class, iteratively or jointly over classes, and evaluated on the generator under other conditioning classes", "outcome": "% disrupted: share of outputs with L2 distance >= 0.05 from the undisrupted output G(x, c)", "f2": "unclear", "f3": "unclear", "evidence": "The same generator is used; transfer is across conditioning classes. A clean-correct event is not defined for a translation output, and no source-success rule is stated."},
+    {"id": "gray_box_blur_evasion", "locator": "Section 4.4; Figure 6 (p. 14)", "population": "StarGAN test images; disruptions computed without knowledge of the deployed blur (naive, spread-spectrum, EoT) and evaluated on the generator behind Gaussian or box blur of varying magnitude", "outcome": "proportion of images disrupted (L2 >= 0.05)", "f2": "unclear", "f3": "unclear", "evidence": "Graphical proportions; the evaluated system differs from the attacked one only by an unknown preprocessing step. No population rule stated."}
+  ],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "no_clean_accuracy_defined_for_outcome", "locator": "Section 4.1; Table 5 'No Disruption' row", "evidence": "Disruption is measured against the undisrupted output itself, so a clean accuracy is not defined. Table 5 includes a no-disruption baseline for the identity objective."},
+    "f2": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 4", "evidence": "No clean-correct analogue is defined for either scope."},
+    "f3": {"value": "unclear", "reason": "unresolved_scope", "locator": "Sections 4.2, 4.4", "evidence": "Neither scope states whether disruptions that fail on the attacked configuration are retained."},
+    "f4": {"value": "unclear", "reason": "one_decimal_rates_over_large_denominator_or_graphical", "locator": "Table 4; Figure 6", "evidence": "One-decimal percentages over 4,000 disruptions do not identify unique counts; Figure 6 is graphical."},
+    "f5": {"value": "unclear", "reason": "budget_not_stated_for_all_scopes", "locator": "Sections 3.1-3.4, 4.2, 4.4", "evidence": "L-infinity epsilon = 0.05 is explicit for class-transferable disruptions (80 PGD iterations); the budget used for the Figure 6 blur-evasion disruptions is not stated (Eq. 14 uses epsilon as the step size)."},
+    "f6": {"value": "unclear", "reason": "code_release_transfer_configuration_unverified", "locator": "artifact_checks below", "evidence": "The official repository contains attack code for all four architectures, including class-transferable and spread-spectrum attacks. Pretrained checkpoints come from upstream implementations and the 50 random images are not listed. Not executed."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-25", "url": "https://github.com/natanielruiz/disrupting-deepfakes/tree/c5b4373a54693139ae4c408b1fcca2de745355e0", "result": "Linked in the paper. Listed via the GitHub API (257 files, head 7 May 2020): cyclegan/, ganimation/, pix2pixHD and StarGAN code with attacks.py modules; README describes FGSM/I-FGSM/PGD, class-transferable attacks, adversarial training and spread-spectrum evasion. Not executed."}
+  ],
+  "bounds_checks": [
+    {"groups": ["class_transferable_disruption", "gray_box_blur_evasion"], "status": "different_outcome", "locator": "Table 4; Figure 6", "reason": "Output-distortion thresholds on an image translation network are not a misclassification probability."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit. Transfer across conditioning classes and unknown blur on the same generator is retained as an in-scope 'other attack outcome', as for rank 35. An independent recoder could treat the paper as having no cross-model evaluation.",
+    "No execution."
+  ]
+}

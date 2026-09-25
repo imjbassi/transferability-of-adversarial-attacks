@@ -1,0 +1,39 @@
+{
+  "rank": 41,
+  "paper_id": "54c15364b5873e39257c221112fdf22299ed9e8a",
+  "review_date": "2026-09-25",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all eleven pages of arXiv 1911.02466v2 (Sections 1-6, Algorithm 1, Tables 1-3, Figures 1-5, references, appendix Tables 4-5) and the ten-page CVPR 2020 open-access version; Section 5.4 and Table 3 print identical text and values in both.",
+    "supplement": "The appendix (Tables 4-5: lambda initialisations and untargeted white-box results) is embedded in arXiv v2 and read. It adds no transfer result.",
+    "inventory_complete": true,
+    "applicability": "cross_model_classification_attack",
+    "excluded_results": "Tables 1, 2 and 5 are white-box success rates and perturbation sizes on Inception v3; Figure 4 is robustness of white-box examples to JPEG/bit-depth reduction on the source; Figures 1, 3 and 5 are qualitative. Footnote 2 states Table 3 differs from an earlier arXiv version; only v2/CVPR values are used."
+  },
+  "sources": [
+    {"id": "arxiv_v2_with_appendix", "url": "https://arxiv.org/pdf/1911.02466v2", "sha256": "1b85dfe20e12ccd304fbfe8342100f61c5e4df96912f004de8a46963c9ab618c"},
+    {"id": "cvpr_open_access", "url": "https://openaccess.thecvf.com/content_CVPR_2020/papers/Zhao_Towards_Large_Yet_Imperceptible_Adversarial_Image_Perturbations_With_Perceptual_Color_CVPR_2020_paper.pdf", "sha256": "1439f30ebe15073debc597655729f1122209bb858adfecef8c8d7cd884d31c01"}
+  ],
+  "result_groups": [
+    {"id": "high_confidence_untargeted_transfer", "locator": "Section 5.4 (pp. 7-8); Table 3 (p. 8)", "population": "Subset of the 1,000 ImageNet-compatible development images that all four models (Inception v3 source; GoogLeNet, VGG-16, ResNet-152 targets) originally classify correctly: 767 images. Untargeted I-FGSM, C&W, DDN, PerC-C&W and PerC-AL examples at kappa = 20 and 40", "outcome": "transfer success rate: an example 'is regarded to be transferable to a new model if it can also induce misclassification of that model'", "f2": "yes", "f3": "unclear", "evidence": "The paper explicitly restricts evaluation to images every model classifies correctly (clean-correct for each target). The word 'also' presupposes source success, but no explicit rule removes source failures; white-box kappa = 40 success is below 100% for I-FGSM (99.9%) and DDN (98.1%) on the 1,000 images (Table 2)."}
+  ],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "separate_clean_values_not_located", "locator": "Section 5.4", "evidence": "Clean correctness is used as a filter (767 of 1,000 jointly correct), but no per-model clean accuracy is printed."},
+    "f2": {"value": "yes", "reason": "all_scopes_explicit_yes", "locator": "Section 5.4 (pp. 7-8)", "evidence": "'We report results on a subset of our data containing images that all four models originally classify correctly' (767 images). Positive conditioning evidence."},
+    "f3": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 5.4; Table 2", "evidence": "No explicit source-success filter or inclusion statement; source success is not 100% for every method at kappa = 40."},
+    "f4": {"value": "unclear", "reason": "stated_denominator_inconsistent_with_values", "locator": "Table 3", "evidence": "With the stated 767 denominator, 27 of 30 one-decimal cells map to a unique count (survey/count_reconstruction.py), but the three 2.4% cells admit no integer numerator (18/767 = 2.35%, 19/767 = 2.48%). Counts are therefore not reconstructed for the table."},
+    "f5": {"value": "no", "reason": "explicit_minimum_perturbation_attacks_without_radius", "locator": "Sections 4-5.1; Table 1", "evidence": "All compared attacks are minimum-perturbation or confidence-margin methods (I-FGSM repeated with increasing bound, C&W, DDN, PerC) run until a kappa margin is met; Table 1 reports measured L2/L-infinity sizes, which are not a budget. This is an explicit design choice, not missing reporting."},
+    "f6": {"value": "unclear", "reason": "release_evaluator_differs_from_described_protocol", "locator": "artifact_checks below", "evidence": "The official repository releases the 1,000 images, attack code and a notebook whose transferability cell uses public torchvision targets. As pinned, that cell selects images on which the four models' predictions agree (not ground-truth correctness), scores against the source's clean prediction, and passes the clean tensor to VGG-16 and ResNet-152. Adversarial images are not released. Which code version produced Table 3 is not established; not executed."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-25", "url": "https://github.com/ZhengyuZhao/PerC-Adversarial/tree/785d041a1a5f128d048536aac5b3fb1061a92006", "result": "Linked in the paper. Listed via the GitHub API (1,016 files, head 1 February 2023): dataset/images (1,000 PNGs) and images.csv, perc_al.py, perc_cw.py, differential_color_functions.py, main.ipynb. Notebook cell 5 ('Evaluation on transferability') was read: eligibility mask = pairwise agreement of the four models' clean predictions; success = prediction differs from Inception v3's clean prediction; the VGG-16 and ResNet-152 lines evaluate X_ori; denominator = all eligible images; no stored outputs. Not executed."}
+  ],
+  "bounds_checks": [
+    {"groups": ["high_confidence_untargeted_transfer"], "status": "not_applicable_clean_correct_conditioned_population", "locator": "Section 5.4", "reason": "Rates are conditional on joint clean correctness, so max(0, rate - clean error) is not the matched unconditional bound; no unconditional attacked error is reported."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit. The notebook observations describe the released code as pinned, not the configuration that produced Table 3.",
+    "No execution."
+  ]
+}

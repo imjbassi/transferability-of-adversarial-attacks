@@ -4,7 +4,9 @@ Started 23 September 2026. This is a non-blind evidence audit, not the independe
 
 ## Current scope
 
-The ledger retains all 80 frozen paper IDs: thirty-nine documented reviews are complete (ranks 1-39) and 41 remain pending; no partial reviews remain.
+The ledger retains all 80 frozen paper IDs: forty-five documented reviews are complete (ranks 1-45) and 35 remain pending; no partial reviews remain.
+
+Ranks 40-45 ([40](reviews/40.json)-[45](reviews/45.json)): rank 43 is a transfer-prior query attack on video models, out of scope like rank 19. Rank 41 explicitly restricts transfer to the 767 images all four models classify correctly (field 2 yes). Three of its 2.4% cells admit no integer count over 767, so field 4 stays unclear. Its released notebook as pinned uses a prediction-agreement mask and clean inputs for two targets; this describes the code and is not assumed to be what produced the table. Rank 44's Google Cloud Vision test uses 100 API-clean-correct images (group field 2 yes); its unbounded FDA comparison is an explicit no-radius design. Rank 40's cited supplement no longer resolves. Rank 42's release is an example subset. Rank 45 transfers disruptions across conditioning classes and unknown blur on one generator and is retained as an other outcome, as rank 35 was.
 
 Ranks 33-37 and 39 ([33](reviews/33.json)-[37](reviews/37.json), [39](reviews/39.json)): rank 36 (model extraction with adversarial queries) has no transferred-evasion outcome. Rank 35 transfers across interpreters on a shared classifier, retained as an other-outcome scope. Rank 37 evaluates only source-successful examples (explicit filter; conferrable-example definition), so field 3 is yes. Rank 34's digital ASR averages over all comparisons (group field 3 no); its generative eye-shadow attack has an explicit no-norm design (field 5 no), and the IJCAI version of record drops the arXiv mention of a supplement. Rank 39's Table 5 reports error increase with the same-set clean error already subtracted, positive clean-baseline evidence like rank 32; its release is a recomputation candidate.
 
