@@ -4,7 +4,9 @@ Started 23 September 2026. This is a non-blind evidence audit, not the independe
 
 ## Current scope
 
-The ledger retains all 80 frozen paper IDs: forty-five documented reviews are complete (ranks 1-45) and 35 remain pending; no partial reviews remain.
+The ledger retains all 80 frozen paper IDs: fifty documented reviews are complete (ranks 1-50) and 30 remain pending; no partial reviews remain.
+
+Ranks 46-50 ([46](reviews/46.json)-[50](reviews/50.json)): ranks 46 and 47 restrict their main scopes to images every model classifies correctly (field 2 yes). Rank 47 defines ASR over all generated adversarial examples (field 3 explicit no). All 36 of rank 46's Table 3 cells reconstruct uniquely over its 5,000 images. Rank 46's main Table 2 averages include the white-box source, as its repository supplement shows. Rank 48 reports clean and attacked AUC on the same medical test sets (field 1 yes). Its fields 2-3 are unclear because AUC has no per-image correctness event. Rank 49's AAAI version of record differs in text but not in table values from arXiv v1; its penalty-based attack has no radius. Rank 50 is an LLM-judge score-inflation transfer with a phrase-length budget, stratified with rank 1. Ranks 46-48 have recomputation-candidate releases.
 
 Ranks 40-45 ([40](reviews/40.json)-[45](reviews/45.json)): rank 43 is a transfer-prior query attack on video models, out of scope like rank 19. Rank 41 explicitly restricts transfer to the 767 images all four models classify correctly (field 2 yes). Three of its 2.4% cells admit no integer count over 767, so field 4 stays unclear. Its released notebook as pinned uses a prediction-agreement mask and clean inputs for two targets; this describes the code and is not assumed to be what produced the table. Rank 44's Google Cloud Vision test uses 100 API-clean-correct images (group field 2 yes); its unbounded FDA comparison is an explicit no-radius design. Rank 40's cited supplement no longer resolves. Rank 42's release is an example subset. Rank 45 transfers disruptions across conditioning classes and unknown blur on one generator and is retained as an other outcome, as rank 35 was.
 

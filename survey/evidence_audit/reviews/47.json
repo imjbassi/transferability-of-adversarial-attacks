@@ -1,0 +1,42 @@
+{
+  "rank": 47,
+  "paper_id": "3c2622daa8a658d5c85ea9869cb460a70b0f878d",
+  "review_date": "2026-09-25",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all nine pages of arXiv 2109.04176v3 (2 January 2022, AAAI 2022 copyright): Introduction with Figures 1-2, method, Algorithm 1, Experiments with Tables 1-4, Figures 3-4 and references.",
+    "supplement": "No appendix or supplement is included or referenced. The AAAI proceedings PDF was not retrieved separately.",
+    "inventory_complete": true,
+    "applicability": "cross_model_classification_attack",
+    "excluded_results": "Figure 3 is qualitative. White-box success on the surrogate ViTs is not reported. The later IEEE TIP extension cited in the repository README is a different publication and is not reviewed here."
+  },
+  "sources": [
+    {"id": "arxiv_v3", "url": "https://arxiv.org/pdf/2109.04176v3", "sha256": "e08978171c682836b5d30a277d7fb024e5f61ee2b091030859ff571d5b9ea3cc"}
+  ],
+  "result_groups": [
+    {"id": "vit_to_vit", "locator": "Experimental Settings (pp. 4-5); Table 1 (p. 5)", "population": "One ImageNet validation image per class, 'correctly classified by all models'; ViT-B/16, PiT-B, CaiT-S-24, Visformer-S surrogates; eight ViT victims (the other models)", "outcome": "MASR: mean over surrogates of ASR, where ASR is 'the proportion of generated adversarial examples from the surrogate model that are successfully misclassified by the black-box victim model'", "f2": "yes", "f3": "no", "evidence": "The sample is explicitly restricted to images every model classifies correctly. ASR is defined over the generated adversarial examples, with no source-success filter."},
+    {"id": "vit_to_cnn", "locator": "Table 2 (p. 6)", "population": "Same image set; four normally trained and three ensemble-adversarially trained CNN victims", "outcome": "MASR", "f2": "yes", "f3": "no", "evidence": "Same explicit sample and ASR definition."},
+    {"id": "combined_with_mi_sgm", "locator": "Combining with Existing Methods; Table 3 (p. 7)", "population": "Same image set; ViT-B/16 surrogate; victims grouped as ViTs, normal CNNs, robust CNNs", "outcome": "average ASR over victims of each type", "f2": "yes", "f3": "no", "evidence": "Same explicit sample and ASR definition."},
+    {"id": "ablations_2000_images", "locator": "Introduction Figures 1(b), 2; Ablation Studies Table 4, Figure 4 (p. 7)", "population": "2,000 randomly sampled ImageNet validation images; ViT-B/16 surrogate; black-box ViTs and CNNs", "outcome": "attack success rate (average over victims)", "f2": "unclear", "f3": "no", "evidence": "The ablation sample is described as random; a clean-correct filter is not stated. The general ASR definition applies."}
+  ],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "separate_clean_values_not_located", "locator": "Experiments", "evidence": "No clean accuracy is reported for any model."},
+    "f2": {"value": "unclear", "reason": "unresolved_scope", "locator": "Experimental Settings; Ablation Studies", "evidence": "The three main scopes are explicitly clean-correct for every model (yes); the 2,000-image ablations are unresolved. Positive conditioning evidence."},
+    "f3": {"value": "no", "reason": "all_scopes_explicit_no", "locator": "Evaluation (p. 5)", "evidence": "ASR is defined as the proportion of generated adversarial examples misclassified by the victim, without selection by surrogate success."},
+    "f4": {"value": "unclear", "reason": "averaged_rates_not_single_proportions", "locator": "Tables 1-4", "evidence": "Every reported value averages ASRs over surrogates or victims; the number of images (one per class) is not stated as a count."},
+    "f5": {"value": "yes", "reason": "explicit_linf_radius_all_results", "locator": "Preliminary (p. 4); Evaluation (p. 5); Figure 1 caption", "evidence": "L-infinity epsilon = 16 with 10 iterations for all results."},
+    "f6": {"value": "unclear", "reason": "candidate_release_sufficiency_unverified", "locator": "artifact_checks below", "evidence": "The official repository provides the sampled clean images (clean_resized_images.zip), attack code and an evaluator on timm models, which could support recomputation. The archive contents, the models' correspondence to 2021 timm weights, and execution were not verified."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-25", "url": "https://github.com/zhipeng-wei/PNA-PatchOut/tree/85f23c78284556057422abe395d0e1229a13156a", "result": "Linked in the paper. Listed via the GitHub API (29 files, head 3 July 2024; README also cites a 2023 TIP extension): clean_resized_images.zip, our_attacks.py, our_method.py, evaluate.py, model.py, dataset.py, image_name_to_class_id_and_name.json. evaluate.py records top-1 prediction and ground truth for every adversarial image in a folder; artifact evidence only. Archive not downloaded; not executed."}
+  ],
+  "bounds_checks": [
+    {"groups": ["vit_to_vit", "vit_to_cnn", "combined_with_mi_sgm"], "status": "not_applicable_clean_correct_conditioned_population", "locator": "Experimental Settings", "reason": "Rates are over images all models classify correctly and are averaged over surrogates, so no unconditional matched bound applies."},
+    {"groups": ["ablations_2000_images"], "status": "clean_baseline_missing", "locator": "Table 4; Figures 1-2, 4", "reason": "No clean accuracy on the 2,000-image sample."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit. Field 3 'no' relies on the ASR definition as a proportion of generated adversarial examples; an independent recoder applying a stricter wording test could code unclear.",
+    "No execution."
+  ]
+}

@@ -586,46 +586,66 @@
       "rank": 46,
       "paper_id": "67e856f76905f2269089cede51c9a6a7c4fd2f8c",
       "title": "Learning Transferable Adversarial Examples via Ghost Networks",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_applicable_clean_correct_conditioned",
+      "artifact_review": "candidate_release_sufficiency_unverified",
+      "notes": [
+        "reviews/46.json covers the nine-page arXiv v3 (AAAI 2020) and the repository supplement experiments_result.pdf that the paper cites for additional results.",
+        "5,000 images correct for all nine base models (field 2 yes for three scopes); the NeurIPS challenge-defense scope is unresolved. Table 3 counts reconstruct uniquely over 5,000. Main Table 2 averages include the white-box source.",
+        "Official release with the 5,000-image list, evaluator and checkpoint links is a recomputation candidate; not executed."
+      ]
     },
     {
       "rank": 47,
       "paper_id": "3c2622daa8a658d5c85ea9869cb460a70b0f878d",
       "title": "Towards Transferable Adversarial Attacks on Vision Transformers",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_applicable_clean_correct_conditioned",
+      "artifact_review": "candidate_release_sufficiency_unverified",
+      "notes": [
+        "reviews/47.json covers all nine arXiv v3 pages (AAAI 2022).",
+        "Main scopes use one image per class correct for all models (field 2 yes); ASR is defined over generated adversarial examples (field 3 explicit no); 2,000-image ablations have no clean-correct statement. Values are MASR averages.",
+        "Official release with sampled clean images and evaluator on timm models is a recomputation candidate; not executed."
+      ]
     },
     {
       "rank": 48,
       "paper_id": "ceea8f55954b87d57be4ca7247f66d21da234426",
       "title": "Adversarial Attack Vulnerability of Medical Image Analysis Systems: Unexplored Factors",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_applicable_different_outcome_auc",
+      "artifact_review": "candidate_release_sufficiency_unverified",
+      "notes": [
+        "reviews/48.json covers the sixteen-page arXiv v3 and the ten-page Elsevier supplement with per-model AUC tables.",
+        "Four AUC-outcome scopes on full medical test sets; clean AUC on the same test sets is reported for every target (field 1 yes); fields 2-3 unclear by AUC outcome mapping. Explicit L-infinity epsilon.",
+        "Code repository and Zenodo trained models (about 6.8 GB) on public data; strong candidate, not downloaded or executed."
+      ]
     },
     {
       "rank": 49,
       "paper_id": "12ccfc188de0b40c84d6a427999239c6a379cd66",
       "title": "Sparse Adversarial Perturbations for Videos",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_eligible_clean_baseline_missing",
+      "artifact_review": "reviewed_no_author_release",
+      "notes": [
+        "reviews/49.json covers the AAAI version of record and arXiv v1 (identical tables).",
+        "One cross-RNN video transfer matrix (Table 3 off-diagonals); population and clean baselines unstated; penalty-based attack without radius (field 5 explicit no).",
+        "No code linked; an unverified 2019 repository found by search is not used."
+      ]
     },
     {
       "rank": 50,
       "paper_id": "09812e529903ff67c5fc5f1dcb2b3586eb3ffd23",
       "title": "Is LLM-as-a-Judge Robust? Investigating Universal Adversarial Attacks on Zero-shot LLM Assessment",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_applicable_different_outcome",
+      "artifact_review": "reviewed_code_release_hosted_target_unverified",
+      "notes": [
+        "reviews/50.json covers arXiv v2 and the EMNLP 2024 version of record (all 1,638 decimal values identical), including Appendices A-I.",
+        "Two score-inflation transfer scopes (absolute and comparative LLM judges) from a FlanT5-xl surrogate; fields 1-4 unclear by outcome mapping; phrase-length budget (field 5 explicit no, non-image stratum).",
+        "Official attack/evaluation code and printed phrases; GPT-3.5 target hosted. Not executed."
+      ]
     },
     {
       "rank": 51,

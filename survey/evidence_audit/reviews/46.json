@@ -1,0 +1,43 @@
+{
+  "rank": 46,
+  "paper_id": "67e856f76905f2269089cede51c9a6a7c4fd2f8c",
+  "review_date": "2026-09-25",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all nine pages of arXiv 1812.03413v3 (25 November 2019, AAAI 2020 copyright): method, experimental setup, Tables 1-4, Figures 1-6 and references.",
+    "supplement": "The paper says additional experimental results are provided in its repository. The four-page 'Supplementary material' (experiments_result.pdf, pinned commit) was read: per-source Figures 1-6 and Table 1 with per-target multi-model attack rates.",
+    "inventory_complete": true,
+    "applicability": "cross_model_classification_attack",
+    "excluded_results": "White-box columns of main Table 4 and the white-box Res-50 column of supplement Table 1 are excluded. Figures 4-5 describe ghost-network accuracy and diversity. Main Table 2 averages over all nine models, including the white-box Res-50 source, so its averages are superseded by the per-target black-box columns of supplement Table 1 (for example, M1 I-FGSM: mean of the nine supplement values = 25.5, as printed)."
+  },
+  "sources": [
+    {"id": "arxiv_v3", "url": "https://arxiv.org/pdf/1812.03413v3", "sha256": "1b53a3e556c1dfa79ff35f62faa26bedecd6fea8cacc4b3471659b76ad4b3cab"},
+    {"id": "repository_supplement", "url": "https://raw.githubusercontent.com/LiYingwei/ghost-network/c9731b60ce5a7e9590b24cb98c8ddfce30cf465e/experiments_result.pdf", "sha256": "603751403061388b7692dc101c4fe85563d1fd50962ddd4d4b84e7f75d92c530"}
+  ],
+  "result_groups": [
+    {"id": "single_model_ghost_attack", "locator": "Single-model Attack; Table 1 (p. 5); Figure 6; supplement Figures 1-6", "population": "5,000 ILSVRC 2012 validation images correctly classified by all nine base models; one of six normally trained sources; tested on the other eight (six normal, three ensemble-adversarially trained)", "outcome": "attack rate (black-box average in Table 1; per target in figures)", "f2": "yes", "f3": "unclear", "evidence": "'we select 5000 images from the ILSVRC 2012 validation set, which can be correctly classified by all the 9 base models' (p. 5). No source-success rule is stated."},
+    {"id": "multi_model_same_architecture", "locator": "Multi-model Attack, Same Architecture; Table 2 (p. 5); supplement Table 1", "population": "Same 5,000 images; sources Res-50-A/B/C and their ghost networks; tested on the nine base models", "outcome": "attack rate per target (supplement) and nine-model average including the white-box source (Table 2)", "f2": "yes", "f3": "unclear", "evidence": "Same clean-correct population for the nine evaluated models. Res-50-B and -C are sources only."},
+    {"id": "hold_out_ensemble", "locator": "Multi-model Attack, Different Architectures; Table 3 (p. 7)", "population": "Same 5,000 images; ensemble of five of six normal models tested on the held-out one, and all six tested on three adversarially trained models", "outcome": "attack rate", "f2": "yes", "f3": "unclear", "evidence": "Same clean-correct population; no source-success rule."},
+    {"id": "neurips2017_defense_submissions", "locator": "NeurIPS 2017 Adversarial Challenge; Table 4 black-box columns (p. 7)", "population": "'The test dataset contains 5000 images' with ImageNet labels; eight-model ensemble source with per-image epsilon drawn from {4, 8, 12, 16}; TsAIL, iyswim and Anil Thomas defenses", "outcome": "attack rate", "f2": "unclear", "f3": "unclear", "evidence": "The text does not say whether this is the same clean-correct 5,000-image set, and the defenses were not part of the correctness filter."}
+  ],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "graphical_clean_accuracy_only", "locator": "Figure 4", "evidence": "Base-model top-1 accuracy on the full validation set appears only graphically (erosion magnitude 0 in Figure 4); no numerical clean accuracy is printed."},
+    "f2": {"value": "unclear", "reason": "unresolved_scope", "locator": "Datasets (p. 5); Table 4", "evidence": "Three scopes explicitly use images all nine models classify correctly (yes); the challenge-defense scope is unresolved. Positive conditioning evidence."},
+    "f3": {"value": "unclear", "reason": "unresolved_scope", "locator": "Experiments", "evidence": "No source-success rule or explicit inclusion statement in any scope."},
+    "f4": {"value": "unclear", "reason": "partial_scope_counts_only", "locator": "Table 3; supplement Table 1; Tables 1, 2, 4", "evidence": "All 36 Table 3 cells map to unique counts over 5,000 (survey/count_reconstruction.py; for example, 71.08% = 3,554). The supplement's per-target cells likewise have the 0.02% resolution of a 5,000 denominator. Main Tables 1 and 2 are averages, and Table 4's denominator is unstated."},
+    "f5": {"value": "yes", "reason": "explicit_linf_radius_all_results", "locator": "Ghost Networks (||r||_inf < epsilon); Parameter Specification (p. 5); NeurIPS challenge paragraph", "evidence": "L-infinity epsilon = 8 for Tables 1-3; the challenge scope draws epsilon per image from {4, 8, 12, 16}."},
+    "f6": {"value": "unclear", "reason": "candidate_release_sufficiency_unverified", "locator": "artifact_checks below", "evidence": "The official repository releases attack and evaluation code, the 5,000-image list, ground truth, and links to preprocessed images and renamed checkpoints. It could support recomputation of the model-to-model scopes; links, checkpoint contents and execution were not verified. Challenge defenses are external."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-25", "url": "https://github.com/LiYingwei/ghost-network/tree/c9731b60ce5a7e9590b24cb98c8ddfce30cf465e", "result": "Linked in the paper. Listed via the GitHub API (34 files, head 25 February 2019): attack.py, eval.py, config.py, networks/, data/list/test_list5000.txt (5,000 entries), data/valid_gt.csv, experiments_result.pdf; README links SharePoint downloads of preprocessed images and checkpoints. eval.py prints 1 - accuracy over the listed images for each test network, so source failures are retained; artifact evidence only. Not executed; download links not tested."}
+  ],
+  "bounds_checks": [
+    {"groups": ["single_model_ghost_attack", "multi_model_same_architecture", "hold_out_ensemble"], "status": "not_applicable_clean_correct_conditioned_population", "locator": "Datasets (p. 5)", "reason": "Rates are over images all nine models classify correctly, so the reported rate is already conditional on clean correctness; no unconditional baseline on a matched population is reported."},
+    {"groups": ["neurips2017_defense_submissions"], "status": "clean_baseline_missing", "locator": "Table 4", "reason": "No clean accuracy of the defense submissions on the test images is reported."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit. The repository PDF is treated as the paper's supplement because the paper directs readers to it for additional results.",
+    "No execution."
+  ]
+}

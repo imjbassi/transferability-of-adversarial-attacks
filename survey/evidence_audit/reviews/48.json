@@ -1,0 +1,43 @@
+{
+  "rank": 48,
+  "paper_id": "ceea8f55954b87d57be4ca7247f66d21da234426",
+  "review_date": "2026-09-25",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all sixteen pages of arXiv 2006.06356v3 (17 June 2021, Medical Image Analysis 2021 header): Sections 1-7, Tables 1-5, Figures 1-3 and references. The Elsevier version of record was not accessible (the DOI resolves to a ScienceDirect redirect page).",
+    "supplement": "The ten-page Elsevier Supplementary Material (mmc1.pdf) was read: per-model AUC and SSIM Tables 1-6 (perturbation degree), 7-9 (pre-training), 10-15 (data disparity and small-data targets) for all three applications.",
+    "inventory_complete": true,
+    "applicability": "cross_model_classification_attack_auc_outcome",
+    "excluded_results": "SSIM (main Figure 2, supplement Tables 2, 4, 6) measures perceptibility, not transfer. Control-noise rows (spatially shuffled perturbations) are a noise baseline, not an attack transfer. Figures 1 and 3 are qualitative."
+  },
+  "sources": [
+    {"id": "arxiv_v3", "url": "https://arxiv.org/pdf/2006.06356v3", "sha256": "92ee5fa11e005b77baf020bd7aa436ea5cf204c2319dbdacf263735762ecf0d0"},
+    {"id": "elsevier_supplement", "url": "https://ars.els-cdn.com/content/image/1-s2.0-S1361841521001870-mmc1.pdf", "sha256": "f89a754f3473a6e7efb7600bd460c5a37c57e85b568819c3e651309b5fbf7b0f"}
+  ],
+  "result_groups": [
+    {"id": "perturbation_degree_sweep", "locator": "Section 5.1; Table 2 (p. 8); supplement Tables 1, 3, 5", "population": "Full test sets (ophthalmology 10,644; radiology 25,596; pathology 32,768 images); randomly initialised Inception-v3 and DenseNet-121 trained on d1; same- and cross-architecture surrogate-target pairs; FGSM and PGD, epsilon 0.01-0.06", "outcome": "target AUC (mean AUC over 15 labels for radiology) on the adversarially perturbed test set", "f2": "unclear", "f3": "unclear", "evidence": "The independent test set is used for clean and adversarial performance, so all test images are included. However, AUC is a threshold-free ranking metric: per-image clean correctness and source success are not defined, so neither field maps onto this outcome."},
+    {"id": "imagenet_pretraining", "locator": "Section 5.2; Table 3 (p. 8); supplement Tables 7-9", "population": "Full test sets; four versions of each architecture (two ImageNet-pre-trained, two random) trained on d1; all initialisation and architecture pairings; epsilon 0.02", "outcome": "target AUC under transferred FGSM/PGD, and relative AUC versus no attack", "f2": "unclear", "f3": "unclear", "evidence": "Same full-test-set AUC outcome."},
+    {"id": "development_data_disparity", "locator": "Section 5.3; Table 4 (p. 9); supplement Tables 10, 12, 14", "population": "Full test sets; targets trained on d1; surrogates trained on d1, d2 or d2/2; same or different architecture; epsilon 0.02", "outcome": "target AUC and relative AUC", "f2": "unclear", "f3": "unclear", "evidence": "Same full-test-set AUC outcome."},
+    {"id": "small_data_targets", "locator": "Section 5.3; Table 5 (p. 10); supplement Tables 11, 13, 15", "population": "Full test sets; targets trained on d1/10 (pre-trained or random); surrogates trained on d2; epsilon 0.02", "outcome": "target AUC and relative AUC", "f2": "unclear", "f3": "unclear", "evidence": "Same full-test-set AUC outcome."}
+  ],
+  "judgments": {
+    "f1": {"value": "yes", "reason": "clean_performance_reported_same_test_set_all_targets", "locator": "Tables 2-5 'None'/'No attack' rows; supplement per-target 'None' rows", "evidence": "Clean AUC on the same test set is printed for every target model (per model in the supplement, averaged in the main text), in the same metric as the attacked performance. The metric is AUC rather than accuracy."},
+    "f2": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 3.3; Section 4", "evidence": "All scopes evaluate the full test set, but the AUC outcome has no per-image clean-correct event."},
+    "f3": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 3.2; Section 4", "evidence": "Adversarial versions of all test images are scored; source success is not defined for an AUC outcome."},
+    "f4": {"value": "unclear", "reason": "continuous_outcome_counts_not_applicable", "locator": "Tables 2-5", "evidence": "AUC values are not proportions of counted events; test-set sizes are stated (Table 1) but no counts are relevant."},
+    "f5": {"value": "yes", "reason": "explicit_linf_radius_all_results", "locator": "Section 3.2 (Eq. 2); Section 4.1; Section 5.1", "evidence": "L-infinity epsilon between 0.01 and 0.06 on intensities scaled to [-1, 1]; epsilon = 0.02 for Tables 3-5; PGD step 0.01 with 20 iterations."},
+    "f6": {"value": "unclear", "reason": "candidate_release_sufficiency_unverified", "locator": "artifact_checks below", "evidence": "The official code repository (with radiology split files and table-generation scripts) and a Zenodo deposit of all trained models (about 6.8 GB) use public datasets. This is a strong recomputation candidate, but downloads and execution were not verified."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-25", "url": "https://github.com/Gerda92/adversarial_transfer_factors/tree/db293ea0d1549b04f8cc633331570db70a736d89", "result": "Linked in the paper. Listed via the GitHub API (35 files, head 21 June 2021): per-application attack-crafting code, a Radiology pipeline with compute_table_one-four.py, generate_final_tables.py and d0-d3 split files. Not executed."},
+    {"date": "2026-09-25", "url": "https://zenodo.org/records/4792375", "result": "Zenodo API lists Radiology.zip (2.61 GB), Ophthalmology.zip (3.13 GB) and Pathology.zip (1.08 GB) of trained models. Not downloaded."}
+  ],
+  "bounds_checks": [
+    {"groups": ["perturbation_degree_sweep", "imagenet_pretraining", "development_data_disparity", "small_data_targets"], "status": "different_outcome_auc", "locator": "Tables 2-5", "reason": "AUC is not a misclassification probability, so the misclassification bound does not apply, although clean and attacked AUC are on the same test set."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit. Fields 2 and 3 are unclear because of outcome mapping (AUC), not deficient reporting; the explicit full-test-set evaluation is recorded as population evidence.",
+    "No execution."
+  ]
+}
