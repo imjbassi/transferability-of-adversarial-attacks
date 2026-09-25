@@ -7,11 +7,13 @@
       "rank": 1,
       "paper_id": "4637f79ddfaf923ce569996ffa5b6cda1996faa1",
       "title": "Jailbreaking Black Box Large Language Models in Twenty Queries",
-      "evidence_audit": "partial",
-      "bounds_review": "classification_equation_not_applicable_to_reviewed_jailbreak_metric",
-      "artifact_review": "pending",
+      "evidence_audit": "complete",
+      "bounds_review": "classification_equation_not_applicable_jailbreak_outcome",
+      "artifact_review": "reviewed_released_outputs_do_not_match_published_run",
       "notes": [
-        "Metric-scoped evidence in batch_01_06_10.md, rank 1; complete paper/supplement and artifact review pending."
+        "reviews/01.json covers all 34 pages of arXiv v4 including Appendices A-H, three transfer groups and six judgments; supersedes the partial batch_01_06_10.md note. SaTML version of record was not accessible.",
+        "Table 3 explicitly conditions PAIR and GCG transfer on source success, corroborated arithmetically (71% from a 48% source); Table 5 static-defense transfer population is unresolved, so paper-level field 3 is unclear with any_explicit_yes.",
+        "Pinned PAIR code and JailbreakBench artifacts inspected; hosted per-behavior outputs do not reproduce Table 2 and include no PAIR transfer records. No bound: jailbreak outcome has no clean-error baseline."
       ]
     },
     {
@@ -138,7 +140,10 @@
       "evidence_audit": "complete",
       "bounds_review": "not_applicable_no_original_cross_model_attack_evaluation",
       "artifact_review": "not_applicable_author_literature_resource_accessible",
-      "notes": ["reviews/11.json covers the twenty-page arXiv v4 including both appendices. Located tables and metrics summarize prior work, not original empirical transfer results.", "Retained with non-applicability reasons for all six fields; accessible author bibliography is not counted as a transfer recomputability success or failure."]
+      "notes": [
+        "reviews/11.json covers the twenty-page arXiv v4 including both appendices. Located tables and metrics summarize prior work, not original empirical transfer results.",
+        "Retained with non-applicability reasons for all six fields; accessible author bibliography is not counted as a transfer recomputability success or failure."
+      ]
     },
     {
       "rank": 12,
@@ -382,14 +387,13 @@
       "rank": 38,
       "paper_id": "a9682a89b2fef793507c365a577f1521745db96c",
       "title": "Boosting the Transferability of Adversarial Samples via Attention",
-      "evidence_audit": "partial",
-      "bounds_review": "table_1_case_checked",
-      "artifact_review": "pending",
+      "evidence_audit": "complete",
+      "bounds_review": "reviewed_table1_extraction_rechecked_ensemble_rows_separated",
+      "artifact_review": "reviewed_no_release_located",
       "notes": [
-        "Section 5.1 (PDF pp. 5-6): common 1,000-image evaluation set and top-1 target accuracy metric; Table 1 reports clean row and per-source attacked accuracies.",
-        "All 120 attacked accuracy cells and five clean entries checked against cached table text; 24 diagonal cells excluded, leaving 96 off-diagonal rates.",
-        "Display-aware bounds use nearest-unit rounding intervals, treating clean 100% conservatively as [99.5%,100%]. This is an assumption, not a sampling confidence interval.",
-        "Table 2 defended-model rates require separate clean-accuracy alignment and are not included. Entire paper/supplement and artifact sufficiency remain pending."
+        "reviews/38.json covers all ten CVPR pages (no supplement linked), three target-type groups and six judgments; supersedes the earlier partial metric-specific note.",
+        "Undefended/ensemble clean rows show retained clean-incorrect inputs and Section 5.2 retains source failures (field 3 explicit no); defended targets lack clean accuracy, leaving field 2 unclear.",
+        "Visual re-extraction reproduces all 96 historical bounds, but 24 use an ensemble containing the source; nine further eligible Table 3 single-target cells are recorded in the review. No ATA code release located."
       ]
     },
     {

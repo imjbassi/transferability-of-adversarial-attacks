@@ -35,6 +35,8 @@ manuscript.
   blinding. A new blind pass and valid kappa remain outstanding.
 - `analytic_bounds.csv` and `analytic_bounds_summary.json` preserve 96 nominal
   calculations from one paper, not an exhaustive corpus-wide eligibility audit.
+  24 of the 96 rows use an ensemble target that contains the source model; see
+  `evidence_audit/reviews/38.json`.
   `analytic_bounds_rounding.json` separately handles displayed-value rounding.
 - `recomputation_ledger.csv` records immutable release commits, execution status,
   published comparators, and any recomputed PTR, CTR, \(a_{st}\), and \(b_{st}\).
