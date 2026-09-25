@@ -4,7 +4,9 @@ Started 23 September 2026. This is a non-blind evidence audit, not the independe
 
 ## Current scope
 
-The ledger retains all 80 frozen paper IDs: twenty-three documented reviews are complete (ranks 1-21, 31 and 38) and 57 remain pending; no partial reviews remain.
+The ledger retains all 80 frozen paper IDs: twenty-eight documented reviews are complete (ranks 1-26, 31 and 38) and 52 remain pending; no partial reviews remain.
+
+Ranks 22-26 ([22](reviews/22.json)-[26](reviews/26.json)) add explicit positive conditioning evidence. Rank 22 retains only examples that fooled all 10 ensemble members; rank 25 transfers only source-correct, source-successful images. Both are field 3 yes. Rank 24 defines transfer on 1,000 jointly clean-correct examples per pair (field 2 yes for that scope, field 3 explicit no by Eq. 3). Rank 23 is the SSA paper whose release was executed historically; its manifest and checkpoint hashes still need verification. Rank 26 treats transferability only theoretically.
 
 Ranks 17-21 ([17](reviews/17.json)-[21](reviews/21.json)): rank 18 is a survey without experiments. Rank 19's attacks are all transfer-prior query attacks on the target, so it has no in-scope transfer group; that boundary is recorded for the recoder. Rank 17's supplement prints target and substitute clean accuracies, but the attacked population is unstated. Rank 20 explicitly evaluates all CIFAR-10 test images and all 50,000 ImageNet validation images (fields 2/3 no for those scopes). Its release logs clean and attacked accuracy per batch, making it a strong recomputation and bounds candidate. Rank 21 shares the rank 4/5 evaluator design.
 

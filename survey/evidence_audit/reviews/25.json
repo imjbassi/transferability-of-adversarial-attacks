@@ -1,0 +1,39 @@
+{
+  "rank": 25,
+  "paper_id": "717425092f2e7a2a00c98e8e1778036e9b5a8b4e",
+  "review_date": "2026-09-24",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all thirteen pages of arXiv 1905.00441v3 (9 December 2019; ICML 2019): Sections 1-5, Algorithm 1, Table 1, Figures 1-2, references and supplementary pages 12-13 (defense descriptions, regression network, run-time Table 2). Figure 2 values read from a 200-dpi render of p. 8.",
+    "supplement": "Supplementary material is appended in the arXiv PDF (pp. 12-13) and read. The PMLR version was not retrieved.",
+    "inventory_complete": true,
+    "applicability": "cross_model_classification_attack",
+    "excluded_results": "Table 1 and Figure 1 report query-based or white-box attacks on each target defense itself; supplement Table 2 is run time. The 100.00 diagonal of Figure 2 is the source itself."
+  },
+  "sources": [
+    {"id": "main_with_supplement", "url": "https://arxiv.org/pdf/1905.00441v3", "sha256": "1da351c73f1d10b73e5ee3d7f8bfe276a95a87257818db4ff03237bef28e93a2"},
+    {"id": "nattack_confusion_py", "url": "https://github.com/Cold-Winter/Nattack/blob/2c5ce052f0298d52a2972dfce8bbfd9fed6a6fcb/confusion.py", "sha256": "69851ca0d5149ca18735c841cb49ba8e34254a30e8cbb2e3bd413097eca8edb2"}
+  ],
+  "result_groups": [
+    {"id": "defended_dnn_transfer_confusion", "locator": "Section 3.3 (p. 7); Figure 2 left (BPDA) and right (NATTACK) (p. 8)", "population": "For each CIFAR-10 source DNN, 1,000 random test images that the source classifies correctly and whose adversarial versions the source misclassifies; transferred to the other defended/vanilla DNNs (8 models for BPDA, 10 for NATTACK)", "outcome": "attack success rate on the target DNN, printed to two decimals", "f2": "unclear", "f3": "yes", "evidence": "Section 3.3: 'we randomly select 1000 images for each targeted DNN such that they are classified correctly, and yet the adversarial images of them are classified incorrectly', an explicit source-clean-correct and source-success restriction; the 100.00 diagonal is consistent. Target clean correctness is not stated, and source-only filtering does not establish it."}
+  ],
+  "judgments": {
+    "f1": {"value": "yes", "reason": "separate_model_values", "locator": "Table 1 'Classification Accuracy' (p. 6); Section 3.3 (p. 7)", "evidence": "Clean accuracy is reported separately for every model in Figure 2: ADV-TRAIN 87.3, ADV-BNN 79.7, THERM-ADV 88.5, CAS-ADV 75.6, LID 66.9, THERM 92.8, SAP 93.3, RSE 91.4 (Table 1) and VANILLA-1 80%, VANILLA-2 92.3% (Section 3.3). These are test-set accuracies, not accuracies on the transfer subsets."},
+    "f2": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 3.3", "evidence": "Only source correctness is stated. The two-decimal Figure 2 values are not multiples of 0.1% (e.g., 33.58%), so the effective denominator is not the stated 1,000 images; it might reflect a target-side filter, but this is not reported and is not inferred."},
+    "f3": {"value": "yes", "reason": "all_scopes_explicit_yes", "locator": "Section 3.3 (p. 7)", "evidence": "Only adversarial images that fool the source are transferred. Positive conditioning evidence."},
+    "f4": {"value": "unclear", "reason": "stated_denominator_inconsistent_with_values", "locator": "Section 3.3; Figure 2", "evidence": "The stated 1,000-image set cannot produce most printed two-decimal rates, so numerators cannot be reconstructed and the actual denominators are unreported."},
+    "f5": {"value": "yes", "reason": "explicit_linf_radius_all_results", "locator": "Section 3 (p. 4); Section 3.3 (p. 7); Table 1", "evidence": "L-infinity threshold in normalized [0,1] space; the transfer study sets tau_inf = 0.031 for all models, including CAS-ADV changed from 0.015 'for fair comparison'."},
+    "f6": {"value": "unclear", "reason": "release_lacks_transfer_evaluation_code", "locator": "Section 1 code link; artifact_checks below", "evidence": "The linked repository contains the NATTACK attack, per-defense wrappers borrowed from Athalye et al., and a SharePoint link for data and models. Its confusion.py only plots hard-coded percentages (and stores the NATTACK matrix transposed relative to the published figure for the shared models); no transfer-evaluation script or per-example outcomes are included. SharePoint contents not accessed."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-24", "url": "https://github.com/Cold-Winter/Nattack/tree/2c5ce052f0298d52a2972dfce8bbfd9fed6a6fcb", "result": "Listed the tree via the GitHub API (head 9 February 2021): attack and defense wrappers (cascade_adv_training, guided-denoiser, inputtransformations, etc.) and confusion.py. README points to a UCF SharePoint folder for data and models. Not cloned or executed."}
+  ],
+  "bounds_checks": [
+    {"groups": ["defended_dnn_transfer_confusion"], "status": "source_success_conditioned", "locator": "Section 3.3; Figure 2", "reason": "Rates are conditioned on source correctness and source success, with unreported target denominators; several targets (SAP, RSE, ADV-BNN ensemble) are stochastic. Not an unconditional misclassification rate; no bound."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit. The row/column orientation of Figure 2 (caption: rows are sources) conflicts with the released plotting script's matrix orientation; flagged, not resolved.",
+    "No SharePoint access or execution."
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "rank": 22,
+  "paper_id": "be4a4f7f65d397a4e07dc83b95da6b414e0634e2",
+  "review_date": "2026-09-24",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all 22 pages of arXiv 1802.08195v3 (22 May 2018; NeurIPS 2018): Sections 1-6, Figures 1-5, references and supplemental Appendices A-F (Tables Supp.1-6, retinal layer, coarse-class probability, attack details, models, image lists).",
+    "supplement": "The arXiv appendix omits example images and links http://goo.gl/SJ8jpq, which resolves to a Google Drive file; downloaded the fourteen-page full supplemental PDF. Its tables (e.g., Supp.4 8.7, 9.4, 13 and Supp.6 87, 85, 57) match arXiv; it adds Figures Supp.2-5 example images.",
+    "inventory_complete": true,
+    "applicability": "cross_model_classification_attack_plus_human_observer_transfer",
+    "excluded_results": "Tables Supp.3 and Supp.5 evaluate the ten ensemble members used to generate the attack (white-box for the source ensemble). Figure Supp.1 and Figure 5 are qualitative. Figure 4 reaction times are secondary behavioural measures of the human group, not separate transfer rates."
+  },
+  "sources": [
+    {"id": "main_with_appendices", "url": "https://arxiv.org/pdf/1802.08195v3", "sha256": "87225f47168a56f003f607ca3c74bbf8ff6b50f8fe1a0030be85f2eade99b536"},
+    {"id": "full_supplement", "url": "https://drive.google.com/file/d/1ns6LneQ-XMkgQWDy_usZ847RxOV-8304/view", "sha256": "12476894d52165c9401149bf6af6783bbd232d48d196a41c0b78a6cf85ab0095"}
+  ],
+  "result_groups": [
+    {"id": "heldout_model_transfer", "locator": "Section 4.1 (p. 6); Tables Supp.4 and Supp.6 (pp. 15-16); Appendix D (p. 17)", "population": "Retained targeted coarse-class adversarial images per group (pets, hazard, vegetables) generated on a 10-model retina-layer ensemble; held-out ResNet V2 50 and adversarially trained Inception V3", "outcome": "held-out model accuracy and coarse-class attack success", "f2": "unclear", "f3": "yes", "evidence": "Appendix D: 'we retained only adversarial examples that were successful against all 10 models for the adv condition and at least 7/10 models for the false condition', an explicit source-success restriction of the transferred set. No target-clean filter on the held-out models is stated."},
+    {"id": "human_observer_transfer", "locator": "Section 3.2 and 4.2 (pp. 5-9); Figures 3-4; Table Supp.1", "population": "38 time-limited human subjects (140-950 trials each) viewing the same retained images in image, adv, flip and false conditions", "outcome": "human two-alternative accuracy and probability of choosing the targeted class", "f2": "unclear", "f3": "yes", "evidence": "The same Appendix D retention rule defines the adversarial stimuli shown to humans. Human clean (image-condition) accuracy is reported and not used to filter trials; no clean-correct restriction is stated."}
+  ],
+  "judgments": {
+    "f1": {"value": "yes", "reason": "separate_model_values", "locator": "Table Supp.2 (p. 15); Section 4.1; Figure 3b", "evidence": "Table Supp.2 gives ImageNet top-1 accuracy separately for all ten ensemble members and both held-out models; human image-condition accuracy is reported per group. These are full-validation (fine-class) accuracies, not accuracy on the coarse-class experimental images."},
+    "f2": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 3.2.2; Appendix D", "evidence": "Neither group states a target-clean-correct restriction or explicit inclusion; images were pre-filtered only for colour/brightness cues."},
+    "f3": {"value": "yes", "reason": "all_scopes_explicit_yes", "locator": "Appendix D (p. 17)", "evidence": "Both groups use only adversarial images that fooled all 10 ensemble models (adv) or at least 7 of 10 (false). Positive conditioning evidence; the source is the generating ensemble."},
+    "f4": {"value": "unclear", "reason": "denominators_not_stated_for_rates", "locator": "Tables Supp.1-6; Appendix F", "evidence": "Machine rates are rounded percentages without stated numbers of retained images per group and condition; Appendix F lists image filenames but the retained adversarial set per condition is not given as counts. Table Supp.1 gives subject counts, not trial-level numerators."},
+    "f5": {"value": "yes", "reason": "explicit_linf_radius_all_results", "locator": "Section 3.1.3 (p. 5); Section 3.2.2 (p. 6); Appendix D", "evidence": "L-infinity perturbations fixed to exactly epsilon = 32 (adv) and 40 (false) on 0-255 pixels after rescaling images to [40, 215]; smaller perturbations are scaled up to epsilon."},
+    "f6": {"value": "unclear", "reason": "no_release_custom_checkpoints", "locator": "Appendix E-F; artifact_checks below", "evidence": "No code or adversarial images are linked. Several ensemble members are the authors' retina-layer models trained for this study, and no release of them was located; Appendix F lists the clean ImageNet image filenames only."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-24", "url": "http://goo.gl/SJ8jpq", "result": "Resolves to Google Drive file 1ns6LneQ-XMkgQWDy_usZ847RxOV-8304; downloaded the 47 MB full supplemental PDF (hash recorded). Contains figures and tables only, no data or code."},
+    {"date": "2026-09-24", "url": "https://api.github.com/search/repositories?q=adversarial%20examples%20time-limited%20humans", "result": "Repository search returned 0 results; no code link in the paper. Bounded search."}
+  ],
+  "bounds_checks": [
+    {"groups": ["heldout_model_transfer", "human_observer_transfer"], "status": "source_success_conditioned_and_targeted_coarse_outcome", "locator": "Appendix D; Tables Supp.4, Supp.6", "reason": "Rates are computed on source-successful retained images, the outcome is targeted coarse-class behaviour (humans, two-choice tasks), and no matched clean baseline on the experimental images is reported. Not substituted into the fixed-predictor misclassification identity."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit. Table Supp.6 is captioned as 'error' while Table Supp.4 accuracies do not sum to 100% with it, suggesting success is targeted coarse-class success; recorded without resolving.",
+    "Including human observers as transfer targets is an applicability decision flagged for the independent recoder."
+  ]
+}
