@@ -1,0 +1,41 @@
+{
+  "rank": 42,
+  "paper_id": "29fbf409aaad5e3a0f3468c44637a140dc2c545b",
+  "review_date": "2026-09-25",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all eleven pages of arXiv 2111.10752v2 (Sections 1-5, Algorithm 1, Tables 1-3, Figures 1-5, references, Appendices A-C with Table 4 and Figure 6) and the ten-page CVPR 2022 open-access version. All 248 decimal values in the CVPR text also occur in arXiv v2; arXiv adds only appendix Table 4.",
+    "supplement": "Appendices A-C are embedded in arXiv v2 and read. A separate CVPR supplement was not retrieved; its content is assumed to correspond to the arXiv appendix but this was not verified.",
+    "inventory_complete": true,
+    "applicability": "cross_model_classification_attack",
+    "excluded_results": "White-box columns of Table 2 are excluded. Figure 1 (gradient cosine similarity) and Figure 2 (average loss) are not success-rate outcomes. Figure 6 is qualitative. Appendix A is a cost analysis."
+  },
+  "sources": [
+    {"id": "arxiv_v2_with_appendix", "url": "https://arxiv.org/pdf/2111.10752v2", "sha256": "aba0f09139ea4cad32fd3b98a35d27d533d4fd694859cd545258cb7a157353c9"},
+    {"id": "cvpr_open_access", "url": "https://openaccess.thecvf.com/content/CVPR2022/papers/Xiong_Stochastic_Variance_Reduced_Ensemble_Adversarial_Attack_for_Boosting_the_Adversarial_CVPR_2022_paper.pdf", "sha256": "7e940732e1cab8586fbd4ca75faf78d6c1201ac43147f6b026ea1042ab206a25"}
+  ],
+  "result_groups": [
+    {"id": "hold_out_normal_models", "locator": "Section 4.2; Table 1 (p. 5)", "population": "1,000 ImageNet-compatible images; examples crafted on an ensemble of three normally trained models and tested on the fourth (Inc-v3, Inc-v4, IncRes-v2, and a ResNet named Res-152 in the text and Res-101 in the table)", "outcome": "attack success rate (%), not defined", "f2": "unclear", "f3": "unclear", "evidence": "No clean-correct or source-success rule is stated. SVRE values average five seeds."},
+    {"id": "adversarially_trained_targets", "locator": "Section 4.3; Table 2 black-box columns (p. 6); Section 4.5 Figures 3-5; Appendix B Table 4", "population": "1,000 images; examples crafted on the four-model ensemble (or Inc-v3 alone for Admix-TI-DIM) and tested on Inc-v3ens3, Inc-v3ens4, IncRes-v2ens", "outcome": "black-box attack success rate (%)", "f2": "unclear", "f3": "unclear", "evidence": "Same undefined metric; white-box success on the ensemble members is printed (98.7-100%) but not used to filter."},
+    {"id": "advanced_defense_targets", "locator": "Section 4.3; Table 3 (p. 6)", "population": "1,000 images; four-model ensemble source; HGD, R&P, NIPS-r3, Bit-R, JPEG, FD, ComDefend, RS, NRP targets", "outcome": "black-box attack success rate (%)", "f2": "unclear", "f3": "unclear", "evidence": "No population rule or clean baseline for the defended targets."}
+  ],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "separate_clean_values_not_located", "locator": "Tables 1-4", "evidence": "No clean accuracy is reported for any source or target model."},
+    "f2": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 4", "evidence": "No clean-correct restriction or explicit inclusion statement in any scope."},
+    "f3": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 4", "evidence": "No source-success restriction or explicit inclusion statement in any scope."},
+    "f4": {"value": "unclear", "reason": "averaged_rates_denominator_unstated", "locator": "Tables 1-4", "evidence": "SVRE cells average five random seeds, so they are not single proportions. Ens cells are single runs, but the metric's denominator is not stated as 1,000 in the paper."},
+    "f5": {"value": "yes", "reason": "explicit_linf_radius_all_results", "locator": "Section 2; Algorithm 1; Section 4.1 Hyper-parameters", "evidence": "L-infinity attacks with maximum perturbation epsilon = 16/255 for all experiments."},
+    "f6": {"value": "unclear", "reason": "partial_release_example_only", "locator": "artifact_checks below", "evidence": "The official repository says it provides 'an example' and that complete experimental code and data will be released later. It includes attack scripts for all base methods and an evaluator for the four normal and three adversarially trained models, with checkpoints via a third-party Drive link. It does not include the nine advanced defenses. Not executed."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-25", "url": "https://github.com/JHL-HUST/SVRE/tree/5e6c6aa48b81314d7ec883afac2950e2783d4172", "result": "Linked in the paper. Listed via the GitHub API (16 files, head 16 October 2022): Ens-/SVRE- scripts for I-FGSM, MI-FGSM, TIM, TI-DIM, SI-TI-DIM, Admix-TI-DIM; eval.py; dataset/val_rs.csv. The README calls this an example and defers complete code and data. eval.py counts, for each of seven models, adversarial images whose prediction differs from the ground-truth label and divides by a fixed 1,000. This retains clean-misclassified images and source failures. This is artifact evidence only. The ResNet checkpoint in eval.py is resnet_v2_101. Not executed."}
+  ],
+  "bounds_checks": [
+    {"groups": ["hold_out_normal_models", "adversarially_trained_targets", "advanced_defense_targets"], "status": "clean_baseline_missing", "locator": "Tables 1-4", "reason": "No clean accuracy of the targets on the same 1,000 images is reported; SVRE cells are seed averages."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit. The Res-152/Res-101 naming difference between text and tables is recorded without assuming which model was used; the released evaluator loads ResNet-v2-101.",
+    "No execution."
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "rank": 40,
+  "paper_id": "d8f64187b447d1b64f69f541dbbaec71bd79d205",
+  "review_date": "2026-09-25",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all eight pages of the AAAI 2020 version of record (pp. 865-872): framework, evaluation metric, subset-selection strategies, experimental setup, Tables 1-5, Figures 1-4, the transferability subsection (p. 870), PRADA evasion, related work and references.",
+    "supplement": "The paper cites a supplement at http://iisc-seal.net/publications/aaai2020_supplement.pdf (dataset details, Papernot substitute training, PRADA details). On 25 September 2026 that URL redirected to the lab home page and the Wayback Machine reported no capture, so the supplement could not be read. Judgments below rest on the main text only.",
+    "inventory_complete": true,
+    "applicability": "cross_model_classification_attack_extracted_substitute",
+    "excluded_results": "Tables 1, 2, 4, 5 and Figure 3 report substitute-secret agreement (extraction fidelity), not attack transfer; Figure 4 reports PRADA query-distance histograms. The DFAL strategy's DeepFool perturbations are used only to select clean queries."
+  },
+  "sources": [
+    {"id": "aaai_version_of_record", "url": "https://ojs.aaai.org/index.php/AAAI/article/download/5432/5288", "sha256": "c191a764d9d2720ee541192aabe2e677d244df8356353e4be1762739ab3ba202"}
+  ],
+  "result_groups": [
+    {"id": "fgsm_substitute_to_secret_transfer", "locator": "Section 'Transferability of adversarial examples' and Table 3 (p. 870)", "population": "Secret-dataset (problem-domain) samples of MNIST, CIFAR-10 and GTSRB perturbed by FGSM on the extracted substitute (Papernot substitute; ActiveThief Random, K-center, DFAL, DFAL+K-center); target is the secret model", "outcome": "transferability: fraction of perturbed secret-dataset samples misclassified by the secret model", "f2": "unclear", "f3": "unclear", "evidence": "The rate is defined over 'perturbed secret dataset samples' with no stated restriction to samples the secret model classifies correctly or to samples that fool the substitute. The split and number of perturbed samples are not stated in the main text, so the definition is treated as a bare outcome definition rather than an explicit all-inputs statement."}
+  ],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "separate_clean_values_not_located", "locator": "Tables 1-5; p. 870", "evidence": "Only substitute-secret agreement is reported; no clean accuracy of the secret or substitute models is located in the main text (the unavailable supplement may contain it)."},
+    "f2": {"value": "unclear", "reason": "unresolved_scope", "locator": "p. 870", "evidence": "No clean-correct restriction or explicit inclusion is stated."},
+    "f3": {"value": "unclear", "reason": "unresolved_scope", "locator": "p. 870", "evidence": "No substitute-success restriction or explicit inclusion of failed perturbations is stated."},
+    "f4": {"value": "unclear", "reason": "denominator_unstated", "locator": "Table 3", "evidence": "Two-decimal rates without a stated evaluation-set size or counts."},
+    "f5": {"value": "yes", "reason": "explicit_fgsm_linf_radius", "locator": "p. 870", "evidence": "FGSM (a sign-gradient, L-infinity-bounded step) at epsilon = 0.25 for all Table 3 results. The pixel scale is not stated in the main text; the radius is recorded as given."},
+    "f6": {"value": "unclear", "reason": "release_lacks_transfer_evaluation_code", "locator": "artifact_checks below", "evidence": "The official repository implements extraction (subset selection, CNN models, dataset loaders) but contains no FGSM or transferability evaluation code and no trained secret/substitute checkpoints."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-25", "url": "https://github.com/iisc-seal/activethief/tree/35a505d142b4b30167291ef5c4a4e4f1c17268d6", "result": "Official repository (the paper promises release at iisc-seal.net). Listed via the GitHub API: 30 files (generic_program.py, sss/ strategies, attacks/deepfool.py, dsl/ loaders, models/). No file or line in generic_program.py mentions FGSM, epsilon or transferability; no checkpoints. Not executed."},
+    {"date": "2026-09-25", "url": "http://iisc-seal.net/publications/aaai2020_supplement.pdf", "result": "Redirects to the lab home page (HTML, not the PDF); the Wayback availability page reports no capture."}
+  ],
+  "bounds_checks": [
+    {"groups": ["fgsm_substitute_to_secret_transfer"], "status": "clean_baseline_missing", "locator": "Table 3", "reason": "The outcome is misclassification by the secret model, but no secret-model clean accuracy on the same samples is reported in the main text."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit. The cited supplement was unavailable; if it is recovered, fields 1, 2 and 4 should be rechecked against it.",
+    "No execution."
+  ]
+}

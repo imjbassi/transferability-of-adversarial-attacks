@@ -1,0 +1,44 @@
+{
+  "rank": 44,
+  "paper_id": "ccc39584c2bbabc190aff1e7fce888590633850f",
+  "review_date": "2026-09-25",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all seventeen pages of arXiv 2012.11207v4 (26 October 2021, NeurIPS 2021 stamp): Sections 1-5, Tables 1-7, Figures 1-6, references and Appendices A-F (C&W comparison Figure 7, loss trends Figure 8, step-size Figure 9, example Figures 10-12). The NeurIPS proceedings PDF was not retrieved separately.",
+    "supplement": "Appendices A-F are embedded in the arXiv PDF and read.",
+    "inventory_complete": true,
+    "applicability": "cross_model_classification_attack_targeted",
+    "excluded_results": "Table 7 (targeted UAPs) is reported per model without a stated source-target split; it is treated as same-model UAP success, not transfer. Figure 2 reports white-box and black-box target-class confidence and rank curves, not rates. Figures 4-6 and 10-12 are qualitative."
+  },
+  "sources": [
+    {"id": "arxiv_v4_with_appendices", "url": "https://arxiv.org/pdf/2012.11207v4", "sha256": "15e50d84052a4c890e9f3b2629538e2b6c5773ad2b2db0d0e216122e5bb85364"}
+  ],
+  "result_groups": [
+    {"id": "single_model_targeted", "locator": "Section 4.1; Table 1 (p. 6); Figure 1; Appendix Figures 7, 9", "population": "1,000 ImageNet-compatible development images with the dataset's official target labels; single-source to single-target pairs among ResNet50, DenseNet121, VGG16, Inception-v3; 20/100/300 iterations", "outcome": "targeted transfer success rate (Figure 1 also shows non-targeted curves)", "f2": "unclear", "f3": "unclear", "evidence": "No clean-correct or source-success rule is stated."},
+    {"id": "ensemble_hold_out_targeted", "locator": "Section 4.1; Table 2 (p. 7); Figure 3", "population": "1,000 images; easy hold-out ensemble (Inception/ResNet families) and a challenging ensemble with no architectural overlap", "outcome": "targeted transfer success rate", "f2": "unclear", "f3": "unclear", "evidence": "No population rule stated."},
+    {"id": "low_ranked_target_classes", "locator": "Section 4.1; Table 3 (p. 7)", "population": "1,000 images with target classes chosen by rank position (2nd to 1000th) in the original prediction list", "outcome": "targeted transfer success rate", "f2": "unclear", "f3": "unclear", "evidence": "Source, target model and population rule are not restated for Table 3."},
+    {"id": "google_cloud_vision", "locator": "Section 4.1 'Transfer-based attacks on Google Cloud Vision'; Table 4 (p. 8)", "population": "100 images that originally yield correct predictions on the Google Cloud Vision API; adversarial images crafted on the four-model ensemble (300 iterations)", "outcome": "non-targeted success: ground-truth class absent from the returned label list; targeted success: target class present (semantically similar labels merged)", "f2": "yes", "f3": "unclear", "evidence": "The API evaluation is explicitly restricted to images the API originally predicts correctly. No source-success rule is stated."},
+    {"id": "ttp_ten_targets_comparison", "locator": "Section 4.2; Table 5 (p. 9)", "population": "The dataset under TTP's '10-Targets (all-source)' setting; ResNet50 or ResNet ensemble source; DenseNet121 and VGG16_bn targets; epsilon 16 and 8", "outcome": "targeted transfer success rate", "f2": "unclear", "f3": "unclear", "evidence": "Population follows a prior protocol that is not restated."},
+    {"id": "unbounded_fda_comparison", "locator": "Section 4.2; Table 6 (p. 9)", "population": "4,000 examples initialised as Gaussian noise, each optimised to a random target class on ResNet50; DenseNet121 and VGG16 targets", "outcome": "targeted transfer success rate of unbounded images", "f2": "unclear", "f3": "unclear", "evidence": "Inputs are noise, so a clean-correct event is undefined; no source-success rule stated."}
+  ],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "separate_clean_values_not_located", "locator": "Section 4", "evidence": "No clean accuracy is reported for any model or the API; the API subset is selected by correctness."},
+    "f2": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 4.1 (p. 8)", "evidence": "The Google Cloud Vision scope is explicitly clean-correct (yes); all other scopes are unresolved."},
+    "f3": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 4", "evidence": "No source-success rule or explicit inclusion statement in any scope."},
+    "f4": {"value": "unclear", "reason": "partial_scope_counts_only", "locator": "Tables 1-6", "evidence": "Table 4's integer percentages over the stated 100 images identify counts. For the other tables, the 1,000-image denominator is not stated as the rate denominator, and Table 5 follows an external protocol."},
+    "f5": {"value": "unclear", "reason": "mixed_explicit_linf_and_explicit_unbounded", "locator": "Section 4.1 (p. 6); Table 5; Section 4.2 Table 6", "evidence": "L-infinity epsilon = 16 is explicit for the main results and epsilon = 8 for part of Table 5. Table 6 is explicitly unbounded by design. Neither is missing reporting, but the field's affirmative coverage of all results is not met."},
+    "f6": {"value": "unclear", "reason": "candidate_release_sufficiency_unverified", "locator": "artifact_checks below", "evidence": "The official repository releases the 1,000 images, labels and per-scenario evaluation scripts on public torchvision models, and API prediction logs from a later human evaluation. The Table 4 API outcomes cannot be regenerated against the 2021 service. Not executed."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-25", "url": "https://github.com/ZhengyuZhao/Targeted-Transfer/tree/2e0b6d0b581a14bc43836f69b04dc431cabcd05f", "result": "Linked in the paper (URL spelled Targeted-Tansfer; the GitHub API resolves Targeted-Transfer). 1,027 files, head 17 November 2022: dataset images and images.csv, eval_single/ensemble/low_ranked/10_targets/unbounded/tUAP.py, and human_eval/ with Google API prediction text files. eval_single.py counts, every 20 iterations, the adversarial images whose target-model prediction equals the target label over all images. No clean-correct or source-success filter; artifact evidence only. Not executed."}
+  ],
+  "bounds_checks": [
+    {"groups": ["single_model_targeted", "ensemble_hold_out_targeted", "low_ranked_target_classes", "ttp_ten_targets_comparison", "unbounded_fda_comparison"], "status": "different_outcome_targeted", "locator": "Tables 1-3, 5-6", "reason": "Targeted success is not an untargeted misclassification probability, and no clean baselines are reported."},
+    {"groups": ["google_cloud_vision"], "status": "not_applicable_clean_correct_conditioned_population", "locator": "Table 4", "reason": "Rates are over API-clean-correct images with a label-list outcome; no unconditional baseline."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit. Table 7 is excluded on the reading that each UAP is evaluated on the model it was generated for; an independent recoder could read it differently.",
+    "No execution."
+  ]
+}

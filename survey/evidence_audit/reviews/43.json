@@ -1,0 +1,35 @@
+{
+  "rank": 43,
+  "paper_id": "6be44364db3a46ab5fcf8172910650b210cc5c39",
+  "review_date": "2026-09-25",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all ten pages of arXiv 1904.05181v2 (28 June 2019): Sections 1-5, Algorithms 1-2, Figures 1-4, Tables 1-5 and references. The ACM MM version of record was not retrieved.",
+    "supplement": "No appendix or supplement is included or referenced.",
+    "inventory_complete": true,
+    "applicability": "no_original_cross_model_attack_evaluation_located",
+    "excluded_results": "Tables 2-4 and Figure 4 report success rates and average query counts of V-BAD, P-BAD and SR-BAD. These are score-based query attacks on the target video model (I3D, CNN+LSTM) with up to 3x10^5 queries. ImageNet image models (ResNet50, DenseNet121/169) supply only tentative perturbations that are then rectified by querying the target. Table 5 reports cosine similarity between tentative/rectified perturbations and the true gradient, a gradient-alignment diagnostic. No zero-query transfer rate from image models to a video model is reported."
+  },
+  "sources": [
+    {"id": "main", "url": "https://arxiv.org/pdf/1904.05181v2", "sha256": "6b0f679fb1ef970f92bfa3089529bc87d879e58a3666f166153428c7ab96682c"}
+  ],
+  "result_groups": [],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Table 1", "evidence": "Test accuracies of both video models on all three datasets are reported, positive setup evidence, but no transferred-example evaluation exists."},
+    "f2": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Section 4.1 Attack Setting (p. 6)", "evidence": "One correctly classified test video per category is attacked by querying the target; no transfer denominator exists."},
+    "f3": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Section 4.1", "evidence": "Success is defined for the query attack within the query limit; there is no source-to-target transfer step."},
+    "f4": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Tables 2-4", "evidence": "Counts would concern query-attack success, not transfer."},
+    "f5": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Section 3.1; Section 4.1", "evidence": "An explicit L-infinity bound epsilon = 0.05 per frame is stated for the query attacks, recorded as positive setup evidence; no transfer result exists to which the field applies."},
+    "f6": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "artifact_checks below", "evidence": "An author-named repository exists, but with no transfer configuration it is neither a transfer recomputability success nor a failure."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-25", "url": "https://github.com/Jack-lx-jiang/VBAD", "result": "Found by GitHub search (description matches the paper title; owner name matches the first author; last push 28 October 2019). Not linked in the arXiv text; not cloned or executed; not evaluated as a transfer artifact."}
+  ],
+  "bounds_checks": [],
+  "bounds_exclusion": {"status": "not_applicable_to_located_results", "locator": "Tables 2-4", "reason": "Only query-attack success rates on the attacked target are reported; there is no transferred misclassification rate."},
+  "limitations": [
+    "Transfer-prior query attacks are classified as out of scope, consistent with rank 19; an independent recoder could flag this boundary.",
+    "Non-blind evidence audit."
+  ]
+}
