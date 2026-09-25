@@ -1,0 +1,4 @@
+# Preserve exact bytes of the hashed original-runtime run and its harness.
+survey/recomputation/su18_original/manifest.json -text
+survey/recomputation/su18_original/predictions.jsonl -text
+survey/recomputation/su18_original_probe.py -text

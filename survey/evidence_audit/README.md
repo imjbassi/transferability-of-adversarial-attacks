@@ -4,7 +4,9 @@ Started 23 September 2026. This is a non-blind evidence audit, not the independe
 
 ## Current scope
 
-The ledger retains all 80 frozen paper IDs: ten documented reviews are complete (ranks 2, 3, 4, 5, 6, 7, 8, 9, 11 and 31), three have partial metric-specific checks, and 67 remain pending. No historical categorical judgment has been overwritten. Pending is a workflow state, not a new coding category. Complete means a documented non-blind review, not validated replication or independent agreement; unclear judgments may remain after review.
+The ledger retains all 80 frozen paper IDs: eleven documented reviews are complete (ranks 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 and 31), two have partial metric-specific checks, and 67 remain pending. No historical categorical judgment has been overwritten. Pending is a workflow state, not a new coding category. Complete means a documented non-blind review, not validated replication or independent agreement; unclear judgments may remain after review.
+
+[Rank 10's full review](reviews/10.json) covers eight targeted/untargeted groups and the embedded supplement. Its released evaluator explicitly filters target-clean mistakes and retains source failures. Original code, model checkpoints and data were downloaded and one FGSM pair executed in TensorFlow 1.8, supporting field 6 yes for this identified configuration. The [archived selected rerun](../recomputation/su18_original/README.md) yields PTR 345/645 and CTR 334/539. Seed/objective correspondence to the published cell remains unresolved; the difference is not evidence of a failed replication. No new published-population bound is inferred.
 
 [Rank 2's full review](reviews/02.json) separates the main seven-model clean-correct cohort, the C&W subset, ensemble/ablation experiments and the competition-defense experiment. Main-cohort filtering must not be silently extended to additional defenses. Its pinned demo code is a candidate artifact, not a verified transfer evaluator; attack-label and default-budget details are recorded for later reconciliation.
 

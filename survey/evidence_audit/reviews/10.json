@@ -1,0 +1,209 @@
+{
+  "rank": 10,
+  "paper_id": "821fd5bed14d6d06c25fbf44123fd7be382f7b4e",
+  "review_date": "2026-09-24",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all 24 pages of arXiv 1808.01688v2, including references and Section 5 supplement; visually inspected Figures 3-5 and 8-10 on pp. 11-13 and 18-20.",
+    "supplement": "Section 5 is included in the arXiv PDF. Checked official ECCV/ECVA listing; no additional linked experimental supplement located.",
+    "inventory_complete": true,
+    "applicability": "cross_model_classification_evasion",
+    "excluded_results": "Exclude white-box matrix diagonals, white-box attack performance, accuracy-distortion/CLEVER analyses, examples and WordNet distance plots. The 327 jointly clean-correct inputs in Section 5.1/Figure 6 concern white-box distortion, not an established population for transfer matrices. Figure 9/10 captions and Section 5.4 identify I-FGSM despite the Section 5.3 cross-reference."
+  },
+  "sources": [
+    {
+      "id": "main",
+      "url": "https://arxiv.org/pdf/1808.01688v2",
+      "sha256": "3a0992e78839429ade5b05c5b124c84ef9af01fef32a897b67e6aa56dee174dd"
+    },
+    {
+      "id": "README.md",
+      "url": "https://github.com/huanzhang12/Adversarial_Survey/blob/353ef696f594631f3577e94c01882c67e19aa3df/README.md",
+      "sha256": "8f0e27760ad6addee1d28551c6788e773571880608e98638f7207ec850101a51"
+    },
+    {
+      "id": "test_transferability.py",
+      "url": "https://github.com/huanzhang12/Adversarial_Survey/blob/353ef696f594631f3577e94c01882c67e19aa3df/test_transferability.py",
+      "sha256": "353e8ff29c2f8aa748d27d1f7ecd893e7e89ada1e9f4005775ee7163c0f1c5d5"
+    },
+    {
+      "id": "setup_imagenet.py",
+      "url": "https://github.com/huanzhang12/Adversarial_Survey/blob/353ef696f594631f3577e94c01882c67e19aa3df/setup_imagenet.py",
+      "sha256": "6d78e1d697a208c8d50c0f80a1e798ed73a75efcae2d54db989d18623e8e5e63"
+    },
+    {
+      "id": "FGSM_attack.py",
+      "url": "https://github.com/huanzhang12/Adversarial_Survey/blob/353ef696f594631f3577e94c01882c67e19aa3df/FGSM_attack.py",
+      "sha256": "3a4328db49d74198fccbfeeac44bf40d38df7501f20c1b2f9f9cb9c0aa250b92"
+    }
+  ],
+  "result_groups": [
+    {
+      "id": "fgsm_untargeted",
+      "locator": "Figure 3, p. 11; Sections 2.2, 2.4 and 3.4",
+      "population": "1,000 sampled ImageNet validation inputs, source-clean mistakes excluded; pair-specific target-clean denominator not explicit in paper. L-infinity epsilon 0.1, 0.2, 0.3",
+      "outcome": "Untargeted target misclassification rate, off-diagonal model pairs",
+      "f2": "unclear",
+      "f3": "no",
+      "evidence": "Section 3.4 explicitly includes successful and failed source attacks. Sections 2.3/2.4 establish source-correct selection, not explicitly target-correct selection. Released evaluator does exclude target-clean mistakes, a positive operational finding whose correspondence to every published panel remains unverified."
+    },
+    {
+      "id": "fgsm_targeted",
+      "locator": "Figure 3, p. 11; Sections 2.2, 2.4 and 3.4",
+      "population": "1,000 sampled ImageNet validation inputs, source-clean mistakes excluded; pair-specific target-clean denominator not explicit in paper. L-infinity epsilon 0.1, 0.2, 0.3",
+      "outcome": "Target-label top-5 matching rate, off-diagonal model pairs",
+      "f2": "unclear",
+      "f3": "no",
+      "evidence": "Section 3.4 explicitly includes successful and failed source attacks. Sections 2.3/2.4 establish source-correct selection, not explicitly target-correct selection. Released evaluator does exclude target-clean mistakes, a positive operational finding whose correspondence to every published panel remains unverified."
+    },
+    {
+      "id": "ifgsm_untargeted",
+      "locator": "Figure 4, p. 12; Figures 9-10, pp. 19-20; Sections 2.2 and 5.4",
+      "population": "1,000 sampled ImageNet validation inputs, source-clean mistakes excluded; pair-specific target-clean denominator not explicit in paper. L-infinity epsilon 0.1, 0.2, 0.3; 10, 30, 50 iterations",
+      "outcome": "Untargeted target misclassification rate, off-diagonal model pairs",
+      "f2": "unclear",
+      "f3": "no",
+      "evidence": "Section 3.4 explicitly includes successful and failed source attacks. Sections 2.3/2.4 establish source-correct selection, not explicitly target-correct selection. Released evaluator does exclude target-clean mistakes, a positive operational finding whose correspondence to every published panel remains unverified."
+    },
+    {
+      "id": "ifgsm_targeted",
+      "locator": "Figure 4, p. 12; Figures 9-10, pp. 19-20; Sections 2.2 and 5.4",
+      "population": "1,000 sampled ImageNet validation inputs, source-clean mistakes excluded; pair-specific target-clean denominator not explicit in paper. L-infinity epsilon 0.1, 0.2, 0.3; 10, 30, 50 iterations",
+      "outcome": "Target-label top-5 matching rate, off-diagonal model pairs",
+      "f2": "unclear",
+      "f3": "no",
+      "evidence": "Section 3.4 explicitly includes successful and failed source attacks. Sections 2.3/2.4 establish source-correct selection, not explicitly target-correct selection. Released evaluator does exclude target-clean mistakes, a positive operational finding whose correspondence to every published panel remains unverified."
+    },
+    {
+      "id": "ead_untargeted",
+      "locator": "Figure 5, p. 13; Sections 2.2 and 3.4",
+      "population": "1,000 sampled ImageNet validation inputs, source-clean mistakes excluded; pair-specific target-clean denominator not explicit in paper. Confidence kappa 0, 20, 40",
+      "outcome": "Untargeted target misclassification rate, off-diagonal model pairs",
+      "f2": "unclear",
+      "f3": "no",
+      "evidence": "Section 3.4 explicitly includes successful and failed source attacks. Sections 2.3/2.4 establish source-correct selection, not explicitly target-correct selection. Released evaluator does exclude target-clean mistakes, a positive operational finding whose correspondence to every published panel remains unverified."
+    },
+    {
+      "id": "ead_targeted",
+      "locator": "Figure 5, p. 13; Sections 2.2 and 3.4",
+      "population": "1,000 sampled ImageNet validation inputs, source-clean mistakes excluded; pair-specific target-clean denominator not explicit in paper. Confidence kappa 0, 20, 40",
+      "outcome": "Target-label top-5 matching rate, off-diagonal model pairs",
+      "f2": "unclear",
+      "f3": "no",
+      "evidence": "Section 3.4 explicitly includes successful and failed source attacks. Sections 2.3/2.4 establish source-correct selection, not explicitly target-correct selection. Released evaluator does exclude target-clean mistakes, a positive operational finding whose correspondence to every published panel remains unverified."
+    },
+    {
+      "id": "cw_untargeted",
+      "locator": "Figure 8, p. 18; Sections 2.2 and 5.3",
+      "population": "1,000 sampled ImageNet validation inputs, source-clean mistakes excluded; pair-specific target-clean denominator not explicit in paper. Confidence kappa 0, 20, 40",
+      "outcome": "Untargeted target misclassification rate, off-diagonal model pairs",
+      "f2": "unclear",
+      "f3": "no",
+      "evidence": "Section 3.4 explicitly includes successful and failed source attacks. Sections 2.3/2.4 establish source-correct selection, not explicitly target-correct selection. Released evaluator does exclude target-clean mistakes, a positive operational finding whose correspondence to every published panel remains unverified."
+    },
+    {
+      "id": "cw_targeted",
+      "locator": "Figure 8, p. 18; Sections 2.2 and 5.3",
+      "population": "1,000 sampled ImageNet validation inputs, source-clean mistakes excluded; pair-specific target-clean denominator not explicit in paper. Confidence kappa 0, 20, 40",
+      "outcome": "Target-label top-5 matching rate, off-diagonal model pairs",
+      "f2": "unclear",
+      "f3": "no",
+      "evidence": "Section 3.4 explicitly includes successful and failed source attacks. Sections 2.3/2.4 establish source-correct selection, not explicitly target-correct selection. Released evaluator does exclude target-clean mistakes, a positive operational finding whose correspondence to every published panel remains unverified."
+    }
+  ],
+  "judgments": {
+    "f1": {
+      "value": "yes",
+      "reason": "separate_benchmark_clean_accuracy_all_models",
+      "locator": "Table 1, p. 5",
+      "evidence": "Separate top-1/top-5 benchmark clean accuracies are listed for all 18 models, each used as source and target. These are not necessarily accuracies on the filtered attack cohort."
+    },
+    "f2": {
+      "value": "unclear",
+      "reason": "unresolved_scope",
+      "locator": "Sections 2.3, 2.4 and 3.4; released test_transferability.py",
+      "evidence": "Paper wording establishes source-clean selection, not explicit target-clean selection. The released evaluator explicitly skips target-clean mistakes before incrementing img_no. Preserve this positive code evidence separately; paper-to-code correspondence for all panels remains unresolved."
+    },
+    "f3": {
+      "value": "no",
+      "reason": "all_scopes_explicit_no",
+      "locator": "Section 3.4, p. 12",
+      "evidence": "The paper explicitly includes successful and failed source attacks when computing transferability; the released evaluator also retains source failures."
+    },
+    "f4": {
+      "value": "unclear",
+      "reason": "rounded_rates_without_pair_counts",
+      "locator": "Figures 3-5 and 8-10; Section 2.4",
+      "evidence": "Nominal 1,000-image sample size does not determine surviving pair denominators. Rounded heatmaps do not establish unique original counts. Newly generated per-example outputs are not original published counts."
+    },
+    "f5": {
+      "value": "unclear",
+      "reason": "incomplete_numerical_radius_coverage",
+      "locator": "Section 2.2; Figures 3-5 and 8-10",
+      "evidence": "FGSM/I-FGSM numerical L-infinity budgets are explicit. C&W/EAD confidence kappa is not an L2/L-infinity radius; these minimum-distortion formulations do not supply an analogous stated numerical radius across all groups."
+    },
+    "f6": {
+      "value": "yes",
+      "reason": "original_code_checkpoints_and_data_executed_selected_configuration",
+      "locator": "Pinned release README, original model/attack/evaluator code; recomputation/su18_original/README.md",
+      "evidence": "Downloaded and hashed released model/data archives, and executed unchanged TensorFlow 1.8 attack/model classes for FGSM Inception-v1 to Inception-v2, epsilon 0.1. This meets the existence criterion for a selected configuration, not full-paper replication or established historical seed/objective correspondence."
+    }
+  },
+  "operational_findings": {
+    "target_clean_filter": "yes: test_transferability.py skips target_original_class_label != argmax(true_label) before img_no increments",
+    "source_success_filter": "no: source failure status is not used to remove attempted attacks",
+    "coverage": "Code inspection plus one untargeted same-size model pair executed; not all published configurations."
+  },
+  "artifact_checks": [
+    {
+      "date": "2026-09-24",
+      "url": "https://www.ecva.net/papers/eccv_2018/papers_ECCV/html/Dong_Su_Is_Robustness_the_ECCV_2018_paper.php",
+      "result": "Inspected official listing and complete arXiv version with embedded supplement."
+    },
+    {
+      "date": "2026-09-24",
+      "url": "https://github.com/huanzhang12/Adversarial_Survey",
+      "result": "Pinned commit 353ef696f594631f3577e94c01882c67e19aa3df. Inspected README, generation/filtering, model loader, FGSM and transfer evaluator. Original-runtime selected rerun records 692 source-clean-correct attempts from 1,000 selected inputs and 645 jointly correct inputs. Exact historical seed/objective mapping unresolved; archive and report explicitly label non-replication."
+    },
+    {
+      "date": "2026-09-24",
+      "url": "https://download.huan-zhang.com/models/adv/imagenet/frozen_imagenet_models_v1.1.tar.gz",
+      "result": "Downloaded 2,828,941,127 bytes; SHA-256 493533fb8c4ed957e5ea575833310e61512a177571fb352692dc4992dec891a7. Extracted original GraphDefs; executed Inception-v1/v2."
+    },
+    {
+      "date": "2026-09-24",
+      "url": "https://download.huan-zhang.com/datasets/adv/img.tar.gz",
+      "result": "Downloaded 6,664,105,290 bytes; SHA-256 217c3776db6d53ffca5b232703def0c38221a899d7f1205b4eb5730c7d3a983e. Released 50,000-image archive supplies original label-bearing filenames; selected image IDs and per-image hashes archived."
+    }
+  ],
+  "bounds_checks": [
+    {
+      "groups": [
+        "fgsm_untargeted",
+        "ifgsm_untargeted",
+        "ead_untargeted",
+        "cw_untargeted"
+      ],
+      "status": "unresolved_published_population_alignment",
+      "locator": "Table 1; Section 3.4; released transfer evaluator",
+      "reason": "Do not subtract benchmark clean error from source-filtered or target-clean-filtered rates. The operational evaluator has zero baseline target error on its clean-correct denominator by construction. Its mapping to every published panel is not established, so no new published-value bound is added."
+    },
+    {
+      "groups": [
+        "fgsm_targeted",
+        "ifgsm_targeted",
+        "ead_targeted",
+        "cw_targeted"
+      ],
+      "status": "excluded_target_label_top5_metric",
+      "locator": "Sections 2.4 and 3.4; right-hand heatmaps",
+      "reason": "Top-5 target-label matching is not untargeted misclassification probability; do not apply the classification error bound."
+    }
+  ],
+  "limitations": [
+    "Non-blind evidence audit; no independent agreement estimate.",
+    "Selected rerun establishes executable artifacts, not complete original-table replication. Published seed and objective branch remain unresolved.",
+    "Dimension-changing comparisons require reconciling paper white-border wording with released zero padding on [-0.5,0.5]. Selected same-size pair avoids this ambiguity."
+  ]
+}

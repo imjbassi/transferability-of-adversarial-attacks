@@ -122,11 +122,13 @@
       "rank": 10,
       "paper_id": "821fd5bed14d6d06c25fbf44123fd7be382f7b4e",
       "title": "Is Robustness the Cost of Accuracy? - A Comprehensive Study on the Robustness of 18 Deep Image Classification Models",
-      "evidence_audit": "partial",
-      "bounds_review": "pending_source_filtered_population_clean_error",
-      "artifact_review": "pending",
+      "evidence_audit": "complete",
+      "bounds_review": "reviewed_published_population_alignment_unresolved",
+      "artifact_review": "sufficient_selected_configuration_original_runtime_executed",
       "notes": [
-        "Metric-scoped evidence in batch_01_06_10.md, rank 10; complete paper/supplement and artifact review pending."
+        "reviews/10.json covers the full paper and embedded supplement, eight transfer groups and all six judgments.",
+        "Released evaluator explicitly excludes target-clean mistakes and retains source failures; correspondence to every published panel remains unresolved.",
+        "Original TensorFlow 1.8 FGSM/model classes executed for one same-size pair; predictions and qualified comparison archived in recomputation/su18_original. Not a full published-table replication."
       ]
     },
     {

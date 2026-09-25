@@ -1,5 +1,9 @@
 # Scope and label conventions
 
+## Selected original-runtime run, 2026-09-24
+
+Rank 10 now has a separately archived [original TensorFlow 1.8 FGSM rerun](su18_original/README.md), with unchanged released attack/model classes, downloaded checkpoint/data hashes and per-example predictions. This is one selected configuration, not validation of the historical ports below or full-paper replication. Published seed/objective correspondence remains unresolved. Its operational target-clean filtering is a positive finding; no benchmark-clean-error subtraction is warranted on that filtered cohort.
+
 ## Configuration reconciliation, 2026-09-23
 
 SI-NI Section 4.1 states 16 iterations and step size 1.6, while released
