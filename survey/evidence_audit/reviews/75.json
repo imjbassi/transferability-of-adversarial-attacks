@@ -1,0 +1,35 @@
+{
+  "rank": 75,
+  "paper_id": "7f1e602a44b56b9853fcc2063df9593e7b79ba22",
+  "review_date": "2026-09-25",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read the ninety-seven-page arXiv 1911.05268 review (attack taxonomy, attacks, defenses, discussion and references). Sections were read for original experiments and transfer results; the transfer sections summarise prior work.",
+    "supplement": "No supplement.",
+    "inventory_complete": true,
+    "applicability": "no_original_cross_model_attack_evaluation_located",
+    "excluded_results": "The only original experiment located is Table 4 (Section on JSMA variants): white-box JSMA, NT-JSMA and M-JSMA on correctly classified MNIST, Fashion-MNIST and CIFAR-10 test instances, evaluated on the attacked model itself. All transferability discussions and numbers summarise other works."
+  },
+  "sources": [
+    {"id": "arxiv_review", "url": "https://arxiv.org/pdf/1911.05268", "sha256": "83d10644c001f6e0f76e1fe7049e32812cfeb6303a3284bc8bbf18fb4841a0bb"}
+  ],
+  "result_groups": [],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Table 4", "evidence": "No transfer evaluation exists; Table 4 is white-box."},
+    "f2": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Table 4 discussion", "evidence": "White-box attacks were run on correctly classified test instances, recorded as setup evidence; no transfer denominator exists."},
+    "f3": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Paper", "evidence": "No source-to-target transfer step in original experiments."},
+    "f4": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Table 4", "evidence": "Not a transfer outcome."},
+    "f5": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Table 4 caption", "evidence": "JSMA parameters (|theta| = 1, epsilon = 1) apply to white-box L0 attacks."},
+    "f6": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Paper", "evidence": "No transfer configuration exists."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-25", "url": "https://arxiv.org/abs/1911.05268", "result": "Downloaded and hashed; a review article with no transfer artifact."}
+  ],
+  "bounds_checks": [],
+  "bounds_exclusion": {"status": "not_applicable_to_located_results", "locator": "Table 4", "reason": "No original transferred misclassification rate."},
+  "limitations": [
+    "Retained in the frozen corpus with non-applicability reasons, as for ranks 11 and 18 (surveys).",
+    "Non-blind evidence audit; the 97-page text was read for original experiments rather than for its summaries of prior results."
+  ]
+}

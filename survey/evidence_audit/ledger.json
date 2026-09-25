@@ -911,46 +911,66 @@
       "rank": 71,
       "paper_id": "c6a3aff5cb098a402f5384ed46b333dad672044a",
       "title": "Curls & Whey: Boosting Black-Box Adversarial Attacks",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_applicable_to_located_results",
+      "artifact_review": "reviewed_not_applicable",
+      "notes": [
+        "reviews/71.json covers the fourteen-page arXiv PDF with appended supplementary material.",
+        "Substitute-guided attacks that query the target report minimum L2 distances only; no zero-query transfer rate (non-applicable, as ranks 19, 43, 62).",
+        "Code linked but not evaluated as a transfer artifact."
+      ]
     },
     {
       "rank": 72,
       "paper_id": "16a8e329c06b4c6f61762da7fa77a84bf3e12dca",
       "title": "Model Extraction and Adversarial Transferability, Your BERT is Vulnerable!",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "population_alignment_unresolved",
+      "artifact_review": "candidate_release_sufficiency_unverified",
+      "notes": [
+        "reviews/72.json covers all seven arXiv v1 pages with Appendices A-D.",
+        "Typo-attack transfer from extracted BERT to victim APIs; victim clean accuracy reported (field 1 yes); attacked subset and conditioning unstated; discrete-token budget (field 5 no).",
+        "Code linked; not executed."
+      ]
     },
     {
       "rank": 73,
       "paper_id": "f90e535758ba262ebbdd1e7966f6645eff535604",
       "title": "T-SEA: Transfer-Based Self-Ensemble Attack on Object Detection",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_applicable_different_outcome",
+      "artifact_review": "candidate_release_sufficiency_unverified",
+      "notes": [
+        "reviews/73.json covers all ten arXiv v1 pages (CVPR 2023).",
+        "Universal patch transfer across detectors and datasets measured by mAP relative to clean predictions; fields 1-4 unclear by outcome mapping; patch budget (field 5 no), as rank 14.",
+        "Official code with evaluator; not executed."
+      ]
     },
     {
       "rank": 74,
       "paper_id": "84421139efaae7862116f39d4df1cd5ea27103fc",
       "title": "Adversarial Threats to DeepFake Detection: A Practical Perspective",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_applicable_clean_correct_conditioned",
+      "artifact_review": "reviewed_no_author_release",
+      "notes": [
+        "reviews/74.json covers all ten arXiv v1 pages (CVPRW 2021).",
+        "Success rate excludes videos each detector originally mispredicts (field 2 yes, both scopes); victim-success rule unstated; explicit L-infinity 16/255 and 40/255.",
+        "No attack code linked."
+      ]
     },
     {
       "rank": 75,
       "paper_id": "7f1e602a44b56b9853fcc2063df9593e7b79ba22",
       "title": "Adversarial Examples in Modern Machine Learning: A Review",
-      "evidence_audit": "pending",
-      "bounds_review": "pending",
-      "artifact_review": "pending",
-      "notes": []
+      "evidence_audit": "complete",
+      "bounds_review": "not_applicable_to_located_results",
+      "artifact_review": "reviewed_not_applicable",
+      "notes": [
+        "reviews/75.json covers the ninety-seven-page arXiv review.",
+        "Only original experiment is white-box JSMA variants (Table 4); transfer content summarises other work; non-applicable as ranks 11, 18.",
+        "Not applicable."
+      ]
     },
     {
       "rank": 76,

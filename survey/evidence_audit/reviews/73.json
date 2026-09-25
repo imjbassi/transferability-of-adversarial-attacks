@@ -1,0 +1,38 @@
+{
+  "rank": 73,
+  "paper_id": "f90e535758ba262ebbdd1e7966f6645eff535604",
+  "review_date": "2026-09-25",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all ten pages of arXiv 2211.09773v1 (16 November 2022; CVPR 2023 paper): Sections 1-5, Algorithm 1, Tables 1-5, Figures 1-6 and references. The CVPR open-access version and any CVF supplement were not retrieved separately.",
+    "supplement": "No appendix is embedded; a CVF supplement was not located or read.",
+    "inventory_complete": true,
+    "applicability": "other_attack_outcome_object_detection",
+    "excluded_results": "White-box columns of Tables 1-3 (detector used to optimise the patch); gray, random-noise and white patches in Table 3 are non-adversarial controls; figures are qualitative or ablation plots of the same metric."
+  },
+  "sources": [
+    {"id": "arxiv_v1", "url": "https://arxiv.org/pdf/2211.09773v1", "sha256": "77eaa487c22a11a4b66b6c95cdfc17315d5672b5eb206434f59b011cd322377a"}
+  ],
+  "result_groups": [
+    {"id": "patch_transfer_across_detectors_and_datasets", "locator": "Section 4.1 Evaluation Metric; Tables 1-5; Figures", "population": "INRIA test set (288 images), COCO-person (1,684 images) and CCTV-person (559 images); universal person-hiding patches trained on one detector (INRIA train) and evaluated on the other seven detectors", "outcome": "mAP of black-box detectors, with each detector's clean-image predictions treated as ground truth (clean mAP = 1)", "f2": "unclear", "f3": "unclear", "evidence": "The outcome is defined relative to each detector's own clean predictions over the full test sets, so a clean-correct event is not defined, and a universal patch has no per-image source-success rule."}
+  ],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "no_clean_accuracy_defined_for_outcome", "locator": "Section 4.1", "evidence": "Clean predictions are the reference (mAP = 1 by construction), so no separate clean accuracy exists for this outcome."},
+    "f2": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 4.1", "evidence": "Detection mAP has no per-image clean-correct event."},
+    "f3": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 4.1", "evidence": "No source-success rule applies to a universal patch."},
+    "f4": {"value": "unclear", "reason": "continuous_outcome_counts_not_applicable", "locator": "Tables 1-5", "evidence": "mAP values, not counts."},
+    "f5": {"value": "no", "reason": "explicit_patch_attack_without_linf_l2_budget", "locator": "Section 4.1 Optimization Details", "evidence": "A 300 x 300 adversarial patch at scale 0.15 without an Lp radius; an explicit design, as for rank 14."},
+    "f6": {"value": "unclear", "reason": "candidate_release_sufficiency_unverified", "locator": "artifact_checks below", "evidence": "The official repository provides training and evaluate.py for the detectors; datasets are public. Detector weights and trained patches were not verified. Not executed."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-25", "url": "https://github.com/VDIGPKU/T-SEA/tree/8d1091fba17a23d5671dfff511774c44c5153fd7", "result": "Linked in the paper. Listed via the GitHub API (608 files, head 11 October 2024): evaluate.py, train_optim.py, train_fgsm.py and detector libraries. Not executed."}
+  ],
+  "bounds_checks": [
+    {"groups": ["patch_transfer_across_detectors_and_datasets"], "status": "different_outcome", "locator": "Tables 1-5", "reason": "Detection mAP relative to clean predictions is not a misclassification probability."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit; fields 1-4 are unclear because of the detection outcome, as for rank 14.",
+    "No execution."
+  ]
+}

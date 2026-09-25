@@ -1,0 +1,39 @@
+{
+  "rank": 74,
+  "paper_id": "84421139efaae7862116f39d4df1cd5ea27103fc",
+  "review_date": "2026-09-25",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all ten pages of arXiv 2011.09957v1 (19 November 2020; CVPR Workshops 2021): Sections 1-5, Tables 1-5, Figures 1-7 and references. The CVPRW version of record was not retrieved.",
+    "supplement": "No appendix; only a video-example website is linked.",
+    "inventory_complete": true,
+    "applicability": "cross_model_classification_attack_deepfake_detection",
+    "excluded_results": "Diagonal (victim = test model) cells of Tables 3-5 are white-box. Table 1 reports detector AUC on the DFDC test set (setup). Figures 1-5 and 7 are qualitative."
+  },
+  "sources": [
+    {"id": "arxiv_v1", "url": "https://arxiv.org/pdf/2011.09957v1", "sha256": "ee03a29666fd8ddb8f83108f27576f4091f544558f6d998d2f9201d925f6ab8d"}
+  ],
+  "result_groups": [
+    {"id": "per_frame_transfer", "locator": "Section 4.1 Evaluation Metrics; Tables 3-4 off-diagonal cells", "population": "First 100 fake and 100 real DFDC validation videos (30,300 frames); per-frame attacks (plain iterative and transformation-based transfer attack) crafted on one of four detectors and evaluated on the others", "outcome": "success rate: 'the percentage of videos for which we are able to successfully flip the original correct label predicted by a given detection method'; 'we do not take into account the videos that are originally mis-predicted by the classifier'", "f2": "yes", "f3": "unclear", "evidence": "Videos each test detector originally mispredicts are explicitly excluded. No victim-success rule is stated; the victim diagonals are 100% except 99.0% in Table 4."},
+    {"id": "universal_perturbation_transfer", "locator": "Section 3.5; Section 4 universal paragraph; Table 5 off-diagonal; Figure 6", "population": "Universal perturbations trained on 100 separate DFDC training videos at epsilon = 40/255 (and a sweep in Figure 6), evaluated on the same evaluation videos and unseen detectors", "outcome": "success rate (same definition)", "f2": "yes", "f3": "unclear", "evidence": "The same success-rate definition excludes originally mispredicted videos; a universal perturbation has no per-video victim-success filter stated."}
+  ],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "clean_metric_on_different_population", "locator": "Table 1", "evidence": "Detection AUC on the DFDC test set is reported for each detector, but no clean accuracy on the 200 evaluation videos is printed (only used to exclude mispredicted videos)."},
+    "f2": {"value": "yes", "reason": "all_scopes_explicit_yes", "locator": "Section 4.1 Evaluation Metrics", "evidence": "Originally mispredicted videos are excluded for each detection method. Positive conditioning evidence."},
+    "f3": {"value": "unclear", "reason": "unresolved_scope", "locator": "Section 4", "evidence": "No victim-success rule is stated."},
+    "f4": {"value": "unclear", "reason": "denominator_unstated", "locator": "Tables 3-5", "evidence": "Denominators vary with each detector's correctly predicted videos and are not stated (e.g., 68.75%)."},
+    "f5": {"value": "yes", "reason": "explicit_linf_radius_all_results", "locator": "Section 4.2; Section 4.3; Table 5; Figure 6", "evidence": "L-infinity epsilon = 16/255 for per-frame attacks (transfer attack uses the same hyperparameters) and 40/255 with a sweep for universal perturbations; measured mean L-infinity is also reported."},
+    "f6": {"value": "unclear", "reason": "no_author_release_located", "locator": "Section 1 footnote", "evidence": "Only a video-example site is linked; detectors are public DFDC entries, but the attack code is not identified."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-25", "url": "https://arxiv.org/abs/2011.09957v1", "result": "Downloaded and hashed; the paper links deepfakeattacks.github.io (examples) and third-party detector repositories only. The example site was not accessed."}
+  ],
+  "bounds_checks": [
+    {"groups": ["per_frame_transfer", "universal_perturbation_transfer"], "status": "not_applicable_clean_correct_conditioned_population", "locator": "Section 4.1", "reason": "Rates exclude originally mispredicted videos, so they are conditional on clean correctness."}
+  ],
+  "limitations": [
+    "Non-blind evidence audit.",
+    "No execution."
+  ]
+}

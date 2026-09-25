@@ -1,0 +1,35 @@
+{
+  "rank": 71,
+  "paper_id": "c6a3aff5cb098a402f5384ed46b333dad672044a",
+  "review_date": "2026-09-25",
+  "amendment": "coding_amendment_2026-09-23.md",
+  "review_mode": "non_blind_evidence_audit",
+  "coverage": {
+    "main": "Read all fourteen pages of arXiv 1904.01160 (CVPR 2019 content): Sections 1-5, Algorithms 1-2, Tables 1-4, Figures 1-6, references and the appended supplementary material (untargeted ImageNet Table 5, targeted Tiny-ImageNet results, example Figure 7). The CVPR open-access version was not retrieved separately.",
+    "supplement": "The supplementary material is appended to the arXiv PDF and read.",
+    "inventory_complete": true,
+    "applicability": "no_original_cross_model_attack_evaluation_located",
+    "excluded_results": "Every result (Tables 1-5, Figures 4-6) reports the median/average L2 distance of the closest adversarial example found against the target, using substitute gradients combined with target queries (binary search, Whey squeezing, and an outer loop determining epsilon), with query counts matched across methods. No fixed-budget, zero-query transfer rate from the substitute to a target is reported."
+  },
+  "sources": [
+    {"id": "arxiv_with_supplement", "url": "https://arxiv.org/pdf/1904.01160", "sha256": "e015d0b7b3f159154c78a2642348a044dc637f98b2dd9ae29f3e06c181d7d166"}
+  ],
+  "result_groups": [],
+  "judgments": {
+    "f1": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Section 4.1", "evidence": "No clean accuracies are reported and no transfer rate exists."},
+    "f2": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Section 4.1", "evidence": "Images 'that can be correctly classified by all target models' (10,000 ImageNet; 2,000 Tiny-ImageNet) are used, recorded as setup evidence for the query-assisted search; no transfer denominator exists."},
+    "f3": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Section 4", "evidence": "The outcome is a perturbation size found with target queries."},
+    "f4": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Tables 1-5", "evidence": "L2 distance medians and means, not counts."},
+    "f5": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Section 4.2", "evidence": "The perturbation size is the measured outcome (minimised L2), with an outer loop searching epsilon; no fixed budget applies."},
+    "f6": {"value": "unclear", "reason": "not_applicable_to_located_results", "locator": "Section 1 code link", "evidence": "Code is linked (github.com/walegahaha/Curls-Whey), but with no transfer-rate configuration this is neither a success nor a failure for the field."}
+  },
+  "artifact_checks": [
+    {"date": "2026-09-25", "url": "https://github.com/walegahaha/Curls-Whey", "result": "Repository linked in the paper; not cloned or executed; not evaluated as a transfer artifact."}
+  ],
+  "bounds_checks": [],
+  "bounds_exclusion": {"status": "not_applicable_to_located_results", "locator": "Tables 1-5", "reason": "Only query-assisted minimum-distance outcomes are reported."},
+  "limitations": [
+    "Substitute-guided attacks that query the target to verify and shrink adversarial examples are classified as query attacks, consistent with ranks 19, 43 and 62; an independent recoder could treat the substitute gradient step as transfer.",
+    "Non-blind evidence audit."
+  ]
+}
