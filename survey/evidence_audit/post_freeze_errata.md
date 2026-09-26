@@ -13,6 +13,8 @@ reported. None listed so far changes a coded value.
 - **Correction.** At pinned commit `9b2e5cca9b673efcac253e16b2f55f6cda1a8692`, both `attack_sgm.py` and `attack_iter.py` define `--step-size` with default `2`. They use `step_size = args.step_size / 255.0`, and fall back to `epsilon / num_steps` only when a negative step size is passed. So the released default is 2/255, which matches the paper's stated alpha = 2.
 - **Effect.** f6 remains `unclear` (candidate, sufficiency unverified); the reason and value are unchanged. The README's swapped source-architecture labels (the text says "ResNet-152 as the source" above `--arch densenet201`) remain as recorded.
 
+## 26 September 2026
+
 ### Rank 57 (SIA): rerun observation on the clean-correct image set (observation, no coding change)
 
 - **Frozen coding.** Group `normal_model_transfer` has field 2 = `yes`, based on Section 4.1's statement that the 1,000 images "are correctly classified by the adopted models". That coding records what the paper reports and is unchanged.
