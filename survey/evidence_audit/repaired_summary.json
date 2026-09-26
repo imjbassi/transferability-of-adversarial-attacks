@@ -1,0 +1,272 @@
+{
+  "status": "repaired_first_pass_non_blind_unvalidated",
+  "paper_count": 80,
+  "non_applicable_papers": [
+    8,
+    11,
+    18,
+    19,
+    26,
+    27,
+    36,
+    43,
+    52,
+    62,
+    65,
+    66,
+    71,
+    75,
+    79
+  ],
+  "applicable_paper_count": 65,
+  "fields": {
+    "clean_accuracy_source_target_separate": {
+      "all_papers": {
+        "unclear": 67,
+        "yes": 13
+      },
+      "applicable_papers": {
+        "unclear": 52,
+        "yes": 13
+      },
+      "value_by_reason": {
+        "unclear|clean_metric_on_different_population": 1,
+        "unclear|complete_separate_clean_values_not_located": 1,
+        "unclear|defended_target_clean_accuracy_not_reported": 1,
+        "unclear|detection_map_baselines_partial_coco_source_unreported": 1,
+        "unclear|graphical_clean_accuracy_only": 1,
+        "unclear|no_clean_accuracy_defined_for_outcome": 9,
+        "unclear|no_clean_baseline_event_defined_for_outcome": 1,
+        "unclear|not_applicable_to_located_results": 15,
+        "unclear|partial_separate_clean_values": 9,
+        "unclear|separate_aligned_clean_values_not_established": 1,
+        "unclear|separate_clean_values_not_located": 25,
+        "unclear|separate_clean_values_not_located_for_transfer_scope": 1,
+        "unclear|target_clean_references_present_source_coverage_unestablished": 1,
+        "yes|all_transfer_members_have_separate_clean_errors": 1,
+        "yes|clean_performance_reported_same_test_set_all_targets": 1,
+        "yes|separate_benchmark_clean_accuracy_all_models": 1,
+        "yes|separate_clean_values_all_targets": 4,
+        "yes|separate_clean_values_all_transfer_victims": 1,
+        "yes|separate_clean_values_on_transfer_populations": 1,
+        "yes|separate_model_values": 4
+      }
+    },
+    "transfer_denominator_clean_correct": {
+      "all_papers": {
+        "no": 3,
+        "unclear": 73,
+        "yes": 4
+      },
+      "applicable_papers": {
+        "no": 3,
+        "unclear": 58,
+        "yes": 4
+      },
+      "value_by_reason": {
+        "no|all_scopes_explicit_no": 3,
+        "unclear|mixed_explicit": 1,
+        "unclear|not_applicable_to_located_results": 15,
+        "unclear|unresolved_scope": 57,
+        "yes|all_scopes_explicit_yes": 4
+      },
+      "papers_with_any_explicit_yes_group": 13,
+      "papers_with_any_explicit_no_group": 12
+    },
+    "conditions_on_source_attack_success": {
+      "all_papers": {
+        "no": 7,
+        "unclear": 68,
+        "yes": 5
+      },
+      "applicable_papers": {
+        "no": 7,
+        "unclear": 53,
+        "yes": 5
+      },
+      "value_by_reason": {
+        "no|all_scopes_explicit_no": 7,
+        "unclear|mixed_explicit": 1,
+        "unclear|not_applicable_to_located_results": 15,
+        "unclear|unresolved_scope": 52,
+        "yes|all_scopes_explicit_yes": 5
+      },
+      "papers_with_any_explicit_yes_group": 9,
+      "papers_with_any_explicit_no_group": 17
+    },
+    "reports_absolute_counts": {
+      "all_papers": {
+        "unclear": 79,
+        "yes": 1
+      },
+      "applicable_papers": {
+        "unclear": 64,
+        "yes": 1
+      },
+      "value_by_reason": {
+        "unclear|averaged_or_nonunique_rates": 1,
+        "unclear|averaged_rates_and_unstated_population": 1,
+        "unclear|averaged_rates_denominator_unstated": 1,
+        "unclear|averaged_rates_do_not_establish_all_exact_counts": 2,
+        "unclear|averaged_rates_fingerprint_size_unstated": 1,
+        "unclear|averaged_rates_not_single_proportions": 2,
+        "unclear|averaged_rounded_rates_do_not_establish_exact_counts": 1,
+        "unclear|bounded_counts_conditioned_denominators_unstated": 1,
+        "unclear|continuous_averaged_outcome_sample_size_unstated": 1,
+        "unclear|continuous_boxplot_outcome_no_rates": 1,
+        "unclear|continuous_outcome_counts_not_applicable": 3,
+        "unclear|continuous_outcome_sample_size_unstated": 1,
+        "unclear|count_reconstruction_candidate_not_verified_all_cells": 1,
+        "unclear|counts_and_aggregation_not_fully_established": 1,
+        "unclear|denominator_and_aggregation_not_fully_established": 6,
+        "unclear|denominator_implied_counts_not_extracted": 1,
+        "unclear|denominator_stated_counts_not_extracted": 1,
+        "unclear|denominator_unstated": 12,
+        "unclear|denominators_not_stated_for_rates": 1,
+        "unclear|detection_ap_outcome_counts_not_applicable": 1,
+        "unclear|exact_counts_not_established_for_all_results": 1,
+        "unclear|exact_transfer_denominators_and_counts_unestablished": 1,
+        "unclear|filtered_denominators_not_recovered": 1,
+        "unclear|graphical_or_averaged_rates": 1,
+        "unclear|graphical_ratio_outcome": 1,
+        "unclear|nonintegral_cell_and_figure_values": 1,
+        "unclear|not_applicable_to_located_results": 15,
+        "unclear|one_decimal_rates_do_not_identify_counts": 2,
+        "unclear|one_decimal_rates_over_large_denominator_or_graphical": 1,
+        "unclear|one_or_two_decimal_rates_do_not_identify_counts": 1,
+        "unclear|partial_scope_counts_only": 6,
+        "unclear|partial_unique_reconstruction": 2,
+        "unclear|partial_unique_reconstruction_gcg_denominator_unverified": 1,
+        "unclear|rounded_rates_without_pair_counts": 1,
+        "unclear|stated_denominator_inconsistent_with_values": 3,
+        "unclear|three_decimal_rates_do_not_identify_counts": 1,
+        "yes|unique_reconstruction_known_denominators": 1
+      }
+    },
+    "numeric_linf_or_l2_budget": {
+      "all_papers": {
+        "no": 13,
+        "unclear": 30,
+        "yes": 37
+      },
+      "applicable_papers": {
+        "no": 13,
+        "unclear": 15,
+        "yes": 37
+      },
+      "value_by_reason": {
+        "no|explicit_byte_modification_threat_model_without_input_lp_radius": 1,
+        "no|explicit_discrete_token_attack_not_lp": 2,
+        "no|explicit_generative_region_attack_without_linf_l2_budget": 1,
+        "no|explicit_minimum_perturbation_attacks_without_radius": 1,
+        "no|explicit_patch_attack_without_linf_l2_budget": 2,
+        "no|explicit_penalty_objective_without_radius": 1,
+        "no|explicit_physical_sticker_attack_without_linf_l2_budget": 1,
+        "no|explicit_sparse_attack_without_linf_l2_budget": 1,
+        "no|explicit_token_count_budget_not_lp": 1,
+        "no|explicit_unconstrained_discrete_prompt_objective": 1,
+        "no|explicit_unrestricted_color_attack_baseline_budgets_unstated": 1,
+        "unclear|budget_not_stated_for_all_scopes": 1,
+        "unclear|budget_not_stated_for_transfer_scope": 1,
+        "unclear|classic_baseline_budget_scope_unresolved": 1,
+        "unclear|cw_radius_not_established": 1,
+        "unclear|imagenet_torchvision_budget_unstated": 1,
+        "unclear|incomplete_numerical_radius_coverage": 1,
+        "unclear|mixed_attack_geometries_and_incomplete_l2_linf_coverage": 1,
+        "unclear|mixed_explicit_linf_and_explicit_unbounded": 1,
+        "unclear|mixed_explicit_linf_and_patch_attacks": 1,
+        "unclear|mixed_explicit_linf_radius_and_minimum_norm_attacks": 1,
+        "unclear|non_lp_chamfer_budget_and_unstated_scope": 1,
+        "unclear|not_applicable_to_located_results": 15,
+        "unclear|radius_explicit_norm_not_explicitly_identified_for_transfer": 1,
+        "unclear|substitute_attack_budget_unstated": 1,
+        "unclear|supplement_scope_budget_ambiguous": 1,
+        "unclear|talfw_budget_unstated_measured_norm_only": 1,
+        "yes|explicit_fgsm_linf_radius": 1,
+        "yes|explicit_linf_l2_radius_all_results": 1,
+        "yes|explicit_linf_radius_all_results": 32,
+        "yes|numeric_norm_budget_covers_reviewed_scopes": 1,
+        "yes|numeric_norm_budget_covers_transfer_evaluations": 1,
+        "yes|numeric_norm_budgets_cover_all_scopes": 1
+      }
+    },
+    "artifacts_sufficient_to_recompute": {
+      "all_papers": {
+        "unclear": 79,
+        "yes": 1
+      },
+      "applicable_papers": {
+        "unclear": 64,
+        "yes": 1
+      },
+      "value_by_reason": {
+        "unclear|candidate_release_selection_lists_not_released": 1,
+        "unclear|candidate_release_sufficiency_unverified": 21,
+        "unclear|checkpoint_access_verified_transfer_evaluator_correspondence_unestablished": 1,
+        "unclear|checkpoint_data_and_execution_sufficiency_unverified": 1,
+        "unclear|code_release_hosted_target_unverified": 1,
+        "unclear|code_release_transfer_configuration_unverified": 3,
+        "unclear|code_released_evaluation_inputs_not_released": 1,
+        "unclear|defense_release_not_verified_transfer_recomputation": 1,
+        "unclear|general_library_available_original_configuration_unverified": 1,
+        "unclear|hosted_targets_and_judgments_unreleased": 1,
+        "unclear|hosted_targets_unverifiable": 1,
+        "unclear|no_author_release_linked": 1,
+        "unclear|no_author_release_located": 9,
+        "unclear|no_release_custom_checkpoints": 1,
+        "unclear|no_release_linked_attack_code_not_located": 1,
+        "unclear|not_applicable_to_located_results": 15,
+        "unclear|original_artifact_sufficiency_unestablished": 1,
+        "unclear|original_data_checkpoint_sufficiency_unverified": 1,
+        "unclear|partial_release_candidate_unverified": 1,
+        "unclear|partial_release_example_only": 1,
+        "unclear|proprietary_model_and_data_no_release": 1,
+        "unclear|release_accessible_conditioning_quantities_undefined_sample_unverified": 1,
+        "unclear|release_evaluator_differs_from_described_protocol": 1,
+        "unclear|release_executed_historically_manifest_unverified": 1,
+        "unclear|release_lacks_transfer_configuration": 1,
+        "unclear|release_lacks_transfer_evaluation_code": 3,
+        "unclear|release_lacks_transfer_models_and_script": 1,
+        "unclear|released_adversarial_benchmark_source_side_unavailable": 1,
+        "unclear|released_outputs_do_not_match_published_run_hosted_targets_unverified": 1,
+        "unclear|target_evaluation_sufficiency_unestablished": 1,
+        "unclear|transfer_evaluation_sufficiency_unestablished": 1,
+        "unclear|transfer_sample_and_evaluator_not_released": 1,
+        "unclear|unlinked_partial_release_yolo_only": 1,
+        "yes|original_code_checkpoints_and_data_executed_selected_configuration": 1
+      }
+    }
+  },
+  "applicability_strata": {
+    "cross_model_classification_and_segmentation_attack": 1,
+    "cross_model_classification_attack": 35,
+    "cross_model_classification_attack_auc_outcome": 1,
+    "cross_model_classification_attack_binary_malware_detection": 1,
+    "cross_model_classification_attack_deepfake_detection": 1,
+    "cross_model_classification_attack_defense_evaluation": 2,
+    "cross_model_classification_attack_extracted_substitute": 1,
+    "cross_model_classification_attack_other_ratio_outcome": 1,
+    "cross_model_classification_attack_plus_human_observer_transfer": 1,
+    "cross_model_classification_attack_point_cloud": 1,
+    "cross_model_classification_attack_targeted": 2,
+    "cross_model_classification_attack_targeted_fingerprint": 1,
+    "cross_model_classification_evasion": 1,
+    "cross_model_classification_evasion_and_training_data_poisoning": 1,
+    "cross_model_face_recognition_physical_attack_similarity_outcome": 1,
+    "cross_model_face_verification_attack": 2,
+    "cross_model_text_classification_attack": 1,
+    "cross_model_video_classification_attack": 1,
+    "no_original_cross_model_attack_evaluation_located": 15,
+    "other_attack_outcome_commercial_mllm_image_description_and_filters": 1,
+    "other_attack_outcome_image_translation_disruption": 1,
+    "other_attack_outcome_interpretation_maps": 1,
+    "other_attack_outcome_llm_assessment_score": 1,
+    "other_attack_outcome_llm_jailbreak_transfer": 1,
+    "other_attack_outcome_machine_translation": 1,
+    "other_attack_outcome_object_detection": 1,
+    "other_attack_outcome_object_detection_patch": 1,
+    "other_attack_outcome_speech_recognition": 1,
+    "other_attack_outcome_targeted_vlm_text_generation": 1
+  },
+  "warning": "Non-blind single-auditor first pass under the retrospective 23 September 2026 amendment. Counts are not validated by an independent recode and must be reported with reason strata; unclear is never evidence that a paper is wrong."
+}

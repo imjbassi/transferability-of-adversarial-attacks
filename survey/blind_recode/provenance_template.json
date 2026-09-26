@@ -1,0 +1,14 @@
+{
+  "coder": "",
+  "completed_at_utc": "",
+  "blinding_method": "",
+  "first_pass_hidden": false,
+  "first_pass_evidence_audited": true,
+  "first_pass_sha256": "",
+  "materials_used": [
+    "coding_scheme.md",
+    "coding_amendment_2026-09-23.md",
+    "paper PDFs and linked supplements"
+  ],
+  "note": "Fill in after recoding. Set first_pass_hidden to true only if you never saw survey/evidence_audit/, repaired_* files, coding_sheet.csv or any first-pass judgment."
+}

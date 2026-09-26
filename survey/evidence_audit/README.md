@@ -2,7 +2,16 @@
 
 Started 23 September 2026. This is a non-blind evidence audit, not the independent recode.
 
-## Current scope
+## Frozen repaired first pass (25 September 2026)
+
+After all 80 reviews were complete, a pre-freeze consistency sweep of fields 2-3 downgraded rank 76's field-3 group codes from `no` to `unclear`. Its Eq. 7 averages over an unspecified set of adversarial pairs, unlike rank 47, which names the generated examples as the denominator. The sweep also recorded two further borderline codings: ranks 47 and 78 (field 3 `no` from explicit all-example denominators) and rank 53 (field 3 `yes` from definitions plus arithmetic). These are flagged in their reviews rather than changed.
+
+- `python survey/build_repaired_coding_sheet.py` exports [repaired_coding_sheet.csv](repaired_coding_sheet.csv) (judgments, reason strata, applicability, any-explicit indicators, artifact/bounds status, review hashes), [repaired_first_pass.csv](repaired_first_pass.csv) (historical column format for `compute_reliability.py`) and [repaired_summary.json](repaired_summary.json). `--check` verifies they match the reviews. The historical `coding_sheet.csv` is unchanged.
+- `python survey/freeze_first_pass.py --check` verifies [freeze_manifest.json](freeze_manifest.json): SHA-256 hashes, with CRLF normalised to LF, of the scheme, amendment, corpus, ledger, exports, builder, validator and all 80 reviews.
+- `python survey/build_blind_recode_packet.py` writes [../blind_recode/](../blind_recode/README.md) for the preregistered 16-paper sample. It contains no first-pass judgments.
+
+First-pass paper-level counts (non-blind, single auditor, retrospective amendment; not validated by an independent recode; 15 of 80 papers are non-applicable). Field 1: 13 yes, 67 unclear. Field 2: 4 yes, 3 no, 73 unclear (57 unresolved, 1 mixed explicit, 15 non-applicable), with 13 papers having at least one explicit clean-correct group. Field 3: 5 yes, 7 no, 68 unclear (52 unresolved, 1 mixed explicit, 15 non-applicable), with 9 papers having at least one explicit source-success-conditioned group. Field 4: 1 yes. Field 5: 37 yes, 13 explicit no (non-Lp or unbounded designs), 30 unclear. Field 6: 1 yes (rank 10, one executed configuration, not full-paper replication). These counts describe reporting sufficient to reconstruct the quantities; `unclear` never means a paper is wrong.
+
 
 The ledger retains all 80 frozen paper IDs: all 80 documented first-pass reviews are complete (ranks 1-80); none is pending or partial. Complete means a documented, validated, non-blind review record, not independent agreement, recomputation or a frozen export.
 
