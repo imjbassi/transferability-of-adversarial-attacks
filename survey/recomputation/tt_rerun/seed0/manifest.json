@@ -1,0 +1,35 @@
+{
+  "paper": "rank 44, arXiv 2012.11207v4",
+  "repository": "https://github.com/ZhengyuZhao/Targeted-Transfer",
+  "commit": "2e0b6d0b581a14bc43836f69b04dc431cabcd05f",
+  "tracked_files_modified": false,
+  "script": "eval_single.py",
+  "runtime_adaptations": [
+    "numpy.int restored as int",
+    "tqdm.tqdm_notebook aliased to tqdm.tqdm",
+    "numpy global RNG seeded with 0 (release seeds torch only; DI uses numpy)"
+  ],
+  "release_settings": "batch 20, 300 iterations, step 2/255, epsilon 16/255, MI + TI (5x5) + DI (p = 0.7); torch.manual_seed(42) in the script",
+  "started_utc": "2026-09-26T09:51:50.335899+00:00",
+  "finished_utc": "2026-09-26T11:10:15.306779+00:00",
+  "seed": 0,
+  "images": {
+    "count": 1000,
+    "images_csv_sha256": "a39cd0a747e7d3b413c34a88329bb651b11b1988012ad3cfc3845045a5cbd894",
+    "digest": "b6cd0c83e727d9742b09a58670a09f4ab801d3273595badd04735b469750b2c7"
+  },
+  "torchvision_weights": {
+    "resnet50-0676ba61.pth": "0676ba61b6795bbe1773cffd859882e5e297624d384b6993f7c9e683e722fb8a",
+    "densenet121-a639ec97.pth": "a639ec97d7c33b07ae66f0b5fb7d0192f95a3b11b7576c66c0126c2a727c4395",
+    "vgg16_bn-6c64b313.pth": "6c64b3138f2f4fcb3bcc4cafde11619c4f440eb1631787e93a682fd88305888a",
+    "inception_v3_google-0cc3c7bd.pth": "0cc3c7bd75056d25e46cba549dc184522069b81e9787eff6df84f397bd52a5ef"
+  },
+  "environment": {
+    "python": "3.14.2",
+    "platform": "Windows-11-10.0.26100-SP0",
+    "torch": "2.14.0+cu126",
+    "torchvision": "0.29.0+cu126",
+    "numpy": "2.4.2",
+    "gpu": "NVIDIA GeForce RTX 4070"
+  }
+}

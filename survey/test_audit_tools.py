@@ -280,6 +280,25 @@ class PnaRerunTests(unittest.TestCase):
         self.assertEqual({k for k in manifest if k.startswith("attack_")},
                          {f"attack_{s}" for s in module.SURROGATES})
 
+class TargetedTransferRerunTests(unittest.TestCase):
+    def test_summary_reproduces_from_counts(self):
+        import csv
+        import importlib.util
+        folder = Path(__file__).parent / "recomputation/tt_rerun"
+        spec = importlib.util.spec_from_file_location("tt_run", folder / "run.py")
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        run = folder / "seed0"
+        counts = {}
+        with (run / "success_counts.csv").open(newline="", encoding="utf-8") as handle:
+            for r in csv.DictReader(handle):
+                counts.setdefault(r["attack"], {})[r["target"]] = [int(r[f"iter_{20 * (i + 1)}"]) for i in range(15)]
+        stored = json.loads((run / "summary.json").read_text(encoding="utf-8"))
+        self.assertEqual(module.summarize(counts), stored)
+        self.assertEqual(len(stored["comparison"]), 27)
+        manifest = json.loads((run / "manifest.json").read_text(encoding="utf-8"))
+        self.assertEqual(manifest["commit"], "2e0b6d0b581a14bc43836f69b04dc431cabcd05f")
+
 class RepairedExportTests(unittest.TestCase):
     def test_export_matches_reviews_and_reliability_format(self):
         import build_repaired_coding_sheet as export
