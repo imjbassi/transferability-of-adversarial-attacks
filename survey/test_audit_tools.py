@@ -299,6 +299,25 @@ class TargetedTransferRerunTests(unittest.TestCase):
         manifest = json.loads((run / "manifest.json").read_text(encoding="utf-8"))
         self.assertEqual(manifest["commit"], "2e0b6d0b581a14bc43836f69b04dc431cabcd05f")
 
+class SiaRerunTests(unittest.TestCase):
+    def test_summary_and_release_eval_agree(self):
+        import importlib.util
+        folder = Path(__file__).parent / "recomputation/sia_rerun"
+        spec = importlib.util.spec_from_file_location("sia_run", folder / "run.py")
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        run = folder / "run1"
+        stored = json.loads((run / "summary.json").read_text(encoding="utf-8"))
+        self.assertEqual(module.summarize(run / "per_example_predictions.csv"), stored)
+        manifest = json.loads((run / "manifest.json").read_text(encoding="utf-8"))
+        self.assertEqual(manifest["commit"], "6d5432d4165a85753c8ae8fdee5cfd3362509a97")
+        for cfg in module.CONFIGS:
+            # release --eval prints accuracies in model_list order, which equals MODELS
+            release_acc = [float(v) for v in manifest[f"release_eval_{cfg}"].strip("| ").split("|")]
+            ours = [c["success_percent"] for c in stored["configs"][cfg]]
+            for acc, succ in zip(release_acc, ours):
+                self.assertAlmostEqual(100 - acc, succ, places=6)
+
 class RepairedExportTests(unittest.TestCase):
     def test_export_matches_reviews_and_reliability_format(self):
         import build_repaired_coding_sheet as export

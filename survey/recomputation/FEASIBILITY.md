@@ -9,7 +9,7 @@ Assessed 25–26 September 2026 on the available machine: Windows 11, an RTX 407
 | 23 SSA | PyTorch | **Run**: `ssa_rerun/` | One configuration, two seeds. |
 | 20 ILA | PyTorch, CIFAR-10 | **Run**: `ila_rerun/` | I-FGSM and MI-FGSM. |
 | 13 SGM | PyTorch + advertorch | **Run**: `sgm_rerun/` | Four configurations; Inception targets proxied by converted TF-slim weights. |
-| 57 SIA | PyTorch, torchvision | Running | Images from the Admix Drive folder; `weights='DEFAULT'` may differ from 2023 weights. |
+| 57 SIA | PyTorch, torchvision | **Run**: `sia_rerun/` | Images from the Admix Drive folder; `weights='DEFAULT'` may differ from 2023 weights. |
 | 47 PNA | PyTorch, timm | **Run**: `pna_rerun/` | Table 1 ViT to ViT; the pinned timm 0.4.13 was never published (0.4.12 used); ViT-B/16 weight identity ambiguous; CNN victims (TF-slim) not run. |
 | 44 | PyTorch, torchvision | **Run**: `tt_rerun/` | Table 1 ResNet-50 block; Table 4 commercial-API outcomes cannot be regenerated. |
 | 10 | TF 1.8 | Run earlier (`su18_original/`) | CPU-only legacy runtime. |
