@@ -1,5 +1,9 @@
 # Scope and label conventions
 
+## Conditioning across reruns, 2026-09-26
+
+`conditioning_across_reruns.py` computes unconditional, PTR, CTR, a_st and b_st, with counts, for all 88 source-to-target pairs in the four reruns that archived per-example source and target predictions: SSA (both seeds), SGM, PNA and SIA. In these iterative white-box settings, source success on jointly clean-correct images is 97–100%, so CTR stays close to PTR: CTR minus the unconditional rate spans −5.3 to +2.3 points, median about 0. Counting clean-misclassified images shifts rates by up to 5.4 points (unconditional minus PTR), in the SSA and SIA image sets. These are descriptive results for selected configurations, not corpus estimates.
+
 ## Manifested SIA rerun, 2026-09-26
 
 Rank 57 now has a [manifested rerun](sia_rerun/README.md) from the ResNet-18 source. With the paper's μ = 1, all eight targets are within 0.5 points of Figure 3(a)'s vector-extracted bar values. The release's default μ = 0 gives results 3–27 points lower. Under the release pipeline, the released images are not all clean-correct: clean accuracy is 89.5–98.4%.
