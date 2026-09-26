@@ -209,6 +209,27 @@ class BoundsDistributionTests(unittest.TestCase):
         self.assertEqual(result["pooled_single_target"]["rates"], 108 + 81 + 18)
         self.assertEqual(result["rank38_ensemble_contains_source_not_pooled"]["rates"], 27)
 
+class SsaRerunTests(unittest.TestCase):
+    def test_metrics_recompute_from_predictions(self):
+        import csv
+        import math
+        folder = Path(__file__).parent / "recomputation/ssa_rerun"
+        seeds = sorted(p for p in folder.glob("seed*") if (p / "conditioned_metrics.json").exists())
+        self.assertTrue(seeds)
+        for seed in seeds:
+            with (seed / "per_example_predictions.csv").open(newline="", encoding="utf-8") as handle:
+                rows = [{k: int(v) for k, v in r.items() if k != "image_id"} for r in csv.DictReader(handle)]
+            self.assertEqual(len(rows), 1000)
+            manifest = json.loads((seed / "manifest.json").read_text(encoding="utf-8"))
+            self.assertEqual(manifest["attack"]["checkout"]["commit"], "c955cf07c8372bfc4e9f17e647042e027f9f3b1d")
+            self.assertEqual(len(manifest["evaluate"]["target_weights"]), 9)
+            for item in json.loads((seed / "conditioned_metrics.json").read_text(encoding="utf-8")):
+                with self.subTest(seed=seed.name, model=item["model"]):
+                    for key, value in summarize(rows, item["model"], 1).items():
+                        expected = item[key]
+                        self.assertTrue(value is expected if value is None or expected is None
+                                        else math.isclose(value, expected, abs_tol=1e-9))
+
 class RepairedExportTests(unittest.TestCase):
     def test_export_matches_reviews_and_reliability_format(self):
         import build_repaired_coding_sheet as export

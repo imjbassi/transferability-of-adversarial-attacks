@@ -1,0 +1,114 @@
+{
+  "attack": {
+    "started_utc": "2026-09-26T04:17:46.822928+00:00",
+    "finished_utc": "2026-09-26T04:36:08.383294+00:00",
+    "command": [
+      "python",
+      "survey/recomputation/ssa_rerun/seeded_attack.py",
+      "0",
+      "--output_dir",
+      "<work-dir>/adv/"
+    ],
+    "seed": 0,
+    "released_defaults": "max_epsilon=16, num_iter=10 (hard-coded), N=20, rho=0.5, sigma=16, batch_size=10; momentum/DI/TI lines commented out in release (S2I-FGSM)",
+    "source_model": "pretrainedmodels.inceptionv3(pretrained='imagenet') as in released attack.py",
+    "source_checkpoint": {
+      "file": "inception_v3_google-1a9a5a14.pth",
+      "url": "https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth",
+      "sha256": "1a9a5a14f40645a370184bd54f4e8e631351e71399112b43ad0294a79da290c8"
+    },
+    "adversarial_images_digest": "651e67537bb6cb53c7d2962d23f414bd9b3e7a6cfbae935228aeb4ef2b7891ef",
+    "adversarial_image_count": 1000,
+    "determinism_note": "torch/numpy/random seeded and cudnn.deterministic set; GPU kernels may still be nondeterministic",
+    "environment": {
+      "python": "3.14.2",
+      "platform": "Windows-11-10.0.26100-SP0",
+      "torch": "2.14.0+cu126",
+      "cuda": "12.6",
+      "cudnn": 91002,
+      "gpu": "NVIDIA GeForce RTX 4070",
+      "numpy": "2.4.2"
+    },
+    "checkout": {
+      "repository": "https://github.com/yuyang-long/SSA",
+      "commit": "c955cf07c8372bfc4e9f17e647042e027f9f3b1d",
+      "tracked_files_modified": false,
+      "attack_py_sha256": "229de11c0d8ed457b9de3487f61d508c6659580d7be7f475fc9306ac91b5273d",
+      "images_csv_sha256": "3ab57da7939df5e6e57e0dfe93b0ea3362bf9d440c2a0c2b6377814d25be18b9",
+      "clean_images_digest": "31c8d7705abc0c3655e63c13c44bd3037d3c43a20e8c6690ef3078f82d75eba7"
+    }
+  },
+  "evaluate": {
+    "finished_utc": "2026-09-26T04:40:50.645322+00:00",
+    "target_weights": {
+      "tf_inception_v3": {
+        "file": "tf2torch_inception_v3.npy",
+        "url": "https://github.com/ylhz/tf_to_pytorch_model/releases/download/v1.0/tf2torch_inception_v3.npy",
+        "bytes": 164579574,
+        "sha256": "bbd8e9318e7e565eb4443d1e4b34d584c260c1b746c959abc196be2acdda0a11"
+      },
+      "tf_inception_v4": {
+        "file": "tf2torch_inception_v4.npy",
+        "url": "https://github.com/ylhz/tf_to_pytorch_model/releases/download/v1.0/tf2torch_inception_v4.npy",
+        "bytes": 279223966,
+        "sha256": "bda6b05a715213943009b1f40375c7efc4d7b77821285acb2210ff1b381af766"
+      },
+      "tf_inc_res_v2": {
+        "file": "tf2torch_inc_res_v2.npy",
+        "url": "https://github.com/ylhz/tf_to_pytorch_model/releases/download/v1.0/tf2torch_inc_res_v2.npy",
+        "bytes": 359362405,
+        "sha256": "279058522e2f4f3e2cce29011b76f33c6f5b54510564c046f71c7eccd200ea52"
+      },
+      "tf_resnet_v2_50": {
+        "file": "tf2torch_resnet_v2_50.npy",
+        "url": "https://github.com/ylhz/tf_to_pytorch_model/releases/download/v1.0/tf2torch_resnet_v2_50.npy",
+        "bytes": 154932386,
+        "sha256": "f8bc4c6dcc881bbcb9b8ce9bb362bc0cdf53bdf11770c0490da5e6e1a3a53023"
+      },
+      "tf_resnet_v2_101": {
+        "file": "tf2torch_resnet_v2_101.npy",
+        "url": "https://github.com/ylhz/tf_to_pytorch_model/releases/download/v1.0/tf2torch_resnet_v2_101.npy",
+        "bytes": 270337568,
+        "sha256": "c1ba5fa773b6614fa627744fdad00819b762549adc058c842a29a1328e9d3e6d"
+      },
+      "tf_resnet_v2_152": {
+        "file": "tf2torch_resnet_v2_152.npy",
+        "url": "https://github.com/ylhz/tf_to_pytorch_model/releases/download/v1.0/tf2torch_resnet_v2_152.npy",
+        "bytes": 365566566,
+        "sha256": "0b7f6173c509cd3a6d6966735bc4885333836a8cdb1a50c7d64b9bc29294d95a"
+      },
+      "tf_ens3_adv_inc_v3": {
+        "file": "tf2torch_ens3_adv_inc_v3.npy",
+        "url": "https://github.com/ylhz/tf_to_pytorch_model/releases/download/v1.0/tf2torch_ens3_adv_inc_v3.npy",
+        "bytes": 164523258,
+        "sha256": "d51ed2e051df31eaeb3b59c35d71bf23cb0f2d98966e131b295839c520d1f530"
+      },
+      "tf_ens4_adv_inc_v3": {
+        "file": "tf2torch_ens4_adv_inc_v3.npy",
+        "url": "https://github.com/ylhz/tf_to_pytorch_model/releases/download/v1.0/tf2torch_ens4_adv_inc_v3.npy",
+        "bytes": 164545954,
+        "sha256": "d89c70e60ea3d23a869febe1f0d7273e1b42a32c4845d8cbd79fad7707e71e46"
+      },
+      "tf_ens_adv_inc_res_v2": {
+        "file": "tf2torch_ens_adv_inc_res_v2.npy",
+        "url": "https://github.com/ylhz/tf_to_pytorch_model/releases/download/v1.0/tf2torch_ens_adv_inc_res_v2.npy",
+        "bytes": 359707027,
+        "sha256": "609af10cd528b85fdaf6ec918a0db608d7f5cd74bf5bb0b56591b4c31a58ab74"
+      }
+    },
+    "weight_loading": "restricted unpickler (numpy dtype/ndarray/_reconstruct, _codecs.encode only)",
+    "evaluator": "this script; verify.py equivalent: target argmax != label+1 over 1,000 images",
+    "source_white_box_error_percent": 99.6,
+    "label_convention": "label and source 0-based; converted targets 1-based (compare to label+1)",
+    "adversarial_images_digest": "651e67537bb6cb53c7d2962d23f414bd9b3e7a6cfbae935228aeb4ef2b7891ef",
+    "environment": {
+      "python": "3.14.2",
+      "platform": "Windows-11-10.0.26100-SP0",
+      "torch": "2.14.0+cu126",
+      "cuda": "12.6",
+      "cudnn": 91002,
+      "gpu": "NVIDIA GeForce RTX 4070",
+      "numpy": "2.4.2"
+    }
+  }
+}

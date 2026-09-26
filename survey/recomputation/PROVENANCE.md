@@ -1,5 +1,9 @@
 # Scope and label conventions
 
+## Manifested SSA rerun, 2026-09-25
+
+Rank 23 now has a [manifested rerun](ssa_rerun/README.md): the unchanged released attack at the pinned commit, two seeds, hashed source and target checkpoints loaded without arbitrary pickle execution, and per-example predictions. All six published Table 1 cells for the Inc-v3 source (S²I-FGSM) lie within 1.5 points of at least one seed, and the seeds differ by up to 1.8 points. It covers one selected configuration, not full-paper replication. It also shows that the release's source and its 'white-box' target are different Inception-v3 checkpoints.
+
 ## Selected original-runtime run, 2026-09-24
 
 Rank 10 now has a separately archived [original TensorFlow 1.8 FGSM rerun](su18_original/README.md), with unchanged released attack/model classes, downloaded checkpoint/data hashes and per-example predictions. This is one selected configuration, not validation of the historical ports below or full-paper replication. Published seed/objective correspondence remains unresolved. Its operational target-clean filtering is a positive finding; no benchmark-clean-error subtraction is warranted on that filtered cohort.
