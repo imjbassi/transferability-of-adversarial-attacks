@@ -2,3 +2,9 @@
 survey/recomputation/su18_original/manifest.json -text
 survey/recomputation/su18_original/predictions.jsonl -text
 survey/recomputation/su18_original_probe.py -text
+# Frozen repaired first pass and blind-recode packet: keep exact bytes (hashes are recorded).
+survey/evidence_audit/repaired_coding_sheet.csv -text
+survey/evidence_audit/repaired_first_pass.csv -text
+survey/evidence_audit/repaired_summary.json -text
+survey/evidence_audit/freeze_manifest.json -text
+survey/blind_recode/** -text

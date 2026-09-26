@@ -168,5 +168,17 @@ class EvidenceRecordTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             validate_review(self.review, self.paper)
 
+class RepairedExportTests(unittest.TestCase):
+    def test_export_matches_reviews_and_reliability_format(self):
+        import build_repaired_coding_sheet as export
+        from compute_reliability import read_rows
+        reviews = export.load_reviews()
+        self.assertEqual(len(reviews), 80)
+        rows = read_rows(export.AUDIT / "repaired_first_pass.csv")
+        by_id = {r["paper_id"]: r for r in rows}
+        for entry, review, _digest, _path in reviews:
+            for key, name in export.FIELDS.items():
+                self.assertEqual(by_id[review["paper_id"]][name], review["judgments"][key]["value"])
+
 if __name__ == "__main__":
     unittest.main()
