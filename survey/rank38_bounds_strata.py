@@ -29,7 +29,7 @@ TABLE3 = {
 
 def summary(rows):
     lower = [r["induced_mass_lower_percent"] for r in rows]
-    return dict(rates=len(rows), minimum_percent=min(lower), median_percent=statistics.median(lower),
+    return dict(rates=len(rows), minimum_percent=min(lower), median_percent=round(statistics.median(lower), 6),
                 maximum_percent=max(lower), mean_percent=round(statistics.mean(lower), 6))
 
 
