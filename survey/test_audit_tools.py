@@ -178,6 +178,18 @@ class Rank68BoundsTests(unittest.TestCase):
         self.assertAlmostEqual(denoise["nominal_induced_mass_percent"], 3.2)
         self.assertAlmostEqual(denoise["induced_mass_lower_percent"], 3.19)
 
+class Rank38StrataTests(unittest.TestCase):
+    def test_strata_and_table3(self):
+        from rank38_bounds_strata import build
+        s = build()["summaries"]
+        self.assertEqual(s["single_target_table1"]["rates"], 72)
+        self.assertEqual(s["ensemble_contains_source_table1"]["rates"], 24)
+        self.assertEqual(s["single_target_all"]["rates"], 81)
+        self.assertEqual(s["ensemble_contains_source_all"]["rates"], 27)
+        rows = build()["rows"]
+        cell = next(r for r in rows if r["attack"] == "TAP+ATA" and r["target"] == "Inception-ResNet V2")
+        self.assertAlmostEqual(cell["induced_mass_lower_percent"], 79.65)
+
 class RepairedExportTests(unittest.TestCase):
     def test_export_matches_reviews_and_reliability_format(self):
         import build_repaired_coding_sheet as export
