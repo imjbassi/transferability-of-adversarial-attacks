@@ -12,7 +12,6 @@ import argparse
 import csv
 import io
 import json
-import shutil
 from pathlib import Path
 
 from build_coding_outputs import FIELDS
@@ -69,7 +68,7 @@ def main():
             if path.read_text(encoding="utf-8") != text:
                 raise SystemExit(f"Out of date: {path}")
         for dst, src in copies.items():
-            if dst.read_bytes() != src.read_bytes():
+            if dst.read_bytes().replace(b"\r\n", b"\n") != src.read_bytes().replace(b"\r\n", b"\n"):
                 raise SystemExit(f"Out of date: {dst}")
         print("blind recode packet up to date")
         return
@@ -77,7 +76,7 @@ def main():
     for path, text in files.items():
         path.write_text(text, encoding="utf-8", newline="")
     for dst, src in copies.items():
-        shutil.copyfile(src, dst)
+        dst.write_bytes(src.read_bytes().replace(b"\r\n", b"\n"))
     print(f"wrote {len(files) + len(copies)} files to {PACKET.relative_to(ROOT)}")
 
 
