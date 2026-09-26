@@ -1,5 +1,9 @@
 # Scope and label conventions
 
+## Manifested ILA rerun, 2026-09-26
+
+Rank 20 now has a [manifested rerun](ila_rerun/README.md) of two CIFAR-10 configurations over all 10,000 test images, using the released code and checkpoints. The eight I-FGSM cells are within 0.32 points of Table 4. The eight MI-FGSM cells are within 0.86 points of Table 2, but all fall 0.36–0.86 points below the published values. That offset is reported without being attributed to a cause.
+
 ## Manifested SSA rerun, 2026-09-25
 
 Rank 23 now has a [manifested rerun](ssa_rerun/README.md): the unchanged released attack at the pinned commit, two seeds, hashed source and target checkpoints loaded without arbitrary pickle execution, and per-example predictions. All six published Table 1 cells for the Inc-v3 source (S²I-FGSM) lie within 1.5 points of at least one seed, and the seeds differ by up to 1.8 points. It covers one selected configuration, not full-paper replication. It also shows that the release's source and its 'white-box' target are different Inception-v3 checkpoints.
