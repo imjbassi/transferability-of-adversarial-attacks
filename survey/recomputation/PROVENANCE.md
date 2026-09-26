@@ -1,5 +1,9 @@
 # Scope and label conventions
 
+## Manifested SGM rerun, 2026-09-26
+
+Rank 13 now has a [manifested rerun](sgm_rerun/README.md) of Table 3's PGD and SGM rows for both sources, run with the released code on the released 5,000 images. Leaving out the VGG19 column, all 24 cells are within 1.14 points of the published means (the Inception targets use converted TF-slim proxies). The paper's 'VGG19' column matches torchvision VGG19-BN to within 0.78 points; plain VGG19 differs by 2.2–8.8 points.
+
 ## Manifested ILA rerun, 2026-09-26
 
 Rank 20 now has a [manifested rerun](ila_rerun/README.md) of two CIFAR-10 configurations over all 10,000 test images, using the released code and checkpoints. The eight I-FGSM cells are within 0.32 points of Table 4. The eight MI-FGSM cells are within 0.86 points of Table 2, but all fall 0.36–0.86 points below the published values. That offset is reported without being attributed to a cause.
