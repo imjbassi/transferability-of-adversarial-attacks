@@ -318,6 +318,18 @@ class SiaRerunTests(unittest.TestCase):
             for acc, succ in zip(release_acc, ours):
                 self.assertAlmostEqual(100 - acc, succ, places=6)
 
+class ConditioningAcrossRerunsTests(unittest.TestCase):
+    def test_reproducible_and_consistent(self):
+        import sys
+        sys.path.insert(0, str(Path(__file__).parent / "recomputation"))
+        from conditioning_across_reruns import build
+        result = build()
+        stored = json.loads((Path(__file__).parent / "recomputation/conditioning_across_reruns.json").read_text(encoding="utf-8"))
+        self.assertEqual(result, stored)
+        for c in result["cells"]:
+            self.assertEqual(c["eligible_target_wrong"], c["fooled_target_wrong"] + c["unfooled_target_wrong"])
+            self.assertNotEqual(c["source"], c["target"])
+
 class RepairedExportTests(unittest.TestCase):
     def test_export_matches_reviews_and_reliability_format(self):
         import build_repaired_coding_sheet as export
