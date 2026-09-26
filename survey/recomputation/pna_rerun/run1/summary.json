@@ -1,0 +1,132 @@
+{
+  "images": 1000,
+  "note": "ASR = victim top-1 != label over all 1,000 released images (release evaluate.py convention); MASR averages over surrogates other than the victim",
+  "victim_clean_accuracy_percent": {
+    "vit_base_patch16_224": 100.0,
+    "deit_base_distilled_patch16_224": 100.0,
+    "levit_256": 100.0,
+    "pit_b_224": 100.0,
+    "cait_s24_224": 100.0,
+    "convit_base": 100.0,
+    "tnt_s_patch16_224": 100.0,
+    "visformer_small": 100.0
+  },
+  "asr_percent": {
+    "vit_base_patch16_224->vit_base_patch16_224": 97.1,
+    "pit_b_224->vit_base_patch16_224": 39.6,
+    "cait_s24_224->vit_base_patch16_224": 72.9,
+    "visformer_small->vit_base_patch16_224": 28.4,
+    "vit_base_patch16_224->deit_base_distilled_patch16_224": 75.0,
+    "pit_b_224->deit_base_distilled_patch16_224": 53.5,
+    "cait_s24_224->deit_base_distilled_patch16_224": 89.9,
+    "visformer_small->deit_base_distilled_patch16_224": 45.6,
+    "vit_base_patch16_224->levit_256": 41.2,
+    "pit_b_224->levit_256": 62.0,
+    "cait_s24_224->levit_256": 63.7,
+    "visformer_small->levit_256": 64.3,
+    "vit_base_patch16_224->pit_b_224": 42.7,
+    "pit_b_224->pit_b_224": 99.9,
+    "cait_s24_224->pit_b_224": 57.4,
+    "visformer_small->pit_b_224": 60.7,
+    "vit_base_patch16_224->cait_s24_224": 75.4,
+    "pit_b_224->cait_s24_224": 56.5,
+    "cait_s24_224->cait_s24_224": 98.5,
+    "visformer_small->cait_s24_224": 51.1,
+    "vit_base_patch16_224->convit_base": 74.6,
+    "pit_b_224->convit_base": 56.6,
+    "cait_s24_224->convit_base": 89.5,
+    "visformer_small->convit_base": 43.5,
+    "vit_base_patch16_224->tnt_s_patch16_224": 60.1,
+    "pit_b_224->tnt_s_patch16_224": 69.2,
+    "cait_s24_224->tnt_s_patch16_224": 82.7,
+    "visformer_small->tnt_s_patch16_224": 67.2,
+    "vit_base_patch16_224->visformer_small": 45.3,
+    "pit_b_224->visformer_small": 70.4,
+    "cait_s24_224->visformer_small": 64.2,
+    "visformer_small->visformer_small": 100.0
+  },
+  "victim_clean_correct_asr_percent": {
+    "vit_base_patch16_224->vit_base_patch16_224": 97.1,
+    "pit_b_224->vit_base_patch16_224": 39.6,
+    "cait_s24_224->vit_base_patch16_224": 72.9,
+    "visformer_small->vit_base_patch16_224": 28.4,
+    "vit_base_patch16_224->deit_base_distilled_patch16_224": 75.0,
+    "pit_b_224->deit_base_distilled_patch16_224": 53.5,
+    "cait_s24_224->deit_base_distilled_patch16_224": 89.9,
+    "visformer_small->deit_base_distilled_patch16_224": 45.6,
+    "vit_base_patch16_224->levit_256": 41.2,
+    "pit_b_224->levit_256": 62.0,
+    "cait_s24_224->levit_256": 63.7,
+    "visformer_small->levit_256": 64.3,
+    "vit_base_patch16_224->pit_b_224": 42.7,
+    "pit_b_224->pit_b_224": 99.9,
+    "cait_s24_224->pit_b_224": 57.4,
+    "visformer_small->pit_b_224": 60.7,
+    "vit_base_patch16_224->cait_s24_224": 75.4,
+    "pit_b_224->cait_s24_224": 56.5,
+    "cait_s24_224->cait_s24_224": 98.5,
+    "visformer_small->cait_s24_224": 51.1,
+    "vit_base_patch16_224->convit_base": 74.6,
+    "pit_b_224->convit_base": 56.6,
+    "cait_s24_224->convit_base": 89.5,
+    "visformer_small->convit_base": 43.5,
+    "vit_base_patch16_224->tnt_s_patch16_224": 60.1,
+    "pit_b_224->tnt_s_patch16_224": 69.2,
+    "cait_s24_224->tnt_s_patch16_224": 82.7,
+    "visformer_small->tnt_s_patch16_224": 67.2,
+    "vit_base_patch16_224->visformer_small": 45.3,
+    "pit_b_224->visformer_small": 70.4,
+    "cait_s24_224->visformer_small": 64.2,
+    "visformer_small->visformer_small": 100.0
+  },
+  "masr": {
+    "vit_base_patch16_224": {
+      "surrogates": 3,
+      "rerun": 46.9667,
+      "published": 46.1,
+      "delta": 0.8667
+    },
+    "deit_base_distilled_patch16_224": {
+      "surrogates": 4,
+      "rerun": 66.0,
+      "published": 63.85,
+      "delta": 2.15
+    },
+    "levit_256": {
+      "surrogates": 4,
+      "rerun": 57.8,
+      "published": 57.62,
+      "delta": 0.18
+    },
+    "pit_b_224": {
+      "surrogates": 3,
+      "rerun": 53.6,
+      "published": 52.4,
+      "delta": 1.2
+    },
+    "cait_s24_224": {
+      "surrogates": 3,
+      "rerun": 61.0,
+      "published": 59.87,
+      "delta": 1.13
+    },
+    "convit_base": {
+      "surrogates": 4,
+      "rerun": 66.05,
+      "published": 63.7,
+      "delta": 2.35
+    },
+    "tnt_s_patch16_224": {
+      "surrogates": 4,
+      "rerun": 69.8,
+      "published": 67.25,
+      "delta": 2.55
+    },
+    "visformer_small": {
+      "surrogates": 3,
+      "rerun": 59.9667,
+      "published": 58.6,
+      "delta": 1.3667
+    }
+  }
+}

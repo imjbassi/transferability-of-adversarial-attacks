@@ -10,7 +10,7 @@ Assessed 25–26 September 2026 on the available machine: Windows 11, an RTX 407
 | 20 ILA | PyTorch, CIFAR-10 | **Run**: `ila_rerun/` | I-FGSM and MI-FGSM. |
 | 13 SGM | PyTorch + advertorch | **Run**: `sgm_rerun/` | Four configurations; Inception targets proxied by converted TF-slim weights. |
 | 57 SIA | PyTorch, torchvision | Feasible; waiting on Drive quota | Images from the Admix Drive folder; `weights='DEFAULT'` may differ from 2023 weights. |
-| 47 | PyTorch, timm | Feasible | Clean images released; correspondence of timm weights to 2021 unverified. |
+| 47 PNA | PyTorch, timm | **Run**: `pna_rerun/` | Table 1 ViT to ViT; the pinned timm 0.4.13 was never published (0.4.12 used); ViT-B/16 weight identity ambiguous; CNN victims (TF-slim) not run. |
 | 44 | PyTorch, torchvision | Feasible for model-to-model scopes | Table 4 commercial-API outcomes cannot be regenerated. |
 | 10 | TF 1.8 | Run earlier (`su18_original/`) | CPU-only legacy runtime. |
 | 16 FIA | TF 1.12 + Keras | Not feasible here | TF1 GPU builds need CUDA 9/10 and cannot drive an Ada GPU. The CPU estimate is about 17 h for one 1,000-image configuration (ens = 30). |

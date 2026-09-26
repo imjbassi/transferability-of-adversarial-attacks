@@ -264,6 +264,22 @@ class SgmRerunTests(unittest.TestCase):
         self.assertEqual({k for k in manifest if k.startswith("attack_")},
                          {"attack_rn152_pgd", "attack_rn152_sgm", "attack_dn201_pgd", "attack_dn201_sgm"})
 
+class PnaRerunTests(unittest.TestCase):
+    def test_summary_reproduces_from_predictions(self):
+        import importlib.util
+        folder = Path(__file__).parent / "recomputation/pna_rerun"
+        spec = importlib.util.spec_from_file_location("pna_run", folder / "run.py")
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        run = folder / "run1"
+        stored = json.loads((run / "summary.json").read_text(encoding="utf-8"))
+        self.assertEqual(module.summarize(run / "per_example_predictions.csv"), stored)
+        self.assertEqual(stored["images"], 1000)
+        manifest = json.loads((run / "manifest.json").read_text(encoding="utf-8"))
+        self.assertEqual(manifest["commit"], "85f23c78284556057422abe395d0e1229a13156a")
+        self.assertEqual({k for k in manifest if k.startswith("attack_")},
+                         {f"attack_{s}" for s in module.SURROGATES})
+
 class RepairedExportTests(unittest.TestCase):
     def test_export_matches_reviews_and_reliability_format(self):
         import build_repaired_coding_sheet as export
