@@ -8,3 +8,4 @@ survey/evidence_audit/repaired_first_pass.csv -text
 survey/evidence_audit/repaired_summary.json -text
 survey/evidence_audit/freeze_manifest.json -text
 survey/blind_recode/** -text
+survey/recomputation/*_rerun/**/release_output.csv -text

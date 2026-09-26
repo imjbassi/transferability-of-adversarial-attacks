@@ -1,0 +1,76 @@
+{
+  "paper": "rank 20, arXiv 1907.10823v3",
+  "repository": "https://github.com/CUVL/Intermediate-Level-Attack",
+  "commit": "25271f84f74a9ee02b9ba0e707cc02680ab236dd",
+  "tracked_files_modified": false,
+  "runtime_adaptations": [
+    "model_configs checkpoint paths redirected",
+    "pandas DataFrame.append concat shim",
+    "scipy.misc imread/imresize/imsave raising stubs (ImageNet-only path)"
+  ],
+  "command": [
+    "python",
+    "survey/recomputation/ila_rerun/run.py",
+    "--attack",
+    "momentum_ifgsm",
+    "--source",
+    "ResNet18",
+    "--num-batches",
+    "100",
+    "--batch-size",
+    "100"
+  ],
+  "release_argv": [
+    "--source_models",
+    "ResNet18",
+    "--transfer_models",
+    "ResNet18",
+    "DenseNet121",
+    "GoogLeNet",
+    "SENet18",
+    "--attacks",
+    "momentum_ifgsm",
+    "--num_batches",
+    "100",
+    "--batch_size",
+    "100",
+    "--out_name",
+    "<work-dir>/release_output.csv"
+  ],
+  "started_utc": "2026-09-26T05:22:35.810552+00:00",
+  "finished_utc": "2026-09-26T08:27:52.389922+00:00",
+  "images_evaluated": 10000,
+  "checkpoints": {
+    "ResNet18": {
+      "file": "resnet18_epoch_347_acc_94.77.pth",
+      "source": "https://drive.google.com/drive/folders/1RGtlPCc2vTqeQc5utOgLb1Y3_vIO5JVi (linked from the release README)",
+      "sha256": "b250c19400eac228675b694683b3ce7600adb29e51ea14b8b57fa4ff27336f6a"
+    },
+    "DenseNet121": {
+      "file": "densenet121_epoch_315_acc_95.61.pth",
+      "source": "https://drive.google.com/drive/folders/1RGtlPCc2vTqeQc5utOgLb1Y3_vIO5JVi (linked from the release README)",
+      "sha256": "d8ee5ebedd8a75950a2d106f9342bc6556d9e380c24dfd4b3aca596d670c0450"
+    },
+    "GoogLeNet": {
+      "file": "googlenet_epoch_227_acc_94.86.pth",
+      "source": "https://drive.google.com/drive/folders/1RGtlPCc2vTqeQc5utOgLb1Y3_vIO5JVi (linked from the release README)",
+      "sha256": "42b341371d70d69d41b47b30c2afbf5a9e73884c931ba58cf4e87488cbddbacd"
+    },
+    "SENet18": {
+      "file": "senet18_epoch_279_acc_94.59.pth",
+      "source": "https://drive.google.com/drive/folders/1RGtlPCc2vTqeQc5utOgLb1Y3_vIO5JVi (linked from the release README)",
+      "sha256": "f30f0d35755bd481bcd935b5c56f366d7a03fb6d65483ee5ec3f8942cfce5a66"
+    }
+  },
+  "cifar10_test_batch_sha256": "f53d8d457504f7cff4ea9e021afcf0e0ad8e24a91f3fc42091b8adef61157831",
+  "release_output_sha256": "d253bf233cb468d378824ab876bb66b4b44512b0a8be7d94480ea7124e8b092e",
+  "determinism_note": "No seed is set by the release; I-FGSM and ILA are deterministic given inputs, GPU kernels may not be",
+  "environment": {
+    "python": "3.14.2",
+    "platform": "Windows-11-10.0.26100-SP0",
+    "torch": "2.14.0+cu126",
+    "cuda": "12.6",
+    "gpu": "NVIDIA GeForce RTX 4070",
+    "pandas": "2.2.2"
+  }
+}

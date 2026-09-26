@@ -230,6 +230,24 @@ class SsaRerunTests(unittest.TestCase):
                         self.assertTrue(value is expected if value is None or expected is None
                                         else math.isclose(value, expected, abs_tol=1e-9))
 
+class IlaRerunTests(unittest.TestCase):
+    def test_summaries_reproduce_from_release_output(self):
+        import hashlib
+        import sys
+        sys.path.insert(0, str(Path(__file__).parent / "recomputation" / "ila_rerun"))
+        from summarize import summarize
+        folder = Path(__file__).parent / "recomputation/ila_rerun"
+        runs = sorted(p for p in folder.iterdir() if (p / "summary.json").exists())
+        self.assertTrue(runs)
+        for run in runs:
+            with self.subTest(run=run.name):
+                stored = json.loads((run / "summary.json").read_text(encoding="utf-8"))
+                manifest = json.loads((run / "manifest.json").read_text(encoding="utf-8"))
+                data = (run / "release_output.csv").read_bytes()  # -text in .gitattributes: bytes as produced
+                self.assertEqual(hashlib.sha256(data).hexdigest(), manifest["release_output_sha256"])
+                self.assertEqual(summarize(run, stored["attack"]), stored)
+                self.assertEqual(stored["images"], 10000)
+
 class RepairedExportTests(unittest.TestCase):
     def test_export_matches_reviews_and_reliability_format(self):
         import build_repaired_coding_sheet as export
