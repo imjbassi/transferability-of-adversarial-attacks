@@ -168,6 +168,16 @@ class EvidenceRecordTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             validate_review(self.review, self.paper)
 
+class Rank68BoundsTests(unittest.TestCase):
+    def test_scope_and_rounding(self):
+        from rank68_bounds import build
+        result = build()
+        self.assertEqual(result["rates_bounded"], 18)
+        self.assertNotIn("VGG19", {r["target"] for r in result["rows"]})
+        denoise = next(r for r in result["rows"] if r["target"] == "RNXt101den")
+        self.assertAlmostEqual(denoise["nominal_induced_mass_percent"], 3.2)
+        self.assertAlmostEqual(denoise["induced_mass_lower_percent"], 3.19)
+
 class RepairedExportTests(unittest.TestCase):
     def test_export_matches_reviews_and_reliability_format(self):
         import build_repaired_coding_sheet as export

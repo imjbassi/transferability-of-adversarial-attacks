@@ -1,0 +1,399 @@
+{
+  "scope": "Single-paper extraction for rank 68; one source (VGG19), 18 victims; correlated observations",
+  "evidence": "Chen et al., arXiv 2001.06325v3, Section 4.4 and Table 5, PDF p. 8; population: all 50,000 ImageNet validation images",
+  "rounding_assumption": "Nearest displayed unit (0.01 percentage points); closed intervals include ties. Not sampling uncertainty.",
+  "extraction_status": "Same-auditor text-layer extraction and 200-dpi visual recheck agree; no independent second person",
+  "caveats": [
+    "Section 4.4 also says the originals 'come from ImageNet training set'; the population match relies on the stated generation 'from all 50000 samples from ImageNet validation set'.",
+    "Victims are Keras Applications models whose errors may differ from original references (Table 5 note in the paper).",
+    "Defense columns are excluded because no clean error is reported for the defended pipelines."
+  ],
+  "papers_extracted": 1,
+  "rates_bounded": 18,
+  "summary": {
+    "minimum_percent": 3.19,
+    "median_percent": 60.345,
+    "maximum_percent": 69.28,
+    "mean_percent": 58.76
+  },
+  "rows": [
+    {
+      "paper_id": "0ab0b3cf5811a219339ad3715ce719f550122a62",
+      "source": "VGG19",
+      "target": "VGG16",
+      "attack": "SI-AoA (DAmageNet)",
+      "clean_error_display_percent": "38.51",
+      "attacked_error_display_percent": "99.85",
+      "nominal_induced_mass_percent": 61.34,
+      "clean_accuracy_interval_percent": [
+        61.485,
+        61.495
+      ],
+      "attacked_accuracy_interval_percent": [
+        0.145,
+        0.155
+      ],
+      "induced_mass_lower_percent": 61.33,
+      "induced_mass_upper_percent": 61.495,
+      "target_clean_conditional_lower_percent": 99.74790599333171,
+      "persistent_error_share_upper": 0.385747909259352
+    },
+    {
+      "paper_id": "0ab0b3cf5811a219339ad3715ce719f550122a62",
+      "source": "VGG19",
+      "target": "RN50",
+      "attack": "SI-AoA (DAmageNet)",
+      "clean_error_display_percent": "36.65",
+      "attacked_error_display_percent": "93.94",
+      "nominal_induced_mass_percent": 57.29,
+      "clean_accuracy_interval_percent": [
+        63.345,
+        63.355
+      ],
+      "attacked_accuracy_interval_percent": [
+        6.055,
+        6.065
+      ],
+      "induced_mass_lower_percent": 57.28,
+      "induced_mass_upper_percent": 63.355,
+      "target_clean_conditional_lower_percent": 90.42544794379982,
+      "persistent_error_share_upper": 0.3902166391653803
+    },
+    {
+      "paper_id": "0ab0b3cf5811a219339ad3715ce719f550122a62",
+      "source": "VGG19",
+      "target": "RN101",
+      "attack": "SI-AoA (DAmageNet)",
+      "clean_error_display_percent": "29.38",
+      "attacked_error_display_percent": "88.13",
+      "nominal_induced_mass_percent": 58.75,
+      "clean_accuracy_interval_percent": [
+        70.615,
+        70.625
+      ],
+      "attacked_accuracy_interval_percent": [
+        11.865,
+        11.875
+      ],
+      "induced_mass_lower_percent": 58.74,
+      "induced_mass_upper_percent": 70.625,
+      "target_clean_conditional_lower_percent": 83.18345960489981,
+      "persistent_error_share_upper": 0.3334468085106383
+    },
+    {
+      "paper_id": "0ab0b3cf5811a219339ad3715ce719f550122a62",
+      "source": "VGG19",
+      "target": "RN152",
+      "attack": "SI-AoA (DAmageNet)",
+      "clean_error_display_percent": "28.65",
+      "attacked_error_display_percent": "86.78",
+      "nominal_induced_mass_percent": 58.13,
+      "clean_accuracy_interval_percent": [
+        71.345,
+        71.355
+      ],
+      "attacked_accuracy_interval_percent": [
+        13.215,
+        13.225
+      ],
+      "induced_mass_lower_percent": 58.12,
+      "induced_mass_upper_percent": 71.355,
+      "target_clean_conditional_lower_percent": 81.4633120751279,
+      "persistent_error_share_upper": 0.3302218380870066
+    },
+    {
+      "paper_id": "0ab0b3cf5811a219339ad3715ce719f550122a62",
+      "source": "VGG19",
+      "target": "NASNetM",
+      "attack": "SI-AoA (DAmageNet)",
+      "clean_error_display_percent": "27.03",
+      "attacked_error_display_percent": "92.81",
+      "nominal_induced_mass_percent": 65.78,
+      "clean_accuracy_interval_percent": [
+        72.965,
+        72.975
+      ],
+      "attacked_accuracy_interval_percent": [
+        7.185,
+        7.195
+      ],
+      "induced_mass_lower_percent": 65.77,
+      "induced_mass_upper_percent": 72.975,
+      "target_clean_conditional_lower_percent": 90.13910779140684,
+      "persistent_error_share_upper": 0.2913097354668391
+    },
+    {
+      "paper_id": "0ab0b3cf5811a219339ad3715ce719f550122a62",
+      "source": "VGG19",
+      "target": "NASNetL",
+      "attack": "SI-AoA (DAmageNet)",
+      "clean_error_display_percent": "17.77",
+      "attacked_error_display_percent": "86.32",
+      "nominal_induced_mass_percent": 68.55,
+      "clean_accuracy_interval_percent": [
+        82.225,
+        82.235
+      ],
+      "attacked_accuracy_interval_percent": [
+        13.675,
+        13.685
+      ],
+      "induced_mass_lower_percent": 68.54,
+      "induced_mass_upper_percent": 82.235,
+      "target_clean_conditional_lower_percent": 83.35664335664336,
+      "persistent_error_share_upper": 0.20593176157098997
+    },
+    {
+      "paper_id": "0ab0b3cf5811a219339ad3715ce719f550122a62",
+      "source": "VGG19",
+      "target": "IncV3",
+      "attack": "SI-AoA (DAmageNet)",
+      "clean_error_display_percent": "22.52",
+      "attacked_error_display_percent": "89.84",
+      "nominal_induced_mass_percent": 67.32,
+      "clean_accuracy_interval_percent": [
+        77.475,
+        77.485
+      ],
+      "attacked_accuracy_interval_percent": [
+        10.155,
+        10.165
+      ],
+      "induced_mass_lower_percent": 67.31,
+      "induced_mass_upper_percent": 77.485,
+      "target_clean_conditional_lower_percent": 86.87963859309454,
+      "persistent_error_share_upper": 0.25073746312684364
+    },
+    {
+      "paper_id": "0ab0b3cf5811a219339ad3715ce719f550122a62",
+      "source": "VGG19",
+      "target": "IncRNV2",
+      "attack": "SI-AoA (DAmageNet)",
+      "clean_error_display_percent": "24.60",
+      "attacked_error_display_percent": "88.09",
+      "nominal_induced_mass_percent": 63.49,
+      "clean_accuracy_interval_percent": [
+        75.395,
+        75.405
+      ],
+      "attacked_accuracy_interval_percent": [
+        11.905,
+        11.915
+      ],
+      "induced_mass_lower_percent": 63.48,
+      "induced_mass_upper_percent": 75.405,
+      "target_clean_conditional_lower_percent": 84.19656475893628,
+      "persistent_error_share_upper": 0.2793324629619118
+    },
+    {
+      "paper_id": "0ab0b3cf5811a219339ad3715ce719f550122a62",
+      "source": "VGG19",
+      "target": "Xception",
+      "attack": "SI-AoA (DAmageNet)",
+      "clean_error_display_percent": "21.38",
+      "attacked_error_display_percent": "90.57",
+      "nominal_induced_mass_percent": 69.19,
+      "clean_accuracy_interval_percent": [
+        78.615,
+        78.625
+      ],
+      "attacked_accuracy_interval_percent": [
+        9.425,
+        9.435
+      ],
+      "induced_mass_lower_percent": 69.18,
+      "induced_mass_upper_percent": 78.625,
+      "target_clean_conditional_lower_percent": 87.99847357374547,
+      "persistent_error_share_upper": 0.2361287473085629
+    },
+    {
+      "paper_id": "0ab0b3cf5811a219339ad3715ce719f550122a62",
+      "source": "VGG19",
+      "target": "DN121",
+      "attack": "SI-AoA (DAmageNet)",
+      "clean_error_display_percent": "26.85",
+      "attacked_error_display_percent": "96.14",
+      "nominal_induced_mass_percent": 69.29,
+      "clean_accuracy_interval_percent": [
+        73.145,
+        73.155
+      ],
+      "attacked_accuracy_interval_percent": [
+        3.855,
+        3.865
+      ],
+      "induced_mass_lower_percent": 69.28,
+      "induced_mass_upper_percent": 73.155,
+      "target_clean_conditional_lower_percent": 94.71597511791647,
+      "persistent_error_share_upper": 0.2793467519633848
+    },
+    {
+      "paper_id": "0ab0b3cf5811a219339ad3715ce719f550122a62",
+      "source": "VGG19",
+      "target": "DN169",
+      "attack": "SI-AoA (DAmageNet)",
+      "clean_error_display_percent": "25.16",
+      "attacked_error_display_percent": "94.09",
+      "nominal_induced_mass_percent": 68.93,
+      "clean_accuracy_interval_percent": [
+        74.835,
+        74.845
+      ],
+      "attacked_accuracy_interval_percent": [
+        5.905,
+        5.915
+      ],
+      "induced_mass_lower_percent": 68.92,
+      "induced_mass_upper_percent": 74.845,
+      "target_clean_conditional_lower_percent": 92.09594441103762,
+      "persistent_error_share_upper": 0.26747090396981454
+    },
+    {
+      "paper_id": "0ab0b3cf5811a219339ad3715ce719f550122a62",
+      "source": "VGG19",
+      "target": "DN201",
+      "attack": "SI-AoA (DAmageNet)",
+      "clean_error_display_percent": "24.36",
+      "attacked_error_display_percent": "93.44",
+      "nominal_induced_mass_percent": 69.08,
+      "clean_accuracy_interval_percent": [
+        75.635,
+        75.645
+      ],
+      "attacked_accuracy_interval_percent": [
+        6.555,
+        6.565
+      ],
+      "induced_mass_lower_percent": 69.07,
+      "induced_mass_upper_percent": 75.645,
+      "target_clean_conditional_lower_percent": 91.32015601242811,
+      "persistent_error_share_upper": 0.2607695189168941
+    },
+    {
+      "paper_id": "0ab0b3cf5811a219339ad3715ce719f550122a62",
+      "source": "VGG19",
+      "target": "IncV3adv",
+      "attack": "SI-AoA (DAmageNet)",
+      "clean_error_display_percent": "22.86",
+      "attacked_error_display_percent": "82.23",
+      "nominal_induced_mass_percent": 59.37,
+      "clean_accuracy_interval_percent": [
+        77.135,
+        77.145
+      ],
+      "attacked_accuracy_interval_percent": [
+        17.765,
+        17.775
+      ],
+      "induced_mass_lower_percent": 59.36,
+      "induced_mass_upper_percent": 77.145,
+      "target_clean_conditional_lower_percent": 76.95598625785959,
+      "persistent_error_share_upper": 0.2780784432958346
+    },
+    {
+      "paper_id": "0ab0b3cf5811a219339ad3715ce719f550122a62",
+      "source": "VGG19",
+      "target": "IncV3advens3",
+      "attack": "SI-AoA (DAmageNet)",
+      "clean_error_display_percent": "24.12",
+      "attacked_error_display_percent": "80.72",
+      "nominal_induced_mass_percent": 56.6,
+      "clean_accuracy_interval_percent": [
+        75.875,
+        75.885
+      ],
+      "attacked_accuracy_interval_percent": [
+        19.275,
+        19.285
+      ],
+      "induced_mass_lower_percent": 56.59,
+      "induced_mass_upper_percent": 75.885,
+      "target_clean_conditional_lower_percent": 74.5831960461285,
+      "persistent_error_share_upper": 0.298891160255219
+    },
+    {
+      "paper_id": "0ab0b3cf5811a219339ad3715ce719f550122a62",
+      "source": "VGG19",
+      "target": "IncV3advens4",
+      "attack": "SI-AoA (DAmageNet)",
+      "clean_error_display_percent": "24.45",
+      "attacked_error_display_percent": "79.26",
+      "nominal_induced_mass_percent": 54.81,
+      "clean_accuracy_interval_percent": [
+        75.545,
+        75.555
+      ],
+      "attacked_accuracy_interval_percent": [
+        20.735,
+        20.745
+      ],
+      "induced_mass_lower_percent": 54.8,
+      "induced_mass_upper_percent": 75.555,
+      "target_clean_conditional_lower_percent": 72.53954596598054,
+      "persistent_error_share_upper": 0.30856097407103655
+    },
+    {
+      "paper_id": "0ab0b3cf5811a219339ad3715ce719f550122a62",
+      "source": "VGG19",
+      "target": "IncRNV2adv",
+      "attack": "SI-AoA (DAmageNet)",
+      "clean_error_display_percent": "20.03",
+      "attacked_error_display_percent": "76.42",
+      "nominal_induced_mass_percent": 56.39,
+      "clean_accuracy_interval_percent": [
+        79.965,
+        79.975
+      ],
+      "attacked_accuracy_interval_percent": [
+        23.575,
+        23.585
+      ],
+      "induced_mass_lower_percent": 56.38,
+      "induced_mass_upper_percent": 76.425,
+      "target_clean_conditional_lower_percent": 70.50584630775964,
+      "persistent_error_share_upper": 0.262186743440424
+    },
+    {
+      "paper_id": "0ab0b3cf5811a219339ad3715ce719f550122a62",
+      "source": "VGG19",
+      "target": "IncRNV2advens",
+      "attack": "SI-AoA (DAmageNet)",
+      "clean_error_display_percent": "20.35",
+      "attacked_error_display_percent": "70.70",
+      "nominal_induced_mass_percent": 50.35,
+      "clean_accuracy_interval_percent": [
+        79.645,
+        79.655
+      ],
+      "attacked_accuracy_interval_percent": [
+        29.295,
+        29.305
+      ],
+      "induced_mass_lower_percent": 50.34,
+      "induced_mass_upper_percent": 70.705,
+      "target_clean_conditional_lower_percent": 63.20547429217151,
+      "persistent_error_share_upper": 0.2879270103967749
+    },
+    {
+      "paper_id": "0ab0b3cf5811a219339ad3715ce719f550122a62",
+      "source": "VGG19",
+      "target": "RNXt101den",
+      "attack": "SI-AoA (DAmageNet)",
+      "clean_error_display_percent": "32.20",
+      "attacked_error_display_percent": "35.40",
+      "nominal_induced_mass_percent": 3.2,
+      "clean_accuracy_interval_percent": [
+        67.795,
+        67.805
+      ],
+      "attacked_accuracy_interval_percent": [
+        64.595,
+        64.605
+      ],
+      "induced_mass_lower_percent": 3.19,
+      "induced_mass_upper_percent": 35.405,
+      "target_clean_conditional_lower_percent": 4.705361752341618,
+      "persistent_error_share_upper": 0.9098742760276876
+    }
+  ]
+}
