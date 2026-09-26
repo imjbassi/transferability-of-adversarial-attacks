@@ -1,0 +1,52 @@
+{
+  "scope": "Papers with extracted matched-population unconditional rates so far (ranks 20, 38, 68); not a corpus prevalence",
+  "status": "Same-auditor extractions; no independent second extraction; other candidate papers unresolved (see evidence_audit reviews)",
+  "per_paper": {
+    "20": {
+      "rates": 108,
+      "minimum_percent": 2.4,
+      "median_percent": 55.1,
+      "maximum_percent": 69.6,
+      "mean_percent": 48.712037
+    },
+    "38": {
+      "rates": 81,
+      "minimum_percent": 0.95,
+      "median_percent": 34.25,
+      "maximum_percent": 79.65,
+      "mean_percent": 37.801852
+    },
+    "68": {
+      "rates": 18,
+      "minimum_percent": 3.19,
+      "median_percent": 60.345,
+      "maximum_percent": 69.28,
+      "mean_percent": 58.76
+    }
+  },
+  "rank38_ensemble_contains_source_not_pooled": {
+    "rates": 27,
+    "minimum_percent": 1.2,
+    "median_percent": 41.4,
+    "maximum_percent": 67.8,
+    "mean_percent": 36.807407
+  },
+  "pooled_single_target": {
+    "rates": 207,
+    "minimum_percent": 0.95,
+    "median_percent": 50.7,
+    "maximum_percent": 79.65,
+    "mean_percent": 45.31657
+  },
+  "paper_level": {
+    "papers": 3,
+    "median_of_paper_medians": 55.1,
+    "minimum_paper_median": 34.25,
+    "maximum_paper_median": 60.345
+  },
+  "pooled_share_by_paper": {
+    "20": 0.521739,
+    "38": 0.391304,
+    "68": 0.086957
+  }
+}
