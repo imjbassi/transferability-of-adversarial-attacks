@@ -190,6 +190,25 @@ class Rank38StrataTests(unittest.TestCase):
         cell = next(r for r in rows if r["attack"] == "TAP+ATA" and r["target"] == "Inception-ResNet V2")
         self.assertAlmostEqual(cell["induced_mass_lower_percent"], 79.65)
 
+class Rank20BoundsTests(unittest.TestCase):
+    def test_scope_and_exclusions(self):
+        from rank20_bounds import build
+        result = build()
+        self.assertEqual(result["rates_bounded"], 108)
+        self.assertTrue(all(r["source"] != r["target"] for r in result["rows"]))
+        self.assertFalse(any("Opt" in r["attack"] or "C&W" in r["attack"] for r in result["rows"]))
+        self.assertEqual(result["c_and_w_lattice_check"]["on_1_96_lattice"], 48)
+        cell = next(r for r in result["rows"] if r["attack"] == "DeepFool 50 itr"
+                    and r["source"] == "GoogLeNet" and r["target"] == "DenseNet121")
+        self.assertAlmostEqual(cell["induced_mass_lower_percent"], 2.4)
+
+class BoundsDistributionTests(unittest.TestCase):
+    def test_pools_single_target_only(self):
+        from bounds_distribution import build
+        result = build()
+        self.assertEqual(result["pooled_single_target"]["rates"], 108 + 81 + 18)
+        self.assertEqual(result["rank38_ensemble_contains_source_not_pooled"]["rates"], 27)
+
 class RepairedExportTests(unittest.TestCase):
     def test_export_matches_reviews_and_reliability_format(self):
         import build_repaired_coding_sheet as export
