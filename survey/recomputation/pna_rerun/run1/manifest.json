@@ -1,0 +1,102 @@
+{
+  "repository": "https://github.com/zhipeng-wei/PNA-PatchOut",
+  "commit": "85f23c78284556057422abe395d0e1229a13156a",
+  "tracked_files_modified": false,
+  "runtime_adaptations": [
+    "utils.ROOT_PATH/BASE_ADV_PATH set to the run root",
+    "glob.glob results and AdvDataset.paths normalised to '/' separators (POSIX path splitting in dataset.py)",
+    "empty cnns_method placeholder module (release ships only .pyc; unused by OurAlgorithm)"
+  ],
+  "clean_zip_sha256": "30aacd21a5349a7c2a17719b9f52fdd6e866027f0a6648301a703d6a9afa490c",
+  "clean_images": {
+    "count": 1000,
+    "digest": "f097df025694353c388bf87ae7d36601dea02d753b985d44ca22808b4eaf9b33"
+  },
+  "label_json_sha256": "56d8845af2c4d8af0590d5f4e771c5d1a09317c4882502c64b249ffcd8ca75be",
+  "environment": {
+    "python": "3.14.2",
+    "platform": "Windows-11-10.0.26100-SP0",
+    "torch": "2.14.0+cu126",
+    "timm": "0.4.12",
+    "gpu": "NVIDIA GeForce RTX 4070"
+  },
+  "attack_vit_base_patch16_224": {
+    "started_utc": "2026-09-26T09:15:23.897906+00:00",
+    "finished_utc": "2026-09-26T09:18:46.481642+00:00",
+    "release_argv": [
+      "--attack",
+      "OurAlgorithm",
+      "--batch_size",
+      "1",
+      "--model_name",
+      "vit_base_patch16_224"
+    ],
+    "defaults": "epsilon 16/255, steps 10, step epsilon/steps, lamb 0.1, 130 of 196 patches, attention-gradient skip on",
+    "images": 1000,
+    "adversarial_digest": "83f45405666ebf39f709101c0cab6d24ae64ca59cbc22bd3899602e8add7c782"
+  },
+  "attack_pit_b_224": {
+    "started_utc": "2026-09-26T09:18:46.482206+00:00",
+    "finished_utc": "2026-09-26T09:22:32.330661+00:00",
+    "release_argv": [
+      "--attack",
+      "OurAlgorithm",
+      "--batch_size",
+      "1",
+      "--model_name",
+      "pit_b_224"
+    ],
+    "defaults": "epsilon 16/255, steps 10, step epsilon/steps, lamb 0.1, 130 of 196 patches, attention-gradient skip on",
+    "images": 1000,
+    "adversarial_digest": "f60f074209ac9ee28da48dfe6ba99b9202798062e0eab45be7e0d8c3c1c14335"
+  },
+  "attack_cait_s24_224": {
+    "started_utc": "2026-09-26T09:22:32.331163+00:00",
+    "finished_utc": "2026-09-26T09:30:45.535296+00:00",
+    "release_argv": [
+      "--attack",
+      "OurAlgorithm",
+      "--batch_size",
+      "1",
+      "--model_name",
+      "cait_s24_224"
+    ],
+    "defaults": "epsilon 16/255, steps 10, step epsilon/steps, lamb 0.1, 130 of 196 patches, attention-gradient skip on",
+    "images": 1000,
+    "adversarial_digest": "9ec872ca7758fa000afd07ffeff26ae788c8bfa8291686f09b09ece3021616eb"
+  },
+  "attack_visformer_small": {
+    "started_utc": "2026-09-26T09:30:45.535895+00:00",
+    "finished_utc": "2026-09-26T09:33:57.898017+00:00",
+    "release_argv": [
+      "--attack",
+      "OurAlgorithm",
+      "--batch_size",
+      "1",
+      "--model_name",
+      "visformer_small"
+    ],
+    "defaults": "epsilon 16/255, steps 10, step epsilon/steps, lamb 0.1, 130 of 196 patches, attention-gradient skip on",
+    "images": 1000,
+    "adversarial_digest": "7a28926e5743142689469a39aceb4b5cc793bfd7811a74dad22d3059608b3501"
+  },
+  "victim_checkpoints": {
+    "B_16-i21k-300ep-lr_0.001-aug_medium1-wd_0.1-do_0.0-sd_0.0--imagenet2012-steps_20k-lr_0.01-res_224.npz": "ac104c0df8158c46754510e50495536fa6de9647e572e38b5659dc54f260b124",
+    "convit_base.pth": "1a587c732bc36522a72ace60654d2f5f1d58bdd875d460191e0f38add79dbd0d",
+    "deit_base_distilled_patch16_224-df68dfff.pth": "df68dfff0f1186e09d651f6cdca68d67e8a5fd90691a992083abeb93f28f8acc",
+    "densenet201-5750cbb1e.pth": "5750cbb1e5c09dc6ed5f4daa6583d7e652b090d5cdbeeecb9393e2b774f07930",
+    "inception_v3_google-1a9a5a14.pth": "1a9a5a14f40645a370184bd54f4e8e631351e71399112b43ad0294a79da290c8",
+    "LeViT-256-13b5763e.pth": "12391c8dbd07ad7d347a0e1c0575bde01716c453d6508710c5eb048c951c7fec",
+    "mobilenet_v2-b0353104.pth": "b03531047ffacf1e2488318dcd2aba1126cde36e3bfe1aa5cb07700aeeee9889",
+    "pit_b_820.pth": "03adf85728b13527b880b312a3a1a7a1b7c7e6b60f2c5605d31ca22ef49a1a03",
+    "resnet152-b121ed2d.pth": "b121ed2db97ec7e9f55a91300ceaf85a326de955e8a4ae09e3a0c8170d27f14f",
+    "resnet18-f37072fd.pth": "f37072fd47e89c5e827621c5baffa7500819f7896bbacec160b1a16c560e07ec",
+    "S24_224.pth": "7aafeea9aa80bae2d0e0e14b088658fbaf09ad3b3aef077d52a4259330cf5c21",
+    "senet154-c7b49a05.pth": "c7b49a056b98b0bed65b0237c27acdead655e599669215573d357ad337460413",
+    "tnt_s_patch16_224.pth.tar": "3891c9cbb2e8ca12b26b7376f100415a07cf6bf1b7848e7dfd708000f15f0ea8",
+    "vgg16-397923af.pth": "397923af8e79cdbb6a7127f12361acd7a2f83e06b05044ddf496e83de57a5bf0",
+    "vgg19-dcbb9e9d.pth": "dcbb9e9dad569fff7a846263a77324fc34978fea2bfb039c012d710e1776ae44",
+    "vgg19_bn-c79401a0.pth": "c79401a0cf3cb42714e4182f5868c7a6f4f4534f5df9e956e2bb2098de41cbb6",
+    "visformer_small-839e1f5b.pth": "839e1f5bcafdaaa5673803931d229c622160a4d38998dc49e0fd52da7d0621bd"
+  }
+}

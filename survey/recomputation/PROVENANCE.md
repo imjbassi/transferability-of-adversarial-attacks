@@ -1,5 +1,9 @@
 # Scope and label conventions
 
+## Manifested PNA rerun, 2026-09-26
+
+Rank 47 now has a [manifested rerun](pna_rerun/README.md) of Table 1's 'Ours' row (ViT to ViT, four surrogates, eight victims) using the released code and clean images. All eight MASR values are within 2.55 points of the published ones and all are higher. The released 	imm==0.4.13 pin was never published, so 0.4.12 was used; the ViT-B/16 weight identity used for the paper cannot be determined from the release.
+
 ## Manifested SGM rerun, 2026-09-26
 
 Rank 13 now has a [manifested rerun](sgm_rerun/README.md) of Table 3's PGD and SGM rows for both sources, run with the released code on the released 5,000 images. Leaving out the VGG19 column, all 24 cells are within 1.14 points of the published means (the Inception targets use converted TF-slim proxies). The paper's 'VGG19' column matches torchvision VGG19-BN to within 0.78 points; plain VGG19 differs by 2.2–8.8 points.
