@@ -1,0 +1,81 @@
+{
+  "paper": "rank 57, ICCV 2023 (arXiv 2309.14700)",
+  "repository": "https://github.com/xiaosen-wang/SIT",
+  "commit": "6d5432d4165a85753c8ae8fdee5cfd3362509a97",
+  "tracked_files_modified": false,
+  "seed": 0,
+  "runtime_notes": [
+    "python/numpy/torch RNGs seeded by seeded_main.py (release seeds nothing)",
+    "torch-dct installed (imported by attack.py; not in README requirements)",
+    "release save_images keeps the .JPEG file names, so PIL writes adversarial images as JPEG; kept unchanged",
+    "attack --batchsize reduced from the release default 64 to fit a 12 GB GPU (20 transformed copies per image); blocks/operations are drawn per batch, so this changes which images share random draws, not the algorithm"
+  ],
+  "input_images": {
+    "count": 1000,
+    "digest": "c3e7cc42c1c13062fe59bc1c080f079fc65d57af02382d92f503cd9ba83e5c24"
+  },
+  "labels_sha256": "ce4374b46809f751bd66eccab01d2ea4b57f47985996da3ea5fc21b8bdc420a9",
+  "attack_mu1": {
+    "started_utc": "2026-09-26T11:10:24.205511+00:00",
+    "finished_utc": "2026-09-26T11:18:42.483554+00:00",
+    "release_argv": [
+      "--model",
+      "resnet18",
+      "--momentum",
+      "1.0",
+      "--batchsize",
+      "8"
+    ],
+    "images": 1000,
+    "adversarial_digest": "5667f2b50aa98af750f2a49e55485ce53ecb152707d14c75ff6cff2efa731329"
+  },
+  "release_eval_mu1": "| 0.00 | 11.10 | 7.30 | 0.90 | 1.50 | 34.50 | 16.30 | 7.40 |",
+  "attack_mu0_release_default": {
+    "started_utc": "2026-09-26T11:24:19.030207+00:00",
+    "finished_utc": "2026-09-26T11:32:24.966532+00:00",
+    "release_argv": [
+      "--model",
+      "resnet18",
+      "--momentum",
+      "0.0",
+      "--batchsize",
+      "8"
+    ],
+    "images": 1000,
+    "adversarial_digest": "6b84885428702e7178abc38d65d9facce263b149842955a5640302d73c9c2b8a"
+  },
+  "release_eval_mu0_release_default": "| 0.00 | 30.50 | 24.10 | 3.80 | 6.70 | 60.70 | 33.30 | 23.10 |",
+  "torchvision_checkpoints": {
+    "convit_base.pth": "1a587c732bc36522a72ace60654d2f5f1d58bdd875d460191e0f38add79dbd0d",
+    "deit_base_distilled_patch16_224-df68dfff.pth": "df68dfff0f1186e09d651f6cdca68d67e8a5fd90691a992083abeb93f28f8acc",
+    "densenet121-a639ec97.pth": "a639ec97d7c33b07ae66f0b5fb7d0192f95a3b11b7576c66c0126c2a727c4395",
+    "densenet201-5750cbb1e.pth": "5750cbb1e5c09dc6ed5f4daa6583d7e652b090d5cdbeeecb9393e2b774f07930",
+    "inception_v3_google-0cc3c7bd.pth": "0cc3c7bd75056d25e46cba549dc184522069b81e9787eff6df84f397bd52a5ef",
+    "inception_v3_google-1a9a5a14.pth": "1a9a5a14f40645a370184bd54f4e8e631351e71399112b43ad0294a79da290c8",
+    "LeViT-256-13b5763e.pth": "12391c8dbd07ad7d347a0e1c0575bde01716c453d6508710c5eb048c951c7fec",
+    "mobilenet_v2-7ebf99e0.pth": "7ebf99e03e254b273379b23edca7ec0da9f48273b23a332b93c1c99d49e86e8f",
+    "mobilenet_v2-b0353104.pth": "b03531047ffacf1e2488318dcd2aba1126cde36e3bfe1aa5cb07700aeeee9889",
+    "pit_b_820.pth": "03adf85728b13527b880b312a3a1a7a1b7c7e6b60f2c5605d31ca22ef49a1a03",
+    "resnet101-cd907fc2.pth": "cd907fc2a0de2292b2ba2b27d2216bc672d84632d1cf20058d01c0c03b5e020e",
+    "resnet152-b121ed2d.pth": "b121ed2db97ec7e9f55a91300ceaf85a326de955e8a4ae09e3a0c8170d27f14f",
+    "resnet18-f37072fd.pth": "f37072fd47e89c5e827621c5baffa7500819f7896bbacec160b1a16c560e07ec",
+    "resnet50-0676ba61.pth": "0676ba61b6795bbe1773cffd859882e5e297624d384b6993f7c9e683e722fb8a",
+    "resnext50_32x4d-1a0047aa.pth": "1a0047aaa8b5f4685983624fae23f335fb44c300dd448d80ed9ed34ba584546d",
+    "S24_224.pth": "7aafeea9aa80bae2d0e0e14b088658fbaf09ad3b3aef077d52a4259330cf5c21",
+    "senet154-c7b49a05.pth": "c7b49a056b98b0bed65b0237c27acdead655e599669215573d357ad337460413",
+    "swin_t-704ceda3.pth": "704ceda373461b0a224fcdddd75cd2a5e9f8064512ed47adbddef7f343fd147b",
+    "vgg16-397923af.pth": "397923af8e79cdbb6a7127f12361acd7a2f83e06b05044ddf496e83de57a5bf0",
+    "vgg16_bn-6c64b313.pth": "6c64b3138f2f4fcb3bcc4cafde11619c4f440eb1631787e93a682fd88305888a",
+    "vgg19-dcbb9e9d.pth": "dcbb9e9dad569fff7a846263a77324fc34978fea2bfb039c012d710e1776ae44",
+    "vgg19_bn-c79401a0.pth": "c79401a0cf3cb42714e4182f5868c7a6f4f4534f5df9e956e2bb2098de41cbb6",
+    "visformer_small-839e1f5b.pth": "839e1f5bcafdaaa5673803931d229c622160a4d38998dc49e0fd52da7d0621bd",
+    "vit_b_16-c867db91.pth": "c867db91d3e12c6cbadabb610d73c24a546bf82d8c03a9fea34f43a712ddb0e9"
+  },
+  "environment": {
+    "python": "3.14.2",
+    "platform": "Windows-11-10.0.26100-SP0",
+    "torch": "2.14.0+cu126",
+    "torchvision": "0.29.0+cu126",
+    "gpu": "NVIDIA GeForce RTX 4070"
+  }
+}

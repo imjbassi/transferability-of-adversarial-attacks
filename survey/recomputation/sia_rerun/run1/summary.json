@@ -1,0 +1,147 @@
+{
+  "images": 1000,
+  "clean_accuracy_percent": {
+    "resnet18": 89.5,
+    "resnet101": 98.2,
+    "resnext50": 98.4,
+    "densenet121": 94.1,
+    "mobilenet": 92.7,
+    "vit": 97.8,
+    "swin": 98.3,
+    "inceptionv3": 90.1
+  },
+  "configs": {
+    "mu1": [
+      {
+        "target": "resnet18",
+        "white_box": true,
+        "success_percent": 100.0,
+        "clean_correct_success_percent": 100.0,
+        "figure3a_sia_percent": 100.0,
+        "delta": 0.0
+      },
+      {
+        "target": "resnet101",
+        "white_box": false,
+        "success_percent": 88.9,
+        "clean_correct_success_percent": 88.6965,
+        "figure3a_sia_percent": 89.4,
+        "delta": -0.5
+      },
+      {
+        "target": "resnext50",
+        "white_box": false,
+        "success_percent": 92.7,
+        "clean_correct_success_percent": 92.5813,
+        "figure3a_sia_percent": 92.3,
+        "delta": 0.4
+      },
+      {
+        "target": "densenet121",
+        "white_box": false,
+        "success_percent": 99.1,
+        "clean_correct_success_percent": 99.0436,
+        "figure3a_sia_percent": 99.3,
+        "delta": -0.2
+      },
+      {
+        "target": "mobilenet",
+        "white_box": false,
+        "success_percent": 98.5,
+        "clean_correct_success_percent": 98.3819,
+        "figure3a_sia_percent": 98.4,
+        "delta": 0.1
+      },
+      {
+        "target": "vit",
+        "white_box": false,
+        "success_percent": 65.5,
+        "clean_correct_success_percent": 65.1329,
+        "figure3a_sia_percent": 65.9,
+        "delta": -0.4
+      },
+      {
+        "target": "swin",
+        "white_box": false,
+        "success_percent": 83.7,
+        "clean_correct_success_percent": 83.4181,
+        "figure3a_sia_percent": 84.2,
+        "delta": -0.5
+      },
+      {
+        "target": "inceptionv3",
+        "white_box": false,
+        "success_percent": 92.6,
+        "clean_correct_success_percent": 91.8979,
+        "figure3a_sia_percent": 92.1,
+        "delta": 0.5
+      }
+    ],
+    "mu0_release_default": [
+      {
+        "target": "resnet18",
+        "white_box": true,
+        "success_percent": 100.0,
+        "clean_correct_success_percent": 100.0,
+        "figure3a_sia_percent": 100.0,
+        "delta": 0.0
+      },
+      {
+        "target": "resnet101",
+        "white_box": false,
+        "success_percent": 69.5,
+        "clean_correct_success_percent": 68.9409,
+        "figure3a_sia_percent": 89.4,
+        "delta": -19.9
+      },
+      {
+        "target": "resnext50",
+        "white_box": false,
+        "success_percent": 75.9,
+        "clean_correct_success_percent": 75.5081,
+        "figure3a_sia_percent": 92.3,
+        "delta": -16.4
+      },
+      {
+        "target": "densenet121",
+        "white_box": false,
+        "success_percent": 96.2,
+        "clean_correct_success_percent": 95.9617,
+        "figure3a_sia_percent": 99.3,
+        "delta": -3.1
+      },
+      {
+        "target": "mobilenet",
+        "white_box": false,
+        "success_percent": 93.3,
+        "clean_correct_success_percent": 92.7724,
+        "figure3a_sia_percent": 98.4,
+        "delta": -5.1
+      },
+      {
+        "target": "vit",
+        "white_box": false,
+        "success_percent": 39.3,
+        "clean_correct_success_percent": 38.0368,
+        "figure3a_sia_percent": 65.9,
+        "delta": -26.6
+      },
+      {
+        "target": "swin",
+        "white_box": false,
+        "success_percent": 66.7,
+        "clean_correct_success_percent": 66.1241,
+        "figure3a_sia_percent": 84.2,
+        "delta": -17.5
+      },
+      {
+        "target": "inceptionv3",
+        "white_box": false,
+        "success_percent": 76.9,
+        "clean_correct_success_percent": 74.5838,
+        "figure3a_sia_percent": 92.1,
+        "delta": -15.2
+      }
+    ]
+  }
+}

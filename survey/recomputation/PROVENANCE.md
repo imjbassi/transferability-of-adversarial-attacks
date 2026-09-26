@@ -1,5 +1,9 @@
 # Scope and label conventions
 
+## Manifested SIA rerun, 2026-09-26
+
+Rank 57 now has a [manifested rerun](sia_rerun/README.md) from the ResNet-18 source. With the paper's μ = 1, all eight targets are within 0.5 points of Figure 3(a)'s vector-extracted bar values. The release's default μ = 0 gives results 3–27 points lower. Under the release pipeline, the released images are not all clean-correct: clean accuracy is 89.5–98.4%.
+
 ## Manifested targeted-transfer rerun, 2026-09-26
 
 Rank 44 now has a [manifested rerun](tt_rerun/README.md) of Table 1's ResNet-50-source block (CE, Po+Trip and Logit; three targets; 20/100/300 iterations) using the unchanged released script. All 27 cells are within 1.8 points, with mixed signs. One seed was run.
