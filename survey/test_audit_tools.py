@@ -248,6 +248,22 @@ class IlaRerunTests(unittest.TestCase):
                 self.assertEqual(summarize(run, stored["attack"]), stored)
                 self.assertEqual(stored["images"], 10000)
 
+class SgmRerunTests(unittest.TestCase):
+    def test_summary_reproduces_from_predictions(self):
+        import importlib.util
+        folder = Path(__file__).parent / "recomputation/sgm_rerun"
+        spec = importlib.util.spec_from_file_location("sgm_run", folder / "run.py")
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        run = folder / "run1"
+        stored = json.loads((run / "summary.json").read_text(encoding="utf-8"))
+        self.assertEqual(module.summarize_rows(run / "per_example_predictions.csv"), stored)
+        self.assertEqual({c["images"] for c in stored["comparison"]}, {5000})
+        manifest = json.loads((run / "manifest.json").read_text(encoding="utf-8"))
+        self.assertEqual(manifest["checkout"]["commit"], "9b2e5cca9b673efcac253e16b2f55f6cda1a8692")
+        self.assertEqual({k for k in manifest if k.startswith("attack_")},
+                         {"attack_rn152_pgd", "attack_rn152_sgm", "attack_dn201_pgd", "attack_dn201_sgm"})
+
 class RepairedExportTests(unittest.TestCase):
     def test_export_matches_reviews_and_reliability_format(self):
         import build_repaired_coding_sheet as export

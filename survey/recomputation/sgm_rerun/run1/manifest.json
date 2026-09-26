@@ -1,0 +1,121 @@
+{
+  "checkout": {
+    "repository": "https://github.com/csdongxian/skip-connections-matter",
+    "commit": "9b2e5cca9b673efcac253e16b2f55f6cda1a8692",
+    "attack_sgm_py_sha256": "0357ac0766f96bd7102ce5f400714b1ed387c7fb1a8652c66d8d772e1546ce18",
+    "class_to_idx_sha256": "ef16832ddab1bdb39159fd9c128bcf486150e9fb422b20c108b344a787ecca57"
+  },
+  "attack_rn152_pgd": {
+    "release_argv": [
+      "--gamma",
+      "1.0",
+      "--output_dir",
+      "<work-dir>/adv_rn152_pgd",
+      "--arch",
+      "resnet152",
+      "--batch-size",
+      "<data>"
+    ],
+    "started_utc": "2026-09-26T05:22:00.807570+00:00",
+    "finished_utc": "2026-09-26T05:58:49.958498+00:00",
+    "images": 5000,
+    "adversarial_digest": "fe63e70a6d0ae73cb6d3f9c8b39760564262d6f6d8b88909cf0d4508ead7bd54",
+    "defaults_used": "epsilon 16, num-steps 10, step-size 2 (/255), momentum 0, rand_init False (deterministic)"
+  },
+  "attack_rn152_sgm": {
+    "release_argv": [
+      "--gamma",
+      "0.2",
+      "--output_dir",
+      "<work-dir>/adv_rn152_sgm",
+      "--arch",
+      "resnet152",
+      "--batch-size",
+      "<data>"
+    ],
+    "started_utc": "2026-09-26T05:58:49.964868+00:00",
+    "finished_utc": "2026-09-26T06:57:25.403407+00:00",
+    "images": 5000,
+    "adversarial_digest": "70fee9589912749f90ce70290a3facf45938b09a0b7df36567c760c18650962f",
+    "defaults_used": "epsilon 16, num-steps 10, step-size 2 (/255), momentum 0, rand_init False (deterministic)"
+  },
+  "attack_dn201_pgd": {
+    "release_argv": [
+      "--gamma",
+      "1.0",
+      "--output_dir",
+      "<work-dir>/adv_dn201_pgd",
+      "--arch",
+      "densenet201",
+      "--batch-size",
+      "<data>"
+    ],
+    "started_utc": "2026-09-26T06:59:50.007534+00:00",
+    "finished_utc": "2026-09-26T07:52:58.044259+00:00",
+    "images": 5000,
+    "adversarial_digest": "71c72e79bc8fec1616be1b80cb22f5ce32e0bb13bbd89f8bb5853d4dc4d746a8",
+    "defaults_used": "epsilon 16, num-steps 10, step-size 2 (/255), momentum 0, rand_init False (deterministic)"
+  },
+  "attack_dn201_sgm": {
+    "release_argv": [
+      "--gamma",
+      "0.5",
+      "--output_dir",
+      "<work-dir>/adv_dn201_sgm",
+      "--arch",
+      "densenet201",
+      "--batch-size",
+      "<data>"
+    ],
+    "started_utc": "2026-09-26T07:52:58.065869+00:00",
+    "finished_utc": "2026-09-26T08:29:29.073052+00:00",
+    "images": 5000,
+    "adversarial_digest": "6cf259592b5b0a932568ea693f97eb55cbf4df7444c30837fbba06ce24a86e0c",
+    "defaults_used": "epsilon 16, num-steps 10, step-size 2 (/255), momentum 0, rand_init False (deterministic)"
+  },
+  "evaluate": {
+    "finished_utc": "2026-09-26T09:05:09.290136+00:00",
+    "images": 5000,
+    "data_zip_sha256": "d3352e6b038b118ed4dd9bbd36d68b0d2fcdb20055cf973a85aa6b2cd8446e4a",
+    "clean_digest": "7bc00f3623f934e5b2b4f5801dafab99c3262b2a27510f659d01504dd17dae67",
+    "pretrainedmodels_checkpoints": {
+      "densenet201-5750cbb1e.pth": "5750cbb1e5c09dc6ed5f4daa6583d7e652b090d5cdbeeecb9393e2b774f07930",
+      "inception_v3_google-1a9a5a14.pth": "1a9a5a14f40645a370184bd54f4e8e631351e71399112b43ad0294a79da290c8",
+      "mobilenet_v2-b0353104.pth": "b03531047ffacf1e2488318dcd2aba1126cde36e3bfe1aa5cb07700aeeee9889",
+      "resnet152-b121ed2d.pth": "b121ed2db97ec7e9f55a91300ceaf85a326de955e8a4ae09e3a0c8170d27f14f",
+      "resnet18-f37072fd.pth": "f37072fd47e89c5e827621c5baffa7500819f7896bbacec160b1a16c560e07ec",
+      "senet154-c7b49a05.pth": "c7b49a056b98b0bed65b0237c27acdead655e599669215573d357ad337460413",
+      "vgg16-397923af.pth": "397923af8e79cdbb6a7127f12361acd7a2f83e06b05044ddf496e83de57a5bf0",
+      "vgg19-dcbb9e9d.pth": "dcbb9e9dad569fff7a846263a77324fc34978fea2bfb039c012d710e1776ae44",
+      "vgg19_bn-c79401a0.pth": "c79401a0cf3cb42714e4182f5868c7a6f4f4534f5df9e956e2bb2098de41cbb6"
+    },
+    "tf_proxy_weights": {
+      "tf_inception_v3": {
+        "file": "tf2torch_inception_v3.npy",
+        "sha256": "bbd8e9318e7e565eb4443d1e4b34d584c260c1b746c959abc196be2acdda0a11"
+      },
+      "tf_inception_v4": {
+        "file": "tf2torch_inception_v4.npy",
+        "sha256": "bda6b05a715213943009b1f40375c7efc4d7b77821285acb2210ff1b381af766"
+      },
+      "tf_inc_res_v2": {
+        "file": "tf2torch_inc_res_v2.npy",
+        "sha256": "279058522e2f4f3e2cce29011b76f33c6f5b54510564c046f71c7eccd200ea52"
+      }
+    },
+    "environment": {
+      "python": "3.14.2",
+      "platform": "Windows-11-10.0.26100-SP0",
+      "torch": "2.14.0+cu126",
+      "gpu": "NVIDIA GeForce RTX 4070",
+      "numpy": "2.4.2",
+      "advertorch": "0.2.2"
+    },
+    "checkout": {
+      "repository": "https://github.com/csdongxian/skip-connections-matter",
+      "commit": "9b2e5cca9b673efcac253e16b2f55f6cda1a8692",
+      "attack_sgm_py_sha256": "0357ac0766f96bd7102ce5f400714b1ed387c7fb1a8652c66d8d772e1546ce18",
+      "class_to_idx_sha256": "ef16832ddab1bdb39159fd9c128bcf486150e9fb422b20c108b344a787ecca57"
+    }
+  }
+}
