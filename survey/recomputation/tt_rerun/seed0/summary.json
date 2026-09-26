@@ -1,0 +1,276 @@
+{
+  "source": "resnet50",
+  "outcome": "targeted success: target-model top-1 == official target label, over all images",
+  "comparison": [
+    {
+      "attack": "CE",
+      "target": "densenet121",
+      "iterations": 20,
+      "successes": 257,
+      "images": 1000,
+      "rerun_percent": 25.7,
+      "published_percent": 26.9,
+      "delta": -1.2
+    },
+    {
+      "attack": "CE",
+      "target": "densenet121",
+      "iterations": 100,
+      "successes": 376,
+      "images": 1000,
+      "rerun_percent": 37.6,
+      "published_percent": 39.4,
+      "delta": -1.8
+    },
+    {
+      "attack": "CE",
+      "target": "densenet121",
+      "iterations": 300,
+      "successes": 413,
+      "images": 1000,
+      "rerun_percent": 41.3,
+      "published_percent": 42.6,
+      "delta": -1.3
+    },
+    {
+      "attack": "CE",
+      "target": "vgg16_bn",
+      "iterations": 20,
+      "successes": 174,
+      "images": 1000,
+      "rerun_percent": 17.4,
+      "published_percent": 17.3,
+      "delta": 0.1
+    },
+    {
+      "attack": "CE",
+      "target": "vgg16_bn",
+      "iterations": 100,
+      "successes": 288,
+      "images": 1000,
+      "rerun_percent": 28.8,
+      "published_percent": 27.3,
+      "delta": 1.5
+    },
+    {
+      "attack": "CE",
+      "target": "vgg16_bn",
+      "iterations": 300,
+      "successes": 303,
+      "images": 1000,
+      "rerun_percent": 30.3,
+      "published_percent": 30.4,
+      "delta": -0.1
+    },
+    {
+      "attack": "CE",
+      "target": "inception_v3",
+      "iterations": 20,
+      "successes": 26,
+      "images": 1000,
+      "rerun_percent": 2.6,
+      "published_percent": 2.4,
+      "delta": 0.2
+    },
+    {
+      "attack": "CE",
+      "target": "inception_v3",
+      "iterations": 100,
+      "successes": 42,
+      "images": 1000,
+      "rerun_percent": 4.2,
+      "published_percent": 3.8,
+      "delta": 0.4
+    },
+    {
+      "attack": "CE",
+      "target": "inception_v3",
+      "iterations": 300,
+      "successes": 48,
+      "images": 1000,
+      "rerun_percent": 4.8,
+      "published_percent": 4.1,
+      "delta": 0.7
+    },
+    {
+      "attack": "Po+Trip",
+      "target": "densenet121",
+      "iterations": 20,
+      "successes": 278,
+      "images": 1000,
+      "rerun_percent": 27.8,
+      "published_percent": 26.7,
+      "delta": 1.1
+    },
+    {
+      "attack": "Po+Trip",
+      "target": "densenet121",
+      "iterations": 100,
+      "successes": 528,
+      "images": 1000,
+      "rerun_percent": 52.8,
+      "published_percent": 53.0,
+      "delta": -0.2
+    },
+    {
+      "attack": "Po+Trip",
+      "target": "densenet121",
+      "iterations": 300,
+      "successes": 548,
+      "images": 1000,
+      "rerun_percent": 54.8,
+      "published_percent": 54.7,
+      "delta": 0.1
+    },
+    {
+      "attack": "Po+Trip",
+      "target": "vgg16_bn",
+      "iterations": 20,
+      "successes": 185,
+      "images": 1000,
+      "rerun_percent": 18.5,
+      "published_percent": 18.8,
+      "delta": -0.3
+    },
+    {
+      "attack": "Po+Trip",
+      "target": "vgg16_bn",
+      "iterations": 100,
+      "successes": 341,
+      "images": 1000,
+      "rerun_percent": 34.1,
+      "published_percent": 34.2,
+      "delta": -0.1
+    },
+    {
+      "attack": "Po+Trip",
+      "target": "vgg16_bn",
+      "iterations": 300,
+      "successes": 348,
+      "images": 1000,
+      "rerun_percent": 34.8,
+      "published_percent": 34.4,
+      "delta": 0.4
+    },
+    {
+      "attack": "Po+Trip",
+      "target": "inception_v3",
+      "iterations": 20,
+      "successes": 35,
+      "images": 1000,
+      "rerun_percent": 3.5,
+      "published_percent": 2.9,
+      "delta": 0.6
+    },
+    {
+      "attack": "Po+Trip",
+      "target": "inception_v3",
+      "iterations": 100,
+      "successes": 57,
+      "images": 1000,
+      "rerun_percent": 5.7,
+      "published_percent": 6.0,
+      "delta": -0.3
+    },
+    {
+      "attack": "Po+Trip",
+      "target": "inception_v3",
+      "iterations": 300,
+      "successes": 64,
+      "images": 1000,
+      "rerun_percent": 6.4,
+      "published_percent": 5.9,
+      "delta": 0.5
+    },
+    {
+      "attack": "Logit",
+      "target": "densenet121",
+      "iterations": 20,
+      "successes": 305,
+      "images": 1000,
+      "rerun_percent": 30.5,
+      "published_percent": 29.3,
+      "delta": 1.2
+    },
+    {
+      "attack": "Logit",
+      "target": "densenet121",
+      "iterations": 100,
+      "successes": 642,
+      "images": 1000,
+      "rerun_percent": 64.2,
+      "published_percent": 63.3,
+      "delta": 0.9
+    },
+    {
+      "attack": "Logit",
+      "target": "densenet121",
+      "iterations": 300,
+      "successes": 713,
+      "images": 1000,
+      "rerun_percent": 71.3,
+      "published_percent": 72.5,
+      "delta": -1.2
+    },
+    {
+      "attack": "Logit",
+      "target": "vgg16_bn",
+      "iterations": 20,
+      "successes": 251,
+      "images": 1000,
+      "rerun_percent": 25.1,
+      "published_percent": 24.0,
+      "delta": 1.1
+    },
+    {
+      "attack": "Logit",
+      "target": "vgg16_bn",
+      "iterations": 100,
+      "successes": 555,
+      "images": 1000,
+      "rerun_percent": 55.5,
+      "published_percent": 55.7,
+      "delta": -0.2
+    },
+    {
+      "attack": "Logit",
+      "target": "vgg16_bn",
+      "iterations": 300,
+      "successes": 625,
+      "images": 1000,
+      "rerun_percent": 62.5,
+      "published_percent": 62.7,
+      "delta": -0.2
+    },
+    {
+      "attack": "Logit",
+      "target": "inception_v3",
+      "iterations": 20,
+      "successes": 29,
+      "images": 1000,
+      "rerun_percent": 2.9,
+      "published_percent": 3.0,
+      "delta": -0.1
+    },
+    {
+      "attack": "Logit",
+      "target": "inception_v3",
+      "iterations": 100,
+      "successes": 76,
+      "images": 1000,
+      "rerun_percent": 7.6,
+      "published_percent": 7.2,
+      "delta": 0.4
+    },
+    {
+      "attack": "Logit",
+      "target": "inception_v3",
+      "iterations": 300,
+      "successes": 87,
+      "images": 1000,
+      "rerun_percent": 8.7,
+      "published_percent": 9.4,
+      "delta": -0.7
+    }
+  ]
+}

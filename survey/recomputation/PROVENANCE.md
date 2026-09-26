@@ -1,5 +1,9 @@
 # Scope and label conventions
 
+## Manifested targeted-transfer rerun, 2026-09-26
+
+Rank 44 now has a [manifested rerun](tt_rerun/README.md) of Table 1's ResNet-50-source block (CE, Po+Trip and Logit; three targets; 20/100/300 iterations) using the unchanged released script. All 27 cells are within 1.8 points, with mixed signs. One seed was run.
+
 ## Manifested PNA rerun, 2026-09-26
 
 Rank 47 now has a [manifested rerun](pna_rerun/README.md) of Table 1's 'Ours' row (ViT to ViT, four surrogates, eight victims) using the released code and clean images. All eight MASR values are within 2.55 points of the published ones and all are higher. The released 	imm==0.4.13 pin was never published, so 0.4.12 was used; the ViT-B/16 weight identity used for the paper cannot be determined from the release.
