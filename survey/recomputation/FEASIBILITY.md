@@ -10,6 +10,11 @@ Assessed 25–26 September 2026 on the available machine: Windows 11, an RTX 407
 | 20 ILA | PyTorch, CIFAR-10 | **Run**: `ila_rerun/` | I-FGSM and MI-FGSM. |
 | 13 SGM | PyTorch + advertorch | **Run**: `sgm_rerun/` | Four configurations; Inception targets proxied by converted TF-slim weights. |
 | 57 SIA | PyTorch, torchvision | **Run**: `sia_rerun/` | Images from the Admix Drive folder; `weights='DEFAULT'` may differ from 2023 weights. |
+| 67 RAP | PyTorch, torchvision | **Run**: `rap_rerun/` | Table 1 ResNet-50 I/+RAP/+RAP-LS; about 10 h per RAP configuration on this GPU. |
+| 32 Patch-wise | TF1 (plus a PyTorch variant) | No comparable configuration here | The TF release needs TF1; the PyTorch variant evaluates torchvision ResNet-152, ResNeXt-50 and DenseNet-169 rather than the paper's TF-slim targets. |
+| 4 SI-NI, 5 VMI, 21 Admix | TF1 | Not feasible here | TF1 GPU limit (earlier PyTorch ports of 4 and 5 exist in this archive). |
+| 24, 69, 72, 73, 77, 78 | various | Not attempted | 24: Table 2 not packaged and the adaptive attack needs 128 GB RAM; 69: Bard target not recomputable; 72, 73, 77: checkpoints or trained models not released (training from scratch would not match published numbers); 78: evaluated ImageNet validation images need an account and terms acceptance. |
+| 68 DAmageNet | Keras | Not feasible here | The clean baseline needs ImageNet validation images (account and terms); Keras victims would run on CPU only. |
 | 47 PNA | PyTorch, timm | **Run**: `pna_rerun/` | Table 1 ViT to ViT; the pinned timm 0.4.13 was never published (0.4.12 used); ViT-B/16 weight identity ambiguous; CNN victims (TF-slim) not run. |
 | 44 | PyTorch, torchvision | **Run**: `tt_rerun/` | Table 1 ResNet-50 block; Table 4 commercial-API outcomes cannot be regenerated. |
 | 10 | TF 1.8 | Run earlier (`su18_original/`) | CPU-only legacy runtime. |

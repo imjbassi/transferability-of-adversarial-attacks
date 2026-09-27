@@ -1,0 +1,137 @@
+{
+  "paper": "rank 67, NeurIPS 2022",
+  "repository": "https://github.com/SCLBD/Transfer_attack_RAP",
+  "commit": "2112d8892136f8009392076e2193bb4031cc9b97",
+  "tracked_files_modified": false,
+  "release_notes": [
+    "RAP requires --adv_perturbation; README RAP/RAP-LS examples omit it",
+    "--source_model choice is 'resnet50' (README: resnet_50)",
+    "--save required because logging writes to arg.file_path",
+    "numpy.int restored (shimmed_rap.py)",
+    "hard-coded /targeted_attack/dataset resolved via a junction to the Targeted-Transfer dataset"
+  ],
+  "dataset": {
+    "images_csv_sha256": "a39cd0a747e7d3b413c34a88329bb651b11b1988012ad3cfc3845045a5cbd894"
+  },
+  "run_I": {
+    "started_utc": "2026-09-26T11:42:40.860446+00:00",
+    "finished_utc": "2026-09-26T13:04:43.913446+00:00",
+    "argv": [
+      "--source_model",
+      "resnet50",
+      "--loss_function",
+      "CE",
+      "--max_iterations",
+      "400",
+      "--seed",
+      "9018",
+      "--save",
+      "--transpoint",
+      "400"
+    ],
+    "results_npy_sha256": "4932b5b500f25a82a67dd5412d27884353765f788871678fc44f31de3e14c330",
+    "iter_400_npy_sha256": "50a21082cdfc78a00bccd63df9da2df60a253b3856e1d5bf14186ed5c724c1cb"
+  },
+  "torchvision_weights": {
+    "resnet50-0676ba61.pth": "0676ba61b6795bbe1773cffd859882e5e297624d384b6993f7c9e683e722fb8a",
+    "densenet121-a639ec97.pth": "a639ec97d7c33b07ae66f0b5fb7d0192f95a3b11b7576c66c0126c2a727c4395",
+    "vgg16_bn-6c64b313.pth": "6c64b3138f2f4fcb3bcc4cafde11619c4f440eb1631787e93a682fd88305888a",
+    "inception_v3_google-0cc3c7bd.pth": "0cc3c7bd75056d25e46cba549dc184522069b81e9787eff6df84f397bd52a5ef"
+  },
+  "environment": {
+    "python": "3.14.2",
+    "platform": "Windows-11-10.0.26100-SP0",
+    "torch": "2.14.0+cu126",
+    "torchvision": "0.29.0+cu126",
+    "numpy": "2.4.2",
+    "gpu": "NVIDIA GeForce RTX 4070"
+  },
+  "run_I+RAP_eps16_release_default": {
+    "started_utc": "2026-09-26T13:04:45.005995+00:00",
+    "finished_utc": "2026-09-26T22:46:56.583817+00:00",
+    "argv": [
+      "--source_model",
+      "resnet50",
+      "--loss_function",
+      "CE",
+      "--max_iterations",
+      "400",
+      "--seed",
+      "9018",
+      "--save",
+      "--transpoint",
+      "0",
+      "--adv_perturbation"
+    ],
+    "results_npy_sha256": "11eb4aae821b55f61e8667145a927f1305d3faa0bdfe22aa4fef8fc3ecdff127",
+    "iter_400_npy_sha256": "17db3216838ca08802ae4845e85ed7d7f4c641d7c15b3bb557687fa14171f66f"
+  },
+  "run_I+RAP-LS_eps16_release_default": {
+    "started_utc": "2026-09-26T22:46:57.309542+00:00",
+    "finished_utc": "2026-09-27T05:05:35.588247+00:00",
+    "argv": [
+      "--source_model",
+      "resnet50",
+      "--loss_function",
+      "CE",
+      "--max_iterations",
+      "400",
+      "--seed",
+      "9018",
+      "--save",
+      "--transpoint",
+      "100",
+      "--adv_perturbation"
+    ],
+    "results_npy_sha256": "00d57221901342ae3a2e307fce7c512ae3df60472179c8536261acb4a788f07a",
+    "iter_400_npy_sha256": "dcb79fefbe546c0d3be6036b263dd10f01e959d38b2f1348c94c8d864b7e80ca"
+  },
+  "run_I+RAP": {
+    "started_utc": "2026-09-27T05:07:46.520492+00:00",
+    "finished_utc": "2026-09-27T14:56:29.595643+00:00",
+    "argv": [
+      "--source_model",
+      "resnet50",
+      "--loss_function",
+      "CE",
+      "--max_iterations",
+      "400",
+      "--seed",
+      "9018",
+      "--save",
+      "--transpoint",
+      "0",
+      "--adv_perturbation",
+      "--adv_epsilon",
+      "12/255",
+      "--adv_steps",
+      "6"
+    ],
+    "results_npy_sha256": "1c3b84a3b440fe9a7c68f2932f0bcdebdb513bec160c03bb557cb244be314253",
+    "iter_400_npy_sha256": "493640f0d3bef7c5d7ba5cb96fcc1ff4648925f3ee68165f0164c9644fe83554"
+  },
+  "run_I+RAP-LS": {
+    "started_utc": "2026-09-27T14:56:31.375297+00:00",
+    "finished_utc": "2026-09-27T22:08:39.730691+00:00",
+    "argv": [
+      "--source_model",
+      "resnet50",
+      "--loss_function",
+      "CE",
+      "--max_iterations",
+      "400",
+      "--seed",
+      "9018",
+      "--save",
+      "--transpoint",
+      "100",
+      "--adv_perturbation",
+      "--adv_epsilon",
+      "12/255",
+      "--adv_steps",
+      "6"
+    ],
+    "results_npy_sha256": "001f83b61fabc5b32a11543cca28b4ee9f597ef5a0275414b9c73890d5bdf433",
+    "iter_400_npy_sha256": "6166aacadc427fe036ad1b09af9d5dbb6c999ede613213e00ec21150ef532cf2"
+  }
+}

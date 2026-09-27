@@ -330,6 +330,23 @@ class ConditioningAcrossRerunsTests(unittest.TestCase):
             self.assertEqual(c["eligible_target_wrong"], c["fooled_target_wrong"] + c["unfooled_target_wrong"])
             self.assertNotEqual(c["source"], c["target"])
 
+class RapRerunTests(unittest.TestCase):
+    def test_summary_reproduces_from_counts(self):
+        import importlib.util
+        folder = Path(__file__).parent / "recomputation/rap_rerun"
+        spec = importlib.util.spec_from_file_location("rap_run", folder / "run.py")
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        run = folder / "run1"
+        counts = json.loads((run / "counts.json").read_text(encoding="utf-8"))
+        stored = json.loads((run / "summary.json").read_text(encoding="utf-8"))
+        self.assertEqual(module.summarize(counts), stored)
+        self.assertEqual(set(counts), set(module.CONFIGS))
+        manifest = json.loads((run / "manifest.json").read_text(encoding="utf-8"))
+        self.assertEqual(manifest["commit"], "2112d8892136f8009392076e2193bb4031cc9b97")
+        for cfg in ("I+RAP", "I+RAP-LS"):
+            self.assertIn("12/255", manifest[f"run_{cfg}"]["argv"])
+
 class RepairedExportTests(unittest.TestCase):
     def test_export_matches_reviews_and_reliability_format(self):
         import build_repaired_coding_sheet as export

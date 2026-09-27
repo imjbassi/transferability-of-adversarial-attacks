@@ -1,5 +1,9 @@
 # Scope and label conventions
 
+## Manifested RAP rerun, 2026-09-27
+
+Rank 67 now has a [manifested rerun](rap_rerun/README.md) of Table 1's ResNet-50 'I / +RAP / +RAP-LS' cells (untargeted CE) using the unchanged release. At the paper's stated ε_n = 12/255 for the I row, all nine cells are within 2.1 points. The release's default ε_n = 16/255 gives +RAP and +RAP-LS results 10–14 points lower. The README's RAP commands omit the `--adv_perturbation` flag that activates RAP.
+
 ## Conditioning across reruns, 2026-09-26
 
 `conditioning_across_reruns.py` computes unconditional, PTR, CTR, a_st and b_st, with counts, for all 88 source-to-target pairs in the four reruns that archived per-example source and target predictions: SSA (both seeds), SGM, PNA and SIA. In these iterative white-box settings, source success on jointly clean-correct images is 97–100%, so CTR stays close to PTR: CTR minus the unconditional rate spans −5.3 to +2.3 points, median about 0. Counting clean-misclassified images shifts rates by up to 5.4 points (unconditional minus PTR), in the SSA and SIA image sets. These are descriptive results for selected configurations, not corpus estimates.

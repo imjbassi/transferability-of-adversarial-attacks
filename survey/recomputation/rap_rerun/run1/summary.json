@@ -1,0 +1,171 @@
+{
+  "source": "resnet50",
+  "outcome": "untargeted: target top-1 != true label over all 1,000 images",
+  "comparison": [
+    {
+      "target": "densenet121",
+      "config": "I",
+      "paper_setting": true,
+      "iterations": 400,
+      "successes": 771,
+      "images": 1000,
+      "rerun_percent": 77.1,
+      "published_percent": 79.2,
+      "delta": -2.1
+    },
+    {
+      "target": "densenet121",
+      "config": "I+RAP",
+      "paper_setting": true,
+      "iterations": 400,
+      "successes": 922,
+      "images": 1000,
+      "rerun_percent": 92.2,
+      "published_percent": 91.5,
+      "delta": 0.7
+    },
+    {
+      "target": "densenet121",
+      "config": "I+RAP-LS",
+      "paper_setting": true,
+      "iterations": 400,
+      "successes": 927,
+      "images": 1000,
+      "rerun_percent": 92.7,
+      "published_percent": 91.9,
+      "delta": 0.8
+    },
+    {
+      "target": "densenet121",
+      "config": "I+RAP_eps16_release_default",
+      "paper_setting": false,
+      "iterations": 400,
+      "successes": 814,
+      "images": 1000,
+      "rerun_percent": 81.4,
+      "published_percent": 91.5,
+      "delta": -10.1
+    },
+    {
+      "target": "densenet121",
+      "config": "I+RAP-LS_eps16_release_default",
+      "paper_setting": false,
+      "iterations": 400,
+      "successes": 790,
+      "images": 1000,
+      "rerun_percent": 79.0,
+      "published_percent": 91.9,
+      "delta": -12.9
+    },
+    {
+      "target": "vgg16_bn",
+      "config": "I",
+      "paper_setting": true,
+      "iterations": 400,
+      "successes": 781,
+      "images": 1000,
+      "rerun_percent": 78.1,
+      "published_percent": 78.0,
+      "delta": 0.1
+    },
+    {
+      "target": "vgg16_bn",
+      "config": "I+RAP",
+      "paper_setting": true,
+      "iterations": 400,
+      "successes": 922,
+      "images": 1000,
+      "rerun_percent": 92.2,
+      "published_percent": 91.1,
+      "delta": 1.1
+    },
+    {
+      "target": "vgg16_bn",
+      "config": "I+RAP-LS",
+      "paper_setting": true,
+      "iterations": 400,
+      "successes": 926,
+      "images": 1000,
+      "rerun_percent": 92.6,
+      "published_percent": 92.9,
+      "delta": -0.3
+    },
+    {
+      "target": "vgg16_bn",
+      "config": "I+RAP_eps16_release_default",
+      "paper_setting": false,
+      "iterations": 400,
+      "successes": 805,
+      "images": 1000,
+      "rerun_percent": 80.5,
+      "published_percent": 91.1,
+      "delta": -10.6
+    },
+    {
+      "target": "vgg16_bn",
+      "config": "I+RAP-LS_eps16_release_default",
+      "paper_setting": false,
+      "iterations": 400,
+      "successes": 791,
+      "images": 1000,
+      "rerun_percent": 79.1,
+      "published_percent": 92.9,
+      "delta": -13.8
+    },
+    {
+      "target": "inception_v3",
+      "config": "I",
+      "paper_setting": true,
+      "iterations": 400,
+      "successes": 356,
+      "images": 1000,
+      "rerun_percent": 35.6,
+      "published_percent": 34.6,
+      "delta": 1.0
+    },
+    {
+      "target": "inception_v3",
+      "config": "I+RAP",
+      "paper_setting": true,
+      "iterations": 400,
+      "successes": 569,
+      "images": 1000,
+      "rerun_percent": 56.9,
+      "published_percent": 57.0,
+      "delta": -0.1
+    },
+    {
+      "target": "inception_v3",
+      "config": "I+RAP-LS",
+      "paper_setting": true,
+      "iterations": 400,
+      "successes": 582,
+      "images": 1000,
+      "rerun_percent": 58.2,
+      "published_percent": 57.2,
+      "delta": 1.0
+    },
+    {
+      "target": "inception_v3",
+      "config": "I+RAP_eps16_release_default",
+      "paper_setting": false,
+      "iterations": 400,
+      "successes": 462,
+      "images": 1000,
+      "rerun_percent": 46.2,
+      "published_percent": 57.0,
+      "delta": -10.8
+    },
+    {
+      "target": "inception_v3",
+      "config": "I+RAP-LS_eps16_release_default",
+      "paper_setting": false,
+      "iterations": 400,
+      "successes": 455,
+      "images": 1000,
+      "rerun_percent": 45.5,
+      "published_percent": 57.2,
+      "delta": -11.7
+    }
+  ]
+}
