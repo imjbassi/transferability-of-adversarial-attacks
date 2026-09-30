@@ -28,7 +28,7 @@ SOFTWARE.
 2. Manuscript, documentation, and original research artifacts
 
 The manuscript in paper/, project documentation in docs/, and original tables,
-figures, and aggregate research outputs in artifacts/ are licensed under the
+figures, and aggregate research outputs in results/ are licensed under the
 Creative Commons Attribution 4.0 International License (CC BY 4.0):
 
 https://creativecommons.org/licenses/by/4.0/

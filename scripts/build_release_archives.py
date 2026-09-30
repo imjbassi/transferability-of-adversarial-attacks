@@ -78,7 +78,7 @@ transfer evaluation."
 
 Contents:
 - `source/`: corrected implementation and tests;
-- `artifacts/study/`: aggregate tables and figures used by the paper;
+- `results/study/`: aggregate tables and figures used by the paper;
 - `runs/`: per-example predictions, run summaries, and anonymized manifests;
 - `training_records/`: seed-level training histories and anonymized metadata.
 
@@ -165,7 +165,7 @@ def build_anonymous_supplement(path: Path) -> None:
         _write_tree(
             archive,
             ROOT / "artifacts" / "study",
-            "artifacts/study",
+            "results/study",
             anonymize_json=True,
         )
         for relative in EVALUATION_RUNS:
@@ -195,7 +195,7 @@ def build_public_record(path: Path) -> None:
         _write_tree(
             archive,
             ROOT / "artifacts" / "study",
-            "artifacts/study",
+            "results/study",
             anonymize_json=False,
         )
         _write_tree(

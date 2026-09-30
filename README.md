@@ -2,7 +2,7 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22737839.svg)](https://doi.org/10.5281/zenodo.22737839)
 
-**Status: working survey revision; evidence audit and valid blind reliability assessment remain incomplete. The historical CIFAR-10 records are retained.**
+**Status: working survey revision. The first-pass evidence audit of all 80 papers is complete and frozen, but it is non-blind; a valid blind reliability assessment is still outstanding. The historical CIFAR-10 records are retained.**
 
 The earlier code evaluated ImageNet classifiers against CIFAR-10 labels and called unconditional target error a transfer success rate. Those results do not establish adversarial transfer. The previous claims of approximately 90% clean accuracy and near-100% transfer are not supported by the released artifacts. See [the audit](docs/AUDIT.md).
 
@@ -12,18 +12,31 @@ The earlier code evaluated ImageNet classifiers against CIFAR-10 labels and call
 - [Validation record](docs/VALIDATION.md)
 - [Archived release and reproducibility snapshot](https://doi.org/10.5281/zenodo.22737839)
 
+## Repository layout
+
+| Path | Contents |
+|---|---|
+| `transferlab/` | Installable Python package: CIFAR-10 training, attacks, evaluation, metrics and reports |
+| `tests/` | Package tests (run in CI) |
+| `scripts/` | Release-archive builder; `legacy/` holds compatibility wrappers for the original script names |
+| `results/` | Aggregate outputs: `study/` (tables and figures used by the paper) and `pilot/` (execution-pilot record) |
+| `survey/` | 80-paper survey: corpus, coding scheme, frozen evidence reviews, bounds, blind-recode packet and reruns of released code. See [its README](survey/README.md) |
+| `paper/` | Manuscript sources and PDFs (`tmlr/` for the TMLR submission); `archive/original/` holds the superseded original paper |
+| `docs/` | Audit, experiment, validation, running and submission notes, plus [remaining work](docs/REMAINING_WORK.md) |
+
 ## What changed
 
 The code trains ten-class CIFAR-10 models, selects checkpoints on a held-out validation split, and places normalization inside each differentiable model. Attacks operate on raw pixels in `[0,1]`. FGSM, PGD, identity, and random-noise controls share the same evaluation pipeline. Each source attack is reused across every target. Outputs include checkpoint hashes, test indices, actual predictions, norm checks, denominators, and Wilson intervals. The revised manuscript reports the completed three-seed, full-test $L_\infty$ study; the [small real-data pilot](docs/PILOT.md) remains execution validation only.
 
-The repository contains a frozen 80-paper corpus and an unvalidated historical
-coding sheet. The historical 20% recode was generated from the same judgments
-as the first pass and cannot support kappa; its reliability claim is withdrawn.
-Three selected artifact configurations have archived predictions whose arithmetic
-is verified, but full original-runtime replication and exhaustive artifact
-availability assessment remain incomplete. The existing 96 bounds are from one
-paper, not a corpus-wide distribution. See [audit progress](survey/evidence_audit/README.md)
-and [recomputation scope](survey/recomputation/PROVENANCE.md).
+The repository contains a frozen 80-paper corpus and a frozen, non-blind first-pass
+evidence review of all 80 papers. The historical 20% recode was generated from the
+same judgments as the first pass and cannot support kappa; its reliability claim is
+withdrawn, and an independent blind recode is outstanding. Released code from eight
+papers (ranks 10, 13, 20, 23, 44, 47, 57, 67) has been rerun for selected configurations, with manifests and per-run READMEs;
+these are not full-paper replications. Rounding-aware bounds now cover three papers,
+which is not a corpus-wide distribution. See [audit progress](survey/evidence_audit/README.md),
+[recomputation scope](survey/recomputation/PROVENANCE.md) and
+[remaining work](docs/REMAINING_WORK.md).
 
 ## Install
 
@@ -86,15 +99,15 @@ For a pilot, use `--samples 1000` and a different output directory. Pilot result
 After placing the completed run directories under `runs`, verify every prediction checksum and generate the cross-seed publication tables:
 
 ```powershell
-.\.venv\Scripts\python.exe -m transferlab.study_report --runs runs --output artifacts\study --verify-predictions
+.\.venv\Scripts\python.exe -m transferlab.study_report --runs runs --output results\study --verify-predictions
 ```
 
-This reads existing results only. It writes a Markdown summary, a JSON summary, exact seed-level counts, the source-conditioning decomposition, supplementary fixed-checkpoint Wilson intervals, and convergence comparisons under `artifacts\study`. The paper's main cross-seed tables report means and seed ranges. An optional `--lr-matched-run <run-directory>` adds the matched-learning-rate sensitivity comparison.
+This reads existing results only. It writes a Markdown summary, a JSON summary, exact seed-level counts, the source-conditioning decomposition, supplementary fixed-checkpoint Wilson intervals, and convergence comparisons under `results\study`. The paper's main cross-seed tables report means and seed ranges. An optional `--lr-matched-run <run-directory>` adds the matched-learning-rate sensitivity comparison.
 
 Create the supplementary budget-sensitivity figure:
 
 ```powershell
-.\.venv\Scripts\python.exe -m transferlab.study_figure artifacts\study --output artifacts\study\transfer_summary.pdf
+.\.venv\Scripts\python.exe -m transferlab.study_figure results\study --output results\study\transfer_summary.pdf
 ```
 
 ## Metrics
@@ -112,7 +125,7 @@ Rates in JSON are fractions, while generated Markdown tables use percentages. Em
 
 Each evaluation produces `manifest.json`, `predictions.csv`, `summary.json`, and, when an actual attack is selected, `example.pt`. The report command verifies the prediction checksum, recomputes summary metrics from CSV, and writes `table.md` with counts and norm diagnostics. The manifest is marked complete only after evaluation finishes. Shortened training and subset evaluations are labeled as pilots. The figure command labels the actual source predictions and scales the perturbation explicitly; it does not assume the selected example is successful.
 
-The legacy filenames now delegate to the corrected CLI. For example, `python FGSM_transfer.py --help` describes required checkpoint arguments. Historical results and figures are preserved under `archive/original/` and are not validation evidence.
+The legacy filenames now delegate to the corrected CLI. For example, `python scripts/legacy/FGSM_transfer.py --help` (with the package installed) describes required checkpoint arguments. Historical results and figures are preserved under `paper/archive/original/` and are not validation evidence.
 
 ## Build the paper
 

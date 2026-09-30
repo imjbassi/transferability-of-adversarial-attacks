@@ -27,7 +27,7 @@ The empirical paper is scoped to $L_\infty$. CW-$L_2$ is not a required remainin
 Generate the cross-seed publication tables from the repository root:
 
 ```powershell
-.\.venv\Scripts\python.exe -m transferlab.study_report --runs runs --output artifacts\study --verify-predictions
+.\.venv\Scripts\python.exe -m transferlab.study_report --runs runs --output results\study --verify-predictions
 ```
 
 The verification option recomputes every included run from its checksum-verified prediction CSV, so it will take longer than reading the saved summaries. It does not train models or generate attacks. Outputs are `study_summary.md`, `study_summary.json`, `seed_level.csv`, `conditioning_decomposition.csv`, `primary_pgd_wilson_envelope.csv`, and `sensitivity.csv`. The conditioning file reports pairwise source success and target error among eligible source failures, making the identity $\mathrm{PTR}=a\,\mathrm{CTR}+(1-a)b$ directly auditable. The Wilson file retains supplementary fixed-checkpoint intervals; the main paper reports cross-seed means and ranges. Pass `--lr-matched-run <run-directory>` to add `lr_matched_sensitivity.csv` from a completed seed-0 matched-learning-rate evaluation.
@@ -35,7 +35,7 @@ The verification option recomputes every included run from its checksum-verified
 Create the publication figure from those verified tables:
 
 ```powershell
-.\.venv\Scripts\python.exe -m transferlab.study_figure artifacts\study --output artifacts\study\transfer_summary.pdf
+.\.venv\Scripts\python.exe -m transferlab.study_figure results\study --output results\study\transfer_summary.pdf
 ```
 
 This writes a vector PDF and a 300-dpi PNG showing seed ranges for all six directional PGD budget curves. The conditioning decomposition and its exact denominators are reported in the main paper table and `conditioning_decomposition.csv`.

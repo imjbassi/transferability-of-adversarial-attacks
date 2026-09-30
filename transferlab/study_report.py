@@ -145,7 +145,7 @@ def load_sensitivity(path, expected_seed, steps, restarts, epsilon, verify_predi
 def main():
     parser = argparse.ArgumentParser(description="Aggregate the completed three-seed study")
     parser.add_argument("--runs", type=Path, default=Path("runs"))
-    parser.add_argument("--output", type=Path, default=Path("artifacts/study"))
+    parser.add_argument("--output", type=Path, default=Path("results/study"))
     parser.add_argument(
         "--verify-predictions",
         action="store_true",
