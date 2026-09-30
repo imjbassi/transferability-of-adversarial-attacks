@@ -83,6 +83,6 @@ Other findings from the reruns:
 - Don't claim blinding, replication or publication readiness without evidence.
 - Distinguish insufficient reporting from explicit methodological choices, and never call a paper wrong.
 - Keep the user-owned, untracked `paper/tmlr/main_anonymous.pdf`; never commit or delete it.
-- Commit messages end with `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`.
+- Do not add `Co-Authored-By` trailers to commit messages (the author asked for commits to be attributed to them only).
 - Checks: `python -m pytest -q survey/test_audit_tools.py` and `python survey/freeze_first_pass.py --check`.
 - Local-only resources: weights, data and adversarial images are in `D:\transfer_recompute`, plus a `D:\targeted_attack` junction (hashes are in the manifests). They are not available in cloud sessions.
